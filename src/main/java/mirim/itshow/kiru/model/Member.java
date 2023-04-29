@@ -1,0 +1,45 @@
+package mirim.itshow.kiru.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
+
+@NoArgsConstructor //기본 생성자
+@Data
+@Entity //엔티티
+@Table(name = "member")
+public class Member {
+    @Id //primary key
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //auto_increment
+    @Column(name = "id")
+    private Long id; //사용자 식별 id
+
+    @Column(nullable = false, length = 16) // column 조건
+    private String memberid; //사용자 입력 id
+
+    @Column(nullable = false, length = 20)
+    private String memberpw; //사용자 입력 pw
+
+    @Column(nullable = false, length = 15)
+    private String name; //사용자 이름(최대 5글자)
+
+    @Column(nullable = false, length = 60)
+    private String address; //사용자 주소
+
+    @Column(nullable = false, length = 11)
+    private String phone; //사용자 전화번호
+
+    @Column(length = 30)
+    private String email; //사용자 이메일
+
+    @Column
+    private LocalDateTime create_timestamp; //사용자 가입 시간
+
+
+
+}

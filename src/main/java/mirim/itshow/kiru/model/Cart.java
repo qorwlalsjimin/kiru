@@ -19,11 +19,12 @@ public class Cart {
     @Column(name = "cart_id")
     private Long cart_id; //장바구니 상품 id(pk)
 
-    @Column(nullable = false, length = 60) // column 조건
-    private Long member_id; //사용자 id(fk) TODO
+    @OneToOne
+    @JoinColumn(name = "id")
+    private Long member_id; //사용자 id(fk)
 
     @Column(nullable = false, length = 10)
-    private Long item_id; //상품 id(fk) TODO
+    private Long item_id; //상품 id(fk) TODO: CartItem 테이블 추가
 
     @Column(nullable = false)
     private int count; //개수

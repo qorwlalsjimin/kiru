@@ -19,11 +19,13 @@ public class Rent {
     @Column(name = "rent_id")
     private Long rent_id; //대여 id(pk)
 
-    @Column
-    private Long member_id; //사용자 id(fk) TODO
+    @ManyToOne
+    @JoinColumn(name="id")
+    private Long member_id; //사용자 id(fk)
 
-    @Column
-    private Long item_id; //상품 id(fk) TODO
+    @OneToMany
+    @JoinColumn(name="item_id")
+    private Long item_id; //상품 id(fk) TODO: RentItem 테이블 추가
 
     @Column(nullable = false)
     private Status status; //대여 상태

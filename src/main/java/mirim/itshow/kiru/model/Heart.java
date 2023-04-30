@@ -18,11 +18,13 @@ public class Heart {
     @Column(name = "heart_id")
     private Long heart_id; //즐겨찾기 상품 id(pk)
 
-    @Column(nullable = false, length = 60) // column 조건
-    private Long member_id; //사용자 id(fk) TODO
+    @ManyToOne
+    @JoinColumn(name="id")
+    private Long member_id; //사용자 id(fk)
 
-    @Column(nullable = false, length = 10)
-    private Long item_id; //상품 id(fk) TODO
+    @OneToMany
+    @JoinColumn(name="item_id")
+    private Long item_id; //상품 id(fk)
 
     @Column
     private LocalDateTime create_timestamp; //즐겨찾기한 시간

@@ -38,8 +38,9 @@ public class Item {
     @Column
     private int shoes_size; //신발 사이즈
 
-    @Column
-    private Long category_id; //카테고리 id TODO: fk
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Long category_id; //카테고리 id
 
     @Column
     private LocalDateTime create_timestamp; //상품 등록 날짜

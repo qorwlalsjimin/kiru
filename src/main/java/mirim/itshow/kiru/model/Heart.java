@@ -20,11 +20,11 @@ public class Heart {
 
     @ManyToOne
     @JoinColumn(name="id")
-    private Long member_id; //사용자 id(fk)
+    private Member member_id; //사용자 id(fk)
 
     @OneToMany
     @JoinColumn(name="item_id")
-    private Long item_id; //상품 id(fk)
+    private Item item_id; //상품 id(fk)
 
     @Column
     private LocalDateTime create_timestamp; //즐겨찾기한 시간

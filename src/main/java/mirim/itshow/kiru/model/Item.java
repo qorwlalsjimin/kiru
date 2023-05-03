@@ -40,7 +40,7 @@ public class Item {
 
     @ManyToOne
     @JoinColumn(name = "category_id")
-    private Long category_id; //카테고리 id
+    private Category category_id; //카테고리 id
 
     @Column
     private LocalDateTime create_timestamp; //상품 등록 날짜

@@ -7,6 +7,8 @@ import mirim.itshow.kiru.model.enum_col.Status;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor //기본 생성자
 @Data
@@ -21,24 +23,16 @@ public class Rent {
 
     @ManyToOne
     @JoinColumn(name="id")
-    private Long member_id; //사용자 id(fk)
-
-    @OneToMany
-    @JoinColumn(name="item_id")
-    private Long item_id; //상품 id(fk) TODO: RentItem 테이블 추가
-
-    @Column(nullable = false)
-    private Status status; //대여 상태
-
-    @Column(nullable = false)
-    private LocalDate start_date; //대여 시작일
-
-    @Column(nullable = false)
-    private LocalDate end_date; //대여 종료일
-
-    @Column(nullable = false)
-    private int pay_total; //결제 금액
+    private Member member_id; //사용자 id(fk)
 
     @Column
     private LocalDateTime create_timestamp; //대여 신청 시간
+
+    @Enumerated(EnumType.STRING)
+    private Status status; //대여 상태
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<RentItem> rentItems = new ArrayList<>();
+
+
 }

@@ -21,29 +21,6 @@ public class Cart {
 
     @OneToOne
     @JoinColumn(name = "id")
-    private Long member_id; //사용자 id(fk)
+    private Member member_id; //사용자 id(fk)
 
-    @Column(nullable = false, length = 10)
-    private Long item_id; //상품 id(fk) TODO: CartItem 테이블 추가
-
-    @Column(nullable = false)
-    private int count; //개수
-
-    @Column(nullable = false, length = 200)
-    private String color; //색상
-
-    @Enumerated(EnumType.STRING)
-    private Size cloth_size; //옷 사이즈
-
-    @Column
-    private int shoes_size; //신발 사이즈
-
-    @Column(nullable = false)
-    private LocalDate start_date; //대여 시작일
-
-    @Column(nullable = false)
-    private LocalDate end_date; //대여 종료일
-
-    @Column
-    private LocalDateTime create_timestamp; //장바구니에 넣은 시간
 }

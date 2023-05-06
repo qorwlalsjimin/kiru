@@ -16,8 +16,8 @@ public class Member {
     @Column(name = "id")
     private Long id; //사용자 식별 id
 
-    @Column(nullable = false, length = 16) // column 조건
-    private String memberid; //사용자 입력 id
+    @Column(nullable = false, length = 30) // column 조건
+    private String memberid; //사용자 입력 id(이메일)
 
     @Column(nullable = false, length = 20)
     private String memberpw; //사용자 입력 pw
@@ -30,9 +30,6 @@ public class Member {
 
     @Column(nullable = false, length = 11)
     private String phone; //사용자 전화번호
-
-    @Column(length = 30)
-    private String email; //사용자 이메일
 
     @Column
     private LocalDateTime create_timestamp; //사용자 가입 시간

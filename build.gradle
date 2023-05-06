@@ -2,6 +2,9 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.7.10'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id 'com.github.node-gradle.node' version '3.4.0'
+
+	id 'org.siouan.frontend' version '1.1.0'
 }
 
 group = 'mirim.itshow'
@@ -24,4 +27,12 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+frontend {
+	nodeVersion = '18.15.0'
+	// See 'scripts' section in your 'package.json file'
+	cleanScript = 'run clean'
+	assembleScript = 'run assemble'
+	checkScript = 'run check'
 }

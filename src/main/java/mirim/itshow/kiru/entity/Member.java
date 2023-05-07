@@ -2,6 +2,7 @@ package mirim.itshow.kiru.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import mirim.itshow.kiru.dto.MemberFormDto;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -34,6 +35,14 @@ public class Member {
     @Column
     private LocalDateTime create_timestamp; //사용자 가입 시간
 
-
+    public static Member createMember(MemberFormDto memberFormDto){
+        Member member = new Member();
+        member.setMemberid(memberFormDto.getMemberid());
+        member.setMemberpw(memberFormDto.getMemberpw());
+        member.setName(memberFormDto.getName());
+        member.setAddress(memberFormDto.getAddress());
+        member.setPhone(memberFormDto.getPhone());
+        return member;
+    }
 
 }

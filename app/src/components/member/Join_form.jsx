@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 // import { Link } from "react-router-dom"
 import './join_form.css'
 import './script.js'
@@ -18,9 +19,8 @@ const Join_form = ()=>{
   phone: '',
   address: '',
   showPassword: false,
-  showPassword2: false,
-  selectedEmail:'',
-  isDisabled:false
+  showPassword2: false
+ 
   };
 
 const [group, setGroup] = useState(Join);
@@ -38,8 +38,8 @@ useEffect(() => {
 
 
   //Email 
-    // const [, setIsDisabled] = useState(false);
-    // const [, setSelectedEmail] = useState("");
+    const [selectedEmail, setSelectedEmail] = useState("");
+    const [isDisabled, setIsDisabled ] = useState(false);
   
     function handleEmailChange2(event) {
       const value = event.target.value;
@@ -55,6 +55,11 @@ useEffect(() => {
   // const handleEmailChange = (event) => {
   //   setEmail(event.target.value);
   // };
+
+  const [showPassword, setShowPassword ] = useState(false);
+  const [showPassword2, setShowPassword2 ] = useState(false);
+  
+  const [setPhone ] = useState("");
 
   //비밀번호 보이게 하기
   function handleToggleShowPassword() {
@@ -96,14 +101,15 @@ useEffect(() => {
     }
   };
 
+
   useEffect(() => {
-    if (phone.length === 10) {
-      setPhone(phone.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3'));
+    if (Join.phone.length === 10) {
+      setPhone(Join.phone.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3'));
     }
-    if (phone.length === 13) {
-      setPhone(phone.replace(/-/g, '').replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3'));
+    if (Join.phone.length === 13) {
+      setPhone(Join.phone.replace(/-/g, '').replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3'));
     }
-  }, [phone]);
+  }, [Join.phone]);
 
 
   // const handleAddressChange = (event) => {
@@ -158,7 +164,7 @@ useEffect(() => {
         <option value={"gmail.com"}>gmail.com</option>
       </select> */}
 
-<input type="text" id="email" placeholder="이메일*" value={email} onChange={handleChange} required/> @ 
+<input type="text" id="email" placeholder="이메일*" value={Join.email} onChange={handleChange} required/> @ 
 <input type="text" name="emailInput" value={selectedEmail} disabled={isDisabled} />
        
 <select name="email" onChange={handleEmailChange2}>
@@ -171,13 +177,13 @@ useEffect(() => {
       <br />
 
     
-      <input id="password" placeholder="비밀번호*" type={showPassword ? "text" : "password"} value={password} onChange={handleChange} required />
+      <input id="password" placeholder="비밀번호*" type={Join.showPassword ? "text" : "password"} value={Join.password} onChange={handleChange} required />
       <i class="ri-eye-fill" onClick={handleToggleShowPassword}>
       {showPassword ? "" : ""}
       </i>
       <br />
     
-      <input id="password-confirm" placeholder="비밀번호 확인*" type={showPassword2 ? "text" : "password"} value={passwordConfirm} onChange={handleChange} required />
+      <input id="password-confirm" placeholder="비밀번호 확인*" type={Join.showPassword2 ? "text" : "password"} value={Join.passwordConfirm} onChange={handleChange} required />
       <i class="ri-eye-fill" onClick={handleToggleShowPassword2}>
       {showPassword2 ? "" : ""}
       </i>
@@ -186,13 +192,13 @@ useEffect(() => {
 
       <h3>개인정보</h3>
      
-      <input id="last-name" placeholder="성*" type="text" value={lastName} onChange={handleChange} required />
+      <input id="last-name" placeholder="성*" type="text" value={Join.lastName} onChange={handleChange} required />
 
       
-      <input id="first-name" placeholder="이름*" type="text" value={firstName} onChange={handleChange} required />
+      <input id="first-name" placeholder="이름*" type="text" value={Join.firstName} onChange={handleChange} required />
       <br />
       
-      <select id="phone" value={phone} onChange={handlePhoneChange} required>
+      <select id="phone" value={Join.phone} onChange={handlePhoneChange} required>
          {/* 한국 */}
         <option value="+82">+82</option> 
          {/* 일본 */}
@@ -201,12 +207,12 @@ useEffect(() => {
         <option value="+01">+01</option>
 
       </select>
-      <input type="text"  placeholder="휴대전화번호*" value={phone} onChange={handlePhoneChange}  required />
+      <input type="text"  placeholder="휴대전화번호*" value={Join.phone} onChange={handlePhoneChange}  required />
       <br />
 
       <h3>주소</h3>
       
-      <input id="address" type="text" value={address} onChange={handleChange} required />
+      <input id="address" type="text" value={Join.address} onChange={handleChange} required />
       <button>주소검색</button>
       <br />
 

@@ -3,7 +3,7 @@ import "./App.css"
 import { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Pages from './components/pages/Pages'
-import Header from '/components/common/header/Header'
+import Header from './components/common/header/Header'
 import Tradition from './components/goods_list/tradition/Tradition'
 //import { formToJSON } from 'axios'
 //import axios from 'axios'

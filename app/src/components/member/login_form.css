@@ -1,0 +1,89 @@
+.login{
+    text-align: center;
+    
+}
+
+.box{
+    display: flex;
+    justify-content: center;
+    text-align: center;  
+}
+
+
+.form{
+    margin-top: 4%;
+    text-align: center;
+    /* justify-content: center; */
+}
+
+#text{
+    width: 510px;
+    height: 50px;
+    border: none;
+    margin-top: 35px;
+    border-bottom: solid 1px black;
+}
+
+.findpass button{
+    background-color: #fff;
+    border: none;
+    position: absolute;
+    margin-top: 20px;
+    left: 32%;   
+}
+
+.loginbtn button{
+    margin-top: 5%;
+    padding: 20px;
+    width: 36vw;
+    background-color: #000000;
+    color: #fff;
+    border-radius: 5px;
+}
+
+
+.idremem{
+    position: absolute;
+    margin-top: 5%;
+    left: 32%;
+    font-size: 12px;
+}
+
+.idremem input{
+    width: 10px;
+    
+}
+
+/* 
+input::-webkit-input-placeholder {
+    position: absolute;
+    bottom: 0;
+} */
+
+/* .logintext h1{
+    display: inline;
+    padding: 20px;
+    text-decoration: underline;
+   
+    justify-content: center;
+    text-align: center;
+} */
+
+.logintext button{
+    margin-top: 100px;
+    padding: 20px;
+    width: 18vw;
+}
+
+.logintext{
+    display: flex;
+    justify-content: center;
+    text-align: center;  
+}
+
+.ment{
+    margin-top: 20px;
+    left: 32%;
+    position: absolute;
+}
+

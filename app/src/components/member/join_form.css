@@ -1,0 +1,14 @@
+.logintext button{
+    padding: 20px;
+    width: 18vw;
+    background-color: #fff;
+    border: none;
+    
+}  
+
+
+button:hover{
+    border-bottom: solid 1px black;
+}
+
+

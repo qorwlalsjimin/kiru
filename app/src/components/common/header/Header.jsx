@@ -26,7 +26,7 @@ const Header = () => {
               <i className="ri-star-line"></i>
               <i className="ri-shopping-cart-2-line"></i>
                 <div className="icon-container">
-                <Link to="/Loginpage"> <i className="ri-user-line"></i></Link> 
+                <Link to="/login_form"> <i className="ri-user-line"></i></Link> 
                    <p className="icon-text">로그인·회원가입</p>
                 </div>
             </div>

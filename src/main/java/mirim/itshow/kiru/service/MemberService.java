@@ -35,5 +35,24 @@ public class MemberService {
         }
     }
 
+    /**
+    * 로그인
+    */
+    public Member login(String inputId, String inputPw){
+
+        Member dataMember = memberRepository.findByMemberid(inputId);
+        if(dataMember == null){ //일치하는 아이디가 없다면
+            System.out.println("등록된 아이디가 없습니다");
+            return null;
+        }
+
+        String dataPw = dataMember.getMemberpw();
+        if(inputPw != dataPw){
+            System.out.println("비밀번호가 틀렸습니다.");
+            return null;
+        }
+
+        return memberRepository.findByMemberid(inputId);
+    }
 
 }

@@ -1,15 +1,17 @@
 package mirim.itshow.kiru.controller;
 
-import mirim.itshow.kiru.dto.MemberFormDto;
+import mirim.itshow.kiru.dto.LoginForm;
+import mirim.itshow.kiru.dto.MemberForm;
 import mirim.itshow.kiru.entity.Member;
 import mirim.itshow.kiru.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -18,6 +20,7 @@ import java.net.URISyntaxException;
 public class MemberController {
 
     private MemberService memberService;
+    private SessionManager sessionManager;
 
     @Autowired
     public MemberController(MemberService memberService) {
@@ -25,29 +28,21 @@ public class MemberController {
     }
 
     /**
-     * 로그인
-     */
-    @GetMapping("/member/login")
-    public String login(){
-        return "member/login_form.html";
-    }
-
-
-    /**
      * 회원가입
      */
     @GetMapping(value = "/member/join")
     public void joinForm(){
-        //리액트랑 통신
+        //할 일 없음
     }
 
+    //회원 등록
     @PostMapping("/member/join")
-    public ResponseEntity<Member> join(MemberFormDto memberFormDto) throws URISyntaxException {
-        Member member = Member.createMember(memberFormDto);
+    public ResponseEntity<Member> join(@Valid @RequestBody MemberForm memberForm) throws URISyntaxException {
+        System.out.println("/member/join post: "+memberForm.getEmail());
+        Member member = Member.createMember(memberForm);
+        memberService.join(member); //서비스의 join()를 통해 DB에 등록
 
-        memberService.join(member);
-
-        return ResponseEntity.created(new URI("/api/member/" + member.getId()))
+        return ResponseEntity.created(new URI("/api/member/join" + member.getId()))
                 .body(member);
     }
 

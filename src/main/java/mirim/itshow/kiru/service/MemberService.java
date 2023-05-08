@@ -1,6 +1,7 @@
 package mirim.itshow.kiru.service;
 
 import mirim.itshow.kiru.dao.MemberRepository;
+import mirim.itshow.kiru.dto.LoginForm;
 import mirim.itshow.kiru.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,5 +34,6 @@ public class MemberService {
             throw new IllegalStateException("이미 가입된 회원입니다.");
         }
     }
+
 
 }

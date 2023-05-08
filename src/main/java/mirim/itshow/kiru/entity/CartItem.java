@@ -16,7 +16,7 @@ public class CartItem {
     @Id //primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY) //auto_increment
     @Column(name = "cart_item_id")
-    private Long cart_item_id; //장바구니 상품 id(pk)
+    private Long cartItemId; //장바구니 상품 id(pk)
 
     @ManyToOne
     @JoinColumn(name = "cart_id")
@@ -24,7 +24,7 @@ public class CartItem {
 
     @ManyToOne
     @JoinColumn(name = "item_id")
-    private Item item_id; //상품 id(fk)
+    private Item itemId; //상품 id(fk)
 
     @Column(nullable = false)
     private int count; //개수
@@ -33,17 +33,17 @@ public class CartItem {
     private String color; //색상
 
     @Enumerated(EnumType.STRING)
-    private Size cloth_size; //옷 사이즈
+    private Size clothSize; //옷 사이즈
 
     @Column
-    private int shoes_size; //신발 사이즈
+    private int shoesSize; //신발 사이즈
 
     @Column(nullable = false)
-    private LocalDate start_date; //대여 시작일
+    private LocalDate startDate; //대여 시작일
 
     @Column(nullable = false)
-    private LocalDate end_date; //대여 종료일
+    private LocalDate endDate; //대여 종료일
 
     @Column
-    private LocalDateTime create_timestamp; //장바구니에 넣은 시간
+    private LocalDateTime createTimestamp; //장바구니에 넣은 시간
 }

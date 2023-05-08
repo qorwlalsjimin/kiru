@@ -18,18 +18,18 @@ public class RentItem {
 
     @ManyToOne
     @JoinColumn(name="item_id")
-    private Item item_id; //상품 id(fk) TODO: FK로 꼭 해야하나?
+    private Item itemId; //상품 id(fk) TODO: FK로 꼭 해야하나?
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
     private Rent rent;
 
     @Column(nullable = false)
-    private LocalDate start_date; //대여 시작일
+    private LocalDate startDate; //대여 시작일
 
     @Column(nullable = false)
-    private LocalDate end_date; //대여 종료일
+    private LocalDate endDate; //대여 종료일
 
     @Column(nullable = false)
-    private int pay_total; //결제 금액
+    private int payTotal; //결제 금액
 }

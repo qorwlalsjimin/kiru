@@ -14,10 +14,10 @@ public class Cart {
     @Id //primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY) //auto_increment
     @Column(name = "cart_id")
-    private Long cart_id; //장바구니 상품 id(pk)
+    private Long cartId; //장바구니 상품 id(pk)
 
     @OneToOne
     @JoinColumn(name = "id")
-    private Member member_id; //사용자 id(fk)
+    private Member memberId; //사용자 id(fk)
 
 }

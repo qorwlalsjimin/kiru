@@ -2,3 +2,22 @@
     text-align: center;
     
 }
+
+.div{
+    display: flex;
+    
+}
+/* .logintext h1{
+    display: inline;
+    padding: 20px;
+    text-decoration: underline;
+   
+    justify-content: center;
+    text-align: center;
+} */
+
+.logintext button{
+    padding: 20px;
+    width: 18vw;
+    
+}

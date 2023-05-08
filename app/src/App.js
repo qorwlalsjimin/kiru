@@ -1,10 +1,13 @@
 import React from 'react';
 import "./App.css"
 import { useEffect, useState } from 'react'
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Pages from './components/pages/Pages'
 import Header from './components/common/header/Header'
 import Tradition from './components/goods_list/tradition/Tradition'
+import Loginpage from './components/loginpage/Loginpage'
+import Signup from './components/loginpage/Signup'
+
 //import { formToJSON } from 'axios'
 //import axios from 'axios'
 
@@ -15,7 +18,9 @@ function App()  {
     <Router>
       <Header />
       <Routes>
-      <Route path='/tradition' exact component = {Tradition} />
+      <Route path='/tradition' exact element = {<Tradition />} />
+      <Route path='/loginpage' exact element = {<Loginpage />} />
+      <Route path='/signup' exact element = {<Signup />} />
 
       </Routes>
 

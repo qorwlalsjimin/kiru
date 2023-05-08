@@ -1,5 +1,6 @@
 import './login.css';
 import React, { useState } from 'react';
+import { Link } from "react-router-dom"
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -31,7 +32,10 @@ const Login = () => {
   
 
     <div>
-        <h1>login</h1>
+      <div className="logintext">
+     <button><h1>login</h1></button> 
+        <Link to="/Signup"><button><h1>sign up</h1> </button> </Link>
+        </div>
       <label>Email</label>
       <input type="email" value={email} onChange={handleEmailChange} />
       <br />

@@ -11,7 +11,7 @@ const Header = () => {
       <header>
   
         <div className="container">
-    
+
           <div className='global'>
               <i class="ri-global-line"></i> 한국어
           </div>

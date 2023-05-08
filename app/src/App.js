@@ -1,7 +1,7 @@
 import React from 'react';
 import "./App.css"
 import { useEffect, useState } from 'react'
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Pages from './components/pages/Pages'
 import Header from './components/common/header/Header'
 import Tradition from './components/goods_list/tradition/Tradition'
@@ -14,10 +14,10 @@ function App()  {
     <>
     <Router>
       <Header />
-      <Switch>
+      <Routes>
       <Route path='/tradition' exact component = {Tradition} />
 
-      </Switch>
+      </Routes>
 
       </Router>
     </>

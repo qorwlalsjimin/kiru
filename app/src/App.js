@@ -5,8 +5,10 @@ import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Pages from './components/pages/Pages'
 import Header from './components/common/header/Header'
 import Tradition from './components/goods_list/tradition/Tradition'
+import Improve from './components/goods_list/improve/Improve';
 import Login_form from './components/member/Login_form'
 import Join_form from './components/member/Join_form'
+
 
 //import { formToJSON } from 'axios'
 //import axios from 'axios'
@@ -19,6 +21,7 @@ function App()  {
       <Header />
       <Routes>
       <Route path='/tradition' exact element = {<Tradition />} />
+      <Route path='/Improve' exact element = {<Improve />} />
       <Route path='/Login_form' exact element = {<Login_form />} />
       <Route path='/join_form' exact element = {<Join_form />} />
 

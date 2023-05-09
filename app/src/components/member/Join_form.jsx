@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from 'react-router-dom';
 // import { Link } from "react-router-dom"
 import './join_form.css'
@@ -28,13 +27,15 @@ const [group, setGroup] = useState(Join);
 const navigate = useNavigate();
 const { id } = useParams();
 
+
 useEffect(() => {
   if (id !== 'new') {
-    fetch(`http://localhost:3000/Join_form/${id}`) //데이터 받는 주소
+    fetch(`/Join_form/${id}`) //데이터 받는 주소
       .then(response => response.json())
       .then(data => setGroup(data));
   }
 }, [id, setGroup]);
+
 
 
   //Email 
@@ -116,25 +117,25 @@ useEffect(() => {
   //   setAddress(event.target.value);
   // };
 
-  const handleSubmit = (event) => {
+  
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Handle form submission logic here
-  };
+    console.log("제출할때");
 
+// api/group/id로 데이터 보내기?
+    await fetch(`/Join_form`, { //이 주소에서 실행
+      method: (group.id) ? 'PUT' : 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(group)
+    });
+    setGroup(Join);
+    navigate('/api/member/Join'); //데이터 보낼 주소
+  }
 
- 
-
-
-    fetch(`http://localhost:3000/Join_form`, { //이 주소에서 실행
-    method: (group.id) ? 'PUT' : 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(group)
-  });
-  setGroup(Join);
-  navigate('/api/member/join'); //데이터 보낼 주소
 
 
 
@@ -219,7 +220,7 @@ useEffect(() => {
 
 
 
-      <button type="submit">회원가입</button>
+      <button type="submit" >회원가입</button>
 
 
 

@@ -1,6 +1,6 @@
 header .nav{
     background-color: #fff;
-    height: 10vh;
+    height: 5vh;
     /* box-shadow:  0 5px 20px rgb(0, 22 84 / 10%); */
     /* justify-content:space-between; */
     /* padding: 19px 0; */
@@ -15,16 +15,7 @@ header .nav{
 
 
 
-/* header{
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    background: #fff;
-    padding: 2rem 24%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between; 
-    z-index: 1;
-} */
+
 
 
 .icons i{
@@ -57,20 +48,22 @@ li.active {
 
 .logo img{
    height: 26px;
+   margin-left: 110px;
 }
 
 .flex{
-    margin-right: 4%;
-    margin-top: 15px;
+    margin-right: -1%;
+    margin-top: 25px;
     text-align: center;
     justify-content: center;
 }
 
 .flex li{
-    padding: 20px;
+    padding: 10px;
 }
 
 
 .container{
     margin-top: 10px;
+    
 }

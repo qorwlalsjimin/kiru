@@ -108,7 +108,7 @@ useEffect(() => {
           <input type="password" id='text' placeholder="비밀번호" value={login.password} onChange={handleChange} />
           <br />
           <div className='findpass'>
-            <button onClick={handleFindPassword}>비밀번호 찾기<i class="ri-arrow-right-s-line"></i></button>
+            <button onClick={handleFindPassword}>비밀번호 찾기<i className="ri-arrow-right-s-line"></i></button>
           </div>
 
           <br />

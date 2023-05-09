@@ -179,13 +179,13 @@ useEffect(() => {
 
     
       <input id="password" placeholder="비밀번호*" type={Join.showPassword ? "text" : "password"} value={Join.password} onChange={handleChange} required />
-      <i class="ri-eye-fill" onClick={handleToggleShowPassword}>
+      <i className="ri-eye-fill" onClick={handleToggleShowPassword}>
       {showPassword ? "" : ""}
       </i>
       <br />
     
       <input id="password-confirm" placeholder="비밀번호 확인*" type={Join.showPassword2 ? "text" : "password"} value={Join.passwordConfirm} onChange={handleChange} required />
-      <i class="ri-eye-fill" onClick={handleToggleShowPassword2}>
+      <i className="ri-eye-fill" onClick={handleToggleShowPassword2}>
       {showPassword2 ? "" : ""}
       </i>
       <br />

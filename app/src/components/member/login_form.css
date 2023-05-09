@@ -35,7 +35,7 @@
 .loginbtn button{
     margin-top: 5%;
     padding: 20px;
-    width: 36vw;
+    width: 25vw;
     background-color: #000000;
     color: #fff;
     border-radius: 5px;
@@ -71,7 +71,7 @@ input::-webkit-input-placeholder {
 
 .logintext button{
     margin-top: 100px;
-    padding: 20px;
+    padding: 17px;
     width: 18vw;
 }
 

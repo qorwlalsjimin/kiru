@@ -4,25 +4,23 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 
 
 const Login_form = () => {
-
-
-  const login = {
+  const [group, setGroup] = useState({
     email: '',
     password: '',
     rememberID: false
-  };
-  const [group, setGroup] = useState(login);
+  });
 
   const navigate = useNavigate();
   const { id } = useParams();
 
+  /*
 useEffect(() => {
   if (id !== 'new') {
     fetch(`/Login_form/${id}`) //데이터 받는 주소
       .then(response => response.json())
       .then(data => setGroup(data));
   }
-}, [id, setGroup]);
+}, [id, setGroup]);*/
 
 
   // const [email, setEmail] = useState('');
@@ -40,8 +38,8 @@ useEffect(() => {
 
   const handleChange = (event) => {
     const { name, value } = event.target
-
-    setGroup({ ...group, [name]: value })
+    console.log(name, value, group)
+    setGroup(group => ({ ...group, [name]: value }))
   }
 
 
@@ -84,7 +82,7 @@ useEffect(() => {
       },
       body: JSON.stringify(group)
     });
-    setGroup(login);
+    // setGroup(login);
     navigate('/api/member/Login'); //데이터 보낼 주소
   }
 
@@ -96,16 +94,16 @@ useEffect(() => {
       <section className="content">
 
         <div className="logintext">
-          <Link to="/Login_form"><button><h1>login</h1></button> </Link>
+          <Link to="/Login_form"><button className='blo'><h1>login</h1></button> </Link>
           <Link to="/Join_form"><button><h1>sign up</h1> </button> </Link>
         </div>
         <form onSubmit={handleSubmit}>
         <h4 className="ment">kiru.com에 방문해주셔서 감사합니다.</h4>
         <div className="form">
-          <input type="email" id='text' placeholder="이메일/휴대폰 번호" value={login.email} onChange={handleChange} />
+          <input type="email" id='text' name='email' placeholder="이메일/휴대폰 번호" value={group.email} onChange={handleChange} />
           <br />
 
-          <input type="password" id='text' placeholder="비밀번호" value={login.password} onChange={handleChange} />
+          <input type="password" id='text' name='password' placeholder="비밀번호" value={group.password} onChange={handleChange} />
           <br />
           <div className='findpass'>
             <button onClick={handleFindPassword}>비밀번호 찾기<i className="ri-arrow-right-s-line"></i></button>
@@ -114,7 +112,7 @@ useEffect(() => {
           <br />
           <label>
             <div className="idremem">
-              <input type="checkbox" checked={login.rememberID} onChange={handleChange} />
+              <input type="checkbox" checked={group.rememberID} onChange={handleChange} />
               아이디 기억하기
             </div>
           </label>

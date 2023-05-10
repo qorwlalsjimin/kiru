@@ -7,22 +7,18 @@ import './script.js'
 
 
 
-const Join_form = ()=>{
-
-  const Join = {
-  email: '',
-  password: '',
-  passwordConfirm: '',
-  lastName: '',
-  firstName: '',
-  phone: '',
-  address: '',
-  showPassword: false,
-  showPassword2: false
- 
-  };
-
-const [group, setGroup] = useState(Join);
+const Join_form = () => {
+  const [group, setGroup] = useState({
+    email: '',
+    password: '',
+    passwordConfirm: '',
+    lastName: '',
+    firstName: '',
+    phone: '',
+    address: '',
+    showPassword: false,
+    showPassword2: false
+  });
 
 const navigate = useNavigate();
 const { id } = useParams();
@@ -60,7 +56,7 @@ useEffect(() => {
   const [showPassword, setShowPassword ] = useState(false);
   const [showPassword2, setShowPassword2 ] = useState(false);
   
-  const [setPhone ] = useState("");
+  // const [setPhone ] = useState("");
 
   //비밀번호 보이게 하기
   function handleToggleShowPassword() {
@@ -94,23 +90,24 @@ useEffect(() => {
   //   setFirstName(event.target.value);
   // };
 
-  //phone
-  const handlePhoneChange = (event) => {
-    const regex = /^[0-9\b -]{0,13}$/;
-    if (regex.test(event.target.value)) {
-      setPhone(event.target.value);
-    }
-  };
+  // //phone
+  // const handlePhoneChange = (event) => {
+  //   const regex = /^[0-9\b -]{0,13}$/;
+  //   if (regex.test(event.target.value)) {
+  //     setPhone(event.target.value);
+     
+  //   }
+  // };
 
 
-  useEffect(() => {
-    if (Join.phone.length === 10) {
-      setPhone(Join.phone.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3'));
-    }
-    if (Join.phone.length === 13) {
-      setPhone(Join.phone.replace(/-/g, '').replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3'));
-    }
-  }, [Join.phone]);
+  // useEffect(() => {
+  //   if (group.phone.length === 10) {
+  //     setPhone(group.phone.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3'));
+  //   }
+  //   if (group.phone.length === 13) {
+  //     setPhone(group.phone.replace(/-/g, '').replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3'));
+  //   }
+  // }, [group.phone]);
 
 
   // const handleAddressChange = (event) => {
@@ -132,7 +129,7 @@ useEffect(() => {
       },
       body: JSON.stringify(group)
     });
-    setGroup(Join);
+    // setGroup(Join);2
     navigate('/api/member/Join'); //데이터 보낼 주소
   }
 
@@ -151,12 +148,15 @@ useEffect(() => {
     <section className="content">
     <div className="logintext">
         <Link to="/Login_form"><button><h1>login</h1></button> </Link>
-        <Link to="/Join_form"><button><h1>sign up</h1> </button> </Link>
+        <Link to="/Join_form"><button className="bsi"><h1>sign up</h1> </button> </Link>
         </div>
         <div className="form">
     <form onSubmit={handleSubmit}>
+
+    <h4 className="ment">계정을 생성하여 더 빠른 온라인 결제 혜택을 누려보세요.</h4>
+    <p className="must">*필수 항목</p>
    
-    <h3>아이디 설정</h3>
+    <h3 className="font">아이디 설정</h3>
       
       {/* <input id="email" type="text" value={email} onChange={handleEmailChange} required /> @ <input id="email2" type='text' disabled={isDisabled}/> 
       <select name='select_email' onChange={selectEmail}>
@@ -164,11 +164,12 @@ useEffect(() => {
         <option value={"naver.com"}>naver.com</option>
         <option value={"gmail.com"}>gmail.com</option>
       </select> */}
+<div className="form">
 
-<input type="text" id="email" placeholder="이메일*" value={Join.email} onChange={handleChange} required/> @ 
-<input type="text" name="emailInput" value={selectedEmail} disabled={isDisabled} />
+<input type="text" className="mail1" name='email' id="email" placeholder="이메일*" value={group.email} onChange={handleChange} required/> @ 
+<input type="text" className="mail2" name="emailInput" value={selectedEmail} disabled={isDisabled} />
        
-<select name="email" onChange={handleEmailChange2}>
+<select name="email" className="mail3"  onChange={handleEmailChange2}>
         <option value="">선택</option>
         <option value="naver.com">naver.com</option>
         <option value="gmail.com">gmail.com</option>
@@ -177,29 +178,29 @@ useEffect(() => {
 
       <br />
 
-    
-      <input id="password" placeholder="비밀번호*" type={Join.showPassword ? "text" : "password"} value={Join.password} onChange={handleChange} required />
-      <i className="ri-eye-fill" onClick={handleToggleShowPassword}>
+    <div className="pass">
+      <input id="password" name='password' placeholder="비밀번호*" type={group.showPassword ? "text" : "password"} value={group.password} onChange={handleChange} required />
+      <p><i className="ri-eye-fill" name='showPassword' onClick={handleToggleShowPassword}>
       {showPassword ? "" : ""}
-      </i>
+      </i></p>
+      <p className="passment">비밀번호는 6-18자여야 합니다</p>
       <br />
     
-      <input id="password-confirm" placeholder="비밀번호 확인*" type={Join.showPassword2 ? "text" : "password"} value={Join.passwordConfirm} onChange={handleChange} required />
-      <i className="ri-eye-fill" onClick={handleToggleShowPassword2}>
+      <input id="password-confirm" className="passcon" name='passwordConfirm' placeholder="비밀번호 확인*" type={group.showPassword2 ? "text" : "password"} value={group.passwordConfirm} onChange={handleChange} required />
+      <p><i className="ri-eye-fill" name='showPassword2' onClick={handleToggleShowPassword2}>
       {showPassword2 ? "" : ""}
-      </i>
+      </i></p>
       <br />
+      </div>
 
-
-      <h3>개인정보</h3>
+      <h3 className="font">개인정보</h3>
      
-      <input id="last-name" placeholder="성*" type="text" value={Join.lastName} onChange={handleChange} required />
 
-      
-      <input id="first-name" placeholder="이름*" type="text" value={Join.firstName} onChange={handleChange} required />
+      <input id="last-name" className="fname" name="lastName" placeholder="성*" type="text" value={group.lastName} onChange={handleChange} required />
+      <input id="first-name" className="lname" name="firstName" placeholder="이름*" type="text" value={group.firstName} onChange={handleChange} required />
       <br />
       
-      <select id="phone" value={Join.phone} onChange={handlePhoneChange} required>
+      <select id="phone" className="fname" value={group.phone} onChange={handleChange} required>
          {/* 한국 */}
         <option value="+82">+82</option> 
          {/* 일본 */}
@@ -208,20 +209,30 @@ useEffect(() => {
         <option value="+01">+01</option>
 
       </select>
-      <input type="text"  placeholder="휴대전화번호*" value={Join.phone} onChange={handlePhoneChange}  required />
+      <input type="text" className="lname" name="phone" placeholder="휴대전화번호*" value={group.phone} onChange={handleChange}  required />
       <br />
 
-      <h3>주소</h3>
-      
-      <input id="address" type="text" value={Join.address} onChange={handleChange} required />
+      <h3 className="font">주소</h3>
+
+      <div className="ads">
+      <input id="address" className="address" type="text" value={group.address} onChange={handleChange} required /> 
       <button>주소검색</button>
+      </div>
+
+      <div className="pass">
+
+      <input id="address" className="address" type="text" value={group.address} onChange={handleChange} required /> 
+      <br />
+      <input id="address" className="address" placeholder="상세주소"  type="text" value={group.address} onChange={handleChange} required /> 
+      </div>
+
       <br />
 
+      </div>
 
-
-
-      <button type="submit" >회원가입</button>
-
+      <div className="sibtn">
+      <button type="submit" >회원가입하기</button>
+      </div>
 
 
       

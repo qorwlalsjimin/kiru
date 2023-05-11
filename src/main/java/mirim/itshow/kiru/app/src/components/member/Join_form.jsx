@@ -3,11 +3,15 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 // import { Link } from "react-router-dom"
 import './join_form.css'
 import './script.js'
+// import ReactDom from 'react-dom';
+import PopupDom from './PopupDom';
+import PopupPostCode from './PopupPostCode';
 // import axios from 'axios';
+import DaumPostcode from "react-daum-postcode";
 
 
 
-const Join_form = () => {
+const Join_form = (props) => {
   const [group, setGroup] = useState({
     email: '',
     password: '',
@@ -16,6 +20,7 @@ const Join_form = () => {
     firstName: '',
     phone: '',
     address: '',
+    address2:'',
     showPassword: false,
     showPassword2: false
   });
@@ -135,11 +140,19 @@ useEffect(() => {
 
 
 
+//주소 검색
 
-
-
-
-
+const [isPopupOpen, setIsPopupOpen] = useState(false)
+ 
+	// 팝업창 열기
+    const openPostCode = () => {
+        setIsPopupOpen(true)
+    }
+ 
+	// 팝업창 닫기
+    const closePostCode = () => {
+        setIsPopupOpen(false)
+    }
 
 
 
@@ -215,15 +228,32 @@ useEffect(() => {
       <h3 className="font">주소</h3>
 
       <div className="ads">
-      <input id="address" className="address" type="text" value={group.address} onChange={handleChange} required /> 
-      <button>주소검색</button>
+      <input id="address" className="address" name="address" type="text" value={group.address} onChange={handleChange} required /> 
+      <button type="button"  onClick={openPostCode} >주소검색</button>
+     
+            <div id='popupDom'>
+                {isPopupOpen && (
+                   
+                <PopupDom>
+                   <PopupPostCode onClose={closePostCode} />
+               </PopupDom>
+
+
+                )}
+            </div>
+
+            {/* <div>
+            <DaumPostcode style={postCodeStyle} onComplete={handlePostCode} />
+            
+            <button type='button' onClick={() => {props.onClose()}} className='postCode_btn'>닫기</button>
+        </div> */}
       </div>
 
       <div className="pass">
 
-      <input id="address" className="address" type="text" value={group.address} onChange={handleChange} required /> 
+      <input id="address" className="address" name="address" type="text" value={group.address} onChange={handleChange} required /> 
       <br />
-      <input id="address" className="address" placeholder="상세주소"  type="text" value={group.address} onChange={handleChange} required /> 
+      <input id="address" className="address" name="address2" placeholder="상세주소"  type="text" value={group.address2} onChange={handleChange} required /> 
       </div>
 
       <br />

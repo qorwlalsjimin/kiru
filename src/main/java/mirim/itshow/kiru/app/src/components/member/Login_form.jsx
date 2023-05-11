@@ -5,8 +5,8 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 
 const Login_form = () => {
   const [group, setGroup] = useState({
-    email: '',
-    password: '',
+    inputid: '',
+    inputpw: '',
     rememberID: false
   });
 
@@ -100,10 +100,10 @@ useEffect(() => {
         <form onSubmit={handleSubmit}>
         <h4 className="ment">kiru.com에 방문해주셔서 감사합니다.</h4>
         <div className="form">
-          <input type="email" id='text' name='email' placeholder="이메일/휴대폰 번호" value={group.email} onChange={handleChange} />
+          <input type="email" id='text' name='inputid' placeholder="이메일/휴대폰 번호" value={group.email} onChange={handleChange} />
           <br />
 
-          <input type="password" id='text' name='password' placeholder="비밀번호" value={group.password} onChange={handleChange} />
+          <input type="password" id='text' name='inputpw' placeholder="비밀번호" value={group.password} onChange={handleChange} />
           <br />
           <div className='findpass'>
             <button onClick={handleFindPassword}>비밀번호 찾기<i className="ri-arrow-right-s-line"></i></button>

@@ -1,0 +1,28 @@
+.Banner h2{
+    position: absolute;
+    left: 20%;
+    top: 22%;
+}
+
+.Banner{
+    height: 30vh;
+    background-color: rgb(229, 231, 231);
+}
+
+.selection{
+    position:absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    display: flex;
+    justify-content: space-around;
+    width: 20%;
+
+}
+
+.cloum{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}

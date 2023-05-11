@@ -3,11 +3,12 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 // import { Link } from "react-router-dom"
 import './join_form.css'
 import './script.js'
+import Modal from "./Modal";
 // import ReactDom from 'react-dom';
-import PopupDom from './PopupDom';
-import PopupPostCode from './PopupPostCode';
+// import PopupDom from './PopupDom';
+// import PopupPostCode from './PopupPostCode';
 // import axios from 'axios';
-import DaumPostcode from "react-daum-postcode";
+// import DaumPostcode from "react-daum-postcode";
 
 
 
@@ -27,6 +28,14 @@ const Join_form = (props) => {
 
 const navigate = useNavigate();
 const { id } = useParams();
+
+//modal
+const [isOpen, setIsOpen] = useState(false);
+
+  const onClickButton = () => {
+    setIsOpen(true);
+  };
+
 
 
 useEffect(() => {
@@ -142,17 +151,16 @@ useEffect(() => {
 
 //주소 검색
 
-const [isPopupOpen, setIsPopupOpen] = useState(false)
+// const [isPopupOpen, setIsPopupOpen] = useState(false)
  
 	// 팝업창 열기
-    const openPostCode = () => {
-        setIsPopupOpen(true)
-    }
- 
+    // const openPostCode = () => {
+        // setIsPopupOpen(true)
+    
 	// 팝업창 닫기
-    const closePostCode = () => {
-        setIsPopupOpen(false)
-    }
+    // const closePostCode = () => {
+        // setIsPopupOpen(false)
+    // }
 
 
 
@@ -229,24 +237,13 @@ const [isPopupOpen, setIsPopupOpen] = useState(false)
 
       <div className="ads">
       <input id="address" className="address" name="address" type="text" value={group.address} onChange={handleChange} required /> 
-      <button type="button"  onClick={openPostCode} >주소검색</button>
-     
-            <div id='popupDom'>
-                {isPopupOpen && (
-                   
-                <PopupDom>
-                   <PopupPostCode onClose={closePostCode} />
-               </PopupDom>
-
-
-                )}
-            </div>
-
-            {/* <div>
-            <DaumPostcode style={postCodeStyle} onComplete={handlePostCode} />
-            
-            <button type='button' onClick={() => {props.onClose()}} className='postCode_btn'>닫기</button>
-        </div> */}
+      <button type="button"  onClick={onClickButton} >주소검색</button>
+      {isOpen && (<Modal
+        open={isOpen}
+        onClose={() => {
+          setIsOpen(false);
+        }}
+      />)}
       </div>
 
       <div className="pass">

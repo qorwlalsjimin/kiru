@@ -1,6 +1,6 @@
 import React from 'react'
 import './header.css'
-// import "./gsap.js"
+import "./gsap.js"
 import { Link } from "react-router-dom"
 import { nav } from  "../../../data/Data"
 

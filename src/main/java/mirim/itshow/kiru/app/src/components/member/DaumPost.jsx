@@ -1,7 +1,7 @@
 import REACT, { useState } from 'react';
 import DaumPostCode from 'react-daum-postcode';
 
-const DaumPost = () => {
+const DaumPost = (props) => {
     const handleComplete = (data) => {
         let fullAddress = data.address;
         let extraAddress = '';
@@ -17,6 +17,8 @@ const DaumPost = () => {
             fullAddress += `${extraAddress !== '' ? ` ${extraAddress}` : ''}`;
         }
         //fullAddress -> 전체 주소반환
+        props.onComplete(fullAddress)
+        
     }
     return (<DaumPostCode onComplete={handleComplete} className="post-code" />);
 }

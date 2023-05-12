@@ -6,7 +6,7 @@ import DaumPost from "./DaumPost";
 import { useEffect, useRef } from "react";
 
 
-function Modal({ onClose }) {
+function Modal({ onComplete, onClose }) {
     const modalRef = useRef(null)
     const handleClose = () => {
         onClose?.();
@@ -32,7 +32,7 @@ function Modal({ onClose }) {
           <CloseButton onClick={handleClose}>
           <i className="ri-close-line"></i>
           </CloseButton>    
-                <DaumPost />
+                <DaumPost onComplete={onComplete} />
                 </ModalWrap>
            
           </Contents>

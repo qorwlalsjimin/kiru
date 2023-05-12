@@ -8,7 +8,7 @@ import Header from './components/common/header/Header'
 // import Improve from './components/goods_list/improve/Improve';
 import Login_form from './components/member/Login_form'
 import Join_form from './components/member/Join_form'
-// import Tradition from './components/item/Tradition';
+import Tradition from './components/item/tradition/Tradition';
 import Item_list from './components/item/Item_list'
 
 
@@ -22,7 +22,7 @@ function App()  {
     <Router>
       <Header />
       <Routes>
-      {/* <Route path='/tradition' exact element = {<Tradition />} /> */}
+      <Route path='/tradition' exact element = {<Tradition />} />
       {/* <Route path='/Improve' exact element = {<Improve />} /> */}
     
       <Route path='/Item_list' exact element = {<Item_list />} />

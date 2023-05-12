@@ -34,7 +34,7 @@ const Join_form = (props) => {
     lastName: 'Yu',
     firstName: 'Byung Suk',
     phone: '010-1234-5678',
-    address: '서울시 어쩌구',
+    address: '',
     address2: '저쩌구',
     showPassword: false,
     showPassword2: false
@@ -50,8 +50,14 @@ const [isOpen, setIsOpen] = useState(false);
     setIsOpen(true);
   };
 
+  //  const DaumPost = data => {
+    // setModalState(false);
+    // setInputAddressValue(data.address);
+  
+  // }; // onCompletePost 함수
 
 
+  /*
 useEffect(() => {
   if (id !== 'new') {
     fetch(`/Join_form/${id}`) //데이터 받는 주소
@@ -59,7 +65,7 @@ useEffect(() => {
       .then(data => setGroup(data));
   }
 }, [id, setGroup]);
-
+*/
 
 
   //Email 
@@ -101,55 +107,15 @@ useEffect(() => {
     setGroup({ ...group, [name]: value })
   }
 
-  // const handlePasswordChange = (event) => {
-  //   setPassword(event.target.value);
-   
-  // };
-
-  // const handlePasswordConfirmChange = (event) => {
-  //   setPasswordConfirm(event.target.value);
-  // };
-
-  // const handleLastNameChange = (event) => {
-  //   setLastName(event.target.value);
-  // };
-
-  // const handleFirstNameChange = (event) => {
-  //   setFirstName(event.target.value);
-  // };
-
-  // //phone
-  // const handlePhoneChange = (event) => {
-  //   const regex = /^[0-9\b -]{0,13}$/;
-  //   if (regex.test(event.target.value)) {
-  //     setPhone(event.target.value);
-     
-  //   }
-  // };
-
-
-  // useEffect(() => {
-  //   if (group.phone.length === 10) {
-  //     setPhone(group.phone.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3'));
-  //   }
-  //   if (group.phone.length === 13) {
-  //     setPhone(group.phone.replace(/-/g, '').replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3'));
-  //   }
-  // }, [group.phone]);
-
-
-  // const handleAddressChange = (event) => {
-  //   setAddress(event.target.value);
-  // };
-
   
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log("제출할때");
 
+    debugger;
 // api/group/id로 데이터 보내기?
-    await fetch(`/Join_form`, { //이 주소에서 실행
+    await fetch(`/api/member/join`, { //이 주소에서 실행
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -160,12 +126,12 @@ useEffect(() => {
         "memberpw": group.password,
         "memberpwchk": group.password,
         "name": group.firstName + group.lastName,
-        "address": group.address + group.address2,
-        "phone": group.phone
+        "address": "seoul",
+        "phone": "01012345678"
     })
     });
     // setGroup(Join);2
-    navigate('/api/member/Join'); //데이터 보낼 주소
+    // navigate('/api/member/Join'); //데이터 보낼 주소
   }
 
 
@@ -258,10 +224,11 @@ useEffect(() => {
       <h3 className="font">주소</h3>
 
       <div className="ads">
-      <input id="address" className="address" name="address" type="text" value={group.address} onChange={handleChange} required /> 
+      <input id="address" className="address" name="address" type="text" value={group.address} onChange={handleChange} /> 
       <button type="button"  onClick={onClickButton} >주소검색</button>
       {isOpen && (<Modal
         open={isOpen}
+        onComplete={(address) => setGroup(group => ({...group, address }))}
         onClose={() => {
           setIsOpen(false);
         }}
@@ -270,9 +237,9 @@ useEffect(() => {
 
       <div className="pass">
 
-      <input id="address" className="address" name="address" type="text" value={group.address} onChange={handleChange} required /> 
+      <input id="address" className="address" name="address" type="text" value={group.address} onChange={handleChange} />  {/**value={setInputAddressValue} */}
       <br />
-      <input id="address" className="address" name="address2" placeholder="상세주소"  type="text" value={group.address2} onChange={handleChange} required /> 
+      <input id="address" className="address" name="address2" placeholder="상세주소"  type="text" value={group.address2} onChange={handleChange} /> 
       </div>
 
       <br />

@@ -9,5 +9,4 @@ public class MemberForm {
     private String name; //사용자 이름(최대 5글자)
     private String address; //사용자 주소
     private String phone; //사용자 전화번호
-    private String email; //사용자 이메일
 }

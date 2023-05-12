@@ -26,9 +26,11 @@ public class LoginController {
     private SessionManager sessionManager;
 
     @Autowired
-    public LoginController(MemberService memberService) {
+    public LoginController(MemberService memberService, SessionManager sessionManager) {
         this.memberService = memberService;
+        this.sessionManager = sessionManager;
     }
+
 
     /**
      * 로그인
@@ -38,10 +40,10 @@ public class LoginController {
         //할 일 없음
     }
 
-    @PostMapping("/member/login")
+    @PostMapping(value="/member/login")
     public ResponseEntity<Member> login(@Valid @RequestBody LoginForm loginForm, BindingResult bindingResult, HttpServletResponse response){
         Member loginMember = memberService.login(loginForm.getInputid(), loginForm.getInputpw());
-
+        System.out.print(loginForm.getInputid()+" "+loginForm.getInputpw());
         //로그인 실패
         if(loginMember == null){
             return ResponseEntity.notFound().build(); //TODO notFound()를 이렇게 써도 되는지
@@ -52,6 +54,8 @@ public class LoginController {
         sessionManager.createSession(loginMember, response); //세션 생성
         //TODO 로그인 누르기 전 화면으로 return
 
+        System.out.println("요기요기 "+ResponseEntity.ok().body("{id:"+loginMember.getId()+"}"));
+
         return ResponseEntity.ok().body(loginMember);
     }
 
@@ -59,7 +63,7 @@ public class LoginController {
      * 로그아웃
      * @param request
      */
-    @PostMapping("/member/logout")
+    @PostMapping(value="/member/logout")
     public ResponseEntity<?> logout(HttpServletRequest request){
         sessionManager.expire(request); //세션 완료
         return ResponseEntity.ok().build();

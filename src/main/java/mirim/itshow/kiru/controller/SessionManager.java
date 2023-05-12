@@ -1,5 +1,7 @@
 package mirim.itshow.kiru.controller;
 
+import org.springframework.stereotype.Component;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +17,7 @@ import java.util.concurrent.ConcurrentMap;
  * using at MemberController
  * reference: https://develop-writing.tistory.com/87?category=894269
  */
+@Component
 public class SessionManager {
     private static final String SESSION_COOKIE_NAME = "id"; //사용자 식별 id (이메일 x)
     private Map<String, Object> sessionStore = new ConcurrentHashMap<>();

@@ -6,6 +6,7 @@ import mirim.itshow.kiru.entity.enum_col.Size;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @NoArgsConstructor //기본 생성자
 @Data
@@ -30,7 +31,7 @@ public class Item {
     private String imageUrl; //이미지 url
 
     @Column(nullable = false, length = 200)
-    private String color; //색상
+    private List<String> color; //색상
 
     @Column
     private Size clothSize; //옷 사이즈

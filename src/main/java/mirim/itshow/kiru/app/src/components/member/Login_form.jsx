@@ -13,6 +13,8 @@ const Login_form = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
+  console.log(group)
+
   /*
 useEffect(() => {
   if (id !== 'new') {

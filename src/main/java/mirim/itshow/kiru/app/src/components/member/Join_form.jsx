@@ -13,6 +13,7 @@ import Modal from "./Modal";
 
 
 const Join_form = (props) => {
+  /*
   const [group, setGroup] = useState({
     email: '',
     password: '',
@@ -22,6 +23,19 @@ const Join_form = (props) => {
     phone: '',
     address: '',
     address2:'',
+    showPassword: false,
+    showPassword2: false
+  });*/
+
+  const [group, setGroup] = useState({
+    email: 'asdf@naver.com',
+    password: '1234',
+    passwordConfirm: '1234',
+    lastName: 'Yu',
+    firstName: 'Byung Suk',
+    phone: '010-1234-5678',
+    address: '서울시 어쩌구',
+    address2: '저쩌구',
     showPassword: false,
     showPassword2: false
   });
@@ -136,12 +150,19 @@ useEffect(() => {
 
 // api/group/id로 데이터 보내기?
     await fetch(`/Join_form`, { //이 주소에서 실행
-      method: (group.id) ? 'PUT' : 'POST',
+      method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(group)
+      body: JSON.stringify({
+        "memberid": group.email,
+        "memberpw": group.password,
+        "memberpwchk": group.password,
+        "name": group.firstName + group.lastName,
+        "address": group.address + group.address2,
+        "phone": group.phone
+    })
     });
     // setGroup(Join);2
     navigate('/api/member/Join'); //데이터 보낼 주소
@@ -163,6 +184,7 @@ useEffect(() => {
     // }
 
 
+    console.log(group)
 
   return (
    <> 

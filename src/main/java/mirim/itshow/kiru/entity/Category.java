@@ -11,7 +11,6 @@ import javax.persistence.*;
 @Table(name = "category")
 public class Category {
     @Id //primary key
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //auto_increment
     @Column(name = "category_id")
     private Long id; //카테고리 고유 id
 

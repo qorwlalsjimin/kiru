@@ -31,7 +31,7 @@ public class Item {
     private String imageUrl; //이미지 url
 
     @Column(nullable = false, length = 200)
-    private List<String> color; //색상
+    private String color; //색상
 
     @Column
     private Size clothSize; //옷 사이즈
@@ -42,6 +42,9 @@ public class Item {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category categoryId; //카테고리 id
+
+    @Column
+    private String brand; //분류를 위한 브랜드명
 
     @Column
     private LocalDateTime createTimestamp; //상품 등록 날짜

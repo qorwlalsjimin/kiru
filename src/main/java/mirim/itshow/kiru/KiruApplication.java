@@ -18,7 +18,6 @@ public class KiruApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(KiruApplication.class, args);
-		//https://prateek-ashtikar512.medium.com/how-to-map-java-enum-to-postgresql-enum-type-fcb3f81a7c42
 	}
 
 	@Bean

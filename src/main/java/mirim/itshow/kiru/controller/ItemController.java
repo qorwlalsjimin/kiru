@@ -1,36 +1,47 @@
 package mirim.itshow.kiru.controller;
 
+import mirim.itshow.kiru.dao.ItemRepository;
 import mirim.itshow.kiru.dto.MemberForm;
 import mirim.itshow.kiru.entity.Item;
 import mirim.itshow.kiru.entity.Member;
 import mirim.itshow.kiru.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
-@Controller
+@RestController
+@RequestMapping("/api")
 public class ItemController {
 
     @Autowired
     private ItemService itemService;
 
+    @Autowired
+    ItemRepository itemRepository;
+
     @GetMapping("/item/item_list") //상품 목록
-    public List<Item> selectAllItemInfo(){
-        List<Item> allItemrInfo = itemService.selectAllItemInfo();
-        return allItemrInfo;
+    public Collection<Item> selectAllItemInfo(){
+        System.out.println("상품목록 get");
+//        System.out.println(itemService.selectAllItemInfo());
+//        System.out.println(itemService.selectItemById(2L));
+//        System.out.println("안 되니..ㅠㅠ");
+//        return null;
+        return itemService.selectAllItemInfo();
     }
+
     @GetMapping("/item/item_list/{item_id}") //특정 상품
-    public Item selectById(@PathVariable String item_id){
-        Item itemInfo = itemService.selectItemById(Long.parseLong(item_id));
-        return itemInfo;
+    public ResponseEntity<?> selectById(@PathVariable Long item_id){
+        Optional<Item> itemInfo = Optional.ofNullable(itemService.selectItemById(item_id));
+        return itemInfo.map(response -> ResponseEntity.ok().body(response))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping(value = "/item/new")

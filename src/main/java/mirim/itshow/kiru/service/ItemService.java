@@ -1,14 +1,11 @@
 package mirim.itshow.kiru.service;
 
+import mirim.itshow.kiru.dao.CategoryRepository;
 import mirim.itshow.kiru.dao.ItemRepository;
-import mirim.itshow.kiru.entity.Category;
 import mirim.itshow.kiru.entity.Item;
-import mirim.itshow.kiru.entity.enum_col.Size;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
@@ -17,10 +14,12 @@ import java.util.List;
 public class ItemService {
 
     private final ItemRepository itemRepository;
+    private final CategoryRepository categoryRepository;
 
     @Autowired //하나면 생략 가능함
-    public ItemService(ItemRepository itemRepository) {
+    public ItemService(ItemRepository itemRepository, CategoryRepository categoryRepository) {
         this.itemRepository = itemRepository;
+        this.categoryRepository = categoryRepository;
     }
 
     // 상품 정보 초기화
@@ -30,6 +29,8 @@ public class ItemService {
         item1.setName("테스트");
         item1.setPrice(0);
         item1.setDescription("제외해야할 데이터");
+        item1.setCategoryId(categoryRepository.findById(110L).orElse(null));
+        //TODO 상품 하나씩은 되는데 목록은 안 됨
         itemRepository.save(item1);
     }
 

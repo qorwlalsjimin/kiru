@@ -42,36 +42,31 @@ class Initializer implements CommandLineRunner {
         };
         Arrays.stream(categories).forEach(category -> categoryRepository.save(category));
 
-//        //상품 초기값 주기
-//        Item[] hanbok_tradition_items = new Item[]{
-//                Item.builder()
-//                        .name("화이트봉황")
-//                        .price(45000)
-//                        .description("질감과 색감에서 나오는 광택이 고급스럽습니다. \n소매에는 화려한 봉황새를 화이트와 실버로 수를 놓아 유난히 빛나는 예복입니다.")
-//                        .imageUrl(new String[]{"http://www.goldhanbok.com/web/product/big/202303/531766a719d12d83553a8935485edfd4.jpg",
-//                        "http://www.goldhanbok.com/web/product/big/202303/e6dfd8784a02b5c4100c56bd66d50293.jpg"})
-//                        .color(new String[]{"핑크", "핑크&그레이", "소라"})
-//                        .clothSize(new String[]{})
-//                        .shoesSize(new String[]{})
-//                        .categoryId(categoryRepository.findById(110L).orElse(null))
-//                        .brand("황금바늘").build(),
-//                Item.builder()
-//                        .name("그린수목화")
-//                        .price(45000)
-//                        .description("질감과 색감에서 나오는 광택이 고급스럽습니다. \n소매에는 화려한 봉황새를 화이트와 실버로 수를 놓아 유난히 빛나는 예복입니다.")
-//                        .imageUrl(new String[]{"http://www.goldhanbok.com/web/product/big/202303/531766a719d12d83553a8935485edfd4.jpg",
-//                                "http://www.goldhanbok.com/web/product/big/202303/e6dfd8784a02b5c4100c56bd66d50293.jpg"})
-//                        .color(new String[]{"핑크", "핑크&그레이", "소라"})
-//                        .clothSize(new String[]{})
-//                        .shoesSize(new String[]{})
-//                        .categoryId(categoryRepository.findById(110L).orElse(null))
-//                        .brand("황금바늘").build()
-//        };
-//        Arrays.stream(hanbok_tradition_items).forEach(item -> itemRepository.save(item));
-
-//        new Item("철릭원피스 린넨 하늘꽃", 39800, "차이킴 시그니쳐 아이템. 4차 리오더 인기상품",
-//                "https://m.tchaikim.co.kr/web/product/big/202205/a4a903a718a13d0f0aba2dbb44fc3e62.jpg",
-//                new String[]{"S", "M", "L"}, categoryRepository.findById(110L), "차이킴"),
-//        categoryRepository.findAll().forEach(System.out::println);
+        //상품 초기값 주기
+        Item[] hanbok_tradition_items = new Item[]{
+                Item.builder()
+                        .name("화이트봉황")
+                        .price(45000)
+                        .description("질감과 색감에서 나오는 광택이 고급스럽습니다. \n소매에는 화려한 봉황새를 화이트와 실버로 수를 놓아 유난히 빛나는 예복입니다.")
+                        .imageUrl(new String[]{"http://www.goldhanbok.com/web/product/big/202303/531766a719d12d83553a8935485edfd4.jpg",
+                        "http://www.goldhanbok.com/web/product/big/202303/e6dfd8784a02b5c4100c56bd66d50293.jpg"})
+                        .color(new String[]{"핑크", "핑크&그레이", "소라"})
+                        .clothSize(new String[]{})
+                        .shoesSize(new String[]{})
+                        .categoryId(categoryRepository.findById(110L).orElse(null))
+                        .brand("황금바늘").build(),
+                Item.builder()
+                        .name("그린수목화")
+                        .price(45000)
+                        .description("질감과 색감에서 나오는 광택이 고급스럽습니다. \n소매에는 화려한 봉황새를 화이트와 실버로 수를 놓아 유난히 빛나는 예복입니다.")
+                        .imageUrl(new String[]{"http://www.goldhanbok.com/web/product/big/202303/531766a719d12d83553a8935485edfd4.jpg",
+                                "http://www.goldhanbok.com/web/product/big/202303/e6dfd8784a02b5c4100c56bd66d50293.jpg"})
+                        .color(new String[]{"핑크", "핑크&그레이", "소라"})
+                        .clothSize(new String[]{})
+                        .shoesSize(new String[]{})
+                        .categoryId(categoryRepository.findById(110L).orElse(null))
+                        .brand("황금바늘").build()
+        };
+        Arrays.stream(hanbok_tradition_items).forEach(item -> itemRepository.save(item));
     }
 }

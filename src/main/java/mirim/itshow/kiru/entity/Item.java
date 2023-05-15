@@ -1,19 +1,20 @@
 package mirim.itshow.kiru.entity;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import mirim.itshow.kiru.entity.enum_col.Size;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
-@NoArgsConstructor //기본 생성자
-@Data
+//@NoArgsConstructor //기본 생성자
+@Data //TODO 엔티티에 @Data쓰면 set 남용 때문에 안 좋음
 @Entity //엔티티
 @Table(name = "item")
 public class Item {
+
     @Id //primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY) //auto_increment
     @Column(name = "item_id")
@@ -28,8 +29,9 @@ public class Item {
     @Column(nullable = false)
     private String description; //상품 설명
 
-    @Column(nullable = false, length = 200)
-    private String imageUrl; //이미지 url
+    @Column(columnDefinition = "text[]")
+    @Type(type = "mirim.itshow.kiru.entity.hibernatesetting.CustomStringArrayType")
+    private String[] imageUrl; //이미지 url
 
     @Column(columnDefinition = "text[]")
     @Type(type = "mirim.itshow.kiru.entity.hibernatesetting.CustomStringArrayType")
@@ -52,4 +54,20 @@ public class Item {
 
     @Column
     private LocalDateTime createTimestamp; //상품 등록 날짜
+
+    public Item(){}
+    @Builder
+    public Item(String name, int price, String description, String[] imageUrl, String[] color, String[] clothSize, String[] shoesSize, Category categoryId, String brand) {
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.imageUrl = imageUrl;
+        this.color = color;
+        this.clothSize = clothSize;
+        this.shoesSize = shoesSize;
+        this.categoryId = categoryId;
+        this.brand = brand;
+    }
+
+
 }

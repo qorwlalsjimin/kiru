@@ -5,8 +5,10 @@ import mirim.itshow.kiru.entity.Category;
 import mirim.itshow.kiru.entity.Item;
 import mirim.itshow.kiru.entity.enum_col.Size;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
@@ -23,14 +25,11 @@ public class ItemService {
 
     // 상품 정보 초기화
     public void persistNewItem(){
+        //TODO 이 데이터 안 들어가게
         Item item1 = new Item();
-        item1.setName("철릭원피스 린넨 하늘꽃");
-        item1.setPrice(39800);
-        item1.setDescription("차이킴 시그니쳐 아이템. 4차 리오더 인기상품");
-        item1.setImageUrl("https://m.tchaikim.co.kr/web/product/big/202205/a4a903a718a13d0f0aba2dbb44fc3e62.jpg");
-        item1.setClothSize(new String[]{"S", "M", "L"});
-//        item1.setCategoryId(new Category());
-
+        item1.setName("테스트");
+        item1.setPrice(0);
+        item1.setDescription("제외해야할 데이터");
         itemRepository.save(item1);
     }
 

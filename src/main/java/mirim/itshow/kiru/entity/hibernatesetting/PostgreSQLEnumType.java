@@ -1,4 +1,4 @@
-package mirim.itshow.kiru.entity.enum_col;
+package mirim.itshow.kiru.entity.hibernatesetting;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

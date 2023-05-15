@@ -3,6 +3,7 @@ package mirim.itshow.kiru.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import mirim.itshow.kiru.entity.enum_col.Size;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -30,14 +31,17 @@ public class Item {
     @Column(nullable = false, length = 200)
     private String imageUrl; //이미지 url
 
-    @Column(nullable = false, length = 200)
-    private String color; //색상
+    @Column(columnDefinition = "text[]")
+    @Type(type = "mirim.itshow.kiru.entity.hibernatesetting.CustomStringArrayType")
+    private String[] color; //색상
 
-    @Column
-    private Size clothSize; //옷 사이즈
+    @Column(columnDefinition = "text[]")
+    @Type(type = "mirim.itshow.kiru.entity.hibernatesetting.CustomStringArrayType")
+    private String[] clothSize; //옷 사이즈
 
-    @Column
-    private int shoesSize; //신발 사이즈
+    @Column(columnDefinition = "text[]")
+    @Type(type = "mirim.itshow.kiru.entity.hibernatesetting.CustomStringArrayType")
+    private String[] shoesSize; //신발 사이즈
 
     @ManyToOne
     @JoinColumn(name = "category_id")

@@ -3,4 +3,4 @@
 
 package mirim.itshow.kiru.entity.enum_col;
 
-import mirim.itshow.kiru.entity.enum_col.PostgreSQLEnumType;
+import mirim.itshow.kiru.entity.hibernatesetting.PostgreSQLEnumType;

@@ -3,6 +3,7 @@ package mirim.itshow.kiru.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import mirim.itshow.kiru.entity.enum_col.Status;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -28,6 +29,8 @@ public class Rent {
     private LocalDateTime createTimestamp; //대여 신청 시간
 
     @Enumerated(EnumType.STRING)
+    @Type(type = "status_enum_type")
+    @Column
     private Status status; //대여 상태
 
     @OneToMany(mappedBy = "rent", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)

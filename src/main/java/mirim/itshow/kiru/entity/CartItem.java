@@ -3,6 +3,7 @@ package mirim.itshow.kiru.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import mirim.itshow.kiru.entity.enum_col.Size;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -33,6 +34,7 @@ public class CartItem {
     private String color; //색상
 
     @Enumerated(EnumType.STRING)
+    @Type(type = "size_enum_type")
     private Size clothSize; //옷 사이즈
 
     @Column

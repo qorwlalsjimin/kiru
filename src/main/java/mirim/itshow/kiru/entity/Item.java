@@ -23,7 +23,7 @@ public class Item {
     @Column(nullable = false, length = 60) // column 조건
     private String name; //상품 이름
 
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false)
     private int price; //1일 대여 가격
 
     @Column(nullable = false)

@@ -15,7 +15,7 @@ public class Category {
     private Long categoryId; //카테고리 고유 id
     private Long idParent; //부모 카테고리 id
 
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false)
     private String title; //카테고리 이름
 
 

@@ -46,8 +46,8 @@ public class Item {
     private String[] shoesSize; //신발 사이즈
 
     @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category categoryId; //카테고리 id
+    @JoinColumn(name = "category")
+    private Category category; //카테고리 id
 
     @Column
     private String brand; //분류를 위한 브랜드명
@@ -65,7 +65,7 @@ public class Item {
         this.color = color;
         this.clothSize = clothSize;
         this.shoesSize = shoesSize;
-        this.categoryId = categoryId;
+        this.category = categoryId;
         this.brand = brand;
     }
 

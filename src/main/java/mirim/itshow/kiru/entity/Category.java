@@ -12,15 +12,15 @@ import javax.persistence.*;
 public class Category {
     @Id //primary key
     @Column
-    private Long category_id; //카테고리 고유 id
+    private Long categoryId; //카테고리 고유 id
     private Long idParent; //부모 카테고리 id
 
     @Column(nullable = false, length = 10)
     private String title; //카테고리 이름
 
 
-    public Category(long category_id, long idParent, String title) {
-        this.category_id = category_id;
+    public Category(long categoryId, long idParent, String title) {
+        this.categoryId = categoryId;
         this.idParent = idParent;
         this.title = title;
     }

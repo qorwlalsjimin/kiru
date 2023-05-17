@@ -1,20 +1,16 @@
 package mirim.itshow.kiru.controller;
 
 import mirim.itshow.kiru.dao.ItemRepository;
-import mirim.itshow.kiru.dto.MemberForm;
 import mirim.itshow.kiru.entity.Item;
-import mirim.itshow.kiru.entity.Member;
 import mirim.itshow.kiru.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -27,17 +23,23 @@ public class ItemController {
     @Autowired
     ItemRepository itemRepository;
 
-    @GetMapping("/item/item_list") //상품 목록
-    public Collection<Item> selectAllItemInfo(){
-        System.out.println("상품목록 get");
-//        System.out.println(itemService.selectAllItemInfo());
-//        System.out.println(itemService.selectItemById(2L));
-//        System.out.println("안 되니..ㅠㅠ");
-//        return null;
-        return itemService.selectAllItemInfo();
+    @GetMapping("/item/item_list/{id}") //카테고리별 전체 상품 목록
+    public Collection<Item> selectCategoryItemInfo(@PathVariable Long id){
+        System.out.println("전체 상품목록 get");
+        return itemService.selectItemByCategory(id);
+    }
+    @GetMapping("/item/{category}/best") //best 상품 목록
+    public Collection<Item> selectBestItemInfo(@PathVariable String category){
+        System.out.println("best 상품목록 get");
+        return itemService.selectAllBestItemInfo();
+    }
+    @GetMapping("/item/{category}/brand") //brand별 상품 목록
+    public Collection<Item> selectBrandItemInfo(@PathVariable String category){
+        System.out.println("brand 상품목록 get");
+        return itemService.selectAllBrandItemInfo();
     }
 
-    @GetMapping("/item/item_list/{item_id}") //특정 상품
+    @GetMapping("/item/{item_id}") //특정 상품
     public ResponseEntity<?> selectById(@PathVariable Long item_id){
         Optional<Item> itemInfo = Optional.ofNullable(itemService.selectItemById(item_id));
         return itemInfo.map(response -> ResponseEntity.ok().body(response))

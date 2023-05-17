@@ -13,7 +13,7 @@ public class Category {
     @Id //primary key
     @Column
     private Long categoryId; //카테고리 고유 id
-    private Long idParent; //부모 카테고리 id
+    private Long categoryPId; //부모 카테고리 id
 
     @Column(nullable = false)
     private String title; //카테고리 이름
@@ -21,7 +21,7 @@ public class Category {
 
     public Category(long categoryId, long idParent, String title) {
         this.categoryId = categoryId;
-        this.idParent = idParent;
+        this.categoryPId = idParent;
         this.title = title;
     }
 }

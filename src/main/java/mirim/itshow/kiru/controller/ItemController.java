@@ -23,29 +23,36 @@ public class ItemController {
     @Autowired
     ItemRepository itemRepository;
 
-    @GetMapping("/item/item_list/{id}") //카테고리별 전체 상품 목록
-    public Collection<Item> selectCategoryItemInfo(@PathVariable Long id){
-        System.out.println("전체 상품목록 get");
-        return itemService.selectItemByCategory(id);
-    }
-    @GetMapping("/item/{category}/best") //best 상품 목록
-    public Collection<Item> selectBestItemInfo(@PathVariable String category){
-        System.out.println("best 상품목록 get");
-        return itemService.selectAllBestItemInfo();
-    }
-    @GetMapping("/item/{category}/brand") //brand별 상품 목록
-    public Collection<Item> selectBrandItemInfo(@PathVariable String category){
-        System.out.println("brand 상품목록 get");
-        return itemService.selectAllBrandItemInfo();
+    //카테고리별 All 상품 목록 (cf. 카테고리 안 나눈 전체 상품 목록은 필요 없음)
+    @GetMapping("/item/item_list/{categoryPId}")
+    public Collection<Item> selectCategoryPIdItem(@PathVariable Long categoryPId){
+        System.out.println("카테고리별 전체 상품목록 get");
+        return itemService.selectItemByCategoryPId(categoryPId); // 카테고리 부모 id 입력 (전통한복, 개량한복, ...)
     }
 
-    @GetMapping("/item/{item_id}") //특정 상품
-    public ResponseEntity<?> selectById(@PathVariable Long item_id){
-        Optional<Item> itemInfo = Optional.ofNullable(itemService.selectItemById(item_id));
+    //카테고리별 Best 상품 목록
+    @GetMapping("/item/item_list/{category}/best")
+    public Collection<Item> selectBestItem(@PathVariable Long category){
+        System.out.println("best 상품목록 get");
+        return itemService.selectBestItem(category);
+    }
+
+    //카테고리별 Brand 상품 목록
+    @GetMapping("/item/item_list/{category}/{brand}")
+    public Collection<Item> selectBrandItem(@PathVariable Long category, @PathVariable Long brandId){
+        System.out.println("brand 상품목록 get");
+        return itemService.selectBrandItem(category, brandId);
+    }
+
+    //하나의 상품 상세 정보
+    @GetMapping("/item/{item_id}")
+    public ResponseEntity<?> selectById(@PathVariable Long itemId){
+        Optional<Item> itemInfo = Optional.ofNullable(itemService.selectItemById(itemId));
         return itemInfo.map(response -> ResponseEntity.ok().body(response))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    //상품 등록
     @PostMapping(value = "/item/new")
     public ResponseEntity<Item> itemRegister(@RequestBody Item itemInfo) throws URISyntaxException {
         System.out.println(itemInfo.toString());

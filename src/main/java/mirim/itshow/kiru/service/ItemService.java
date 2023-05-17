@@ -4,7 +4,6 @@ import mirim.itshow.kiru.dao.CategoryRepository;
 import mirim.itshow.kiru.dao.ItemRepository;
 import mirim.itshow.kiru.entity.Item;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -44,27 +43,28 @@ public class ItemService {
     /*
     * 비지니스 알고리즘
     * */
-    // 전체 상품 목록 출력
-    public List<Item> selectAllItemInfo(){
-        return itemRepository.findAll();
+//    // 전체 상품 목록 출력
+//    public List<Item> selectAllItemInfo(){
+//        return itemRepository.findAll();
+//    }
+
+    // 카테고리별 All 상품 목록
+    public List<Item> selectItemByCategoryPId(Long categoryPId){
+        return itemRepository.findByCategory_CategoryPId(categoryPId);
     }
 
-    // 카테고리별 상품 목록 출력
-    public List<Item> selectItemByCategory(Long categoryId){
-        return itemRepository.findByCategory_CategoryId(categoryId);
+    // 카테고리별 best 상품 목록
+    public List<Item> selectBestItem(Long categoryPId){
+//        return itemRepository.findAll(Sort.by(Sort.Direction.DESC, "itemId"));
+        return itemRepository.findByCategory_CategoryPId(categoryPId); //TODO best 기준 아직 못정함
     }
 
-    // best 상품 목록 출력
-    public List<Item> selectAllBestItemInfo(){
-        return itemRepository.findAll(Sort.by(Sort.Direction.DESC, "itemId")); //TODO best 기준 아직 못정함
+    // 카테고리별 Brand 상품 목록
+    public List<Item> selectBrandItem(Long categoryPId, Long brandId){
+        return itemRepository.findByCategory_CategoryPIdAndCategory_CategoryId(categoryPId, brandId);
     }
 
-    // brand별 상품 목록 출력
-    public List<Item> selectAllBrandItemInfo(){
-        return itemRepository.findAll(Sort.by(Sort.Direction.ASC, "brand"));
-    }
-
-    // 특정 상품 출력
+    // 하나의 상품 상세 정보
     public Item selectItemById(Long id){
         return itemRepository.findById(id).get();
     }

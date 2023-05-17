@@ -717,7 +717,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"red", "green"})
                         .clothSize(new String[]{})
                         .shoesSize(new String[]{})
-                        .categoryId(categoryRepository.findById(141L).orElse(null))
+                        .categoryId(categoryRepository.findById(142L).orElse(null))
                         .brand("차이킴").build(),
 
                 Item.builder()
@@ -728,7 +728,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"green"})
                         .clothSize(new String[]{})
                         .shoesSize(new String[]{})
-                        .categoryId(categoryRepository.findById(141L).orElse(null))
+                        .categoryId(categoryRepository.findById(142L).orElse(null))
                         .brand("차이킴").build(),
 
                 Item.builder()
@@ -739,7 +739,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{})
                         .clothSize(new String[]{})
                         .shoesSize(new String[]{})
-                        .categoryId(categoryRepository.findById(141L).orElse(null))
+                        .categoryId(categoryRepository.findById(142L).orElse(null))
                         .brand("차이킴").build(),
 
                 Item.builder()
@@ -750,7 +750,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"하늘", "보라/연두", "보라/연상아", "민트", "연상아"})
                         .clothSize(new String[]{})
                         .shoesSize(new String[]{})
-                        .categoryId(categoryRepository.findById(141L).orElse(null))
+                        .categoryId(categoryRepository.findById(143L).orElse(null))
                         .brand("나빔").build(),
                 Item.builder()
                         .name("복주머니 노리개")
@@ -760,7 +760,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"연상아"})
                         .clothSize(new String[]{})
                         .shoesSize(new String[]{})
-                        .categoryId(categoryRepository.findById(141L).orElse(null))
+                        .categoryId(categoryRepository.findById(143L).orElse(null))
                         .brand("나빔").build(),
 
                 Item.builder()
@@ -771,7 +771,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{})
                         .clothSize(new String[]{})
                         .shoesSize(new String[]{})
-                        .categoryId(categoryRepository.findById(141L).orElse(null))
+                        .categoryId(categoryRepository.findById(144L).orElse(null))
                         .brand("하플리").build(),
 
                 Item.builder()
@@ -782,7 +782,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"군청색", "비색", "훈색"})
                         .clothSize(new String[]{})
                         .shoesSize(new String[]{})
-                        .categoryId(categoryRepository.findById(141L).orElse(null))
+                        .categoryId(categoryRepository.findById(144L).orElse(null))
                         .brand("하플리").build(),
 
 

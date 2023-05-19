@@ -788,10 +788,293 @@ class Initializer implements CommandLineRunner {
 
 /* 일본 */
 // 일본 - 기모노
+                Item.builder()
+                        .name("쿠모 이브닝 기모노")
+                        .price(26300)
+                        .description("톡톡 튀고 상큼한 비비드 컬러와 플라워패턴으로 화사한 꽃처럼 화려함을 선사합니다.")
+                        .imageUrl(new String[]{"https://ae01.alicdn.com/kf/Hd43d3e5583b74f11b4664bf5d06784653/Onesize-v.jpg_Q90.jpg_.webp",
+                                "https://ae01.alicdn.com/kf/H86815edcbe474770bcf86f1a355d71c2d/Onesize-v.jpg_Q90.jpg_.webp",
+                                "https://ae01.alicdn.com/kf/Hc31da9f6f76245629df2fe6cc389c9caD/Onesize-v.jpg_Q90.jpg_.webp"})
+                        .color(new String[]{"흑색", "적색"})
+                        .clothSize(new String[]{})
+                        .shoesSize(new String[]{})
+                        .categoryId(categoryRepository.findById(211L).orElse(null))
+                        .brand("소라노카오리").build(),
+
+                Item.builder()
+                        .name("코바나 기모노")
+                        .price(25900)
+                        .description("고급 기모노 원단으로 제작되었습니다. 파스텔릭한 부드러운 색감에 사랑스러운 기모노입니다.")
+                        .imageUrl(new String[]{"https://ae01.alicdn.com/kf/Hc02a9806ec5a4a1ba54f207f17a60ae0X/-.jpg_640x640.jpg",
+                                "https://ae01.alicdn.com/kf/H7aeefc8fbe4642e2b6d200ccc3bb59b21/-.jpg_Q90.jpg_.webp",
+                                "https://ae01.alicdn.com/kf/Hf04a6c4418e24a4caa0c311ebe0016a5d/-.jpg_640x640.jpg"})
+                        .color(new String[]{"청색", "분홍색", "흑색"})
+                        .clothSize(new String[]{})
+                        .shoesSize(new String[]{})
+                        .categoryId(categoryRepository.findById(211L).orElse(null))
+                        .brand("소라노카오리").build(),
+
+                Item.builder()
+                        .name("오비 빈티지 이브닝 드레스")
+                        .price(29300)
+                        .description("한 사이즈, 조절 가능한 벨트가 있습니다.\n습관에 따라 벨트가 길어지고 짧아 질 수 있습니다")
+                        .imageUrl(new String[]{"https://ae01.alicdn.com/kf/Hb9894978b2e243a4a446f58e0d83fb83T.jpg"})
+                        .color(new String[]{})
+                        .clothSize(new String[]{})
+                        .shoesSize(new String[]{})
+                        .categoryId(categoryRepository.findById(211L).orElse(null))
+                        .brand("소라노카오리").build(),
+
+                Item.builder()
+                        .name("실크 레이온")
+                        .price(29000)
+                        .description("부드러운 원단의 실크와 매혹적인 패턴의 무늬가 있습니다")
+                        .imageUrl(new String[]{"https://ae01.alicdn.com/kf/HTB18OB0LpXXXXaoXXXXq6xXFXXXv.jpg"})
+                        .color(new String[]{"하양", "빨강", "핑크"})
+                        .clothSize(new String[]{})
+                        .shoesSize(new String[]{})
+                        .categoryId(categoryRepository.findById(211L).orElse(null))
+                        .brand("소라노카오리").build(),
+
+                Item.builder()
+                        .name("사쿠라 프린트")
+                        .price(28538)
+                        .description("사랑스러운 사쿠라 프린트에 기모노가 더해져 파티에 입고 가기 좋습니다.")
+                        .imageUrl(new String[]{"https://ae01.alicdn.com/kf/HTB1srdkaLb2gK0jSZK9q6yEgFXaH/-.jpg_640x640.jpg",
+                                "https://ae01.alicdn.com/kf/H1d36e32e747148bdb3c73c0440eb18fc3.jpg",
+                                "https://ae01.alicdn.com/kf/H8f05c58e94ad4c738c76aef02d44475ba.jpg"})
+                        .color(new String[]{})
+                        .clothSize(new String[]{})
+                        .shoesSize(new String[]{})
+                        .categoryId(categoryRepository.findById(211L).orElse(null))
+                        .brand("소라노카오리").build(),
+
+                Item.builder()
+                        .name("오비 플라워")
+                        .price(33062)
+                        .description("플라워의 단아하고 우아한 패턴이 공존합니다.")
+                        .imageUrl(new String[]{"https://ae01.alicdn.com/kf/HTB1jFH9RFXXXXcGXFXXq6xXFXXXZ/-.jpg_Q90.jpg_.webp",
+                                "https://ae01.alicdn.com/kf/HTB1XMp5LpXXXXXcXXXXq6xXFXXXa.jpg"})
+                        .color(new String[]{})
+                        .clothSize(new String[]{})
+                        .shoesSize(new String[]{})
+                        .categoryId(categoryRepository.findById(211L).orElse(null))
+                        .brand("소라노카오리").build(),
+
+// 하나비라
+                Item.builder()
+                        .name("동쪽의 레이스")
+                        .price(26698)
+                        .description("화려한 일본 기모노 의상은 전통적인 일본 의상과 꽃무늬 디자인, 뒷면에 귀여운 리본 매듭이 있는 넓은 오비 벨트, 느슨한 긴 소매가 특징입니다. ")
+                        .imageUrl(new String[]{"https://m.media-amazon.com/images/I/71nD5Ultv1L._AC_UX679_.jpg",
+                                "https://m.media-amazon.com/images/I/71O6MBLyCAL._AC_UX679_.jpg",
+                                "https://m.media-amazon.com/images/I/71vofv3-nXL._AC_UX679_.jpg"})
+                        .color(new String[]{})
+                        .clothSize(new String[]{})
+                        .shoesSize(new String[]{})
+                        .categoryId(categoryRepository.findById(212L).orElse(null))
+                        .brand("하나비라").build(),
+                Item.builder()
+                        .name("꽃 무늬 긴 새틴")
+                        .price(28032)
+                        .description("탈부착이 가능한 셀프 벨트로 편안함을 유지하고 일상 생활에서 움직임을 방해하지 않습니다")
+                        .imageUrl(new String[]{"https://m.media-amazon.com/images/I/71ijSfxcZWL._AC_UY741_.jpg",
+                                "https://m.media-amazon.com/images/I/71G6yF97t1L._AC_UY741_.jpg"})
+                        .color(new String[]{})
+                        .clothSize(new String[]{})
+                        .shoesSize(new String[]{})
+                        .categoryId(categoryRepository.findById(212L).orElse(null))
+                        .brand("하나비라").build(),
+                Item.builder()
+                        .name("오비 벨트가 있는 꽃")
+                        .price(28032)
+                        .description("탈부착이 가능한 셀프 벨트로 편안함을 유지하고 일상 생활에서 움직임을 방해하지 않습니다")
+                        .imageUrl(new String[]{"https://m.media-amazon.com/images/I/71nKyapcLuL._AC_UX679_.jpg",
+                                "https://m.media-amazon.com/images/I/71GxVeYmz7L._AC_UX679_.jpg",
+                                "https://m.media-amazon.com/images/I/71DaOHanRKL._AC_UX679_.jpg"})
+                        .color(new String[]{})
+                        .clothSize(new String[]{})
+                        .shoesSize(new String[]{})
+                        .categoryId(categoryRepository.findById(212L).orElse(null))
+                        .brand("하나비라").build(),
+                Item.builder()
+                        .name("오비 벨트가 있는 꽃2")
+                        .price(28032)
+                        .description("탈부착이 가능한 셀프 벨트로 편안함을 유지하고 일상 생활에서 움직임을 방해하지 않습니다")
+                        .imageUrl(new String[]{"https://m.media-amazon.com/images/I/710LYtuHZTL._AC_UX679_.jpg",
+                                "https://m.media-amazon.com/images/I/71+ev5GgDqL._AC_UX679_.jpg",
+                                "https://m.media-amazon.com/images/I/71LtwoRtqiL._AC_UX679_.jpg"})
+                        .color(new String[]{})
+                        .clothSize(new String[]{})
+                        .shoesSize(new String[]{})
+                        .categoryId(categoryRepository.findById(212L).orElse(null))
+                        .brand("하나비라").build(),
+                Item.builder()
+                        .name("오비 벨트가 있는 꽃3")
+                        .price(25363)
+                        .description("탈부착이 가능한 셀프 벨트로 편안함을 유지하고 일상 생활에서 움직임을 방해하지 않습니다")
+                        .imageUrl(new String[]{"https://m.media-amazon.com/images/I/71nKyapcLuL._AC_UX679_.jpg",
+                                "https://m.media-amazon.com/images/I/71GxVeYmz7L._AC_UX679_.jpg",
+                                "https://m.media-amazon.com/images/I/71DaOHanRKL._AC_UX679_.jpg"})
+                        .color(new String[]{})
+                        .clothSize(new String[]{})
+                        .shoesSize(new String[]{})
+                        .categoryId(categoryRepository.findById(212L).orElse(null))
+                        .brand("하나비라").build(),
+                Item.builder()
+                        .name("오비 벨트가 있는 꽃4")
+                        .price(25363)
+                        .description("탈부착이 가능한 셀프 벨트로 편안함을 유지하고 일상 생활에서 움직임을 방해하지 않습니다")
+                        .imageUrl(new String[]{"https://m.media-amazon.com/images/I/716z15kBVBL._AC_UX679_.jpg",
+                                "https://m.media-amazon.com/images/I/71cCYKENMmL._AC_UX679_.jpg",
+                                "https://m.media-amazon.com/images/I/711HgdL-UoL._AC_UX679_.jpg"})
+                        .color(new String[]{})
+                        .clothSize(new String[]{})
+                        .shoesSize(new String[]{})
+                        .categoryId(categoryRepository.findById(212L).orElse(null))
+                        .brand("하나비라").build(),
+
+                //스즈노기모노
+                Item.builder()
+                        .name("쿄우에츠 하카마")
+                        .price(156100)
+                        .description("칠흑의 고하띠 빨강과 황이 어우러져 있는 꽃무늬 기모노입니다.")
+                        .imageUrl(new String[]{"https://m.media-amazon.com/images/I/71r+TObctHL._AC_UL500_.jpg",
+                                "https://m.media-amazon.com/images/I/61oQp3y93wL._AC_UL500_.jpg",
+                                "https://m.media-amazon.com/images/I/81ChhMWgRoL._AC_UL500_.jpg"})
+                        .color(new String[]{"빨강", "핑크", "파랑"})
+                        .clothSize(new String[]{})
+                        .shoesSize(new String[]{})
+                        .categoryId(categoryRepository.findById(213L).orElse(null))
+                        .brand("스즈노기모노").build(),
+                Item.builder()
+                        .name("척수옷 화려함")
+                        .price(132300)
+                        .description("칠흑의 고하띠 빨강과 황이 어우러져 있는 꽃무늬 기모노입니다.")
+                        .imageUrl(new String[]{"https://m.media-amazon.com/images/I/71oshPiCI7L._AC_UL500_.jpg",
+                                "https://m.media-amazon.com/images/I/619mjxmLVFL._AC_UL500_.jpg",
+                                "https://m.media-amazon.com/images/I/61XF6+JwmJL._AC_UL500_.jpg"})
+                        .color(new String[]{})
+                        .clothSize(new String[]{})
+                        .shoesSize(new String[]{})
+                        .categoryId(categoryRepository.findById(213L).orElse(null))
+                        .brand("스즈노기모노").build(),
+                Item.builder()
+                        .name("쿄우에츠 고세트")
+                        .price(132300)
+                        .description("칠흑의 고하띠 빨강과 황이 어우러져 있는 꽃무늬 기모노입니다.")
+                        .imageUrl(new String[]{"https://m.media-amazon.com/images/I/71oshPiCI7L._AC_UL500_.jpg",
+                                "https://m.media-amazon.com/images/I/718WQkHGlVL._AC_UL500_.jpg",
+                                "https://m.media-amazon.com/images/I/61XF6+JwmJL._AC_UL500_.jpg", "https://m.media-amazon.com/images/I/81YC6KyPeiL._AC_UL500_.jpg"})
+                        .color(new String[]{"검정", "파랑", "보라"})
+                        .clothSize(new String[]{})
+                        .shoesSize(new String[]{})
+                        .categoryId(categoryRepository.findById(213L).orElse(null))
+                        .brand("스즈노기모노").build(),
+                Item.builder()
+                        .name("소녀고 롬퍼스")
+                        .price(33200)
+                        .description("아카창은 옷을 더럽히기 쉬운 이군요.만약 하카마가 더럽혀져 버려도집에서 간단하게 씻을 수 있는 타입의 하카마는,손질이 간단합니다.고부분으로 버튼 부착에 기저귀 교환도 편안하게.갈아 입기가 까다로운 아카창에서도 간단하게 부드럽게 갈아 입기 를 할 수 있습니다")
+                        .imageUrl(new String[]{"https://m.media-amazon.com/images/I/71sAUKINweL._AC_UL500_.jpg",
+                                "https://m.media-amazon.com/images/I/71EQd-zTH0L._AC_UL500_.jpg",
+                                "https://m.media-amazon.com/images/I/71dHmETqY+L._AC_UL500_.jpg"})
+                        .color(new String[]{"빨강", "보라", "핑크"})
+                        .clothSize(new String[]{})
+                        .shoesSize(new String[]{})
+                        .categoryId(categoryRepository.findById(213L).orElse(null))
+                        .brand("스즈노기모노").build(),
+                Item.builder()
+                        .name("척수옷 무지고화")
+                        .price(120300)
+                        .description("주황빛이 눈에 띄는 마츠리 기모노입니다.")
+                        .imageUrl(new String[]{"https://m.media-amazon.com/images/I/7163-6RP-NL._AC_UL500_.jpg",
+                                "https://m.media-amazon.com/images/I/71MQSJHzhpL._AC_UL500_.jpg",
+                                "https://m.media-amazon.com/images/I/61L3ZqUNfIL._AC_UL500_.jpg"})
+                        .color(new String[]{})
+                        .clothSize(new String[]{})
+                        .shoesSize(new String[]{})
+                        .categoryId(categoryRepository.findById(213L).orElse(null))
+                        .brand("스즈노기모노").build(),
+                Item.builder()
+                        .name("오오키니 하오리")
+                        .price(118100)
+                        .description("외출시의 방한 대책에 날렵하게 걸쳐 입을 수 있는 편리한장 하오리입니다.\n여러가지 무늬를 준비 하고 있기 때문에,옷 에 따라 코디네이트도 즐길 수 있습니다.\n옷을 얼룩부터 지키는 먼지 제외할 수 있어도 부디.\n공옷감의 하오리뉴가 붙어 있기 때문에,별도 하오리뉴를 구입 하는 필요는 없습니다.")
+                        .imageUrl(new String[]{"https://m.media-amazon.com/images/I/51tzcPFFUJL.jpg",
+                                "https://m.media-amazon.com/images/I/61DChIJK5xL.jpg",
+                                "https://m.media-amazon.com/images/I/51CgfmuhaIL.jpg"})
+                        .color(new String[]{})
+                        .clothSize(new String[]{})
+                        .shoesSize(new String[]{})
+                        .categoryId(categoryRepository.findById(213L).orElse(null))
+                        .brand("스즈노기모노").build(),
 
 
 // 일본 - 유카타
-
+                Item.builder()
+                        .name("감색 베이지")
+                        .price(264900)
+                        .description("시원함을 유지하며, 원단은 적당하게 얇게 들여다보여 느낌이 있습니다.")
+                        .imageUrl(new String[]{"https://m.media-amazon.com/images/I/5124G-nYLJL.jpg", "https://m.media-amazon.com/images/I/512yELDO0-L.jpg"})
+                        .color(new String[]{"빨강","검정", "파랑"})
+                        .clothSize(new String[]{})
+                        .shoesSize(new String[]{})
+                        .categoryId(categoryRepository.findById(110L).orElse(null))
+                        .brand("소라노카오리").build(),
+                
+                Item.builder()
+                        .name("소녀 유카타")
+                        .price(57900)
+                        .description("매일 착용을 위해 충분히 튼튼한 고품질 물자로 만듭니다")
+                        .imageUrl(new String[]{"https://m.media-amazon.com/images/I/51xc2rgwAEL.jpg", "https://m.media-amazon.com/images/I/61nxJ6-iQGL.jpg"})
+                        .color(new String[]{"빨강","검정", "파랑"})
+                        .clothSize(new String[]{})
+                        .shoesSize(new String[]{})
+                        .categoryId(categoryRepository.findById(110L).orElse(null))
+                        .brand("소라노카오리").build(),
+                
+                Item.builder()
+                        .name("매화나무에 묘녹차색")
+                        .price(57900)
+                        .description("녹차색과 고양이가 어우러진 묘한 느낌의 기모노입니다.")
+                        .imageUrl(new String[]{"https://m.media-amazon.com/images/I/51d2wgINS6L.jpg","https://m.media-amazon.com/images/I/51T17aP4S3L.jpg","https://m.media-amazon.com/images/I/519fxxAPZwL.jpg"})
+                        .color(new String[]{"골드","빨강"})
+                        .clothSize(new String[]{})
+                        .shoesSize(new String[]{})
+                        .categoryId(categoryRepository.findById(110L).orElse(null))
+                        .brand("소라노카오리").build(),
+                
+                Item.builder()
+                        .name("회감색국화")
+                        .price(240700)
+                        .description("차분한 계열의 금붕어 레트로 모던 면반폭띠 입니다.")
+                        .imageUrl(new String[]{"https://m.media-amazon.com/images/I/415c0I0ONxL.jpg", "https://m.media-amazon.com/images/I/51AMOX-YeoL.jpg","https://m.media-amazon.com/images/I/51L0iVVBttL.jpg"})
+                        .color(new String[]{})
+                        .clothSize(new String[]{})
+                        .shoesSize(new String[]{})
+                        .categoryId(categoryRepository.findById(110L).orElse(null))
+                        .brand("소라노카오리").build(),
+                
+                Item.builder()
+                        .name("백계흑마의 엽줄무늬")
+                        .price(68200)
+                        .description("메인 소재: 100% 면 소재 구성: 100% 면으로 만들어진 아이보리지에 흑등 색상 제품입니다.")
+                        .imageUrl(new String[]{"https://m.media-amazon.com/images/I/51rEkECpguL.jpg", "https://m.media-amazon.com/images/I/510sRaEPKhL.jpg"})
+                        .color(new String[]{"빨강","검정", "파랑"})
+                        .clothSize(new String[]{})
+                        .shoesSize(new String[]{})
+                        .categoryId(categoryRepository.findById(110L).orElse(null))
+                        .brand("소라노카오리").build(),
+                
+                Item.builder()
+                        .name("박청록색")
+                        .price(240700)
+                        .description("원단은 적당하게 얇으며 시원해 보이는 느낌이 있습니다.")
+                        .imageUrl(new String[]{"https://m.media-amazon.com/images/I/41QZ04zOOdL.jpg", "https://m.media-amazon.com/images/I/41RsBHG2YBL.jpg","https://m.media-amazon.com/images/I/51lhnF2r0EL.jpg"})
+                        .color(new String[]{})
+                        .clothSize(new String[]{})
+                        .shoesSize(new String[]{})
+                        .categoryId(categoryRepository.findById(110L).orElse(null))
+                        .brand("소라노카오리").build(),
 
 // 일본 - 신발
                 Item.builder()

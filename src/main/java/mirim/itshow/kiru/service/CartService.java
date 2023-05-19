@@ -48,4 +48,11 @@ public class CartService {
 
         return Arrays.asList(hanbokTotal, kimonoTotal);
     }
+
+    /**
+     * 상품 삭제
+     */
+    public void deleteById(Long id){
+        cartItemRepository.deleteById(id);
+    }
 }

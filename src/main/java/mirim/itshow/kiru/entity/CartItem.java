@@ -54,15 +54,10 @@ public class CartItem {
     private LocalDate endDate; //대여 종료일
 
     @Column
-    private boolean checked; //장바구니 페이지에서 체크됐는지
+    private boolean checked=true; //장바구니 페이지에서 체크됐는지
 
     @Column
     private LocalDateTime createTimestamp; //장바구니에 넣은 시간
-
-//    @PrePersist
-//    public void prePersist(){
-//        this.checked = (this.checked) ? false : true;
-//    }
 
     public static CartItem createCart(CartForm form){
         CartItem cartItem = new CartItem();

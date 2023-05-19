@@ -35,10 +35,7 @@ public class CartItem {
 
     @Enumerated(EnumType.STRING)
     @Type(type = "size_enum_type")
-    private Size clothSize; //옷 사이즈
-
-    @Column
-    private int shoesSize; //신발 사이즈
+    private Size size; //옷&신발 사이즈
 
     @Column(nullable = false)
     private LocalDate startDate; //대여 시작일

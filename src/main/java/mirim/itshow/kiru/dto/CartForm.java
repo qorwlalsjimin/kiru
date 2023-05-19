@@ -1,6 +1,7 @@
 package mirim.itshow.kiru.dto;
 
 import lombok.Data;
+import mirim.itshow.kiru.entity.enum_col.Country;
 
 import javax.persistence.Column;
 import java.time.LocalDate;
@@ -17,6 +18,8 @@ public class CartForm {
     private String color; //색상
     private String size; //사이즈
     private int amount; //수량
+
+    private Country country; //한복 or 기모노
 
     private LocalDate startDate; //대여 시작일
     private LocalDate endDate; //대여 종료일

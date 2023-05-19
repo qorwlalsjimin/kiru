@@ -3,6 +3,7 @@ package mirim.itshow.kiru.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import mirim.itshow.kiru.dto.CartForm;
+import mirim.itshow.kiru.entity.enum_col.Country;
 import mirim.itshow.kiru.entity.enum_col.Size;
 import org.hibernate.annotations.Type;
 
@@ -44,12 +45,24 @@ public class CartItem {
     private String size; //옷&신발 사이즈
     private int amount; //수량
 
+    @Enumerated(EnumType.STRING)
+    @Type(type = "size_enum_type")
+    private Country country; //Hanbok, Kimono
+
     @Column(nullable = false)
     private LocalDate startDate; //대여 시작일
     private LocalDate endDate; //대여 종료일
 
     @Column
+    private boolean checked; //장바구니 페이지에서 체크됐는지
+
+    @Column
     private LocalDateTime createTimestamp; //장바구니에 넣은 시간
+
+//    @PrePersist
+//    public void prePersist(){
+//        this.checked = (this.checked) ? false : true;
+//    }
 
     public static CartItem createCart(CartForm form){
         CartItem cartItem = new CartItem();
@@ -63,6 +76,8 @@ public class CartItem {
         cartItem.setColor(form.getColor());
         cartItem.setSize(form.getSize());
         cartItem.setAmount(form.getAmount());
+
+        cartItem.setCountry(form.getCountry());
 
         cartItem.setStartDate(form.getStartDate());
         cartItem.setEndDate(form.getEndDate());

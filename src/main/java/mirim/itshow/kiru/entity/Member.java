@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor //기본 생성자
 @Data
 @Entity //엔티티
-@Table(name = "member")
+@Table
 public class Member {
     @Id //primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY) //auto_increment

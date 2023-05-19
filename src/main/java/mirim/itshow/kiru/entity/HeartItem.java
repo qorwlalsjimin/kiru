@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name="heart_item")
+@Table
 public class HeartItem {
     @Id //primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY) //auto_increment

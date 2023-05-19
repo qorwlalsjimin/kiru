@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Service
-@Transactional
+@Transactional //TODO 왜 쓰는지 모름
 public class MemberService {
     private final MemberRepository memberRepository;
     private final Logger log = LoggerFactory.getLogger(MemberService.class);

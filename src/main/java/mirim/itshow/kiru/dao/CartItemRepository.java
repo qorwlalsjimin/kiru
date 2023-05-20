@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface CartItemRepository extends JpaRepository<CartItem, Long> {
     List<CartItem> findByCountry(Country hanbokOrKimono);
+
+    CartItem findByItemName(String itemName);
 }

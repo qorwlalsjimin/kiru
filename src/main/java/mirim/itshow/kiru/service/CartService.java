@@ -25,7 +25,15 @@ public class CartService {
      * 상품 등록
      */
     public CartItem saveCart(CartItem cartItem){
+        checkDuplication(cartItem);
         return cartItemRepository.save(cartItem);
+    }
+
+    private void checkDuplication(CartItem cartItem){
+        CartItem dbItem = cartItemRepository.findByItemName(cartItem.getItemName());
+        if(dbItem != null){
+            throw new IllegalStateException("이미 등록되어 있는 상품입니다. 또 등록하시겠습니까?");
+        }
     }
 
     /**
@@ -50,6 +58,13 @@ public class CartService {
         int kimonoTotal = kimonoList.stream().filter(i -> i.isChecked()).mapToInt(i -> i.getPrice()).sum();
 
         return Arrays.asList(hanbokTotal, kimonoTotal);
+    }
+
+    /**
+     * 상품 업데이트
+     */
+    public CartItem updateCart(CartItem cartItem){
+        return cartItemRepository.save(cartItem); // 원래 있는 id면 update해줌
     }
 
     /**

@@ -51,10 +51,10 @@ public class CartController {
     }
 
     //U: 옵션 수정
-    @PutMapping("/cart/update/{id}")
-    public ResponseEntity<CartItem> updateItem(@RequestBody CartForm cartForm, @PathVariable Long id){
+    @PutMapping("/cart/update")
+    public ResponseEntity<CartItem> updateItem(@RequestBody CartForm cartForm){
         System.out.println("장바구니: 옵션 변경");
-        CartItem result = cartService.saveCart(CartItem.createCart(cartForm));
+        CartItem result = cartService.updateCart(CartItem.createCart(cartForm));
         return ResponseEntity.ok().body(result);
     }
 

@@ -1,12 +1,9 @@
 package mirim.itshow.kiru.controller;
 
-import mirim.itshow.kiru.dto.LoginForm;
-import mirim.itshow.kiru.dto.MemberForm;
+import mirim.itshow.kiru.dto.member.LoginForm;
 import mirim.itshow.kiru.entity.Member;
 import mirim.itshow.kiru.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -14,9 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.nio.charset.Charset;
 
 @RestController
 @RequestMapping("/api")

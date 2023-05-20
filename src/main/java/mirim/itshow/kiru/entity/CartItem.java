@@ -2,9 +2,8 @@ package mirim.itshow.kiru.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import mirim.itshow.kiru.dto.CartForm;
+import mirim.itshow.kiru.dto.cart.CartForm;
 import mirim.itshow.kiru.entity.enum_col.Country;
-import mirim.itshow.kiru.entity.enum_col.Size;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;

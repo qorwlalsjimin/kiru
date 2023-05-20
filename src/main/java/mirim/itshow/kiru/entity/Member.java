@@ -2,7 +2,7 @@ package mirim.itshow.kiru.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import mirim.itshow.kiru.dto.MemberForm;
+import mirim.itshow.kiru.dto.member.JoinForm;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -36,13 +36,13 @@ public class Member {
     @Column
     private LocalDateTime createTimestamp; //사용자 가입 시간
 
-    public static Member createMember(MemberForm memberForm){
+    public static Member createMember(JoinForm joinForm){
         Member member = new Member();
-        member.setMemberid(memberForm.getMemberid());
-        member.setMemberpw(memberForm.getMemberpw());
-        member.setName(memberForm.getName());
-        member.setAddress(memberForm.getAddress());
-        member.setPhone(memberForm.getPhone());
+        member.setMemberid(joinForm.getMemberid());
+        member.setMemberpw(joinForm.getMemberpw());
+        member.setName(joinForm.getName());
+        member.setAddress(joinForm.getAddress());
+        member.setPhone(joinForm.getPhone());
         return member;
     }
 

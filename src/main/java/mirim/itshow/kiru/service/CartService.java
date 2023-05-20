@@ -1,17 +1,15 @@
 package mirim.itshow.kiru.service;
 
 import mirim.itshow.kiru.dao.CartItemRepository;
-import mirim.itshow.kiru.dto.CartForm;
 import mirim.itshow.kiru.entity.CartItem;
 import mirim.itshow.kiru.entity.enum_col.Country;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -26,7 +24,7 @@ public class CartService {
     /**
      * 상품 등록
      */
-    public CartItem addCart(CartItem cartItem){
+    public CartItem saveCart(CartItem cartItem){
         return cartItemRepository.save(cartItem);
     }
 
@@ -36,6 +34,11 @@ public class CartService {
     // 한복, 기모노 따로 목록 보여주기
     public List<CartItem> selectByCountry(Country HanbokOrKimono){
         return cartItemRepository.findByCountry(HanbokOrKimono);
+    }
+
+    // 특정 아이디를 가진 장바구니 상품 보여주기
+    public Optional<CartItem> findById(Long id){
+        return cartItemRepository.findById(id);
     }
 
     // 금액 총 합계

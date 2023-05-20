@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentMap;
 /**
  * 세션 관리 (Session management)
  * Not a Controller
- * using at MemberController
+ * using at JoinController
  * reference: https://develop-writing.tistory.com/87?category=894269
  */
 @Component

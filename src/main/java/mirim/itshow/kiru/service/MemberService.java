@@ -1,14 +1,12 @@
 package mirim.itshow.kiru.service;
 
 import mirim.itshow.kiru.dao.MemberRepository;
-import mirim.itshow.kiru.dto.LoginForm;
 import mirim.itshow.kiru.entity.Member;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import java.util.Optional;
 
 @Service
 @Transactional //TODO 왜 쓰는지 모름

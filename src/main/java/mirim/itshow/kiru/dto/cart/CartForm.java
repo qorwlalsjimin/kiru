@@ -1,9 +1,8 @@
-package mirim.itshow.kiru.dto;
+package mirim.itshow.kiru.dto.cart;
 
 import lombok.Data;
 import mirim.itshow.kiru.entity.enum_col.Country;
 
-import javax.persistence.Column;
 import java.time.LocalDate;
 
 @Data

@@ -1,9 +1,9 @@
-package mirim.itshow.kiru.dto;
+package mirim.itshow.kiru.dto.member;
 
 import lombok.Data;
 
 @Data
-public class MemberForm {
+public class JoinForm {
     private String memberid; //사용자 입력 id
     private String memberpw; //사용자 입력 pw
     private String name; //사용자 이름(최대 5글자)

@@ -1,25 +1,18 @@
 package mirim.itshow.kiru.controller;
 
-import mirim.itshow.kiru.dto.CartForm;
-import mirim.itshow.kiru.dto.MemberForm;
-import mirim.itshow.kiru.entity.Cart;
+import mirim.itshow.kiru.dto.cart.CartForm;
 import mirim.itshow.kiru.entity.CartItem;
-import mirim.itshow.kiru.entity.Item;
 import mirim.itshow.kiru.entity.enum_col.Country;
 import mirim.itshow.kiru.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -34,9 +27,9 @@ public class CartController {
 
     //C: 장바구니에 상품 등록
     @PostMapping("/cart/new")
-    public ResponseEntity<CartItem> cartNew(@RequestBody CartForm form) throws URISyntaxException {
+    public ResponseEntity<CartItem> newItem(@RequestBody CartForm form) throws URISyntaxException {
         CartItem cartItem = CartItem.createCart(form);
-        cartService.addCart(cartItem);
+        cartService.saveCart(cartItem);
         System.out.println("장바구니: 장바구니 상품 등록 '"+cartItem.getItemName()+"'");
         return ResponseEntity.created(new URI("/api/cart/new" + cartItem.getCartItemId()))
                 .body(cartItem);
@@ -57,9 +50,17 @@ public class CartController {
         return new ResponseEntity<List<Integer>>(cartService.selectTotalPrice(), HttpStatus.OK); //한복, 기모노 순서
     }
 
+    //U: 옵션 수정
+    @PutMapping("/cart/update/{id}")
+    public ResponseEntity<CartItem> updateItem(@RequestBody CartForm cartForm, @PathVariable Long id){
+        System.out.println("장바구니: 옵션 변경");
+        CartItem result = cartService.saveCart(CartItem.createCart(cartForm));
+        return ResponseEntity.ok().body(result);
+    }
+
     //D: 하나의 장바구니 상품 삭제
     @DeleteMapping("/cart/delete/{id}")
-    public ResponseEntity<?> deleteCartItem(@PathVariable Long id){
+    public ResponseEntity<?> deleteItem(@PathVariable Long id){
         cartService.deleteById(id);
         System.out.println("장바구니: 삭제 ("+id+")");
         return ResponseEntity.ok().build();

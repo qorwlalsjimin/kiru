@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from 'react-router-dom';
 // import { Link } from "react-router-dom"
 import './join_form.css'
-import './script.js'
+// import './script.js'
 import Modal from "./Modal";
 // import ReactDom from 'react-dom';
 // import PopupDom from './PopupDom';
 // import PopupPostCode from './PopupPostCode';
 // import axios from 'axios';
 // import DaumPostcode from "react-daum-postcode";
-
+import Footer from "../footer/Footer";
 
 
 const Join_form = (props) => {
@@ -243,19 +243,16 @@ useEffect(() => {
       </div>
 
       <br />
-
+        
       </div>
 
       <div className="sibtn">
-      <button type="submit" >회원가입하기</button>
+      <Link to="/Login_form">  <button type="submit" >회원가입하기</button> </Link>
       </div>
-
-
-      
-      
     </form>
     </div>
     </section>
+    <Footer />
     </>
   )
 };

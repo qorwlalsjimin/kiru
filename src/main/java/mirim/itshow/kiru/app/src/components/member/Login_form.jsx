@@ -1,7 +1,7 @@
 import './login_form.css';
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-
+import Footer from '../footer/Footer';
 
 const Login_form = () => {
   const [group, setGroup] = useState({
@@ -15,27 +15,8 @@ const Login_form = () => {
 
   console.log(group)
 
-  /*
-useEffect(() => {
-  if (id !== 'new') {
-    fetch(`/Login_form/${id}`) //데이터 받는 주소
-      .then(response => response.json())
-      .then(data => setGroup(data));
-  }
-}, [id, setGroup]);*/
 
-
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-  // const [rememberID, setRememberID] = useState(false);
-
-  // const handleEmailChange = (event) => {
-  //   setEmail(event.target.value);
-  // };
-
-  // const handlePasswordChange = (event) => {
-  //   setPassword(event.target.value);
-  // };
+  
 
 
   const handleChange = (event) => {
@@ -43,7 +24,6 @@ useEffect(() => {
     console.log(name, value, group)
     setGroup(group => ({ ...group, [name]: value }))
   }
-
 
   // const handleRememberIDChange = (event) => {
   //   setRememberID(event.target.checked);
@@ -58,37 +38,23 @@ useEffect(() => {
   };
 
 
-/*
-  fetch(`http://localhost:3000/Login_form`, { //이 주소에서 실행
-    method: (group.id) ? 'PUT' : 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(group)
-  });*/
-  // setGroup(login);
-  // navigate('/api/member/Login'); //데이터 보낼 주소
-
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log("제출할때");
-
-// api/group/id로 데이터 보내기?
-    await fetch(`/Loin_form`, { //이 주소에서 실행
+    await fetch(`/api/member/Loin`, { //이 주소에서 실행
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(group)
+      body: JSON.stringify({
+        "inputid": "",
+        "inputpw": ""
+    })
     });
-    // setGroup(login);
-    navigate('/api/member/Login'); //데이터 보낼 주소
+  
   }
-
-
 
 
   return (
@@ -126,7 +92,10 @@ useEffect(() => {
         </div>
         </form>
       </section>
+
+      <Footer />
     </>
+    
   )
 };
 

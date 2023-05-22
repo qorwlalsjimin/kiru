@@ -1,51 +1,25 @@
-*{
-  padding: 0;
+#root {
+}
+
+* {
   margin: 0;
+  padding: 0;
+  /* background: #ffffff;
+  font-family: Spoqa Han Sans Neo;
   box-sizing: border-box;
+  font-style: normal;
+  font-weight: normal; */
 }
 
-body{
-  background-color: #fff;
-}
-
-.container{
-  max-width: 80%;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-}
-
-.icon-container{
-  display: inline-block;
-
-}
-
-.icon-text{
- position: absolute;
- top: 10px;
- right: 60px;
- font-size: 10px;
- display: none;
-}
-
-.icon-container:hover .icon-text{
-  display: block;
-  
-}
-
-
-a{
+a {
   text-decoration: none;
-  color: #000;
-  text-transform: capitalize;
 }
 
-ul{
-  list-style-type: none;
-  
-  align-items: center;
-  display: flex;
+ul,
+li {
+  list-style: none;
+}
 
+button {
+  cursor: pointer;
 }

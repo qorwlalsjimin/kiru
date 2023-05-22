@@ -4,9 +4,15 @@
     top: 22%;
 }
 
+
+.selection{
+    margin-top: 2%;
+}
 .Banner{
     height: 30vh;
     background-color: rgb(229, 231, 231);
+    margin-bottom: 10%;
+
 }
 
 .selection{

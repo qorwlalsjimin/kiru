@@ -2,13 +2,12 @@
     padding: 20px;
     width: 11.5rem;
     background-color: #fff;
-    border: none;
-    
+    border: none; 
 }  
 
 
 .logintext .bsi{
-    border-bottom: solid 1px black;
+    border-bottom: solid 3px #9553C8;
 }
 
 .pass input{
@@ -127,7 +126,8 @@ button:hover{
     margin-bottom: 2%;
     padding: 20px;
     width: 25vw;
-    background-color: #000000;
+    background-color: #9553C8;
     color: #fff;
     border-radius: 5px;
+    border: none;
 }

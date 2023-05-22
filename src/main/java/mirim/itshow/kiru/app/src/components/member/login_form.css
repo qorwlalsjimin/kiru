@@ -30,8 +30,9 @@
     margin-top: 5%;
     padding: 20px;
     width: 25vw;
-    background-color: #000000;
+    background-color: #9553C8;
     color: #fff;
+    border: none;
     border-radius: 5px;
 }
 
@@ -104,5 +105,5 @@ input::-webkit-input-placeholder {
 
 
 .logintext .blo{
-    border-bottom: solid 1px black;
+    border-bottom: solid 3px #9553C8;
 }

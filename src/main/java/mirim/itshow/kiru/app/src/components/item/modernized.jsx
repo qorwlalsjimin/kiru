@@ -1,10 +1,9 @@
 import React from 'react'
-import './improve.css'
 
-const Improve = () => {
+const modernized = () => {
   return (
     <>
-       <div className='Banner'>
+      <div className='Banner'>
       <h2>개량한복</h2>
       </div>
 
@@ -26,9 +25,9 @@ const Improve = () => {
         </div>
 
       </div>
-
+      
     </>
   )
 }
 
-export default Improve
+export default modernized

@@ -1,5 +1,4 @@
 import React from 'react'
-import './tradition.css'
 
 const Tradition = () => {
   return (
@@ -27,7 +26,7 @@ const Tradition = () => {
 
         </div>
 
-
+        
 
     </>
   )

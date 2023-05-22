@@ -45,8 +45,9 @@ public class ItemController {
     }
 
     //하나의 상품 상세 정보
-    @GetMapping("/item/{item_id}")
+    @GetMapping("/item/{itemId}")
     public ResponseEntity<?> selectById(@PathVariable Long itemId){
+        System.out.println(itemId);
         Optional<Item> itemInfo = Optional.ofNullable(itemService.selectItemById(itemId));
         return itemInfo.map(response -> ResponseEntity.ok().body(response))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));

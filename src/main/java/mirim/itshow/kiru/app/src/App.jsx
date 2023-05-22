@@ -7,7 +7,10 @@ import Product from "./pages/product";
 import Basket from "./pages/basket";
 import Login_form from "./components/member/Login_form";
 import Join_form from "./components/member/Join_form";
+import Modernized from "./components/item/modernized";
 // import Tradition from "./components/item/Tradition";
+import Shoes from './components/item/shoes'
+import Accessories from "./components/item/Accessories"
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -33,8 +36,37 @@ function App() {
               products={products}
               setProducts={setProducts}
             />
+
+
           }
         />
+
+
+
+
+<Route
+          path="/modernized"
+          exact={true}
+          element={
+            <Modernized/> } 
+            />
+
+<Route
+          path="/shoes"
+          exact={true}
+          element={
+            <Shoes/> } 
+            />
+
+
+{/* <Route
+          path="/Accessories"
+          exact={true}
+          element={
+            <Accessories/> } 
+            />
+ */}
+
         <Route
           path="/product/:id"
           element={

@@ -1,16 +1,20 @@
 .Banner h2{
-    position: absolute;
-    left: 20%;
-    top: 22%;
+   
+    /* left: 20%; */
+    margin-top: 5%;
+    display: grid;
+    place-items: center;
+    /* position: absolute; */
+    /* top: 20%; */
 }
 
 
 .selection{
-    margin-top: 2%;
+    /* margin-top: 2%; */
 }
 .Banner{
-    height: 30vh;
-    background-color: rgb(229, 231, 231);
+    /* height: 30vh; */
+    /* background-color: rgb(229, 231, 231); */
     margin-bottom: 10%;
 
 }
@@ -19,7 +23,7 @@
     position:absolute;
     transform: translate(-50%, -50%);
     left: 50%;
-    top: 50%;
+    top: 29%;
     display: flex;
     justify-content: space-around;
     width: 20%;

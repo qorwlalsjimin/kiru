@@ -7,7 +7,7 @@ const Tradition = ({ convertPrice, products, setProducts }) => {
   
     // <Modernized path ='/modernized' exact element = {<Modernized />} />,
 
-
+    
     
 
     <Main

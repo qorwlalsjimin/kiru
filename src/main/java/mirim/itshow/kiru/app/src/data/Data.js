@@ -6,7 +6,7 @@ export const nav = [
 
     {
         text: "개량",
-        path: "/improve",
+        path: "/modernized",
     },
     {
         text: "신발",

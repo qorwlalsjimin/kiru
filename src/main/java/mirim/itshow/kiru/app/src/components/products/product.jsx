@@ -6,12 +6,15 @@ import { useEffect, useState } from "react";
 
 export const Product = ({ product, convertPrice }) => {
   // const { name, description, price, imageUrl, color, size, brand } = product;
-  const [item, setItem] = useState(null);
+  // const [item, setItem] = useState(null);
+  const item = product;
 
+  /*
+  console.log("?????")
   useEffect(() => {
     const fetchItem = async () => {
       try {
-        const response = await axios.get('/api/items/item_list/120'); // Replace 1 with the actual item ID
+        const response = await axios.get('http://localhost:8000/api/items/item_list/120'); // Replace 1 with the actual item ID
         setItem(response.data);
       } catch (error) {
         console.error(error);
@@ -21,13 +24,13 @@ export const Product = ({ product, convertPrice }) => {
     fetchItem();
   }, []);
 
-
+*/
 
 
   return (
     product && (
       <div className={styles.product}>
-        <Link to={`/product/`}>
+        <Link to={`/product/${item.itemId}`}>
           <div className={styles.product_image}>
             <img src={item.imageUrl[0]} alt="product" />
           </div>

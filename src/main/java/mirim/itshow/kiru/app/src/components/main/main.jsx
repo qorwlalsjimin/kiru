@@ -5,7 +5,7 @@ import { Product } from "../products/product";
 import axios from 'axios';
 // import { getProducts } from "../../service/fetcher";
 
-export const Main = ({ convertPrice, products, setItem }) => {
+export const Main = ({ convertPrice, products, setProducts }) => {
   // const sortProduct = (type) => {
   //   if (type === "recent") {
   //     const newProduct = [...products];
@@ -25,8 +25,9 @@ export const Main = ({ convertPrice, products, setItem }) => {
   useEffect(() => {
     const fetchItem = async () => {
       try {
-        const response = await axios.get('/api/items/item_list/120'); // Replace 1 with the actual item ID
-        setItem(response.data);
+        const response = await axios.get('/api/item/item_list/110'); // 전통한복
+        console.log(response.data)
+        setProducts(response.data);
       } catch (error) {
         console.error(error);
       }

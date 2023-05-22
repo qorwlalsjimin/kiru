@@ -3,11 +3,25 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 // import { getProducts } from "../../service/fetcher";
 import Detail2 from "./detail2"
+import axios from "axios";
 
 export const Detail = ({ convertPrice, cart, setCart }) => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
   const [count, setCount] = useState(1);
+
+  useEffect(() => {
+    const fetchItem = async () => {
+      try {
+        const response = await axios.get(`/api/item/${id}`); // Replace 1 with the actual item ID
+        setProduct(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchItem();
+  }, []);
 
   // 상세페이지에서 물건 수량 조절
   const handleQuantity = (type) => {

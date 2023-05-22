@@ -4,7 +4,7 @@ const Tradition = () => {
   return (
     <>
       <div className='Banner'>
-      <h2>전통한복</h2>
+      <h2>전통복</h2>
       </div>
 
         <div className="selection">

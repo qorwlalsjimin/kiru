@@ -1,0 +1,23 @@
+.star i{
+    margin-left: 55%;
+}
+
+.content{
+    height: 100vh;
+    /* display: flex; */
+}
+
+.btn{
+
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  
+}
+
+.btn button{
+    /* display: flex; */
+    width: 20%;
+    height: 15%;
+}

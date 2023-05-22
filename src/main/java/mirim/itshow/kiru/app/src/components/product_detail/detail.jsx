@@ -2,6 +2,7 @@ import styles from "./detail.module.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 // import { getProducts } from "../../service/fetcher";
+import Detail2 from "./detail2"
 
 export const Detail = ({ convertPrice, cart, setCart }) => {
   const { id } = useParams();
@@ -131,6 +132,8 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
             </div>
           </section>
         </main>
+
+        <Detail2 />
       </>
     )
   );

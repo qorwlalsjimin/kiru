@@ -27,12 +27,15 @@ public class CartController {
 
     //C: 장바구니에 상품 등록
     @PostMapping("/cart/new")
-    public ResponseEntity<CartItem> newItem(@RequestBody CartForm form) throws URISyntaxException {
-        CartItem cartItem = CartItem.createCart(form);
-        cartService.saveCart(cartItem);
-        System.out.println("장바구니: 장바구니 상품 등록 '"+cartItem.getItemName()+"'");
-        return ResponseEntity.created(new URI("/api/cart/new" + cartItem.getCartItemId()))
-                .body(cartItem);
+    public ResponseEntity<?> newItem(@RequestBody CartForm form) throws URISyntaxException {
+        try {
+            cartService.addCart(form, "사용자이름..");
+        }catch (IllegalStateException e){
+            System.out.println("이미 등록되어 있는 상품인데, 또 등록하시겠습니까?");
+        }
+        System.out.println("장바구니: 장바구니 상품 등록 '"+form.getItemId()+"'");
+        return ResponseEntity.created(new URI("/api/cart/new" + form.getCartItemId()))
+                .body(form);
     }
 
     //R: 장바구니 목록
@@ -52,10 +55,10 @@ public class CartController {
 
     //U: 옵션 수정
     @PutMapping("/cart/update")
-    public ResponseEntity<CartItem> updateItem(@RequestBody CartForm cartForm){
+    public ResponseEntity<?> updateItem(@RequestBody CartForm cartForm){
         System.out.println("장바구니: 옵션 변경");
-        CartItem result = cartService.updateCart(CartItem.createCart(cartForm));
-        return ResponseEntity.ok().body(result);
+        CartItem result = cartService.updateCart(cartForm);
+        return ResponseEntity.ok().body(cartForm);
     }
 
     //D: 하나의 장바구니 상품 삭제

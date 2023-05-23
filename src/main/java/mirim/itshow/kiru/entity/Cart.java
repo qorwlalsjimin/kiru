@@ -18,6 +18,11 @@ public class Cart {
 
     @OneToOne
     @JoinColumn(name = "id")
-    private Member memberId; //사용자 id(fk)
+    private Member member; //사용자 (fk)
 
+    public static Cart createCart(Member member){
+        Cart cart = new Cart();
+        cart.setMember(member);
+        return cart;
+    }
 }

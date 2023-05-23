@@ -4,6 +4,7 @@ import mirim.itshow.kiru.dao.CategoryRepository;
 import mirim.itshow.kiru.dao.ItemRepository;
 import mirim.itshow.kiru.entity.Category;
 import mirim.itshow.kiru.entity.Item;
+import mirim.itshow.kiru.entity.enum_col.Country;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -31,37 +32,41 @@ class Initializer implements CommandLineRunner {
                 new Category(100L, 0L, "*한복"),
 
                 new Category(110L, 100L, "전통"),
-                new Category(111L, 110L, "황금바늘.goodneedle"),
-                new Category(112L, 110L, "민한복.minhanbok"),
-                new Category(113L, 110L, "본한복.bonhanbok"),
+                new Category(111L, 110L, "황금바늘.Goodneedle"),
+                new Category(112L, 110L, "민한복.Minhanbok"),
+                new Category(113L, 110L, "본한복.Bonhanbok"),
 
                 new Category(120L, 100L, "개량"),
-                new Category(121L, 120L, "단하.danha"),
-                new Category(122L, 120L, "차이킴.tchaikim"),
-                new Category(123L, 120L, "리슬.leesle"),
+                new Category(121L, 120L, "단하.Danha"),
+                new Category(122L, 120L, "차이킴.Tchaikim"),
+                new Category(123L, 120L, "리슬.Leesle"),
 
                 new Category(130L, 100L, "신발"),
-                new Category(131L, 130L, "블랑수블랑.blanc sur blanc"),
-                new Category(132L, 130L, "리우앤비우.riuviu"),
+                new Category(131L, 130L, "블랑수블랑.Blanc sur blanc"),
+                new Category(132L, 130L, "리우앤비우.Riuviu"),
 
                 new Category(140L, 100L, "악세서리"),
-                new Category(141L, 140L, "돌실나이.dolsilnai"),
-                new Category(142L, 140L, "차이킴.tchaikim"),
-                new Category(143L, 140L, "나빔.nabim"),
-                new Category(144L, 140L, "하플리.happly"),
+                new Category(141L, 140L, "돌실나이.Dolsilnai"),
+                new Category(142L, 140L, "차이킴.Tchaikim"),
+                new Category(143L, 140L, "나빔.Nabim"),
+                new Category(144L, 140L, "하플리.Happly"),
 
                 new Category(150L, 100L, "세트"),
 
 
                 new Category(200L, 200L, "*일본"),
-                new Category(210L, 200L, "기모노"),
+                new Category(210L, 200L, "소라노카오리.Sorano Kaori"),
+                new Category(211L, 210L, "하나비라.Hanabira"),
+                new Category(212L, 210L, "스즈노기모노.Suzuno kimono"),
+
                 new Category(220L, 200L, "유카타"),
+                new Category(221L, 220L, "소라노카오리.Sorano kaori"),
 
                 new Category(230L, 200L, "신발"),
-                new Category(231L, 230L, "くるり.kururi"),
+                new Category(231L, 230L, "くるり.Kururi"),
 
                 new Category(240L, 200L, "악세서리"),
-                new Category(241L, 240L, "くるり.kururi")
+                new Category(241L, 240L, "くるり.Kururi")
         };
         Arrays.stream(categories).forEach(category -> categoryRepository.save(category));
 
@@ -77,6 +82,7 @@ class Initializer implements CommandLineRunner {
                                 "http://www.goldhanbok.com/web/upload/NNEditor/20230303/2302_0406.jpg"})
                         .color(new String[]{"청회색", "분홍색", "짙은보라색"})
                         .size(new String[]{"S", "M", "L"}).categoryId(categoryRepository.findById(111L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("황금바늘").build(),
 
                 Item.builder()
@@ -86,6 +92,7 @@ class Initializer implements CommandLineRunner {
                         .imageUrl(new String[]{"", "http://www.goldhanbok.com/web/upload/NNEditor/20220321/0319_06_03.jpg", "http://www.goldhanbok.com/web/upload/NNEditor/20220321/0319_06_05.JPG"})
                         .color(new String[]{"분홍색", "청색"})
                         .size(new String[]{"S", "M", "L"}).categoryId(categoryRepository.findById(111L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("황금바늘").build(),
 
                 Item.builder()
@@ -96,6 +103,7 @@ class Initializer implements CommandLineRunner {
                                 "https://i.ibb.co/RHVPjHT/image.jpg"})
                         .color(new String[]{"적색"})
                         .size(new String[]{"S", "M", "L"}).categoryId(categoryRepository.findById(111L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("황금바늘").build(),
 
                 Item.builder()
@@ -106,6 +114,7 @@ class Initializer implements CommandLineRunner {
                                 "http://www.goldhanbok.com/web/upload/NNEditor/20150926/07_shop1_214427.jpg"})
                         .color(new String[]{"녹색&분홍색"})
                         .size(new String[]{"S", "M", "L"}).categoryId(categoryRepository.findById(111L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("황금바늘").build(),
 
                 Item.builder()
@@ -116,6 +125,7 @@ class Initializer implements CommandLineRunner {
                                 "http://www.goldhanbok.com/web/upload/NNEditor/20220319/0319_05_04.png"})
                         .color(new String[]{"청색", "분홍색"})
                         .size(new String[]{"S", "M", "L"}).categoryId(categoryRepository.findById(111L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("황금바늘").build(),
 
                 Item.builder()
@@ -126,6 +136,7 @@ class Initializer implements CommandLineRunner {
                                 "https://i.ibb.co/Mfwf79m/image.jpg"})
                         .color(new String[]{"밝은녹색", "분홍색"})
                         .size(new String[]{"S", "M", "L"}).categoryId(categoryRepository.findById(111L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("황금바늘").build(),
 
 
@@ -137,6 +148,7 @@ class Initializer implements CommandLineRunner {
                                 "https://i.ibb.co/bPHdYmR/image.jpg"})
                         .color(new String[]{"보라색", "회색"})
                         .size(new String[]{"S", "M", "L"}).categoryId(categoryRepository.findById(111L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("황금바늘").build(),
 
 
@@ -149,6 +161,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"분홍색", "청색"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(112L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("민한복").build(),
 
 
@@ -161,6 +174,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"청록색", "분홍색"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(112L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("민한복").build(),
 
 
@@ -173,6 +187,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"청색", "분홍색"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(112L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("민한복").build(),
 
 
@@ -185,6 +200,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"하늘색"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(112L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("민한복").build(),
 
 
@@ -197,6 +213,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"하늘색&노랑색"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(112L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("민한복").build(),
 
 
@@ -209,6 +226,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"보라색"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(112L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("민한복").build(),
 
 
@@ -221,6 +239,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"하늘색"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(112L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("민한복").build(),
 
 
@@ -233,6 +252,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"노랑색"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(113L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("복한복").build(),
 
 
@@ -245,6 +265,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"분홍색"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(113L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("복한복").build(),
 
 
@@ -257,6 +278,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"분홍색", "청색"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(113L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("복한복").build(),
 
 
@@ -269,6 +291,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"녹색", "분홍색"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(113L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("복한복").build(),
 
 
@@ -281,6 +304,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"버건디", "라벤더"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(113L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("복한복").build(),
 
 
@@ -293,6 +317,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"회색"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(113L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("복한복").build(),
 
 // 한국 - 개량한복
@@ -305,6 +330,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"옥색", "적색", "자색"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(121L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("단하").build(),
 
 
@@ -316,6 +342,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"노랑"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(121L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("단하").build(),
 
 
@@ -327,6 +354,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"분홍"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(121L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("단하").build(),
 
 
@@ -338,6 +366,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"연두"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(121L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("단하").build(),
 
 
@@ -349,6 +378,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"핑크"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(121L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("단하").build(),
 
 
@@ -360,6 +390,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"연보라"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(121L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("단하").build(),
 
 
@@ -371,6 +402,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"로열블루"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(121L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("단하").build(),
 
 
@@ -382,6 +414,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"청색"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(121L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("단하").build(),
 
 
@@ -393,6 +426,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"쉘핑크"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(121L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("단하").build(),
 
 
@@ -404,6 +438,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"청색"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(121L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("단하").build(),
 
 
@@ -415,6 +450,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"블루"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(121L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("단하").build(),
 
 
@@ -426,6 +462,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"코랄"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(121L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("단하").build(),
 
 
@@ -437,6 +474,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"민트"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(121L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("단하").build(),
 
 
@@ -448,6 +486,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"청록"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(121L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("단하").build(),
 
 
@@ -460,6 +499,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"하양", "네이비"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(122L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("차이킴").build(),
 
 
@@ -471,6 +511,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"네이비"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(122L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("차이킴").build(),
 
 
@@ -482,6 +523,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"연두"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(122L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("차이킴").build(),
 
 
@@ -493,6 +535,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"하양"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(122L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("차이킴").build(),
 
 
@@ -504,6 +547,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"하양"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(122L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("차이킴").build(),
 
 
@@ -515,6 +559,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"네이비"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(122L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("차이킴").build(),
 
 
@@ -527,6 +572,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"블랙"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(123L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("리슬").build(),
 
 
@@ -538,6 +584,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"블랙"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(123L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("리슬").build(),
 
 
@@ -549,6 +596,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"아이보리"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(123L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("리슬").build(),
 
 
@@ -560,6 +608,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"아이보리"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(123L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("리슬").build(),
 
 
@@ -571,6 +620,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"핑크", "아이보리", "노랑"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(123L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("리슬").build(),
 
 
@@ -582,6 +632,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"아이보리"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(123L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("리슬").build(),
 
 
@@ -594,6 +645,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"비색"})
                         .size(new String[]{"225", "230", "235", "240", "245", "250", "255"})
                         .categoryId(categoryRepository.findById(131L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("블랑수블랑").build(),
 
                 Item.builder()
@@ -604,6 +656,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"상아색"})
                         .size(new String[]{"225", "230", "235", "240", "245", "250", "255"})
                         .categoryId(categoryRepository.findById(131L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("블랑수블랑").build(),
 
 
@@ -615,6 +668,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"유청색"})
                         .size(new String[]{"225", "230", "235", "240", "245", "250", "255"})
                         .categoryId(categoryRepository.findById(131L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("블랑수블랑").build(),
 
 
@@ -626,6 +680,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"흑색"})
                         .size(new String[]{"225", "230", "235", "240", "245", "250", "255"})
                         .categoryId(categoryRepository.findById(132L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("리우앤비우").build(),
 
 
@@ -637,6 +692,7 @@ class Initializer implements CommandLineRunner {
                         .imageUrl(new String[]{"", "https://dolsilnai.co.kr/web/product/extra/small/202212/a070d7b0973ad82e2daac40831f740a2.jpg", "https://dolsilnai.co.kr/web/product/extra/small/202212/02a9ea6e681f258e207a0713a7df5081.jpg"})
                         .color(new String[]{"pink"})
                         .categoryId(categoryRepository.findById(141L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("돌실나이").build(),
 
                 Item.builder()
@@ -646,6 +702,7 @@ class Initializer implements CommandLineRunner {
                         .imageUrl(new String[]{"", "https://dolsilnai.co.kr/web/product/extra/small/202212/7911f1d2ce752af4e9781506a86478d8.jpg", "https://dolsilnai.co.kr/web/product/extra/small/202212/e9375adb567f31f51d64025a54b8aaca.jpg"})
                         .color(new String[]{"분홍", "제트블랙", "베이지"})
                         .categoryId(categoryRepository.findById(141L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("돌실나이").build(),
 
                 Item.builder()
@@ -655,6 +712,7 @@ class Initializer implements CommandLineRunner {
                         .imageUrl(new String[]{"", "https://www.tchaikim.co.kr/web/upload/NNEditor/20220113/E38587.jpg", "https://www.tchaikim.co.kr/web/product/big/202201/160367f8e49d0ba290d0a968cc4347a9.jpg"})
                         .color(new String[]{"red", "green"})
                         .categoryId(categoryRepository.findById(142L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("차이킴").build(),
 
                 Item.builder()
@@ -664,6 +722,7 @@ class Initializer implements CommandLineRunner {
                         .imageUrl(new String[]{"", "https://www.tchaikim.co.kr/web/upload/NNEditor/20220510/EC8AA4ECB9B4ED9484C_EBA7A4EB829CEAB5ADECA3BD2.jpg", "https://www.tchaikim.co.kr/web/upload/NNEditor/20220510/EC8AA4ECB9B4ED9484C_EBA7A4EB829CEAB5ADECA3BDBACK.jpg"})
                         .color(new String[]{"green"})
                         .categoryId(categoryRepository.findById(142L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("차이킴").build(),
 
                 Item.builder()
@@ -672,6 +731,7 @@ class Initializer implements CommandLineRunner {
                         .description("* 저고리(hanbok top)가 리오더 되었습니다.")
                         .imageUrl(new String[]{"", "https://www.tchaikim.co.kr/web/upload/gallery/store/057-10.jpg", "https://www.tchaikim.co.kr/web/upload/gallery/store/057-5.jpg"})
                         .categoryId(categoryRepository.findById(142L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("차이킴").build(),
 
                 Item.builder()
@@ -681,6 +741,7 @@ class Initializer implements CommandLineRunner {
                         .imageUrl(new String[]{"", "https://cdn.imweb.me/thumbnail/20220420/0c63acee1ca82.jpg", "https://cdn.imweb.me/upload/S201905085cd22585c0b49/99eaaefa072f5.jpg"})
                         .color(new String[]{"하늘", "보라/연두", "보라/연상아", "민트", "연상아"})
                         .categoryId(categoryRepository.findById(143L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("나빔").build(),
                 
                 Item.builder()
@@ -690,6 +751,7 @@ class Initializer implements CommandLineRunner {
                         .imageUrl(new String[]{"", "https://cdn.imweb.me/thumbnail/20220420/e5201c3d0bba2.jpg", "https://cdn.imweb.me/upload/S201905085cd22585c0b49/ed956543e6d1e.jpg"})
                         .color(new String[]{"연상아"})
                         .categoryId(categoryRepository.findById(143L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("나빔").build(),
 
                 Item.builder()
@@ -698,6 +760,7 @@ class Initializer implements CommandLineRunner {
                         .description("아름다운 한국 고유의 미감을 표현한 아이템입니다.")
                         .imageUrl(new String[]{"", "https://www.happly.co.kr/web/upload/NNEditor/20220822/f05807b5f5d6012cc8e758cf7e6ed0cf.jpg", "https://www.happly.co.kr/web/upload/NNEditor/20220822/fab38ea2c0837afd5d063c953e34b17a.jpg"})
                         .categoryId(categoryRepository.findById(144L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("하플리").build(),
 
                 Item.builder()
@@ -707,11 +770,13 @@ class Initializer implements CommandLineRunner {
                         .imageUrl(new String[]{"", "https://ibb.co/bHSmyZD", "https://ibb.co/txwvp3d"})
                         .color(new String[]{"군청색", "비색", "훈색"})
                         .categoryId(categoryRepository.findById(144L).orElse(null))
+                        .country(Country.hanbok)
                         .brand("하플리").build(),
 
 
 /* 일본 */
 // 일본 - 기모노
+//소라노카오리
                 Item.builder()
                         .name("쿠모 이브닝 기모노")
                         .price(26300)
@@ -722,6 +787,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"흑색", "적색"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(211L).orElse(null))
+                        .country(Country.kimono)
                         .brand("소라노카오리").build(),
 
                 Item.builder()
@@ -734,6 +800,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"청색", "분홍색", "흑색"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(211L).orElse(null))
+                        .country(Country.kimono)
                         .brand("소라노카오리").build(),
 
                 Item.builder()
@@ -743,6 +810,7 @@ class Initializer implements CommandLineRunner {
                         .imageUrl(new String[]{"https://ae01.alicdn.com/kf/Hb9894978b2e243a4a446f58e0d83fb83T.jpg"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(211L).orElse(null))
+                        .country(Country.kimono)
                         .brand("소라노카오리").build(),
 
                 Item.builder()
@@ -753,6 +821,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"하양", "빨강", "핑크"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(211L).orElse(null))
+                        .country(Country.kimono)
                         .brand("소라노카오리").build(),
 
                 Item.builder()
@@ -764,6 +833,7 @@ class Initializer implements CommandLineRunner {
                                 "https://ae01.alicdn.com/kf/H8f05c58e94ad4c738c76aef02d44475ba.jpg"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(211L).orElse(null))
+                        .country(Country.kimono)
                         .brand("소라노카오리").build(),
 
                 Item.builder()
@@ -774,6 +844,7 @@ class Initializer implements CommandLineRunner {
                                 "https://ae01.alicdn.com/kf/HTB1XMp5LpXXXXXcXXXXq6xXFXXXa.jpg"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(211L).orElse(null))
+                        .country(Country.kimono)
                         .brand("소라노카오리").build(),
 
 // 하나비라
@@ -786,6 +857,7 @@ class Initializer implements CommandLineRunner {
                                 "https://m.media-amazon.com/images/I/71vofv3-nXL._AC_UX679_.jpg"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(212L).orElse(null))
+                        .country(Country.kimono)
                         .brand("하나비라").build(),
 
                 Item.builder()
@@ -796,6 +868,7 @@ class Initializer implements CommandLineRunner {
                                 "https://m.media-amazon.com/images/I/71G6yF97t1L._AC_UY741_.jpg"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(212L).orElse(null))
+                        .country(Country.kimono)
                         .brand("하나비라").build(),
 
                 Item.builder()
@@ -807,6 +880,7 @@ class Initializer implements CommandLineRunner {
                                 "https://m.media-amazon.com/images/I/71DaOHanRKL._AC_UX679_.jpg"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(212L).orElse(null))
+                        .country(Country.kimono)
                         .brand("하나비라").build(),
 
                 Item.builder()
@@ -818,6 +892,7 @@ class Initializer implements CommandLineRunner {
                                 "https://m.media-amazon.com/images/I/71LtwoRtqiL._AC_UX679_.jpg"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(212L).orElse(null))
+                        .country(Country.kimono)
                         .brand("하나비라").build(),
 
                 Item.builder()
@@ -829,6 +904,7 @@ class Initializer implements CommandLineRunner {
                                 "https://m.media-amazon.com/images/I/71DaOHanRKL._AC_UX679_.jpg"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(212L).orElse(null))
+                        .country(Country.kimono)
                         .brand("하나비라").build(),
 
                 Item.builder()
@@ -840,6 +916,7 @@ class Initializer implements CommandLineRunner {
                                 "https://m.media-amazon.com/images/I/711HgdL-UoL._AC_UX679_.jpg"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(212L).orElse(null))
+                        .country(Country.kimono)
                         .brand("하나비라").build(),
 
                 //스즈노기모노
@@ -853,6 +930,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"빨강", "핑크", "파랑"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(213L).orElse(null))
+                        .country(Country.kimono)
                         .brand("스즈노기모노").build(),
                 
                 Item.builder()
@@ -864,6 +942,7 @@ class Initializer implements CommandLineRunner {
                                 "https://m.media-amazon.com/images/I/61XF6+JwmJL._AC_UL500_.jpg"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(213L).orElse(null))
+                        .country(Country.kimono)
                         .brand("스즈노기모노").build(),
                 
                 Item.builder()
@@ -876,6 +955,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"검정", "파랑", "보라"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(213L).orElse(null))
+                        .country(Country.kimono)
                         .brand("스즈노기모노").build(),
                 
                 Item.builder()
@@ -888,6 +968,7 @@ class Initializer implements CommandLineRunner {
                         .color(new String[]{"빨강", "보라", "핑크"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(213L).orElse(null))
+                        .country(Country.kimono)
                         .brand("스즈노기모노").build(),
                 
                 Item.builder()
@@ -899,6 +980,7 @@ class Initializer implements CommandLineRunner {
                                 "https://m.media-amazon.com/images/I/61L3ZqUNfIL._AC_UL500_.jpg"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(213L).orElse(null))
+                        .country(Country.kimono)
                         .brand("스즈노기모노").build(),
                 
                 Item.builder()
@@ -910,6 +992,7 @@ class Initializer implements CommandLineRunner {
                                 "https://m.media-amazon.com/images/I/51CgfmuhaIL.jpg"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(213L).orElse(null))
+                        .country(Country.kimono)
                         .brand("스즈노기모노").build(),
 
 
@@ -921,7 +1004,8 @@ class Initializer implements CommandLineRunner {
                         .imageUrl(new String[]{"https://m.media-amazon.com/images/I/5124G-nYLJL.jpg", "https://m.media-amazon.com/images/I/512yELDO0-L.jpg"})
                         .color(new String[]{"빨강","검정", "파랑"})
                         .size(new String[]{"S", "M", "L"})
-                        .categoryId(categoryRepository.findById(110L).orElse(null))
+                        .categoryId(categoryRepository.findById(221L).orElse(null))
+                        .country(Country.kimono)
                         .brand("소라노카오리").build(),
                 
                 Item.builder()
@@ -931,7 +1015,8 @@ class Initializer implements CommandLineRunner {
                         .imageUrl(new String[]{"https://m.media-amazon.com/images/I/51xc2rgwAEL.jpg", "https://m.media-amazon.com/images/I/61nxJ6-iQGL.jpg"})
                         .color(new String[]{"빨강","검정", "파랑"})
                         .size(new String[]{"S", "M", "L"})
-                        .categoryId(categoryRepository.findById(110L).orElse(null))
+                        .categoryId(categoryRepository.findById(221L).orElse(null))
+                        .country(Country.kimono)
                         .brand("소라노카오리").build(),
                 
                 Item.builder()
@@ -941,7 +1026,8 @@ class Initializer implements CommandLineRunner {
                         .imageUrl(new String[]{"https://m.media-amazon.com/images/I/51d2wgINS6L.jpg","https://m.media-amazon.com/images/I/51T17aP4S3L.jpg","https://m.media-amazon.com/images/I/519fxxAPZwL.jpg"})
                         .color(new String[]{"골드","빨강"})
                         .size(new String[]{"S", "M", "L"})
-                        .categoryId(categoryRepository.findById(110L).orElse(null))
+                        .categoryId(categoryRepository.findById(221L).orElse(null))
+                        .country(Country.kimono)
                         .brand("소라노카오리").build(),
                 
                 Item.builder()
@@ -950,7 +1036,8 @@ class Initializer implements CommandLineRunner {
                         .description("차분한 계열의 금붕어 레트로 모던 면반폭띠 입니다.")
                         .imageUrl(new String[]{"https://m.media-amazon.com/images/I/415c0I0ONxL.jpg", "https://m.media-amazon.com/images/I/51AMOX-YeoL.jpg","https://m.media-amazon.com/images/I/51L0iVVBttL.jpg"})
                         .size(new String[]{"S", "M", "L"})
-                        .categoryId(categoryRepository.findById(110L).orElse(null))
+                        .categoryId(categoryRepository.findById(221L).orElse(null))
+                        .country(Country.kimono)
                         .brand("소라노카오리").build(),
                 
                 Item.builder()
@@ -960,7 +1047,8 @@ class Initializer implements CommandLineRunner {
                         .imageUrl(new String[]{"https://m.media-amazon.com/images/I/51rEkECpguL.jpg", "https://m.media-amazon.com/images/I/510sRaEPKhL.jpg"})
                         .color(new String[]{"빨강","검정", "파랑"})
                         .size(new String[]{"S", "M", "L"})
-                        .categoryId(categoryRepository.findById(110L).orElse(null))
+                        .categoryId(categoryRepository.findById(221L).orElse(null))
+                        .country(Country.kimono)
                         .brand("소라노카오리").build(),
                 
                 Item.builder()
@@ -969,7 +1057,8 @@ class Initializer implements CommandLineRunner {
                         .description("원단은 적당하게 얇으며 시원해 보이는 느낌이 있습니다.")
                         .imageUrl(new String[]{"https://m.media-amazon.com/images/I/41QZ04zOOdL.jpg", "https://m.media-amazon.com/images/I/41RsBHG2YBL.jpg","https://m.media-amazon.com/images/I/51lhnF2r0EL.jpg"})
                         .size(new String[]{"S", "M", "L"})
-                        .categoryId(categoryRepository.findById(110L).orElse(null))
+                        .categoryId(categoryRepository.findById(221L).orElse(null))
+                        .country(Country.kimono)
                         .brand("소라노카오리").build(),
 
 // 일본 - 신발
@@ -980,6 +1069,7 @@ class Initializer implements CommandLineRunner {
                         .imageUrl(new String[]{"", "https://kururi.itembox.design/product/214/000000021450/000000021450-08-l.jpg?t=20230516143908", "https://kururi.itembox.design/product/214/000000021450/000000021450-09-xl.jpg?t=20230516143908"})
                         .size(new String[]{"230", "240", "250"})
                         .categoryId(categoryRepository.findById(231L).orElse(null))
+                        .country(Country.kimono)
                         .brand("くるり").build(),
 
                 Item.builder()
@@ -989,6 +1079,7 @@ class Initializer implements CommandLineRunner {
                         .imageUrl(new String[]{"", "https://kururi.itembox.design/product/208/000000020876/000000020876-08-l.jpg?t=20230516143908", "https://kururi.itembox.design/product/208/000000020876/000000020876-12-l.jpg?t=20230516143908"})
                         .size(new String[]{"230", "240", "250"})
                         .categoryId(categoryRepository.findById(231L).orElse(null))
+                        .country(Country.kimono)
                         .brand("くるり").build(),
 
                 Item.builder()
@@ -998,6 +1089,7 @@ class Initializer implements CommandLineRunner {
                         .imageUrl(new String[]{"", "https://kururi.itembox.design/product/225/000000022517/000000022517-03-l.jpg?t=20230516143908", "https://kururi.itembox.design/product/225/000000022517/000000022517-02-l.jpg?t=20230516143908"})
                         .size(new String[]{"230", "240", "250"})
                         .categoryId(categoryRepository.findById(231L).orElse(null))
+                        .country(Country.kimono)
                         .brand("くるり").build(),
 
                 Item.builder()
@@ -1007,6 +1099,7 @@ class Initializer implements CommandLineRunner {
                         .imageUrl(new String[]{"", "https://kururi.itembox.design/product/222/000000022203/000000022203-07-l.jpg?t=20230516143908", "https://kururi.itembox.design/product/222/000000022203/000000022203-09-l.jpg?t=20230516143908"})
                         .size(new String[]{"230", "240", "250"})
                         .categoryId(categoryRepository.findById(231L).orElse(null))
+                        .country(Country.kimono)
                         .brand("くるり").build(),
 
                 Item.builder()
@@ -1016,6 +1109,7 @@ class Initializer implements CommandLineRunner {
                         .imageUrl(new String[]{"", "https://kururi.itembox.design/product/211/000000021190/000000021190-08-l.jpg?t=20230516143908", "https://kururi.itembox.design/product/211/000000021190/000000021190-12-l.jpg?t=20230516143908"})
                         .size(new String[]{"230", "240", "250"})
                         .categoryId(categoryRepository.findById(231L).orElse(null))
+                        .country(Country.kimono)
                         .brand("くるり").build(),
 
                 Item.builder()
@@ -1025,6 +1119,7 @@ class Initializer implements CommandLineRunner {
                         .imageUrl(new String[]{"", "https://kururi.itembox.design/product/217/000000021789/000000021789-08-l.jpg?t=20230516143908", "https://kururi.itembox.design/product/217/000000021789/000000021789-09-l.jpg?t=20230516143908"})
                         .size(new String[]{"230", "240", "250"})
                         .categoryId(categoryRepository.findById(231L).orElse(null))
+                        .country(Country.kimono)
                         .brand("くるり").build(),
 
 
@@ -1034,7 +1129,8 @@ class Initializer implements CommandLineRunner {
                         .price(4730)
                         .description("여름 푸른 하늘에 아름다운 하얀 레이스 양산\n가련한 레이스의 모양에는 꽃과 잎이 흩어져 주위의 색이 반사해 옅고 바쁘게 붙어 있습니다.\n상쾌한 여름의 날을 장식하는 오비메입니다.")
                         .imageUrl(new String[]{"", "https://kururi.itembox.design/product/224/000000022413/000000022413-02-l.jpg?t=20230516143908", "https://kururi.itembox.design/product/224/000000022413/000000022413-08-l.jpg?t=20230516143908"})
-                        .categoryId(categoryRepository.findById(240L).orElse(null))
+                        .categoryId(categoryRepository.findById(241L).orElse(null))
+                        .country(Country.kimono)
                         .brand("くるり").build(),
 
                 Item.builder()
@@ -1043,6 +1139,7 @@ class Initializer implements CommandLineRunner {
                         .description("마치 생화와 같은 잔잔함, 반짝반짝 빛나는 라인석이 포인트입니다.\n꽃잎 한 장 한 장에 움직임을 붙여, 마치 생화와 같은 서늘함을 표현했습니다.")
                         .imageUrl(new String[]{"", "https://kururi.itembox.design/product/198/000000019861/000000019861-03-l.jpg?t=20230516143908", "https://kururi.itembox.design/product/198/000000019861/000000019861-06-l.jpg?t=20230516143908"})
                         .categoryId(categoryRepository.findById(241L).orElse(null))
+                        .country(Country.kimono)
                         .brand("くるり").build(),
 
                 Item.builder()
@@ -1051,6 +1148,7 @@ class Initializer implements CommandLineRunner {
                         .description("봄의 방문을 예감시키는 다채로운 홍매화를 띠에 디자인했습니다.\n선명한 색조로 화려한 기모노에 맞추어 화려하게, 심플 코디에 악센트가 되어줍니다.")
                         .imageUrl(new String[]{"", "https://image.rakuten.co.jp/kururi-poche/cabinet/totonoustock/buying21b/od0489996_1.jpg", "https://image.rakuten.co.jp/kururi-poche/cabinet/totonoustock/buying21b/od0489996_6.jpg"})
                         .categoryId(categoryRepository.findById(241L).orElse(null))
+                        .country(Country.kimono)
                         .brand("くるり").build(),
 
                 Item.builder()
@@ -1059,6 +1157,7 @@ class Initializer implements CommandLineRunner {
                         .description("비와 구름을 표현했습니다. 투명감 있는 클리어 유리에 라이트 그레이와 스카이 블루의 색 유리를 대리석 모양으로 더했습니다. 바닥에 한층 더 라이트 그레이의 색 유리를 깔아 구름을 표현했습니다.")
                         .imageUrl(new String[]{"", "https://kururi.itembox.design/product/214/000000021441/000000021441-03-l.jpg?t=20230516143908", "https://kururi.itembox.design/product/214/000000021441/000000021441-08-l.jpg?t=20230516143908"})
                         .categoryId(categoryRepository.findById(241L).orElse(null))
+                        .country(Country.kimono)
                         .brand("くるり").build(),
 
                 Item.builder()
@@ -1067,6 +1166,7 @@ class Initializer implements CommandLineRunner {
                         .description("아름다운 제비꽃 중앙에 모조 다이아몬드를 곁들였습니다.\n세세한 부분까지 섬세하게 표현되어 눈길을 사로잡는 오비메입니다.")
                         .imageUrl(new String[]{"", "https://kururi.itembox.design/product/205/000000020588/000000020588-04-l.jpg?t=20230516143908", "https://kururi.itembox.design/product/205/000000020588/000000020588-07-l.jpg?t=20230516143908"})
                         .categoryId(categoryRepository.findById(241L).orElse(null))
+                        .country(Country.kimono)
                         .brand("くるり").build(),
 
                 Item.builder()
@@ -1075,6 +1175,7 @@ class Initializer implements CommandLineRunner {
                         .description("봄의 햇살 속, 나풀나풀 춤추는 가련한 벚꽃의 꽃잎입니다.")
                         .imageUrl(new String[]{"", "https://kururi.itembox.design/product/198/000000019852/000000019852-04-l.jpg?t=20230516143908", "https://kururi.itembox.design/product/198/000000019852/000000019852-02-l.jpg?t=20230516143908"})
                         .categoryId(categoryRepository.findById(241L).orElse(null))
+                        .country(Country.kimono)
                         .brand("くるり").build()
         };
         Arrays.stream(hanbok_tradition_items).forEach(item -> itemRepository.save(item));

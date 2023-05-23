@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import mirim.itshow.kiru.dto.cart.CartForm;
 import mirim.itshow.kiru.entity.enum_col.Country;
+import mirim.itshow.kiru.entity.enum_col.Size;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -25,23 +26,17 @@ public class CartItem {
     private Cart cart; //장바구니 id(fk)
 
     @ManyToOne
-    @JoinColumn
-    private Item itemId; //상품 id(fk)
-
-    @Column
-    private String imgUrl; //상품 이미지 주소
-    private String itemName; //상품 이름
-    private int price; // 상품 금액
-    private String brand; // 브랜드 이름
+    @JoinColumn(name = "item_id")
+    private Item item; //상품 id(fk)
 
     @Column(nullable = false, length = 200)
     private String color; //색상
 
-//    @Enumerated(EnumType.STRING)
-//    @Type(type = "size_enum_type")
-//private Size size; //옷&신발 사이즈
+    @Enumerated(EnumType.STRING)
+    @Type(type = "size_enum_type")
+    private Size size; //옷&신발 사이즈
+
     @Column
-    private String size; //옷&신발 사이즈
     private int amount; //수량
 
     @Enumerated(EnumType.STRING)
@@ -58,20 +53,16 @@ public class CartItem {
     @Column
     private LocalDateTime createTimestamp; //장바구니에 넣은 시간
 
-    public static CartItem createCart(CartForm form){
+    public static CartItem createCart(CartForm form, Item item, Cart cart){
         CartItem cartItem = new CartItem();
         cartItem.setCartItemId(form.getCartItemId());
 
-        cartItem.setImgUrl(form.getImgUrl());
-        cartItem.setItemName(form.getItemName());
-        cartItem.setPrice(form.getPrice());
-        cartItem.setBrand(form.getBrand());
+        cartItem.setCart(cart);
+        cartItem.setItem(item);
 
         cartItem.setColor(form.getColor());
         cartItem.setSize(form.getSize());
         cartItem.setAmount(form.getAmount());
-
-        cartItem.setCountry(form.getCountry());
 
         cartItem.setStartDate(form.getStartDate());
         cartItem.setEndDate(form.getEndDate());

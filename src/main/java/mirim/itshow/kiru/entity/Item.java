@@ -1,6 +1,7 @@
 package mirim.itshow.kiru.entity;
 
 import lombok.*;
+import mirim.itshow.kiru.entity.enum_col.Country;
 import mirim.itshow.kiru.entity.enum_col.Size;
 import org.hibernate.annotations.Type;
 
@@ -45,6 +46,10 @@ public class Item {
     @JoinColumn(name = "category")
     private Category category; //카테고리 id
 
+    @Enumerated(EnumType.STRING)
+    @Type(type = "size_enum_type")
+    private Country country; //Hanbok, Kimono
+
     @Column
     private String brand; //분류를 위한 브랜드명
 
@@ -53,7 +58,7 @@ public class Item {
 
     public Item(){}
     @Builder
-    public Item(String name, int price, String description, String[] imageUrl, String[] color, String[] size, Category categoryId, String brand) {
+    public Item(String name, int price, String description, String[] imageUrl, String[] color, String[] size, Category categoryId, Country country, String brand) {
         this.name = name;
         this.price = price;
         this.description = description;
@@ -61,6 +66,7 @@ public class Item {
         this.color = color;
         this.size = size;
         this.category = categoryId;
+        this.country = country;
         this.brand = brand;
     }
 

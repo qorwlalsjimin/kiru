@@ -11,7 +11,7 @@
 
 
 .form{
-    margin-top: 1%;
+    margin-top: 4%;
     text-align: center;
     /* justify-content: center; */
 }
@@ -76,7 +76,7 @@ input::-webkit-input-placeholder {
 .logintext button{
     width: 50%;
     margin-top: 100px;
-    padding: 18%;
+    padding: 19%;
     
 }
 
@@ -91,7 +91,8 @@ input::-webkit-input-placeholder {
     font-size: -4rem;
     /* margin-top: 10px; */
     /* margin-bottom: 10%; */
-    margin-left: 37%;
+    margin-left: 37.4%;
+    /* margin-left: 600px; */
     margin-top: 2%;
     
 }

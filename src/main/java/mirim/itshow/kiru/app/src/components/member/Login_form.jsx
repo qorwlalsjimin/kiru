@@ -62,11 +62,11 @@ const Login_form = () => {
       <section className="content">
 
         <div className="logintext">
-          <Link to="/Login_form"><button className='blo'><h1>login</h1></button> </Link>
-          <Link to="/Join_form"><button><h1>sign up</h1> </button> </Link>
+          <Link to="/Login_form"><button className='blo'><h1>Login</h1></button> </Link>
+          <Link to="/Join_form"><button><h1>Sign up</h1> </button> </Link>
         </div>
         <form onSubmit={handleSubmit}>
-        <h4 className="ment">kiru.com에 방문해주셔서 감사합니다.</h4>
+        <p className="ment">kiru에 방문해주셔서 감사합니다.</p>
         <div className="form">
           <input type="email" id='text' name='inputid' placeholder="이메일/휴대폰 번호" value={group.email} onChange={handleChange} />
           <br />

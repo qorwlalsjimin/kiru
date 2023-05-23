@@ -156,13 +156,13 @@ useEffect(() => {
    <> 
     <section className="content">
     <div className="logintext">
-        <Link to="/Login_form"><button><h1>login</h1></button> </Link>
-        <Link to="/Join_form"><button className="bsi"><h1>sign up</h1> </button> </Link>
+        <Link to="/Login_form"><button><h1>Login</h1></button> </Link>
+        <Link to="/Join_form"><button className="bsi"><h1>Sign up</h1> </button> </Link>
         </div>
         <div className="form">
     <form onSubmit={handleSubmit}>
 
-    <h4 className="ment">계정을 생성하여 더 빠른 온라인 결제 혜택을 누려보세요.</h4>
+    <p className="ment2">계정을 생성하여 더 빠른 온라인 결제 혜택을 누려보세요.</p>
     <p className="must">*필수 항목</p>
    
     <h3 className="font">아이디 설정</h3>
@@ -252,8 +252,9 @@ useEffect(() => {
     </form>
     </div>
     </section>
-    <Footer />
+    {/* <Footer /> */}
     </>
+    
   )
 };
 

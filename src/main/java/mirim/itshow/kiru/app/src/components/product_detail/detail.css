@@ -21,3 +21,40 @@
     width: 20%;
     height: 15%;
 }
+
+
+.pricesmall{
+    display: flex;
+    margin-left: 22rem;
+  
+  }
+  
+
+  .Close i{
+    
+    font-size: 2rem;
+    margin-left: 28rem;
+    /* margin-bottom: 450px; */
+    /* margin-bottom이 안 됨씨 */
+    margin-bottom: 20rem; 
+
+
+  }
+
+  .sizeinfo{
+    display: flex;
+    color: gray;
+    margin-left:  80%;
+
+  }
+
+
+.description{
+    margin-bottom: 10%;
+  
+    color: grey;
+  }
+
+  .colorchose{
+    /* margin-bottom: 10%; */
+  }

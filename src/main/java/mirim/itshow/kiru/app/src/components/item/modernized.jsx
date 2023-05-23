@@ -1,4 +1,5 @@
 import React from 'react'
+import ItemListModernized from "./ItemListModernized"
 
 const modernized = () => {
   return (
@@ -26,6 +27,18 @@ const modernized = () => {
 
       </div>
       
+      {/* <ItemListModernized /> */}
+    
+  
+   
+
+
+
+
+
+
+
+
     </>
   )
 }

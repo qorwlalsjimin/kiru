@@ -55,7 +55,7 @@
   font-size: 36px;
   line-height: 45px;
   color: #000000;
-  margin-bottom: 138px;
+  margin-bottom: 80px;
 }
 
 .product_info .unit {
@@ -153,11 +153,13 @@
 .sum .total_count {
   font-size: 18px;
   line-height: 23px;
-  color: #19ce60;
+  /* color: #19ce60; */
+
+
 }
 
 .sum .total_count::after {
-  content: "|";
+  /* content: "|"; */
   width: 5px;
   height: 23px;
   color: #c4c4c4;
@@ -167,13 +169,13 @@
 .sum .total_price {
   font-size: 36px;
   line-height: 45px;
-  color: #19ce60;
+  /* color: #19ce60; */
 }
 
 .sum .total_unit {
   font-size: 18px;
   line-height: 23px;
-  color: #19ce60;
+  /* color: #19ce60; */
 }
 
 .btn .btn_buy {
@@ -189,6 +191,8 @@
   color: #ffffff;
   margin-right: 44px;
 }
+
+
 
 .btn {
   display: flex;

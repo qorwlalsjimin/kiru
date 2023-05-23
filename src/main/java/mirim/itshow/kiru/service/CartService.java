@@ -88,11 +88,12 @@ public class CartService {
      * 상품 업데이트
      */
     public CartItem updateCart(CartUpdateForm cartForm){
-//        Item item = itemRepository.findById(cartForm.getItemId()).get();
-//        Cart cart = cartRepository.findById(cartForm.getCartItemId()).get();
-//        CartItem cartItem = CartItem.createCart(cartForm, item, cart);
-        System.out.println("확인해보시오 "+cartForm.getCartItemId());
         CartItem cartItem = cartItemRepository.findById(cartForm.getCartItemId()).get();
+
+        cartItem.setColor(cartForm.getColor());
+        cartItem.setAmount(cartForm.getAmount());
+        cartItem.setSize(cartForm.getSize());
+
         return cartItemRepository.save(cartItem); // 원래 있는 id면 update해줌
     }
 

@@ -39,10 +39,6 @@ public class CartItem {
     @Column
     private int amount; //수량
 
-    @Enumerated(EnumType.STRING)
-    @Type(type = "size_enum_type")
-    private Country country; //Hanbok, Kimono
-
     @Column(nullable = false)
     private LocalDate startDate; //대여 시작일
     private LocalDate endDate; //대여 종료일

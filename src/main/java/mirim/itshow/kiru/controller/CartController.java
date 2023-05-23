@@ -1,6 +1,7 @@
 package mirim.itshow.kiru.controller;
 
 import mirim.itshow.kiru.dto.cart.CartForm;
+import mirim.itshow.kiru.dto.cart.CartUpdateForm;
 import mirim.itshow.kiru.entity.CartItem;
 import mirim.itshow.kiru.entity.enum_col.Country;
 import mirim.itshow.kiru.service.CartService;
@@ -55,7 +56,7 @@ public class CartController {
 
     //U: 옵션 수정
     @PutMapping("/cart/update")
-    public ResponseEntity<?> updateItem(@RequestBody CartForm cartForm){
+    public ResponseEntity<?> updateItem(@RequestBody CartUpdateForm cartForm){
         System.out.println("장바구니: 옵션 변경");
         CartItem result = cartService.updateCart(cartForm);
         return ResponseEntity.ok().body(cartForm);

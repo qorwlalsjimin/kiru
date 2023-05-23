@@ -5,6 +5,7 @@ import mirim.itshow.kiru.dao.CartRepository;
 import mirim.itshow.kiru.dao.ItemRepository;
 import mirim.itshow.kiru.dao.MemberRepository;
 import mirim.itshow.kiru.dto.cart.CartForm;
+import mirim.itshow.kiru.dto.cart.CartUpdateForm;
 import mirim.itshow.kiru.entity.Cart;
 import mirim.itshow.kiru.entity.CartItem;
 import mirim.itshow.kiru.entity.Item;
@@ -64,7 +65,7 @@ public class CartService {
      */
     // 한복, 기모노 따로 목록 보여주기
     public List<CartItem> selectByCountry(Country HanbokOrKimono){
-        return cartItemRepository.findByCountry(HanbokOrKimono);
+        return cartItemRepository.findByItem_Country(HanbokOrKimono);
     }
 
     // 특정 아이디를 가진 장바구니 상품 보여주기
@@ -74,8 +75,8 @@ public class CartService {
 
     // 금액 총 합계
     public List<Integer> selectTotalPrice(){
-        List<CartItem> hanbokList = cartItemRepository.findByCountry(Country.hanbok);
-        List<CartItem> kimonoList = cartItemRepository.findByCountry(Country.kimono);
+        List<CartItem> hanbokList = cartItemRepository.findByItem_Country(Country.hanbok);
+        List<CartItem> kimonoList = cartItemRepository.findByItem_Country(Country.kimono);
 
         int hanbokTotal = hanbokList.stream().filter(i -> i.isChecked()).mapToInt(i -> i.getItem().getPrice()).sum();
         int kimonoTotal = kimonoList.stream().filter(i -> i.isChecked()).mapToInt(i -> i.getItem().getPrice()).sum();
@@ -86,10 +87,12 @@ public class CartService {
     /**
      * 상품 업데이트
      */
-    public CartItem updateCart(CartForm cartForm){
-        Item item = itemRepository.findById(cartForm.getItemId()).get();
-        Cart cart = cartRepository.findById(cartForm.getCartItemId()).get();
-        CartItem cartItem = CartItem.createCart(cartForm, item, cart);
+    public CartItem updateCart(CartUpdateForm cartForm){
+//        Item item = itemRepository.findById(cartForm.getItemId()).get();
+//        Cart cart = cartRepository.findById(cartForm.getCartItemId()).get();
+//        CartItem cartItem = CartItem.createCart(cartForm, item, cart);
+        System.out.println("확인해보시오 "+cartForm.getCartItemId());
+        CartItem cartItem = cartItemRepository.findById(cartForm.getCartItemId()).get();
         return cartItemRepository.save(cartItem); // 원래 있는 id면 update해줌
     }
 

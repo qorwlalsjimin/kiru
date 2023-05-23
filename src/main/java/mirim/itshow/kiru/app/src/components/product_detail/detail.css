@@ -41,6 +41,10 @@
 
   }
 
+  #result{
+    margin-left: 10px;
+  }
+
   .sizeinfo{
     display: flex;
     color: gray;

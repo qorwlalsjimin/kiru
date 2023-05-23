@@ -4,10 +4,11 @@ import { useParams } from "react-router-dom";
 // import { getProducts } from "../../service/fetcher";
 import Detail2 from "./detail2"
 import axios from "axios";
+import "./combobox.js"
 
 export const Detail = ({ convertPrice, cart, setCart }) => {
   const { id } = useParams();
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState(null);
   const [count, setCount] = useState(1);
 
   useEffect(() => {
@@ -106,6 +107,7 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
               <div className="colorchose">
               <p>색상을 선택해주세요</p>
               </div>
+
               {product.color}
 
 
@@ -120,14 +122,16 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
             <i class="ri-information-line"></i>  <p>사이즈 정보</p>
             </div>
 
-            {/* <select onchange="showValue(this)" name="likeLanguage" id="" class="pl">
+            <select onchange="handleOnChange(this)" >
             <option value="0" selected>사이즈를 선택하세요</option>
-            <option value="S"> {product.size[0]}</option>
+            <option value="S">{product.size[0]}</option>
             <option value="M">{product.size[1]}</option>
             <option value="L">{product.size[2]}</option>
  
-        </select> */}
+        </select>
            
+        
+        <div id="result" >/</div>
 
 
             {/* </div> */}

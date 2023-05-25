@@ -30,16 +30,6 @@
   }
   
 
-  .Close i{
-    
-    font-size: 2rem;
-    margin-left: 28rem;
-    /* margin-bottom: 450px; */
-    /* margin-bottom이 안 됨씨 */
-    margin-bottom: 20rem; 
-
-
-  }
 
   #result{
     margin-left: 10px;
@@ -178,14 +168,37 @@
 
 }
 
-.pricesmall i{
+.heart{
   font-size: 2rem;
+  position: absolute;
+  top: 215px;
+  right: 25rem;
+  
+}
+
+
+.pricesmall{
+  font-size: 20px;
   /* margin-right: 20px; */
-  margin-left: 8rem;
-  /* margin-bottom: px; */
+  margin-left: 28rem;
+  top: 68%;
+
+  position: absolute;
+  /* margin-bottom: 10px; */
+}
+
+.selectBox option{
+  /* margin-right: 20px; */
+
+  position: absolute;
+  left: 20%;
+}
+
+.pricesmall i{
+  margin-left: 10px;
   cursor: pointer;
-
-
+  font-size: 2rem;
+  /* margin-bottom: 50px; */
 }
 
 .countbtn{
@@ -197,12 +210,11 @@
 
 .countBox{
   width: 50px;
-  height: 30px;
+  height: 25px;
   background-color:#fff;
   text-align: center;
   border: solid 2px rgb(221, 217, 217);
 }
-
 
 .m, .p{
   width: 30px;
@@ -210,4 +222,5 @@
   font-size: 20px;
   background-color: rgb(240, 236, 236);
   border: solid 2px rgb(221, 217, 217);
+  border-radius: 5px;
 }

@@ -46,9 +46,14 @@
 
 .product_info .product_name {
   font-size: 36px;
+ 
   line-height: 45px;
   color: #000000;
   margin-bottom: 20px;
+}
+.product_name {
+
+font-weight: bold;
 }
 
 .product_info .price {
@@ -140,8 +145,9 @@
   margin-bottom: 30px;
   margin-top: 40px;
   /* align-items: end; */
-  margin-left: 26rem;
+  margin-left: 24rem;
   text-align: right;
+  
 
 }
 

@@ -91,8 +91,12 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
           <section className={styles.product}>
             <div className={styles.product_info}>
               <p className={styles.seller_store}>{product.provider}</p>
-              <p className={styles.product_name}>{product.name}  <i className="ri-star-line" id="star"></i></p>
-            
+              <p className={styles.product_name}>
+                {product.name}  </p>
+
+              <div className="heart">
+                <i className="ri-star-line" id="star"></i>
+              </div>
 
               <span className={styles.price}>
               
@@ -156,7 +160,7 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
                 }
             </div>
         </div>
-
+              
         </div>
             <div className="date">
 
@@ -199,19 +203,21 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
                    
               </div>
 
-                <span className="pricesmall">
-                  {convertPrice(product.price * count)}
-                  <span className="won">원</span>
+                <div className="pricesmall">
                   
-                  <i className="ri-close-line"></i>
-                </span>
-                <div className="Close">
-                 
-                </div>
+                
+                  {convertPrice(product.price * count)}
+                 원
+                
+                 <i className="ri-close-line"></i>
+
+
+                </div> 
+          
+                
               </div>
             </div>
-          {/* </div>
-          </div> */}
+      
 
             <div className={styles.line}></div>
 

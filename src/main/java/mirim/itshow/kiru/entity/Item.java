@@ -18,7 +18,7 @@ public class Item {
 
     @Id //primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY) //auto_increment
-    @Column(name = "item_id")
+    @Column
     private Long itemId; //상품 고유 id
 
     @Column(nullable = false, length = 60) // column 조건

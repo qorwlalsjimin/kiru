@@ -78,6 +78,6 @@
     border: none;
     border-radius: 6px;
     position: absolute;
-    bottom: -80%;
+    /* bottom: -80%; */
     right: 20%;
 }

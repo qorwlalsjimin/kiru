@@ -57,7 +57,7 @@ public class LoginController {
      * 로그아웃
      * @param request
      */
-    @PostMapping(value="/member/logout")
+    @PostMapping(value="/member/logout") //TODO
     public ResponseEntity<?> logout(HttpServletRequest request){
         sessionManager.expire(request); //세션 완료
         return ResponseEntity.ok().build();

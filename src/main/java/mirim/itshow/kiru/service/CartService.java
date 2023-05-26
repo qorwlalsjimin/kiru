@@ -41,7 +41,7 @@ public class CartService {
     public CartItem addCart(CartForm form, String memberid){
         checkDuplication(form);
         Item item = itemRepository.findById(form.getItemId()).get(); //상품 id로 해당 상품 가져오기
-        Member member = memberRopository.findByMemberid(memberid); //회원 정보
+        Member member = memberRopository.findByMemberid(memberid).get(); //회원 정보
         Cart cart = cartRepository.findByMember(member); //회원이 가지고 있는 장바구니
         if(cart == null){ //장바구니가 없었다면
             cart = Cart.createCart(member); //새로 만들어준다

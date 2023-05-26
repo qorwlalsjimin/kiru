@@ -1,6 +1,8 @@
 package mirim.itshow.kiru.dto.member;
 
+import lombok.Builder;
 import lombok.Data;
+import org.hibernate.mapping.Join;
 
 @Data
 public class JoinForm {

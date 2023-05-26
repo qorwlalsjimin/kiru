@@ -25,7 +25,7 @@ export const Cart = ({ cart, setCart, convertPrice }) => {
         name: found.name,
         quantity: quantity,
         price: found.price,
-        provider: found.provider,
+        provider: found.provider
       };
       setCart([...cart.slice(0, idx), cartItem, ...cart.slice(idx + 1)]);
     } else {
@@ -36,7 +36,7 @@ export const Cart = ({ cart, setCart, convertPrice }) => {
         name: found.name,
         quantity: quantity,
         price: found.price,
-        provider: found.provider,
+        provider: found.provider
       };
       setCart([...cart.slice(0, idx), cartItem, ...cart.slice(idx + 1)]);
     }

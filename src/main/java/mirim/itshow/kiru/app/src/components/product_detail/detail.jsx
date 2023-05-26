@@ -58,6 +58,7 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
   };
 
   const handleCart = () => {
+    // debugger;
     const cartItem = {
       id: product.id,
       image: product.image,
@@ -65,10 +66,13 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
       quantity: count,
       price: product.price,
       provider: product.provider,
+      brand: product.brand
     };
+    /*
     const found = cart.find((el) => el.id === cartItem.id);
     if (found) setQuantity(cartItem.id, found.quantity + count);
-    else setCart([...cart, cartItem]);
+    else setCart(cart => cart.concat(cartItem));*/
+    setCart(cart => cart.concat(cartItem));
   };
 
   // useEffect(() => {
@@ -134,11 +138,11 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
               <p className="sizetitle">사이즈</p>
             <div className="size">
             <select onChange={(e) => {
-                const selectedSize = e.target.value.to;
-                if(selected[selectedSize]) {
+                const selectedSize = e.target.value;
+                // console.log(selected[selectedSize])
+                if(selectedSize in selected) {
                   setSelected(p => {
-                    debugger;
-                    return { ...p, [selectedSize]: p.selectedSize + count }
+                    return { ...p, [selectedSize]: p[selectedSize] + count }
                   })
                 }
 
@@ -154,11 +158,7 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
             <option value="L">{product.size[2]}</option>
  
           </select>
-            <div>
-                {
-                  <div>{JSON.stringify(selected)}</div>
-                }
-            </div>
+            
         </div>
               
         </div>
@@ -186,7 +186,13 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
 {/* 
             <div className={styles.amount}>
               <div className={styles.amount}> */}
-
+              <div>
+                {
+                  Object.keys(selected).map(size => {
+                    return selected[size] !== 0 ? <div>사이즈 : {size}, 수량 : {selected[size]}</div> : null
+                  })
+                }
+              </div>
               <div className="countbtn"> 
 
                 <button className="m" onClick={() => handleQuantity("minus")}>-</button>

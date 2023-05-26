@@ -10,6 +10,7 @@ export const CartList = ({
 }) => {
 
 
+  console.log(cart)
   
   return (
     <section className={styles.cart_product_list}>
@@ -44,24 +45,25 @@ export const CartList = ({
 
 
       <div className={styles.cart_product_count}>
-        <img
+        {/* <img
           className={styles.minus}
           src="/images/icon-minus-line.svg"
           alt="minus"
           onClick={() => {
             handleQuantity("minus", cart.id, cart.quantity - 1);
           }}
-        />
+        /> */}
 
         <div className={styles.count}>
           <span>{cart.quantity}</span>
         </div>
+{/*         
         <img
           className={styles.plus}
           src="/images/icon-plus-line.svg"
           alt="plus"
           onClick={() => handleQuantity("plus", cart.id, cart.quantity + 1)}
-        />
+        /> */}
 
       </div>
       <div className={styles.cart_product_price}>
@@ -69,14 +71,20 @@ export const CartList = ({
         <p className={styles.price}>{convertPrice(cart.price)}원</p>
         {/* <button className={styles.btn_submit}>주문하기</button> */}
       </div>
-     
 
-      <div
+
+
+          
+          {/* 전체 상품 삭제 */}
+
+      {/* <div
         className={styles.product_remove}
         onClick={() => handleRemove(cart.id)}
       >
        <button>전체상품삭제</button>
-      </div>
+      </div> */}
+       
     </section>
+    
   );
 };

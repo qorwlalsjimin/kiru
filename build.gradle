@@ -16,6 +16,9 @@ repositories {
 }
 
 dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-security' //스프링 시큐리티
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5' //View에서 현재 로그인된 사용자의 정보를 가져오기 위해 추가
+
 	implementation 'org.postgresql:postgresql:42.5.0'
 	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
 

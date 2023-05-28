@@ -32,8 +32,7 @@ export const CartList = ({
           {/* <p className={styles.seller_store}>{cart.provider}</p> */}
           <p className={styles.product_name}>{cart.name}</p>
           <p className={styles.product_name}>{cart.brand}</p>
-
-
+          <p className={styles.product_name}>{cart.size}</p>
 
           
           {/* <p className={styles.delivery}>택배배송 / 무료배송</p> */}

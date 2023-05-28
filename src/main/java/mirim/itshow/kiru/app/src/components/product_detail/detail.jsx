@@ -66,8 +66,13 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
       quantity: count,
       price: product.price,
       provider: product.provider,
-      brand: product.brand
+      brand: product.brand,
+      size: product.size,
+      color: product.color
     };
+
+
+
     /*
     const found = cart.find((el) => el.id === cartItem.id);
     if (found) setQuantity(cartItem.id, found.quantity + count);
@@ -119,9 +124,10 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
 
               <div className="colorchose">
               <p>색상을 선택해주세요</p>
+            
               </div>
-
               {product.color}
+          
 
 
 

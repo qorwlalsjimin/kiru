@@ -26,7 +26,7 @@ const EventBanner = () => {
   return (
     <>
       
-     <div className='Banner'>
+     {/* <div className='Banner'>
       <h2>전통한복</h2>
       </div>
 
@@ -47,7 +47,7 @@ const EventBanner = () => {
         Brand
         </div>
 
-        </div>
+        </div> */}
     </>
   )
 }

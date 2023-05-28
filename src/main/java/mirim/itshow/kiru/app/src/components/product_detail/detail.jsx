@@ -89,7 +89,7 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
         <main className={styles.main}>
           <section className={styles.product}>
             <div className={styles.product_img}>
-              <img src={product.imageUrl[1]} alt="product" />
+              <img src={product.imageUrl[0]} alt="product" />
             </div>
           </section>
           <section className={styles.product}>
@@ -271,8 +271,9 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
             <p id="detailImg">상세 이미지</p>
           <p id="d">* 사용하시는 기기의 해상도에 따라 실제 상품 색감과 다르게 보일 수 있습니다.</p>
         <div className="detailimg">
+        <img src={product.imageUrl[0]} alt="product" />
+        <img src={product.imageUrl[1]} alt="product" />
         <img src={product.imageUrl[2]} alt="product" />
-        <img src={product.imageUrl[3]} alt="product" />
         </div>
 
         </section>

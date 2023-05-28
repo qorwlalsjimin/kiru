@@ -1,56 +1,137 @@
 import styles from "./main.module.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import  EventBanner  from "../eventBanner/eventBanner";
 import { Product } from "../products/product";
 import axios from 'axios';
+import "../header/topNavigationBar/header.css"
 // import { getProducts } from "../../service/fetcher";
 
 export const Main = ({ convertPrice, products, setProducts }) => {
-  // const sortProduct = (type) => {
-  //   if (type === "recent") {
-  //     const newProduct = [...products];
-  //     newProduct.sort((a, b) => a.id - b.id);
-  //     setProducts(newProduct);
-  //   } else if (type === "row") {
-  //     const newProduct = [...products];
-  //     newProduct.sort((a, b) => a.price - b.price);
-  //     setProducts(newProduct);
-  //   } else if (type === "high") {
-  //     const newProduct = [...products];
-  //     newProduct.sort((a, b) => b.price - a.price);
-  //     setProducts(newProduct);
-  //   }
-  // };
 
-  useEffect(() => {
-    const fetchItem = async () => {
-      try {
-        const response = await axios.get('/api/item/item_list/110'); // 전통한복
-        console.log(response.data)
-        setProducts(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
 
-    fetchItem();
-  }, []);
 
 
   // useEffect(() => {
-  //   getProducts().then((data) => {
-  //     setProducts(data.data.products);
-  //   });
-  // }, [setProducts]);
+  //   const fetchItem = async () => {
+  //     try {
+  //       const response = await axios.get('/api/item/item_list/110'); // 전통한복
+  //       console.log(response.data)
+  //       setProducts(response.data);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+
+  //   fetchItem();
+  // }, []);
+
+
+  //const [items, setItems] = useState([]);
+  const [selectedNav, setSelectedNav] = useState('');
+
+  useEffect(() => {
+    fetchData('/api/item/item_list/110');
+  }, []);
+
+  const fetchData = async (url) => {
+    try {
+      const response = await axios.get(url);
+      setProducts(response.data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+
+  const handleNavClick = (nav) => {
+    let url = '';
+
+    if (nav === '전통한복') {
+      url = '/api/item/item_list/110';
+    } else if (nav === '개량한복') {
+      url = '/api/item/item_list/120';
+    } else if (nav === '신발') {
+      url = '/api/item/item_list/130';
+    } else if (nav === '악세사리') {
+      url = '/api/item/item_list/140';
+    } else if (nav === '세트') {
+      url = '/api/item/item_list/150';
+    }
+
+    setSelectedNav(nav);
+    fetchData(url);
+  };
+  
+
+
+
+
+
+
   return (
     <>
       <EventBanner />
+
+      
+      <header>
+      <nav>
+      <div className="nav">
+        <ul className="flex">
+          <li>
+            <button onClick={() => handleNavClick('전통한복')}>전통</button>
+          </li>
+          <li>
+            <button onClick={() => handleNavClick('개량한복')}>개량</button>
+          </li>
+          <li>
+            <button onClick={() => handleNavClick('신발')}>신발</button>
+          </li>
+          <li>
+            <button onClick={() => handleNavClick('악세사리')}>악세사리</button>
+          </li>
+          <li>
+            <button onClick={() => handleNavClick('세트')}>세트</button>
+          </li>
+        </ul>
+        </div>
+      </nav>
+      </header>
+    
+      <div>
+        <h2> {selectedNav}</h2>
+
+
+
+
+        <ul>
+
+        <main className={styles.flex_wrap}>
+        {products.map((product) => {
+          return (
+            <Product
+              key={`key-${product.id}`}
+              product={product}
+              convertPrice={convertPrice}
+            />
+            );
+          })}
+        </main>
+            
+          {/* {items.map((item) => ( */}
+           {/* // <li key={item.id}>{item.name}</li> */}
+        {/* //</main>  ))} */}
+
+
+        </ul>
+      </div>
+
+
       {/* <div className={styles.filter}>
         <p onClick={() => sortProduct("recent")}>최신순</p>
         <p onClick={() => sortProduct("row")}>낮은 가격</p>
         <p onClick={() => sortProduct("high")}>높은 가격</p>
       </div> */}
-      <main className={styles.flex_wrap}>
+      {/* <main className={styles.flex_wrap}>
         {products.map((product) => {
           return (
             <Product
@@ -60,7 +141,7 @@ export const Main = ({ convertPrice, products, setProducts }) => {
             />
           );
         })}
-      </main>
+      </main> */}
     </>
   );
 };

@@ -72,15 +72,16 @@ const Header = () => {
             {/* </div> */}
           </div>
         </div>
-        <div className="nav">
-          <ul className="flex">
-            {nav.map((list, index) => (
+
+        {/* <div className="nav"> */}
+          {/* <ul className="flex"> */}
+            {/* {nav.map((list, index) => (
               <li key={index}>
                 <Link to={list.path}>{list.text}</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+              </li> */}
+            {/* ))} */}
+          {/* </ul> */}
+        {/* </div> */}
       </header>
 
 

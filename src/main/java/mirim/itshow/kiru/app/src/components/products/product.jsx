@@ -33,7 +33,7 @@ export const Product = ({ product, convertPrice }) => {
         <Link to={`/product/${item.itemId}`}>
           <div className={styles.product_image}>
             {/* 대표이미지 배열 0방 */}
-            <img src={item.imageUrl[1]} alt="product" />
+            <img src={item.imageUrl[0]} alt="product" />
           </div>
         </Link>
         <div className={styles.store}>

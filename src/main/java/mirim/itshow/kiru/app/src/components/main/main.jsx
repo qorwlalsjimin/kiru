@@ -1,12 +1,13 @@
 import styles from "./main.module.css";
 import { useEffect, useState } from "react";
 import  EventBanner  from "../eventBanner/eventBanner";
+import {topNavigationBar} from "../header/topNavigationBar/topNavigationBar"
 import { Product } from "../products/product";
 import axios from 'axios';
 import "../header/topNavigationBar/header.css"
 // import { getProducts } from "../../service/fetcher";
 
-export const Main = ({ convertPrice, products, setProducts }) => {
+export const Main = ({ convertPrice, products, setProducts}) => {
 
 
 
@@ -26,8 +27,11 @@ export const Main = ({ convertPrice, products, setProducts }) => {
   // }, []);
 
 
-  //const [items, setItems] = useState([]);
+
+  //진짜
   const [selectedNav, setSelectedNav] = useState('');
+  //const [items, setItems] = useState([]);
+  // const [selectedNav, setSelectedNav] = useState('');
 
   useEffect(() => {
     fetchData('/api/item/item_list/110');
@@ -43,6 +47,7 @@ export const Main = ({ convertPrice, products, setProducts }) => {
   };
 
 
+  
   const handleNavClick = (nav) => {
     let url = '';
 
@@ -61,7 +66,6 @@ export const Main = ({ convertPrice, products, setProducts }) => {
     setSelectedNav(nav);
     fetchData(url);
   };
-  
 
 
 
@@ -70,8 +74,7 @@ export const Main = ({ convertPrice, products, setProducts }) => {
 
   return (
     <>
-      <EventBanner />
-
+       
       
       <header>
       <nav>
@@ -95,12 +98,38 @@ export const Main = ({ convertPrice, products, setProducts }) => {
         </ul>
         </div>
       </nav>
-      </header>
-    
+      </header> 
+     
+
+      
+
+
+
       <div>
+      <div className='Banner'>
         <h2> {selectedNav}</h2>
 
+        <div className="selection">
 
+          <div className="cloum c1">
+            <i className="ri-checkbox-blank-circle-fill"></i>
+            All
+          </div>
+
+          <div className="cloum c2">
+            <i className="ri-checkbox-blank-circle-fill"></i>
+            Best
+          </div>
+
+          <div className="cloum c3">
+            <i className="ri-checkbox-blank-circle-fill"></i>
+            Brand
+          </div>
+
+        </div>
+        </div>
+
+      
 
 
         <ul>

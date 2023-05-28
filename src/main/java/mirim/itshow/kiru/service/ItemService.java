@@ -75,4 +75,8 @@ public class ItemService {
     }
 
 
+    // 상품 검색
+    public List<Item> selectSearchItem(String keyword) {
+        return itemRepository.findByNameAndBrandLike(keyword);
+    }
 }

@@ -65,4 +65,11 @@ public class ItemController {
         return ResponseEntity.created(new URI("/api/item/new/" + itemInfo.getItemId()))
                 .body(itemInfo);
     }
+
+    //상품 검색
+    @GetMapping("/item/search/{keyword}")
+    public Collection<Item> searchItem(@PathVariable String keyword){
+        System.out.println("상품 검색 get");
+        return itemService.selectSearchItem(keyword);
+    }
 }

@@ -1,20 +1,16 @@
 package mirim.itshow.kiru.service;
 
 import mirim.itshow.kiru.dao.MemberRepository;
-import mirim.itshow.kiru.dto.member.JoinForm;
 import mirim.itshow.kiru.entity.Member;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional //TODO 왜 쓰는지 모름
-public class MemberService implements UserDetailsService {
+public class MemberService {
     private final MemberRepository memberRepository;
     private final Logger log = LoggerFactory.getLogger(MemberService.class);
 
@@ -26,31 +22,26 @@ public class MemberService implements UserDetailsService {
     /**
      * 회원 가입
      */
-    public Member join(JoinForm joinForm){
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(); //암호화 클래스 생성
-        joinForm.setMemberpw(encoder.encode(joinForm.getMemberpw())); //암호화한 비밀번호 입력
-
-        Member member = Member.createMember(joinForm); //암호화된 비밀번호로 Member 객체 만들기
-        validateDuplicateMember(member); //회원 중복 확인
-
-        System.out.println("회원가입 성공"); //성공 메시지
+    public Member join(Member member){
+        validateDuplicateMember(member);
+        System.out.println("회원가입 성공");
         return memberRepository.save(member);
     }
 
     //회원 중복 확인
     private void validateDuplicateMember(Member member){
-        Member findmember = memberRepository.findByMemberid(member.getMemberid()).get();
+        Member findmember = memberRepository.findByMemberid(member.getMemberid());
         if(findmember != null){
             throw new IllegalStateException("이미 가입된 회원입니다.");
         }
     }
 
     /**
-    * 로그인
-    */
+     * 로그인
+     */
     public Member login(String inputId, String inputPw){
 
-        Member dataMember = memberRepository.findByMemberid(inputId).get();
+        Member dataMember = memberRepository.findByMemberid(inputId);
         if(dataMember == null){ //일치하는 아이디가 없다면
             log.info("login service", "등록된 아이디가 없습니다.");
             System.out.println("로그인 실패: 등록된 아이디가 없습니다.");
@@ -66,12 +57,7 @@ public class MemberService implements UserDetailsService {
 
         System.out.println("로그인 성공");
 
-        return memberRepository.findByMemberid(inputId).get();
+        return memberRepository.findByMemberid(inputId);
     }
 
-    @Override
-    public Member loadUserByUsername(String memberid) throws UsernameNotFoundException {
-        return memberRepository.findByMemberid(memberid)
-                .orElseThrow(() -> new UsernameNotFoundException(memberid));
-    }
 }

@@ -41,8 +41,8 @@ public class ItemService {
 
 
     /*
-    * 비지니스 알고리즘
-    * */
+     * 비지니스 알고리즘
+     * */
 //    // 전체 상품 목록 출력
 //    public List<Item> selectAllItemInfo(){
 //        return itemRepository.findAll();

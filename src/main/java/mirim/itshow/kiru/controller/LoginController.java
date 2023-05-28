@@ -17,12 +17,13 @@ import javax.validation.Valid;
 public class LoginController {
 
     private MemberService memberService;
-    private SessionManager sessionManager;
+//    private SessionManager sessionManager;
 
     @Autowired
-    public LoginController(MemberService memberService, SessionManager sessionManager) {
+    public LoginController(MemberService memberService) {
+//    public LoginController(MemberService memberService, SessionManager sessionManager) {
         this.memberService = memberService;
-        this.sessionManager = sessionManager;
+//        this.sessionManager = sessionManager;
     }
 
 
@@ -45,7 +46,7 @@ public class LoginController {
         }
 
         //로그인 성공
-        sessionManager.createSession(loginMember, response); //세션 생성
+//        sessionManager.createSession(loginMember, response); //세션 생성
         //TODO 로그인 누르기 전 화면으로 return
 
         System.out.println("요기요기 "+ResponseEntity.ok().body("{id:"+loginMember.getId()+"}"));
@@ -57,9 +58,9 @@ public class LoginController {
      * 로그아웃
      * @param request
      */
-    @PostMapping(value="/member/logout") //TODO
+    @PostMapping(value="/member/logout")
     public ResponseEntity<?> logout(HttpServletRequest request){
-        sessionManager.expire(request); //세션 완료
+//        sessionManager.expire(request); //세션 완료
         return ResponseEntity.ok().build();
     }
 }

@@ -157,7 +157,7 @@ class Initializer implements CommandLineRunner {
                         .name("온세미로")
                         .price(45000)
                         .description("온세미로, 단아한 디자인 고급스러운 한복\n소매에 고급원단으로 마감하여 우아함을 더하다.")
-                        .imageUrl(new String[]{"", "https://i.postimg.cc/mkVsxg4S/image.png",
+                        .imageUrl(new String[]{"https://i.postimg.cc/zGxWBqxy/image.png", "https://i.postimg.cc/mkVsxg4S/image.png",
                                 "https://i.ibb.co/WyTKCTr/image.jpg"})
                         .color(new String[]{"분홍색", "청색"})
                         .size(new String[]{"S", "M", "L"})
@@ -235,7 +235,7 @@ class Initializer implements CommandLineRunner {
                         .name("나르샤")
                         .price(50000)
                         .description("나르샤, 단아한 디자인 고급스러운 한복\n소매에 포인트 자수로 마감하여 우아함을 더하다.")
-                        .imageUrl(new String[]{"https://i.postimg.cc/tJ9jmVKT/image.png", "https://i.ibb.co/qJH6QBg/image.jpg",
+                        .imageUrl(new String[]{"https://i.postimg.cc/0QM7Fhdb/image.png", "https://i.ibb.co/qJH6QBg/image.jpg",
                                 "https://i.ibb.co/R7L6q1P/image.jpg"})
                         .color(new String[]{"하늘색"})
                         .size(new String[]{"S", "M", "L"})
@@ -675,11 +675,32 @@ class Initializer implements CommandLineRunner {
 
 
                 Item.builder()
-                        .name("SCENE #006")
+                        .name("뮬 블랙")
                         .price(22000)
-                        .description("")
+                        .description("심플한 무드를 베이스로 흑색의 실루엣을 담았습니다.")
                         .imageUrl(new String[]{"https://i.postimg.cc/s24LnDrf/SCENE-006.png", "https://shop-phinf.pstatic.net/20210518_16/1621331…4k_JPEG/22467111956294768_279421828.jpg?type=m510", "   https://shop-phinf.pstatic.net/20210518_31/1621331…v_JPEG/22467111784328394_1723888699.jpg?type=m510"})
                         .color(new String[]{"흑색"})
+                        .size(new String[]{"225", "230", "235", "240", "245", "250", "255"})
+                        .categoryId(categoryRepository.findById(132L).orElse(null))
+                        .country(Country.hanbok)
+                        .brand("리우앤비우").build(),
+
+                Item.builder()
+                        .name("스텔라 글리터")
+                        .price(22000)
+                        .description("반짝이는 글리터로 전통의상의 화려함을 담았습니다.")
+                        .imageUrl(new String[]{"https://shop-phinf.pstatic.net/20200907_50/1599451849887d84Vz_JPEG/36811684419104329_1258787832.jpg?type=m510", "https://shop-phinf.pstatic.net/20200907_286/1599451978069oLBRr_JPEG/36811812568936998_1411221738.jpg?type=m510", "https://shop-phinf.pstatic.net/20200907_251/1599451501793FMuUt_JPEG/36811336323674262_1642490479.jpg?type=m510"})
+                        .color(new String[]{"녹색", "청색", "분홍색"})
+                        .size(new String[]{"225", "230", "235", "240", "245", "250", "255"})
+                        .categoryId(categoryRepository.findById(132L).orElse(null))
+                        .country(Country.hanbok)
+                        .brand("리우앤비우").build(),
+
+                Item.builder()
+                        .name("노랑 국화문")
+                        .price(25000)
+                        .description("리우앤비우 x 단하\n황색의 국화문 패턴으로 화려함을 담았습니다.")
+                        .imageUrl(new String[]{"https://shop-phinf.pstatic.net/20210604_268/1622802049451smJUk_JPEG/23937884283336136_781021397.jpg?type=m510", "https://shop-phinf.pstatic.net/20210604_78/1622802042971uAtua_JPEG/23937877803644140_410042568.jpg?type=m510", "https://shop-phinf.pstatic.net/20210604_251/16228020495815Sx4w_JPEG/23937884415208804_138391860.jpg?type=m510"})
                         .size(new String[]{"225", "230", "235", "240", "245", "250", "255"})
                         .categoryId(categoryRepository.findById(132L).orElse(null))
                         .country(Country.hanbok)
@@ -1183,8 +1204,8 @@ class Initializer implements CommandLineRunner {
                 Item.builder()
                         .name("진주 카미카자리")
                         .price(28600)
-                        .description("")
-                        .imageUrl(new String[]{"https://i.postimg.cc/7hQxRnSV/image.png", "", ""})
+                        .description("영롱하게 빛을 내는 진주가 고급스러움과 아름다움을 선사합니다.")
+                        .imageUrl(new String[]{"https://i.postimg.cc/7hQxRnSV/image.png", "https://image.rakuten.co.jp/haruharu/cabinet/05593105/imgrc0074835207.jpg", "https://image.rakuten.co.jp/haruharu/cabinet/05593105/imgrc0074835205.jpg"})
                         .categoryId(categoryRepository.findById(241L).orElse(null))
                         .country(Country.kimono)
                         .brand("papillon(パピヨン)").build(),
@@ -1192,8 +1213,8 @@ class Initializer implements CommandLineRunner {
                 Item.builder()
                         .name("마키에 비녀")
                         .price(19800)
-                        .description("")
-                        .imageUrl(new String[]{"https://i.postimg.cc/fb4bZCpq/image.png", "", ""})
+                        .description("사랑을 불러오는 장미와 가녀린 진주로 장식되었습니다.")
+                        .imageUrl(new String[]{"https://i.postimg.cc/fb4bZCpq/image.png"})
                         .categoryId(categoryRepository.findById(241L).orElse(null))
                         .country(Country.kimono)
                         .brand("papillon(パピヨン)").build(),
@@ -1201,8 +1222,8 @@ class Initializer implements CommandLineRunner {
                 Item.builder()
                         .name("크리스탈 발레타")
                         .price(22300)
-                        .description("")
-                        .imageUrl(new String[]{"https://i.postimg.cc/DfCymnRX/image.png", "", ""})
+                        .description("크리스탈이 꽃 모양으로 피어나 머리를 장식해줍니다.")
+                        .imageUrl(new String[]{"https://i.postimg.cc/DfCymnRX/image.png"})
                         .categoryId(categoryRepository.findById(241L).orElse(null))
                         .country(Country.kimono)
                         .brand("papillon(パピヨン)").build(),
@@ -1210,8 +1231,8 @@ class Initializer implements CommandLineRunner {
                 Item.builder()
                         .name("벚꽃 비녀")
                         .price(19800)
-                        .description("")
-                        .imageUrl(new String[]{"https://i.postimg.cc/hP6DbMD4/image.png", "", ""})
+                        .description("은빛의 벚꽃이 화려한 비녀입니다.")
+                        .imageUrl(new String[]{"https://i.postimg.cc/hP6DbMD4/image.png"})
                         .categoryId(categoryRepository.findById(241L).orElse(null))
                         .country(Country.kimono)
                         .brand("papillon(パピヨン)").build()

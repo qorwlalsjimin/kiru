@@ -181,10 +181,11 @@
   font-size: 20px;
   /* margin-right: 20px; */
   margin-left: 28rem;
-  top: 68%;
+  /* margin-bottom: 20%; */
+  /* top: 68%; */
 
   position: absolute;
-  /* margin-bottom: 10px; */
+  margin-bottom: 10rem;
 }
 
 .selectBox option{

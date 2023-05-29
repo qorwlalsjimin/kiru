@@ -208,12 +208,11 @@ font-weight: bold;
   margin-right: 44px;
 }
 
-
 .btn {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 30%;
+  margin-top: 50%;
   /* z-index: 1000; */
 }
 

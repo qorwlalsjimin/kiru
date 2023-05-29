@@ -84,6 +84,7 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
   //박스 수량 
   const [selectedOptions, setSelectedOptions] = useState({});
   const [totalCount, setTotalCount] = useState(1);
+  const [showTotalInfo, setShowTotalInfo] = useState(false);
 
   const handleOptionSelection = (e) => {
     const { name, value } = e.target;
@@ -125,12 +126,12 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
 
   const handleSizeSelection = (e) => {
     const selectedSize = e.target.value;
-    setTotalCount(0); // Reset totalCount when size is selected
+    //setTotalCount(0); //Reset totalCount when size is selected
     setSelectedOptions((prevSelectedOptions) => {
       const updatedOptions = { ...prevSelectedOptions };
       const option = updatedOptions[selectedSize];
       if (option) {
-        option.count = 1;
+        option.count += 1;
       } else {
         updatedOptions[selectedSize] = {
           value: selectedSize,
@@ -138,11 +139,19 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
         };
       }
       calculateTotalCount(updatedOptions);
+      setShowTotalInfo(true); 
       return updatedOptions;
     });
   };
 
-
+  const handleBoxClose = (size) => {
+    setSelectedOptions((prevSelectedOptions) => {
+      const updatedOptions = { ...prevSelectedOptions };
+      delete updatedOptions[size];
+      calculateTotalCount(updatedOptions);
+      return updatedOptions;
+    });
+  };
   // useEffect(() => {
   //   getProducts().then((data) => {
   //     setProduct(
@@ -150,6 +159,9 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
   //     );
   //   });
   // }, [id, product.price]);
+
+
+
 
   return (
     product && (
@@ -190,13 +202,11 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
             
               </div>
               <div className="colorpick">
-              <button>
-              {product.color[0]}
-            </button>
-            <button>
-              {product.color[1]}
-            </button>
-           
+              
+               {product.color}
+                
+
+
             </div>
 
             {/* <select onChange={(e) => {
@@ -268,15 +278,7 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
             {/* hr bar */}
             <div className={styles.line}>
              
-           
-
-            {/* <div className="allBox"> */}
-{/* 
-            <div className={styles.amount}>
-              <div className={styles.amount}> */}
-               {/* 수량:  {selected[size]} */}
-              {/* <div> */}
-              {Object.keys(selectedOptions).map((size) => {
+              {Object.keys(selectedOptions).map((size, index) => {
                 const option = selectedOptions[size];
                 return option.count !== 0 ? (
                   <div className="allBox" key={size}>
@@ -289,7 +291,15 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
                       <button className="p" onClick={() => handleQuantityChange(size, "plus")}>+</button>
                     </div>
                     <div className="pricesmall">
-                      {convertPrice(product.price)}원  <i className="ri-close-line"></i></div>
+                      {convertPrice(product.price*option.count)}원  <i className="ri-close-line" onClick={() => handleBoxClose(size)}></i>
+                      </div>
+
+                      
+                  </div>
+                ) : null;
+              })}
+              
+              {totalCount > 0 && showTotalInfo && (
                     <div className={styles.sum}>
                       <span className={styles.total}>
                         총 수량 <span className={styles.total_count}>{totalCount}개</span>
@@ -297,14 +307,11 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
                       <div className={styles.total_info}>
                         <span className={styles.total_price}>
                           <span className={styles.total_unit}>총 대여료 </span>
-                          {convertPrice(product.price * option.count)}원
+                          {convertPrice(product.price * totalCount)}원
                         </span>
                       </div>
                     </div>
-                  </div>
-                ) : null;
-              })}
-
+                    )}
 
 
             </div>

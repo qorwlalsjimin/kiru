@@ -97,7 +97,7 @@ const Header = ({setProducts}) => {
           </div>
 
           <div className="logo">
-            <img src="/images/logo.png" alt="" />
+          <Link to="/main">      <img src="/images/logo.png" alt="" /></Link>
           </div>
 
           <div className="toggle">
@@ -124,9 +124,9 @@ const Header = ({setProducts}) => {
 
 
 
-
-        
 {/* 
+        
+
         <div className="nav">
         <ul className="flex">
           <li>

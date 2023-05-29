@@ -194,8 +194,10 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
               <div className={styles.amount}> */}
               <div>
                 {
+
+                  //수량:  {selected[size]}
                   Object.keys(selected).map(size => {
-                    return selected[size] !== 0 ? <div>사이즈 : {size}, 수량 : {selected[size]}</div> : null
+                    return selected[size] !== 0 ? <div>사이즈 : {size}, 수량 : {count}</div> : null
                   })
                 }
               </div>

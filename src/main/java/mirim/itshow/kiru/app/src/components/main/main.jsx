@@ -101,7 +101,7 @@ export const Main = ({ convertPrice, products, setProducts}) => {
       </header> 
      
 
-      
+
 
 
 
@@ -128,7 +128,7 @@ export const Main = ({ convertPrice, products, setProducts}) => {
 
         </div>
         </div>
-
+      
       
 
 

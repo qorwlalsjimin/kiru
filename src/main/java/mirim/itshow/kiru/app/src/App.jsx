@@ -11,6 +11,7 @@ import Modernized from "./components/item/modernized";
 // import Tradition from "./components/item/Tradition";
 import Shoes from './components/item/shoes'
 import Accessories from "./components/item/Accessories"
+import { Main } from "./components/main/main";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -25,10 +26,10 @@ function App() {
       <TopNavigationBar/>
       
 
-     
+
       <Routes>
         <Route
-          path="/tradition"
+          path="/main"
           exact={true}
           element={
             <Home
@@ -66,6 +67,7 @@ function App() {
             <Accessories/> } 
             />
  */}
+      
 
         <Route
           path="/product/:id"

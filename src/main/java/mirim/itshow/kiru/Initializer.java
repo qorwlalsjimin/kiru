@@ -158,7 +158,7 @@ class Initializer implements CommandLineRunner {
                         .name("온세미로")
                         .price(45000)
                         .description("온세미로, 단아한 디자인 고급스러운 한복\n소매에 고급원단으로 마감하여 우아함을 더하다.")
-                        .imageUrl(new String[]{"https://i.postimg.cc/zGxWBqxy/image.png", "https://i.postimg.cc/mkVsxg4S/image.png",
+                        .imageUrl(new String[]{"https://i.postimg.cc/mkVsxg4S/image.png", "https://i.postimg.cc/zGxWBqxy/image.png",
                                 "https://i.ibb.co/WyTKCTr/image.jpg"})
                         .color(new String[]{"분홍색", "청색"})
                         .size(new String[]{"S", "M", "L"})

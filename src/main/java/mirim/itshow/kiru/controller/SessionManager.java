@@ -14,7 +14,7 @@
 ///**
 // * 세션 관리 (Session management)
 // * Not a Controller
-// * using at JoinController
+// * using at MemberController
 // * reference: https://develop-writing.tistory.com/87?category=894269
 // */
 //@Component

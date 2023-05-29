@@ -10,10 +10,6 @@ import java.util.Optional;
 public interface HeartItemRepository extends JpaRepository<HeartItem, Long> {
     List<HeartItem> findByItem_Country(Country hanbokOrKimono);
 
-    HeartItem findByItemName(String itemName);
-
-    Optional<HeartItem> findByItem_ItemId(Long itemId);
-
     //상품 id로 delete
     void deleteByItem_ItemId(Long itemId);
 

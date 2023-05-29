@@ -54,7 +54,7 @@ public class Item {
     private String brand; //분류를 위한 브랜드명
 
     @Column
-    private boolean wish = false; //즐겨찾기
+    private boolean heart = false; //즐겨찾기
 
     public Item(){}
     @Builder

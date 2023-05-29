@@ -1,4 +1,4 @@
-package mirim.itshow.kiru.dto.member;
+package mirim.itshow.kiru.dto;
 
 import lombok.Data;
 

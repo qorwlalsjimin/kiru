@@ -8,6 +8,8 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface ItemRepository extends JpaRepository<Item, Long> {
+    public Item findByItemId(Long itemId);
+
     //    List<Item> findByCategory_CategoryId(@Param(value = "categoryId") Long categoryId);
     List<Item> findByCategory_CategoryPId(Long categoryPId);
     List<Item> findByCategory_CategoryPIdAndCategory_CategoryId(Long categoryPId, Long categoryId);

@@ -55,9 +55,10 @@ class Initializer implements CommandLineRunner {
 
 
                 new Category(200L, 200L, "*일본"),
-                new Category(210L, 200L, "소라노카오리.Sorano Kaori"),
-                new Category(211L, 210L, "하나비라.Hanabira"),
-                new Category(212L, 210L, "스즈노기모노.Suzuno kimono"),
+                new Category(210L, 200L, "기모노"),
+                new Category(211L, 210L, "소라노카오리.Sorano Kaori"),
+                new Category(212L, 210L, "하나비라.Hanabira"),
+                new Category(213L, 210L, "스즈노기모노.Suzuno kimono"),
 
                 new Category(220L, 200L, "유카타"),
                 new Category(221L, 220L, "소라노카오리.Sorano kaori"),

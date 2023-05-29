@@ -1,6 +1,6 @@
 package mirim.itshow.kiru.controller;
 
-import mirim.itshow.kiru.dto.member.JoinForm;
+import mirim.itshow.kiru.dto.JoinForm;
 import mirim.itshow.kiru.entity.Member;
 import mirim.itshow.kiru.service.MemberService;
 import org.slf4j.Logger;

@@ -18,6 +18,11 @@ public class Heart {
 
     @OneToOne
     @JoinColumn(name="id")
-    private Member memberId; //사용자 id(fk)
+    private Member member; //사용자 id(fk)
 
+    public static Heart createHeart(Member member){
+        Heart heart = new Heart();
+        heart.setMember(member);
+        return heart;
+    }
 }

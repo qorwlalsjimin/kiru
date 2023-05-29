@@ -1,6 +1,6 @@
 package mirim.itshow.kiru.controller;
 
-import mirim.itshow.kiru.dto.member.LoginForm;
+import mirim.itshow.kiru.dto.LoginForm;
 import mirim.itshow.kiru.entity.Member;
 import mirim.itshow.kiru.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;

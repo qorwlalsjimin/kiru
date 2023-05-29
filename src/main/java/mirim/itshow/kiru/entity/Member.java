@@ -2,7 +2,7 @@ package mirim.itshow.kiru.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import mirim.itshow.kiru.dto.member.JoinForm;
+import mirim.itshow.kiru.dto.JoinForm;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

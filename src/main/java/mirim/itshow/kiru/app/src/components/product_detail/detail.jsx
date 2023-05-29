@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import Detail2 from "./detail2"
 import axios from "axios";
 import "./combobox.js"
+import "./detail.css"
 
 export const Detail = ({ convertPrice, cart, setCart }) => {
   const { id } = useParams();
@@ -80,6 +81,68 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
     setCart(cart => cart.concat(cartItem));
   };
 
+  //박스 수량 
+  const [selectedOptions, setSelectedOptions] = useState({});
+  const [totalCount, setTotalCount] = useState(1);
+
+  const handleOptionSelection = (e) => {
+    const { name, value } = e.target;
+    setSelectedOptions((prevSelectedOptions) => ({
+      ...prevSelectedOptions,
+      [name]: {
+        value,
+        count: 1,
+      },
+    }));
+  };
+
+
+
+
+  const handleQuantityChange = (name, action) => {
+    setSelectedOptions((prevSelectedOptions) => {
+      const updatedOptions = { ...prevSelectedOptions };
+      const option = updatedOptions[name];
+      if (option) {
+        const updatedCount = action === 'plus' ? option.count + 1 : option.count - 1;
+        updatedOptions[name] = {
+          ...option,
+          count: updatedCount >= 0 ? updatedCount : 0,
+        };
+        calculateTotalCount(updatedOptions);
+      }
+      return updatedOptions;
+    });
+  };
+
+  const calculateTotalCount = (options) => {
+    let totalCount = 0;
+    Object.values(options).forEach((option) => {
+      totalCount += option.count;
+    });
+    setTotalCount(totalCount);
+  };
+
+  const handleSizeSelection = (e) => {
+    const selectedSize = e.target.value;
+    setTotalCount(0); // Reset totalCount when size is selected
+    setSelectedOptions((prevSelectedOptions) => {
+      const updatedOptions = { ...prevSelectedOptions };
+      const option = updatedOptions[selectedSize];
+      if (option) {
+        option.count = 1;
+      } else {
+        updatedOptions[selectedSize] = {
+          value: selectedSize,
+          count: 1,
+        };
+      }
+      calculateTotalCount(updatedOptions);
+      return updatedOptions;
+    });
+  };
+
+
   // useEffect(() => {
   //   getProducts().then((data) => {
   //     setProduct(
@@ -126,8 +189,26 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
               <p>색상을 선택해주세요</p>
             
               </div>
-              {product.color}
-          
+              <div className="colorpick">
+              <button>
+              {product.color[0]}
+            </button>
+            <button>
+              {product.color[1]}
+            </button>
+           
+            </div>
+
+            {/* <select onChange={(e) => {
+                const selectedColor = e.target.value;
+                // console.log(selected[selectedSize])
+                if(selectedColor in selected) {
+                  setSelected(p => {
+                    return { selectedColor}
+                  })
+                }
+
+            }} > */}
 
 
 
@@ -143,16 +224,19 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
             <div className="selectBox">
               <p className="sizetitle">사이즈</p>
             <div className="size">
-            <select onChange={(e) => {
+            {/* <select onChange={(e) => {
                 const selectedSize = e.target.value;
-                // console.log(selected[selectedSize])
+             
                 if(selectedSize in selected) {
                   setSelected(p => {
                     return { ...p, [selectedSize]: p[selectedSize] + count }
                   })
                 }
 
-            }} >
+            }} > */}
+
+
+          <select onChange={handleSizeSelection}>
              
             <option value="0" selected>
             {/* <p id="s_text1">사이즈</p> */}
@@ -164,10 +248,8 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
             <option value="L">{product.size[2]}</option>
  
           </select>
-            
         </div>
-              
-        </div>
+      </div>
             <div className="date">
 
               <div className="dateBox">
@@ -188,76 +270,54 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
              
            
 
-            <div className="allBox">
+            {/* <div className="allBox"> */}
 {/* 
             <div className={styles.amount}>
               <div className={styles.amount}> */}
-              <div>
-                {
-
-                  //수량:  {selected[size]}
-                  Object.keys(selected).map(size => {
-                    return selected[size] !== 0 ? <div>사이즈 : {size}, 수량 : {count}</div> : null
-                  })
-                }
-              </div>
-              <div className="countbtn"> 
-
-                <button className="m" onClick={() => handleQuantity("minus")}>-</button>
-             
-              {/* <div className={styles.count}> */}
-              <div className="countBox">
-              <span>{count}</span>
-              </div>
-              
-              {/* </div> */}
-              {/* <div className={styles.plus}> */}
-                <button className="p"  onClick={() => handleQuantity("plus")}>+</button>
-                {/* </div> */}
-                   
-              </div>
-
-                <div className="pricesmall">
-                  
-                
-                  {convertPrice(product.price * count)}
-                 원
-                
-                 <i className="ri-close-line"></i>
+               {/* 수량:  {selected[size]} */}
+              {/* <div> */}
+              {Object.keys(selectedOptions).map((size) => {
+                const option = selectedOptions[size];
+                return option.count !== 0 ? (
+                  <div className="allBox" key={size}>
+                    <div> 수량 : {option.count} / {option.value}</div>
+                    <div className="countbtn">
+                      <button className="m" onClick={() => handleQuantityChange(size, "minus")}>-</button>
+                      <div className="countBox">
+                        <span>{option.count}</span>
+                      </div>
+                      <button className="p" onClick={() => handleQuantityChange(size, "plus")}>+</button>
+                    </div>
+                    <div className="pricesmall">
+                      {convertPrice(product.price)}원  <i className="ri-close-line"></i></div>
+                    <div className={styles.sum}>
+                      <span className={styles.total}>
+                        총 수량 <span className={styles.total_count}>{totalCount}개</span>
+                      </span>
+                      <div className={styles.total_info}>
+                        <span className={styles.total_price}>
+                          <span className={styles.total_unit}>총 대여료 </span>
+                          {convertPrice(product.price * option.count)}원
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ) : null;
+              })}
 
 
-                </div> 
-          
-                
-              </div>
+
             </div>
+
+
+
+            {/* </div> */}
+            
       
 
             <div className={styles.line}></div>
 
-            <div className={styles.sum}>
-            <span className={styles.total}>
-                  총 수량 <span className={styles.total_count}>{count}개</span>
-                </span>
-              <div>
-                {/* <span className={styles.sum_price}>총 대여료</span> */}
-              </div>
-
-              <div className={styles.total_info}>
-               
-
-
-
-                <span className={styles.total_price}>
-                <span className={styles.total_unit}>
-                총 대여료 </span>
-                  {convertPrice(product.price * count)}
-
-                  
-                <span className={styles.total_unit}>원</span>
-                </span>
-              </div>
-            </div>
+          
 
             <div className={styles.btn}>
               <button className={styles.btn_buy}>대여신청하기</button>

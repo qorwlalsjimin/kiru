@@ -37,8 +37,9 @@ public class HeartService {
     public HeartItem addHeart(HeartForm form, String memberid){
         // DB에 저장
         Item item = itemRepository.findById(form.getItemId()).get(); //상품 id로 해당 상품 가져오기
-        item.getPrice();
-        item.getCategory();
+        if(item.isHeart()) //이미 즐겨찾기되어있는 상품이라면
+            throw new IllegalStateException("이미 즐겨찾기되어 있는 상품입니다."); //에러 발생
+
         Member member = memberRopository.findByMemberid(memberid); //회원 정보
         Heart heart = heartRepository.findByMember(member); //회원이 가지고 있는 즐겨찾기
         if(heart == null){ //즐겨찾기가 없었다면

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -47,7 +48,12 @@ public class HeartService {
             heartRepository.save(heart);
         }
 
+        // 상품, 회원별 즐겨찾기 entity로 heartItem 생성
         HeartItem heartItem = HeartItem.createHeartItem(item, heart);
+
+        // timestamp
+        LocalDateTime now = LocalDateTime.now();
+        heartItem.setCreateTimestamp(now);
 
         // Item에 즐겨찾기 반영
         item.setHeart(true);

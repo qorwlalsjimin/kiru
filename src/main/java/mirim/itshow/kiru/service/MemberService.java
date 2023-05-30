@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+
 @Service
 @Transactional //TODO 왜 쓰는지 모름
 public class MemberService {
@@ -23,8 +25,14 @@ public class MemberService {
      * 회원 가입
      */
     public Member join(Member member){
+        //회원 중복 체크
         validateDuplicateMember(member);
-        System.out.println("회원가입 성공");
+        System.out.println("회원가입 성공"); //메시지 출력 TODO LOG로 바꾸기
+
+        //timestamp
+        LocalDateTime now = LocalDateTime.now();
+        member.setCreateTimestamp(now);
+
         return memberRepository.save(member);
     }
 

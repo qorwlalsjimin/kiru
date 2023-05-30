@@ -24,8 +24,10 @@
 
 
 .pricesmall{
+  
     display: flex;
-    margin-left: 22rem;
+    margin-top: 10px;
+  
   
   }
   
@@ -83,11 +85,12 @@
     border: solid 2px rgb(221, 217, 217);
   }
 
- /* #s_text1{
-  font-size: 10px;
-  font-weight: bold;
-
- } */
+  .detailbtn{
+   /* margin-top: 30px; */
+   /* position: absolute; */
+   /* bottom: 26rem; */
+  
+  }
 
  .detailimg{
    
@@ -159,13 +162,14 @@
 
 
 .allBox{
+  /* position: relative;  */
   border-radius: 10px;
   width: 37rem;
   height: 90px;
   /* background-color: antiquewhite; */
   margin-top: 30px;
   border: solid 2px rgb(221, 217, 217);
-
+  /* margin-bottom: 30px; */
 }
 
 .heart{

@@ -10,6 +10,13 @@ export const CartList = ({
   selectedOptions, totalCount
 }) => {
 
+ 
+
+
+
+    // selectedOptions가 undefined 또는 null인 경우 빈 객체로 초기화
+    const options = selectedOptions || {};
+
 
   console.log(cart)
   
@@ -33,6 +40,15 @@ export const CartList = ({
           {/* <p className={styles.seller_store}>{cart.provider}</p> */}
           <p className={styles.product_name}>{cart.name}</p>
           <p className={styles.product_name}>{cart.brand}</p>
+          {/* {Object.keys(options).map((size, index) => (
+          <li key={size}>
+            {size}: {options[size]?.count}개 / {options[size]?.value}
+          </li>
+        ))} */}
+      
+      
+
+
 
          
           {/* <p className={styles.product_name}>{cart.size}</p> */}
@@ -57,10 +73,12 @@ export const CartList = ({
         /> */}
 
         <div className={styles.count}>
-          <span>{cart.quantity}</span>
+         {/* {cart.quantity} */}
+         <span>{cart.totalCount ?? 0}</span>
         </div>
-{/*         
-        <img
+
+        {/*수량 조절  */}
+        {/* <img
           className={styles.plus}
           src="/images/icon-plus-line.svg"
           alt="plus"

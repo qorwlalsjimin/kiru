@@ -3,10 +3,13 @@ import { useState } from "react";
 import { CartHeader } from "./cartHeader";
 import { CartList } from "./cartList";
 import { TotalCart } from "./totalCart";
+import {Btn} from "./btn"; 
 
 export const Cart = ({ cart, setCart, convertPrice }) => {
   const [total, setTotal] = useState(0);
   const [checkLists, setCheckLists] = useState([]);
+
+ 
   const isAllChecked =
     cart.length === checkLists.length && checkLists.length !== 0;
 
@@ -26,6 +29,7 @@ export const Cart = ({ cart, setCart, convertPrice }) => {
         quantity: quantity,
         price: found.price,
         provider: found.provider
+      
       };
       setCart([...cart.slice(0, idx), cartItem, ...cart.slice(idx + 1)]);
     } else {

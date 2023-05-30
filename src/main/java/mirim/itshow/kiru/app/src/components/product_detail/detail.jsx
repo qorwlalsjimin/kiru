@@ -227,6 +227,8 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
 
             </div>
 
+            <div className="inputboxs">
+
           <div className="sizeinfo">
             {/* <div className={styles.delivery}> */}
             <i class="ri-information-line"></i>  <p>사이즈 정보</p>
@@ -259,11 +261,13 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
  
           </select>
         </div>
-      </div>
+      </div>   
             <div className="date">
 
               <div className="dateBox">
+          
                 <div className="renttitle">
+             
                   대여 기간</div>
                 <div className="datedate">
                   <input type="date" id="start" name="trip-start" value="2023-07-22" min="2018-01-01" max="2018-12-31" />
@@ -272,30 +276,40 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
                 </div>
               </div>
             </div>
-
+            </div>  
             {/* </div> */}
 
             {/* hr bar */}
-            <div className={styles.line}>
+          
              
               {Object.keys(selectedOptions).map((size, index) => {
+                
                 const option = selectedOptions[size];
                 return option.count !== 0 ? (
-                  <div className="allBox" key={size}>
+                  <>
+             
+                  <div className="allBox" key={size}>  
+                    
                     <div> 수량 : {option.count} / {option.value}</div>
+
+                    <div className="pricesmall">
+                      {convertPrice(product.price*option.count)}원  <i className="ri-close-line" onClick={() => handleBoxClose(size)}></i>
+                      </div>
+
                     <div className="countbtn">
                       <button className="m" onClick={() => handleQuantityChange(size, "minus")}>-</button>
                       <div className="countBox">
                         <span>{option.count}</span>
                       </div>
                       <button className="p" onClick={() => handleQuantityChange(size, "plus")}>+</button>
+                     
                     </div>
-                    <div className="pricesmall">
-                      {convertPrice(product.price*option.count)}원  <i className="ri-close-line" onClick={() => handleBoxClose(size)}></i>
-                      </div>
+                  
 
                       
                   </div>
+                
+                  </>
                 ) : null;
               })}
               
@@ -311,10 +325,11 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
                         </span>
                       </div>
                     </div>
+                    
                     )}
 
 
-            </div>
+           
 
 
 
@@ -322,10 +337,8 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
             
       
 
-            <div className={styles.line}></div>
-
-          
-
+            {/* <div className={styles.line}></div> */}
+            <div className="detailbtn">
             <div className={styles.btn}>
               <button className={styles.btn_buy}>대여신청하기</button>
               <button
@@ -337,10 +350,11 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
                 장바구니
               </button>
             </div>
+            </div>
           </section>
         </main>
 
-        
+      
 
         <section>
             <p id="detailImg">상세 이미지</p>

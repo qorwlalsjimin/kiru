@@ -20,9 +20,6 @@ public class ItemController {
     @Autowired
     private ItemService itemService;
 
-    @Autowired
-    ItemRepository itemRepository;
-
     //카테고리별 All 상품 목록 (cf. 카테고리 안 나눈 전체 상품 목록은 필요 없음)
     @GetMapping("/item/item_list/{categoryPId}")
     public Collection<Item> selectCategoryPIdItem(@PathVariable Long categoryPId){

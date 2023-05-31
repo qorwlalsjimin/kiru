@@ -170,15 +170,7 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
       return updatedOptions;
     });
   };
-  // useEffect(() => {
-  //   getProducts().then((data) => {
-  //     setProduct(
-  //       data.data.products.find((product) => product.id === parseInt(id))
-  //     );
-  //   });
-  // }, [id, product.price]);
-
-
+  
 
 
   return (

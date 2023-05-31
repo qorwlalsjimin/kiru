@@ -17,12 +17,16 @@ export const CartHeader = ({ isAllChecked, handleCheckAll }) => {
         <div className={styles.tab_title}>
          
        
-
+          <div className={styles.le}>
           <span>상품정보</span>
+          </div>
+
+          <div className={styles.ri}>
           <span>브랜드</span>
           <span>수량</span>
           <span>상품금액</span>
-
+          
+          </div>
         
         </div>
       </div>

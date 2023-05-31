@@ -14,7 +14,7 @@ export const CartList = ({
 
   // debugger;
   // console.log(cart)
-  
+
   return (
     <section className={styles.cart_product_list}>
       <input
@@ -47,7 +47,8 @@ export const CartList = ({
         <div className={styles.cart_product_info}>
           {/* <p className={styles.seller_store}>{cart.provider}</p> */}
           <p className={styles.product_name}>{cart.name}</p>
-          <p className={styles.product_name}>{cart.brand}</p>
+
+        
           <span>{cart.size}</span>
          
           {/* <p className={styles.product_name}>{cart.size}</p> */}
@@ -58,7 +59,14 @@ export const CartList = ({
       </div>
 
 
-
+      <div className={styles.ri2}>
+      <div className={styles.ri}>
+          <span>  {cart.brand}</span>         
+          <span>{cart.quantity} </span>
+          <span> {convertPrice(cart.price)}원</span>
+          
+          </div>
+          </div>
 
 
       <div className={styles.cart_product_count}>
@@ -85,7 +93,7 @@ export const CartList = ({
 
 
 
-          <span>{cart.quantity} </span>
+         
         </div>
 {/*         
         <img
@@ -97,8 +105,8 @@ export const CartList = ({
 
       </div>
       <div className={styles.cart_product_price}>
-        <p className={styles.total_price}>{totalCount}</p>
-        <p className={styles.price}>{convertPrice(cart.price)}원</p>
+      
+      
         {/* <button className={styles.btn_submit}>주문하기</button> */}
       </div>
 

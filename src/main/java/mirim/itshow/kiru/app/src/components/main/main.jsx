@@ -5,9 +5,10 @@ import {topNavigationBar} from "../header/topNavigationBar/topNavigationBar"
 import { Product } from "../products/product";
 import axios from 'axios';
 import "../header/topNavigationBar/header.css"
+import Header from "../header/topNavigationBar/topNavigationBar"
 // import { getProducts } from "../../service/fetcher";
 
-export const Main = ({ convertPrice, products, setProducts}) => {
+export const Main = ({ convertPrice, products, setProducts }) => {
 
 
 
@@ -74,9 +75,9 @@ export const Main = ({ convertPrice, products, setProducts}) => {
 
   return (
     <>
-       
+        {/* <Header setProducts={setProducts} handleNavClick={handleNavClick} /> */}
       
-      <header>
+      {/* <header>
       <nav>
       <div className="nav">
         <ul className="flex">
@@ -99,7 +100,7 @@ export const Main = ({ convertPrice, products, setProducts}) => {
         </div>
       </nav>
       </header> 
-     
+      */}
 
 
 

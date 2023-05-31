@@ -6,55 +6,9 @@ import "./script"
 import { useEffect, useState } from "react";
 import axios from 'axios';
 
-// export const TopNavigationBar = ({ cart }) => {
-//   return (
-//     <header className={styles.header}>
-//       <div className={styles.inner}>
-//         <Link to="/">
-//           <h1 className={styles.logo}>
-//             <img src="/images/logo.png" alt="logo" />
-//           </h1>
-//         </Link>
-//         <div className={styles.input_wrap}>
-//           <input type="text" placeholder="상품을 검색해보세요!" />
-//           <img src="/images/icon-search.svg" alt="search" />
-//         </div>
-//       </div>
 
-//       <div className={styles.menu}>
-//         <Link to="/cart">
-//           <div className={styles.shopping_cart}>
-//             <img src="/images/icon-shopping-cart.svg" alt="cart" />
-//             <span>장바구니</span>
-//             {cart.length >= 1 ? (
-//               <div className={styles.new_shopping_cart}>
-//                 <p>{cart.length}</p>
-//               </div>
-//             ) : (
-//               ""
-//             )}
-//           </div>
-//         </Link>
-//         <Link to="">
-//           <div className={styles.mypage}>
-//             <img src="/images/icon-user.svg" alt="user" />
-//             <span>로그인</span>
-//           </div>
-//         </Link>
-//       </div>
-//     </header>
-//   );
-// };
+const Header = ({setProducts, handleNavClick}) => {
 
-
-const Header = ({setProducts}) => {
-
-
-  const [selectedNav, setSelectedNav] = useState('');
-
-  useEffect(() => {
-    fetchData('/api/item/item_list/110');
-  }, []);
 
   const fetchData = async (url) => {
     try {
@@ -66,25 +20,29 @@ const Header = ({setProducts}) => {
   };
 
 
-
-  const handleNavClick = (nav) => {
-    let url = '';
-
-    if (nav === '전통한복') {
-      url = '/api/item/item_list/110';
-    } else if (nav === '개량한복') {
-      url = '/api/item/item_list/120';
-    } else if (nav === '신발') {
-      url = '/api/item/item_list/130';
-    } else if (nav === '악세사리') {
-      url = '/api/item/item_list/140';
-    } else if (nav === '세트') {
-      url = '/api/item/item_list/150';
-    }
-
-    setSelectedNav(nav);
-    fetchData(url);
+  const handleClick = (nav) => {
+    handleNavClick(nav, fetchData);
   };
+
+
+  // const handleNavClick = (nav) => {
+  //   let url = '';
+
+  //   if (nav === '전통한복') {
+  //     url = '/api/item/item_list/110';
+  //   } else if (nav === '개량한복') {
+  //     url = '/api/item/item_list/120';
+  //   } else if (nav === '신발') {
+  //     url = '/api/item/item_list/130';
+  //   } else if (nav === '악세사리') {
+  //     url = '/api/item/item_list/140';
+  //   } else if (nav === '세트') {
+  //     url = '/api/item/item_list/150';
+  //   }
+
+  //   setSelectedNav(nav);
+  //   fetchData(url);
+  // };
 
   return (
     <>
@@ -124,28 +82,28 @@ const Header = ({setProducts}) => {
 
 
 
-{/* 
+
         
 
         <div className="nav">
         <ul className="flex">
           <li>
-            <button onClick={() => handleNavClick('전통한복')}>전통</button>
+            <button onClick={() => handleClick('전통한복')}>전통</button>
           </li>
           <li>
-            <button onClick={() => handleNavClick('개량한복')}>개량</button>
+            <button onClick={() => handleClick('개량한복')}>개량</button>
           </li>
           <li>
-            <button onClick={() => handleNavClick('신발')}>신발</button>
+            <button onClick={() => handleClick('신발')}>신발</button>
           </li>
           <li>
-            <button onClick={() => handleNavClick('악세사리')}>악세사리</button>
+            <button onClick={() => handleClick('악세사리')}>악세사리</button>
           </li>
           <li>
-            <button onClick={() => handleNavClick('세트')}>세트</button>
+            <button onClick={() => handleClick('세트')}>세트</button>
           </li>
         </ul>
-        </div> */}
+        </div>
 
 
 

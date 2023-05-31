@@ -22,10 +22,14 @@ export const TotalCart = ({ total, setTotal, cart, convertPrice, found }) => {
 
   return (
     <>
+     <div>
+        <button><i class="ri-arrow-left-s-line"></i>쇼핑계속하기</button>
+
+    </div>
     <div className={styles.total}>
       <div className={styles.total_price}>
-        <p className={styles.cart_product_total_price}>총 수량</p>
-        <p className={styles.cart_product_price}>{convertPrice(total)}</p>
+        <p className={styles.cart_product_total_price}>총 수량 {convertPrice(total)}개</p>
+      
       </div>
     
       <div className={styles.sale}>
@@ -36,11 +40,9 @@ export const TotalCart = ({ total, setTotal, cart, convertPrice, found }) => {
      
 
       <div className={styles.payment}>
-        총 대여료
-        <p className={styles.cart_prouct_payment}>{convertPrice(total)}</p>원
-        <p className={styles.cart_prouct_payment_price}>
-          
-        </p>
+      
+      총 대여료 <p className={styles.cart_prouct_payment}>ㅤ{convertPrice(total)}</p>원
+     
       </div>
     </div>
 

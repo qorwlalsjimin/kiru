@@ -1,4 +1,5 @@
 import styles from "./cart.module.css";
+import "../product_detail/detail"
 
 export const CartList = ({
   cart,
@@ -10,15 +11,9 @@ export const CartList = ({
   selectedOptions, totalCount
 }) => {
 
- 
 
-
-
-    // selectedOptions가 undefined 또는 null인 경우 빈 객체로 초기화
-    const options = selectedOptions || {};
-
-
-  console.log(cart)
+  // debugger;
+  // console.log(cart)
   
   return (
     <section className={styles.cart_product_list}>
@@ -30,6 +25,19 @@ export const CartList = ({
         }}
         checked={checkLists.includes(`${cart.id}`) ? true : false}
       />
+{/* 
+<section className={styles.cart_product_list}>
+      <input
+        type="checkbox"
+        id={cart.id}
+        onChange={(e) => {
+          handleCheckList(e.currentTarget.checked, `${cart.id}`);
+        }}
+        checked={checkLists.includes(`${cart.id}`) ? true : false}
+      />
+여기서 객체가 하나씩 생겨날 때마다 인풋을 누르면 선택할 수 있는데, 이 인풋 버튼을 누르면 생성된 객체 모두가 선택되지 않고 각각의 객체만 선택하도록 코드를 수정해줘  */}
+
+
       <div className={styles.cart_product_wrap}>
         <div className={styles.cart_product_image}>
           <img src={cart.image} alt="product-img" />
@@ -40,16 +48,7 @@ export const CartList = ({
           {/* <p className={styles.seller_store}>{cart.provider}</p> */}
           <p className={styles.product_name}>{cart.name}</p>
           <p className={styles.product_name}>{cart.brand}</p>
-          {/* {Object.keys(options).map((size, index) => (
-          <li key={size}>
-            {size}: {options[size]?.count}개 / {options[size]?.value}
-          </li>
-        ))} */}
-      
-      
-
-
-
+          <span>{cart.size}</span>
          
           {/* <p className={styles.product_name}>{cart.size}</p> */}
 
@@ -73,12 +72,23 @@ export const CartList = ({
         /> */}
 
         <div className={styles.count}>
-         {/* {cart.quantity} */}
-         <span>{cart.totalCount ?? 0}</span>
-        </div>
 
-        {/*수량 조절  */}
-        {/* <img
+
+        {/* {Object.keys(selectedOptions).map((size) => {
+          const option = selectedOptions[size];
+          return (
+            <li key={size}>
+              {size}: {option.count}개
+            </li>
+          );
+        })} */}
+
+
+
+          <span>{cart.quantity} </span>
+        </div>
+{/*         
+        <img
           className={styles.plus}
           src="/images/icon-plus-line.svg"
           alt="plus"
@@ -87,7 +97,7 @@ export const CartList = ({
 
       </div>
       <div className={styles.cart_product_price}>
-        <p className={styles.total_price}></p>
+        <p className={styles.total_price}>{totalCount}</p>
         <p className={styles.price}>{convertPrice(cart.price)}원</p>
         {/* <button className={styles.btn_submit}>주문하기</button> */}
       </div>

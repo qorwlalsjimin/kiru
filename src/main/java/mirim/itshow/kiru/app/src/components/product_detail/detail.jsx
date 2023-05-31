@@ -59,7 +59,25 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
   };
 
   const handleCart = () => {
-    // debugger;
+    const appended = []
+    for(const size of Object.keys(selectedOptions)) {
+        appended.push(
+          {
+            id: product.id,
+            image: product.image,
+            name: product.name,
+            quantity: count,
+            price: product.price,
+            provider: product.provider,
+            brand: product.brand,
+            size: size,
+            quantity: selectedOptions[size].count,
+            color: product.color
+          }
+        )
+    }
+    console.log(appended)
+    /*
     const cartItem = {
       id: product.id,
       image: product.image,
@@ -71,14 +89,14 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
       size: product.size,
       color: product.color
     };
-
+    */
 
 
     /*
     const found = cart.find((el) => el.id === cartItem.id);
     if (found) setQuantity(cartItem.id, found.quantity + count);
     else setCart(cart => cart.concat(cartItem));*/
-    setCart(cart => cart.concat(cartItem));
+    setCart(cart => cart.concat(appended));
   };
 
   //박스 수량 
@@ -204,7 +222,7 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
               <div className="colorpick">
               
                {product.color}
-                
+
 
 
             </div>

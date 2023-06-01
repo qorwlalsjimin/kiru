@@ -1,3 +1,11 @@
+.show_more{
+  background: #ffffff;
+  padding: 2% 51.7rem; /* 위/아래 패딩은 10px, 좌/우 패딩은 20px */
+
+  
+  border: none;
+}
+
 .filter {
   display: flex;
   width: 85%;

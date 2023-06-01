@@ -183,12 +183,16 @@ font-weight: bold;
 }
 
 .sum .total_price {
+ 
   font-size: 26px;
   line-height: 45px;
   /* color: #19ce60; */
 }
 
+
+
 .sum .total_unit {
+  
   font-size: 18px;
   line-height: 23px;
   /* color: #19ce60; */

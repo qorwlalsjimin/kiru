@@ -233,6 +233,14 @@
 .colorpick:focus{
 
  background: purple;
-  
-  
+   
+}
+
+.datedata{
+  /* margin-right: 20px;  */
+  position: absolute;
+  left: 50%;
+  margin-top: 15px;
+  font-size: 15px;
+
 }

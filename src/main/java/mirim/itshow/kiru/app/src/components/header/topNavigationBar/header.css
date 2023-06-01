@@ -24,6 +24,7 @@ header .nav{
 .icons i{
     margin-left: 30px;
     cursor: pointer;
+    /* font-size: 10px; */
 }
 
 
@@ -76,21 +77,25 @@ li{
     display: inline;
 }
 
+/* 헤더 */
 .flex button{
     border: none;
     background-color: #fff;
-    margin-inline: 7px;
+    margin-inline: 9px;
 }
 
 
 
 /* 카테고리 */
-.banner h2{
+.Banner h2{
 /* margin-top: 5%; */
 display: grid;
 place-items: center;
+font-size: 25px;
+
 }
 
+/* 카테고리 위치 */
 .selection{
     margin-bottom: 5%;
     /* display: grid;
@@ -99,6 +104,10 @@ margin-left: 10px;
 }
 
 .cloum{
-
+ 
     color: rgb(174, 173, 173);
+}
+
+.cloum i{
+    font-size: 10px;
 }

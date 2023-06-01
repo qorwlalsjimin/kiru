@@ -8,8 +8,6 @@ import axios from 'axios';
 
 
 const Header = ({setProducts, handleNavClick}) => {
-
-
   const fetchData = async (url) => {
     try {
       const response = await axios.get(url);
@@ -25,25 +23,6 @@ const Header = ({setProducts, handleNavClick}) => {
   };
 
 
-  // const handleNavClick = (nav) => {
-  //   let url = '';
-
-  //   if (nav === '전통한복') {
-  //     url = '/api/item/item_list/110';
-  //   } else if (nav === '개량한복') {
-  //     url = '/api/item/item_list/120';
-  //   } else if (nav === '신발') {
-  //     url = '/api/item/item_list/130';
-  //   } else if (nav === '악세사리') {
-  //     url = '/api/item/item_list/140';
-  //   } else if (nav === '세트') {
-  //     url = '/api/item/item_list/150';
-  //   }
-
-  //   setSelectedNav(nav);
-  //   fetchData(url);
-  // };
-
   return (
     <>
       <header>
@@ -55,7 +34,9 @@ const Header = ({setProducts, handleNavClick}) => {
           </div>
 
           <div className="logo">
-          <Link to="/main">      <img src="/images/logo.png" alt="" /></Link>
+            <Link to="/main">
+              <img src="/images/logo.png" alt="" />
+            </Link>
           </div>
 
           <div className="toggle">
@@ -65,24 +46,11 @@ const Header = ({setProducts, handleNavClick}) => {
             <Link to="/cart">   <i className="ri-shopping-cart-2-line"></i></Link>
             
               <Link to="/login_form"> <i className="ri-user-line"></i></Link>
-              {/* <p className="icon-text">로그인·회원가입</p> */}
-            {/* </div> */}
+             
           </div>
         </div>
 
-        {/* <div className="nav"> */}
-          {/* <ul className="flex"> */}
-            {/* {nav.map((list, index) => (
-              <li key={index}>
-                <Link to={list.path}>{list.text}</Link>
-              </li> */}
-            {/* ))} */}
-          {/* </ul> */}
-        {/* </div> */}
-
-
-
-
+     
         
 
         <div className="nav">

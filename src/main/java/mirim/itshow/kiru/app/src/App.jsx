@@ -17,7 +17,7 @@ import axios from 'axios';
 function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
-
+ 
   const convertPrice = (price) => {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
@@ -38,6 +38,9 @@ function App() {
       url = '/api/item/item_list/150';
     }
 
+
+    
+
     try {
       const response = await axios.get(url);
       setProducts(response.data);
@@ -51,7 +54,7 @@ function App() {
   return (
     <BrowserRouter>
       {/* <TopNavigationBar/> */}
-      <Header setProducts={setProducts} handleNavClick={handleNavClick} />
+      <Header setProducts={setProducts} handleNavClick={handleNavClick}  />
       {/* <Header setProducts={setProducts} /> */}
 
       <Routes>

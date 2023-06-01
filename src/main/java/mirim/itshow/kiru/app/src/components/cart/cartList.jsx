@@ -25,6 +25,12 @@ export const CartList = ({
         }}
         checked={checkLists.includes(`${cart.id}`) ? true : false}
       />
+
+      {checkLists.includes(`${cart.id}`) && (
+        <i className="ri-check-line" style={{ position: "absolute", top: "45%", left: "2.6%", transform: "translate(-50%, -50%)" }}></i>
+      )}
+
+
 {/* 
 <section className={styles.cart_product_list}>
       <input

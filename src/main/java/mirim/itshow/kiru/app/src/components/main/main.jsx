@@ -9,47 +9,20 @@ import Header from "../header/topNavigationBar/topNavigationBar"
 // import { getProducts } from "../../service/fetcher";
 
 export const Main = ({ convertPrice, products, setProducts }) => {
-
-
-
-
-  // useEffect(() => {
-  //   const fetchItem = async () => {
-  //     try {
-  //       const response = await axios.get('/api/item/item_list/110'); // 전통한복
-  //       console.log(response.data)
-  //       setProducts(response.data);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-
-  //   fetchItem();
-  // }, []);
-
-
-
-  //진짜
+  const [visibleProducts, setVisibleProducts] = useState([]);
+  const [showMore, setShowMore] = useState(false);
   const [selectedNav, setSelectedNav] = useState('');
-  //const [items, setItems] = useState([]);
-  // const [selectedNav, setSelectedNav] = useState('');
-
+ 
   useEffect(() => {
     fetchData('/api/item/item_list/110');
   }, []);
 
-  const fetchData = async (url) => {
-    try {
-      const response = await axios.get(url);
-      setProducts(response.data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
+  const handleShowMore = () => {
+    setVisibleProducts(products);
+    setShowMore(true);
   };
-
-
   
-  const handleNavClick = (nav) => {
+  const handleNavClick = (nav, fetchData) => {
     let url = '';
 
     if (nav === '전통한복') {
@@ -68,91 +41,66 @@ export const Main = ({ convertPrice, products, setProducts }) => {
     fetchData(url);
   };
 
-
-
+  const fetchData = async (url) => {
+    try {
+      const response = await axios.get(url);
+      setProducts(response.data);
+      setVisibleProducts(response.data.slice(0, 16));
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
 
 
 
   return (
     <>
         {/* <Header setProducts={setProducts} handleNavClick={handleNavClick} /> */}
-      
-      {/* <header>
-      <nav>
-      <div className="nav">
-        <ul className="flex">
-          <li>
-            <button onClick={() => handleNavClick('전통한복')}>전통</button>
-          </li>
-          <li>
-            <button onClick={() => handleNavClick('개량한복')}>개량</button>
-          </li>
-          <li>
-            <button onClick={() => handleNavClick('신발')}>신발</button>
-          </li>
-          <li>
-            <button onClick={() => handleNavClick('악세사리')}>악세사리</button>
-          </li>
-          <li>
-            <button onClick={() => handleNavClick('세트')}>세트</button>
-          </li>
-        </ul>
-        </div>
-      </nav>
-      </header> 
-      */}
-
-
-
-
 
       <div>
-      <div className='Banner'>
-        <h2> {selectedNav}</h2>
+        <div className='Banner'>
+          <h2> 전통한복</h2>
 
-        <div className="selection">
+          <div className="selection">
 
-          <div className="cloum c1">
-            <i className="ri-checkbox-blank-circle-fill"></i>
-            All
+            <div className="cloum c1">
+              <i className="ri-checkbox-blank-circle-fill"></i>
+              All
+            </div>
+
+            <div className="cloum c2">
+              <i className="ri-checkbox-blank-circle-fill"></i>
+              Best
+            </div>
+
+            <div className="cloum c3">
+              <i className="ri-checkbox-blank-circle-fill"></i>
+              Brand
+            </div>
+
           </div>
-
-          <div className="cloum c2">
-            <i className="ri-checkbox-blank-circle-fill"></i>
-            Best
-          </div>
-
-          <div className="cloum c3">
-            <i className="ri-checkbox-blank-circle-fill"></i>
-            Brand
-          </div>
-
         </div>
-        </div>
-      
-      
 
-
+    
         <ul>
-
-        <main className={styles.flex_wrap}>
-        {products.map((product) => {
-          return (
-            <Product
-              key={`key-${product.id}`}
-              product={product}
-              convertPrice={convertPrice}
-            />
-            );
-          })}
-        </main>
-            
-          {/* {items.map((item) => ( */}
-           {/* // <li key={item.id}>{item.name}</li> */}
-        {/* //</main>  ))} */}
-
-
+          <main className={styles.flex_wrap}>
+            {visibleProducts.map((product) => {
+              return (
+                <Product
+                  key={`key-${product.id}`}
+                  product={product}
+                  convertPrice={convertPrice}
+                />
+              );
+            })}
+          </main>
         </ul>
+
+        {!showMore && products.length > 16 && (
+        <button className={styles.show_more} onClick={handleShowMore}>
+          더보기
+        </button>
+      )}
       </div>
 
 

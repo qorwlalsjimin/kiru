@@ -6,6 +6,8 @@ import Detail2 from "./detail2"
 import axios from "axios";
 import "./combobox.js"
 import "./detail.css"
+import { CartList } from "../cart/cartList";
+import { TotalCart } from "../cart/totalCart";
 
 export const Detail = ({ convertPrice, cart, setCart }) => {
   const { id } = useParams();
@@ -171,6 +173,17 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
     });
   };
   
+  //date
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+
+  const handleStartDateChange = (e) => {
+    setStartDate(e.target.value);
+  };
+
+  const handleEndDateChange = (e) => {
+    setEndDate(e.target.value);
+  };
 
 
   return (
@@ -278,11 +291,13 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
           
                 <div className="renttitle">
              
-                  대여 기간</div>
+                  대여 기간
+                  </div>
+
                 <div className="datedate">
-                  <input type="date" id="start" name="trip-start" value="2023-07-22" min="2018-01-01" max="2018-12-31" />
+                  <input type="date" id="start" name="trip-start" value={startDate} min="2023-06-01" max="2023-07-31" onChange={handleStartDateChange}/>
                   <i className="ri-subtract-fill"></i>
-                  <input type="date" id="start" name="trip-start" value="2023-07-22" min="2018-01-01" max="2018-12-31" />
+                  <input type="date" id="start" name="trip-start" value={endDate} min="2023-06-01" max="2023-07-31"   onChange={handleEndDateChange}/>
                 </div>
               </div>
             </div>
@@ -325,13 +340,25 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
               
               {totalCount > 0 && showTotalInfo && (
                     <div className={styles.sum}>
+
+                     
                       <span className={styles.total}>
                         총 수량 <span className={styles.total_count}>{totalCount}개</span>
                       </span>
+
                       <div className={styles.total_info}>
+                   
                         <span className={styles.total_price}>
-                          <span className={styles.total_unit}>총 대여료 </span>
+                        
+                          <span className={styles.total_unit}>    
+                      <div className="datedata">
+                        {startDate} - {endDate}
+                    
+                      </div>
+                        
+                        총 대여료 </span>
                           {convertPrice(product.price * totalCount)}원
+                          
                         </span>
                       </div>
                     </div>

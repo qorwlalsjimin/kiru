@@ -40,7 +40,7 @@ public class HeartService {
         if(item.isHeart()) //이미 즐겨찾기되어있는 상품이라면
             throw new IllegalStateException("이미 즐겨찾기되어 있는 상품입니다."); //에러 발생
 
-        Member member = memberRopository.findByMemberEmail(memberid); //회원 정보
+        Member member = memberRopository.findById(Long.parseLong(memberid)).get(); //회원 정보
         Heart heart = heartRepository.findByMember(member); //회원이 가지고 있는 즐겨찾기
         if(heart == null){ //즐겨찾기가 없었다면
             heart = Heart.createHeart(member); //새로 만들어준다

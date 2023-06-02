@@ -32,9 +32,9 @@ public class RentService {
     ItemRepository itemRepository;
 
 
-    public Rent addRent(RentJson rentJson) {
+    public Rent addRent(RentJson rentJson, String memberid) {
         //1. Rent로 하나의 대여 프로세스 만들기
-        Member member = memberRepository.findByMemberEmail("사용자 이름..");
+        Member member = memberRepository.findById(Long.parseLong(memberid)).get();
         Rent rent = Rent.createRent(member);
         rentRepository.save(rent);
 

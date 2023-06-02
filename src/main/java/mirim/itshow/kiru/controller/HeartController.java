@@ -6,6 +6,7 @@ import mirim.itshow.kiru.entity_domain.enum_col.Country;
 import mirim.itshow.kiru.service.HeartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -25,7 +26,7 @@ public class HeartController {
     //C: 즐겨찾기 등록
     @PostMapping("/heart/new")
     public ResponseEntity<?> addHeart(@RequestBody HeartFormDto form) throws URISyntaxException {
-        heartService.addHeart(form, "사용자이름..");
+        heartService.addHeart(form, SecurityContextHolder.getContext().getAuthentication().getName()); //context의 username에는 회원 id가 들어있다
         System.out.println("즐겨찾기: 즐겨찾기 상품 등록 '"+form.getItemId()+"'");
         return ResponseEntity.created(new URI("/api/cart/new" + form.getItemId()))
                 .body(form);

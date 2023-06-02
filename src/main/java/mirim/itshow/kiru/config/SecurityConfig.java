@@ -47,8 +47,8 @@ public class SecurityConfig {
 
             // exception handling 할 때 우리가 만든 클래스를 추가
             .exceptionHandling()
-            .authenticationEntryPoint(jwtAuthenticationEntryPoint)
-            .accessDeniedHandler(jwtAccessDeniedHandler)
+            .authenticationEntryPoint(jwtAuthenticationEntryPoint) //401
+            .accessDeniedHandler(jwtAccessDeniedHandler) //403
 
             // h2-console 을 위한 설정을 추가
             .and()
@@ -65,8 +65,7 @@ public class SecurityConfig {
             // 로그인, 회원가입 API 는 토큰이 없는 상태에서 요청이 들어오기 때문에 permitAll 설정
             .and()
             .authorizeRequests() //인가 요청
-            .antMatchers("**").permitAll() // "/auth/**" api 요청들은 권한 상관없이 모두 허용
-//            .antMatchers("/auth/**", "/api/item/**").permitAll() // "/auth/**" api 요청들은 권한 상관없이 모두 허용
+            .antMatchers("/auth/**", "/api/item/**").permitAll() // "/auth/**" api 요청들은 권한 상관없이 모두 허용
             .anyRequest().authenticated()   // 나머지 API 는 전부 인증 필요
 
             // JwtFilter 를 addFilterBefore 로 등록했던 JwtSecurityConfig 클래스를 적용

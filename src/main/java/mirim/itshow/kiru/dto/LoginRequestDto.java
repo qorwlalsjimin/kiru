@@ -20,7 +20,7 @@ public class LoginRequestDto {
     public Member toMember(PasswordEncoder passwordEncoder) {
         return Member.builder()
                 .memberEmail(email)
-                .memberPw(passwordEncoder.encode(password))
+                .memberPw(passwordEncoder.encode(passwordEncoder.encode(password))) //암호화
                 .authority(Authority.ROLE_USER)
                 .build();
     }

@@ -25,11 +25,11 @@ public class JoinRequestDto {
     public Member toMember(PasswordEncoder passwordEncoder) {
         return Member.builder()
                 .memberEmail(memberEmail)
-                .memberPw(passwordEncoder.encode(memberPw))
+                .memberPw(passwordEncoder.encode(memberPw)) //암호화
                 .authority(Authority.ROLE_USER)
                 .name(name)
                 .address(address)
-                .phone(phone)
+                .phone(passwordEncoder.encode(phone)) //암호화
                 .build();
     }
 

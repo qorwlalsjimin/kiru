@@ -1,6 +1,5 @@
 package mirim.itshow.kiru;
 
-import mirim.itshow.kiru.entity.Item;
 import mirim.itshow.kiru.service.ItemService;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;

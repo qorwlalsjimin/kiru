@@ -1,10 +1,10 @@
 package mirim.itshow.kiru.dto;
 
 import lombok.Data;
-import mirim.itshow.kiru.entity.enum_col.Size;
+import mirim.itshow.kiru.entity_domain.enum_col.Size;
 
 @Data
-public class RentForm {
+public class RentFormDto {
     //상품 정보
     private Long itemId;
     private String color;

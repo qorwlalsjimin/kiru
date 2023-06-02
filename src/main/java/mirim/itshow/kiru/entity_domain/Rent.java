@@ -1,16 +1,13 @@
-package mirim.itshow.kiru.entity;
+package mirim.itshow.kiru.entity_domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import mirim.itshow.kiru.controller.json.RentJson;
-import mirim.itshow.kiru.entity.enum_col.Status;
+import mirim.itshow.kiru.entity_domain.enum_col.Status;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @NoArgsConstructor //기본 생성자
 @Data

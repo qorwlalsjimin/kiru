@@ -1,6 +1,6 @@
 package mirim.itshow.kiru.dao;
 
-import mirim.itshow.kiru.entity.Item;
+import mirim.itshow.kiru.entity_domain.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

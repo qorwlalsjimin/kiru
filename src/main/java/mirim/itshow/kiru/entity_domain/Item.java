@@ -1,14 +1,10 @@
-package mirim.itshow.kiru.entity;
+package mirim.itshow.kiru.entity_domain;
 
 import lombok.*;
-import mirim.itshow.kiru.entity.enum_col.Country;
-import mirim.itshow.kiru.entity.enum_col.Size;
+import mirim.itshow.kiru.entity_domain.enum_col.Country;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
 
 //@NoArgsConstructor //기본 생성자
 @Data //TODO 엔티티에 @Data쓰면 set 남용 때문에 안 좋음
@@ -31,15 +27,15 @@ public class Item {
     private String description; //상품 설명
 
     @Column(columnDefinition = "text[]")
-    @Type(type = "mirim.itshow.kiru.entity.hibernatesetting.CustomStringArrayType")
+    @Type(type = "mirim.itshow.kiru.entity_domain.hibernatesetting.CustomStringArrayType")
     private String[] imageUrl; //이미지 url
 
     @Column(columnDefinition = "text[]")
-    @Type(type = "mirim.itshow.kiru.entity.hibernatesetting.CustomStringArrayType")
+    @Type(type = "mirim.itshow.kiru.entity_domain.hibernatesetting.CustomStringArrayType")
     private String[] color; //색상
 
     @Column(columnDefinition = "text[]")
-    @Type(type = "mirim.itshow.kiru.entity.hibernatesetting.CustomStringArrayType")
+    @Type(type = "mirim.itshow.kiru.entity_domain.hibernatesetting.CustomStringArrayType")
     private String[] size; //옷&신발 사이즈
 
     @ManyToOne

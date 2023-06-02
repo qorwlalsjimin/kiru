@@ -3,8 +3,6 @@ package mirim.itshow.kiru.controller.json;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
-import mirim.itshow.kiru.entity.RentDeliverInfo;
-import mirim.itshow.kiru.entity.RentItem;
 
 import java.util.List;
 

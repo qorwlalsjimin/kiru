@@ -3,11 +3,7 @@ package mirim.itshow.kiru.controller.json;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
-import mirim.itshow.kiru.entity.RentDeliverInfo;
-import mirim.itshow.kiru.entity.RentItem;
-import mirim.itshow.kiru.entity.enum_col.Size;
-
-import java.util.List;
+import mirim.itshow.kiru.entity_domain.enum_col.Size;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)

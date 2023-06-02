@@ -1,10 +1,7 @@
-package mirim.itshow.kiru.entity;
+package mirim.itshow.kiru.entity_domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import mirim.itshow.kiru.dao.HeartRepository;
-import mirim.itshow.kiru.dao.ItemRepository;
-import mirim.itshow.kiru.dto.HeartForm;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

@@ -1,4 +1,4 @@
-package mirim.itshow.kiru.entity.hibernatesetting;
+package mirim.itshow.kiru.entity_domain.hibernatesetting;
 
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;

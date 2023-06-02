@@ -1,4 +1,4 @@
-package mirim.itshow.kiru.entity.hibernatesetting;
+package mirim.itshow.kiru.entity_domain.hibernatesetting;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

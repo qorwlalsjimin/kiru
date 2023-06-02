@@ -1,15 +1,14 @@
 package mirim.itshow.kiru.service;
 
 import mirim.itshow.kiru.dao.*;
-import mirim.itshow.kiru.dto.HeartForm;
-import mirim.itshow.kiru.entity.*;
-import mirim.itshow.kiru.entity.enum_col.Country;
+import mirim.itshow.kiru.dto.HeartFormDto;
+import mirim.itshow.kiru.entity_domain.*;
+import mirim.itshow.kiru.entity_domain.enum_col.Country;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,13 +34,13 @@ public class HeartService {
     /**
      * 즐겨찾기 등록
      */
-    public HeartItem addHeart(HeartForm form, String memberid){
+    public HeartItem addHeart(HeartFormDto form, String memberid){
         // DB에 저장
         Item item = itemRepository.findById(form.getItemId()).get(); //상품 id로 해당 상품 가져오기
         if(item.isHeart()) //이미 즐겨찾기되어있는 상품이라면
             throw new IllegalStateException("이미 즐겨찾기되어 있는 상품입니다."); //에러 발생
 
-        Member member = memberRopository.findByMemberid(memberid); //회원 정보
+        Member member = memberRopository.findByMemberEmail(memberid); //회원 정보
         Heart heart = heartRepository.findByMember(member); //회원이 가지고 있는 즐겨찾기
         if(heart == null){ //즐겨찾기가 없었다면
             heart = Heart.createHeart(member); //새로 만들어준다

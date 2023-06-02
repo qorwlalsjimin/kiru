@@ -1,4 +1,4 @@
-package mirim.itshow.kiru.entity;
+package mirim.itshow.kiru.entity_domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

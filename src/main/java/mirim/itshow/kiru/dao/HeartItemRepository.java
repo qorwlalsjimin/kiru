@@ -1,11 +1,10 @@
 package mirim.itshow.kiru.dao;
 
-import mirim.itshow.kiru.entity.HeartItem;
-import mirim.itshow.kiru.entity.enum_col.Country;
+import mirim.itshow.kiru.entity_domain.HeartItem;
+import mirim.itshow.kiru.entity_domain.enum_col.Country;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface HeartItemRepository extends JpaRepository<HeartItem, Long> {
     List<HeartItem> findByItem_Country(Country hanbokOrKimono);

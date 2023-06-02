@@ -3,9 +3,8 @@ package mirim.itshow.kiru.service;
 import mirim.itshow.kiru.controller.json.ItemsJson;
 import mirim.itshow.kiru.controller.json.RentJson;
 import mirim.itshow.kiru.dao.*;
-import mirim.itshow.kiru.entity.*;
-import mirim.itshow.kiru.entity.enum_col.Status;
-import org.postgresql.util.PSQLException;
+import mirim.itshow.kiru.entity_domain.*;
+import mirim.itshow.kiru.entity_domain.enum_col.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +12,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -36,7 +34,7 @@ public class RentService {
 
     public Rent addRent(RentJson rentJson) {
         //1. Rent로 하나의 대여 프로세스 만들기
-        Member member = memberRepository.findByMemberid("사용자 이름..");
+        Member member = memberRepository.findByMemberEmail("사용자 이름..");
         Rent rent = Rent.createRent(member);
         rentRepository.save(rent);
 

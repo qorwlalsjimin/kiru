@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.persistence.Column;
 
 @Data
-public class HeartForm {
+public class HeartFormDto {
 
     @Column
     private Long itemId;

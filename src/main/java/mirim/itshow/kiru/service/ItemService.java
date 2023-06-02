@@ -2,7 +2,7 @@ package mirim.itshow.kiru.service;
 
 import mirim.itshow.kiru.dao.CategoryRepository;
 import mirim.itshow.kiru.dao.ItemRepository;
-import mirim.itshow.kiru.entity.Item;
+import mirim.itshow.kiru.entity_domain.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,8 +1,8 @@
 package mirim.itshow.kiru.controller;
 
-import mirim.itshow.kiru.dto.HeartForm;
-import mirim.itshow.kiru.entity.HeartItem;
-import mirim.itshow.kiru.entity.enum_col.Country;
+import mirim.itshow.kiru.dto.HeartFormDto;
+import mirim.itshow.kiru.entity_domain.HeartItem;
+import mirim.itshow.kiru.entity_domain.enum_col.Country;
 import mirim.itshow.kiru.service.HeartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +24,7 @@ public class HeartController {
 
     //C: 즐겨찾기 등록
     @PostMapping("/heart/new")
-    public ResponseEntity<?> addHeart(@RequestBody HeartForm form) throws URISyntaxException {
+    public ResponseEntity<?> addHeart(@RequestBody HeartFormDto form) throws URISyntaxException {
         heartService.addHeart(form, "사용자이름..");
         System.out.println("즐겨찾기: 즐겨찾기 상품 등록 '"+form.getItemId()+"'");
         return ResponseEntity.created(new URI("/api/cart/new" + form.getItemId()))

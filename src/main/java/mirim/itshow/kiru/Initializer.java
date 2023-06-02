@@ -2,9 +2,9 @@ package mirim.itshow.kiru;
 
 import mirim.itshow.kiru.dao.CategoryRepository;
 import mirim.itshow.kiru.dao.ItemRepository;
-import mirim.itshow.kiru.entity.Category;
-import mirim.itshow.kiru.entity.Item;
-import mirim.itshow.kiru.entity.enum_col.Country;
+import mirim.itshow.kiru.entity_domain.Category;
+import mirim.itshow.kiru.entity_domain.Item;
+import mirim.itshow.kiru.entity_domain.enum_col.Country;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -45,7 +45,7 @@ class Initializer implements CommandLineRunner {
                 new Category(131L, 130L, "블랑수블랑.Blanc sur blanc"),
                 new Category(132L, 130L, "리우앤비우.Riuviu"),
 
-                new Category(140L, 100L, "악세서리"),
+                new Category(140L, 100L, "악세사리"),
                 new Category(141L, 140L, "돌실나이.Dolsilnai"),
                 new Category(142L, 140L, "차이킴.Tchaikim"),
                 new Category(143L, 140L, "나빔.Nabim"),
@@ -66,7 +66,7 @@ class Initializer implements CommandLineRunner {
                 new Category(230L, 200L, "신발"),
                 new Category(231L, 230L, "くるり.Kururi"),
 
-                new Category(240L, 200L, "악세서리"),
+                new Category(240L, 200L, "악세사리"),
                 new Category(241L, 240L, "くるり.Kururi"),
                 new Category(242L, 240L, "パピヨン.papillon")
         };
@@ -708,7 +708,7 @@ class Initializer implements CommandLineRunner {
                         .brand("리우앤비우").build(),
 
 
-// 한국 - 악세서리
+// 한국 - 악세사리
                 Item.builder()
                         .name("당의선 목도리")
                         .price(49000)
@@ -1147,7 +1147,7 @@ class Initializer implements CommandLineRunner {
                         .brand("くるり").build(),
 
 
-// 일본 - 악세서리
+// 일본 - 악세사리
                 Item.builder()
                         .name("백묘 양산 오비도메")
                         .price(14730)

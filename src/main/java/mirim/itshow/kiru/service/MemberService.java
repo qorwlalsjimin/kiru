@@ -1,71 +1,34 @@
 package mirim.itshow.kiru.service;
 
+import lombok.RequiredArgsConstructor;
 import mirim.itshow.kiru.dao.MemberRepository;
-import mirim.itshow.kiru.entity.Member;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import mirim.itshow.kiru.dto.MemberResponseDto;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
-
 @Service
-@Transactional //TODO 왜 쓰는지 모름
+@RequiredArgsConstructor
+@Transactional
 public class MemberService {
+    /* 회원 조회 */
     private final MemberRepository memberRepository;
-    private final Logger log = LoggerFactory.getLogger(MemberService.class);
 
-    @Autowired //하나면 생략 가능함
-    public MemberService(MemberRepository memberRepository) {
-        this.memberRepository = memberRepository;
+    //식별 id로 회원 찾기
+    public MemberResponseDto findMemberInfoById(Long id) {
+        return memberRepository.findById(id)//id로 회원 찾고
+                .map(MemberResponseDto::of) //응답 DTO로 바꿔서 return
+                .orElseThrow(() -> new RuntimeException("로그인 유저 정보가 없습니다."));
     }
 
-    /**
-     * 회원 가입
-     */
-    public Member join(Member member){
-        //회원 중복 체크
-        validateDuplicateMember(member);
-        System.out.println("회원가입 성공"); //메시지 출력 TODO LOG로 바꾸기
-
-        //timestamp
-        LocalDateTime now = LocalDateTime.now();
-        member.setCreateTimestamp(now);
-
-        return memberRepository.save(member);
-    }
-
-    //회원 중복 확인
-    private void validateDuplicateMember(Member member){
-        Member findmember = memberRepository.findByMemberid(member.getMemberid());
-        if(findmember != null){
-            throw new IllegalStateException("이미 가입된 회원입니다.");
+    //이메일로 회원 찾기
+    public MemberResponseDto findMemberInfoByEmail(String email) {
+        MemberResponseDto dto;
+        try{
+            // Entity에서는 member id에 email이 들어감
+            dto = MemberResponseDto.of(memberRepository.findByMemberEmail(email));
+        }catch (Exception e){
+            throw new RuntimeException("유저 정보가 없습니다.");
         }
+        return dto;
     }
-
-    /**
-     * 로그인
-     */
-    public Member login(String inputId, String inputPw){
-
-        Member dataMember = memberRepository.findByMemberid(inputId);
-        if(dataMember == null){ //일치하는 아이디가 없다면
-            log.info("login service", "등록된 아이디가 없습니다.");
-            System.out.println("로그인 실패: 등록된 아이디가 없습니다.");
-            return null;
-        }
-
-        String dataPw = dataMember.getMemberpw();
-        if(!inputPw.equals(dataPw)){
-            log.info("login service", "비밀번호가 틀렸습니다.");
-            System.out.println("로그인 실패: 비밀번호가 틀렸습니다. input: "+inputPw+" DB: "+dataPw);
-            return null;
-        }
-
-        System.out.println("로그인 성공");
-
-        return memberRepository.findByMemberid(inputId);
-    }
-
 }

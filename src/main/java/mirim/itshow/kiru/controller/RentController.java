@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.net.URISyntaxException;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/rent")
 public class RentController {
     @Autowired
     RentService rentService;
 
-    @PostMapping("/rent/new") //대여 신청
+    @PostMapping("/new") //대여 신청
     public ResponseEntity<Object> addRent(@RequestBody RentJson rentJson) throws URISyntaxException {
         Rent rent = rentService.addRent(rentJson, SecurityContextHolder.getContext().getAuthentication().getName());
         return ResponseEntity.ok().body(rent);

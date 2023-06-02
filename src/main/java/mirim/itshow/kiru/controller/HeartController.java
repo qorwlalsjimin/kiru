@@ -14,7 +14,7 @@ import java.net.URISyntaxException;
 import java.util.Collection;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/heart")
 public class HeartController {
     HeartService heartService;
 
@@ -24,7 +24,7 @@ public class HeartController {
     }
 
     //C: 즐겨찾기 등록
-    @PostMapping("/heart/new")
+    @PostMapping("/new")
     public ResponseEntity<?> addHeart(@RequestBody HeartFormDto form) throws URISyntaxException {
         heartService.addHeart(form, SecurityContextHolder.getContext().getAuthentication().getName()); //context의 username에는 회원 id가 들어있다
         System.out.println("즐겨찾기: 즐겨찾기 상품 등록 '"+form.getItemId()+"'");
@@ -34,14 +34,14 @@ public class HeartController {
 
     //R: 즐겨찾기 목록
     // 전체
-    @GetMapping("/heart/all/{country}")
+    @GetMapping("/all/{country}")
     public Collection<HeartItem> heartCountryList(@PathVariable Country country){
         System.out.println("즐겨찾기: "+country+" 목록 get");
         return heartService.selectByCountry(country);
     }
 
     // 카테고리별
-    @GetMapping("/heart/{categoryPId}")
+    @GetMapping("/{categoryPId}")
     public Collection<HeartItem> heartCategoryList(@PathVariable Long categoryPId){
         System.out.println("즐겨찾기: "+categoryPId+" 목록 get");
         return heartService.selectByCategory(categoryPId);
@@ -49,14 +49,14 @@ public class HeartController {
 
     //U: x
     //D: 즐겨찾기 해제
-    @DeleteMapping("/heart/delete/{itemId}")
+    @DeleteMapping("/delete/{itemId}")
     public ResponseEntity<?> deleteItem(@PathVariable Long itemId){
         heartService.deleteByItemId(itemId);
         System.out.println("즐겨찾기: 삭제 ("+itemId+")");
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping("/heart/delete/all")
+    @DeleteMapping("/delete/all")
     public ResponseEntity<?> deleteAllItem(){
         heartService.deleteAll();
         System.out.println("즐겨찾기: 전체 삭제");

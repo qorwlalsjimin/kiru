@@ -4,15 +4,19 @@ export const CartHeader = ({ isAllChecked, handleCheckAll }) => {
   return (
     <>
       <header className={styles.header}>
-        <h1>장바구니</h1>
+        <h2>장바구니</h2>
       </header>
 
-      <input
+      {/* <input
             type="checkbox"
             checked={isAllChecked}
             onChange={(e) => handleCheckAll(e.target.checked)}
-          />
+          /> */}
+
+      <div className={styles.categorytitle}>
       <h2>한복</h2>
+
+      </div>
       <div className={styles.cart_title_wrap}>
         <div className={styles.tab_title}>
          

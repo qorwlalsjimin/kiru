@@ -73,7 +73,9 @@ export const Cart = ({ cart, setCart, convertPrice }) => {
     <>
       <CartHeader isAllChecked={isAllChecked} handleCheckAll={handleCheckAll} />
       {cart.length !== 0 ? (
-        cart.map((cart) => {
+        cart.map((cart, idx) => {
+          //상태를 만들고
+          //선택됐는지 안됐는지 여부를 true, false를 주고
           return (
             <CartList
               key={`key-${cart.id}`}
@@ -83,6 +85,7 @@ export const Cart = ({ cart, setCart, convertPrice }) => {
               handleQuantity={handleQuantity}
               handleRemove={handleRemove}
               handleCheckList={handleCheckList}
+              checked={true}
               checkLists={checkLists}
             />
           );

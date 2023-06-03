@@ -8,18 +8,28 @@
 }
 
 .btn{
-
+ 
     margin-top: 5%;
     display: flex;
     justify-content: center;
     text-align: center;
-  
+
+}
+
+.btn h1{
+  font-size: 20px;
 }
 
 .btn button{
     /* display: flex; */
     width: 20%;
-    height: 15%;
+    padding: 20px;
+    height: 25%;
+    background-color: #fff;
+    border: none;
+    /* border-radius:; */
+   border-bottom: solid 4px #9553C8;
+
 }
 
 

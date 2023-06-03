@@ -39,18 +39,19 @@ const Header = ({setProducts, handleNavClick}) => {
             </Link>
           </div>
 
+
+
           <div className="toggle">
 
             <i className="ri-search-line"></i>
             <i className="ri-star-line"></i>
-            <Link to="/cart">   <i className="ri-shopping-cart-2-line"></i></Link>
-            
-              <Link to="/login_form"> <i className="ri-user-line"></i></Link>
-             
+            <Link to="/cart"><i className="ri-shopping-cart-2-line"></i></Link>
+            <Link to="/login_form"> <i className="ri-user-line"></i></Link>
+
           </div>
         </div>
 
-     
+
         
 
         <div className="nav">

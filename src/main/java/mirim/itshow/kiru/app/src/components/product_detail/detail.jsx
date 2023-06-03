@@ -18,6 +18,9 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
     "M": 0,
     "L": 0
   });
+    //date
+    const [startDate, setStartDate] = useState('');
+    const [endDate, setEndDate] = useState('');
 
   useEffect(() => {
     const fetchItem = async () => {
@@ -63,10 +66,11 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
   const handleCart = () => {
     const appended = []
     for(const size of Object.keys(selectedOptions)) {
+      
         appended.push(
           {
-            id: product.id,
-            image: product.image,
+            id: product.itemId,
+            image: product.imageUrl[0],
             name: product.name,
             quantity: count,
             price: product.price,
@@ -74,9 +78,12 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
             brand: product.brand,
             size: size,
             quantity: selectedOptions[size].count,
-            color: product.color
+            color: product.color,
+            startDate,
+            endDate
           }
         )
+        debugger;
     }
     console.log(appended)
     /*
@@ -173,15 +180,15 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
     });
   };
   
-  //date
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+
 
   const handleStartDateChange = (e) => {
+    //debugger;
     setStartDate(e.target.value);
   };
 
   const handleEndDateChange = (e) => {
+    //debugger;
     setEndDate(e.target.value);
   };
 

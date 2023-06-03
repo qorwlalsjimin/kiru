@@ -29,7 +29,7 @@ header .nav{
 
 
 header a{
-    margin-right: 20px;
+    /* margin-right: 20px; */
     font-size: 15px;
 }
 .toggle i{
@@ -50,12 +50,12 @@ li{
 
 .logo img{
    height: 26px;
-   margin-left: 170px;
+   margin-left: 150px;
 }
 
 .flex{
     margin-right: -1%;
-    margin-top: 25px;
+    margin-top: 28px;
     text-align: center;
     justify-content: center;
 }
@@ -66,7 +66,7 @@ li{
 
 
 .container{
-    margin-top: 10px;
+    margin-top: 24px;
     display: flex;
     justify-content: space-between;
     margin-inline: 10%;
@@ -91,20 +91,25 @@ li{
 /* margin-top: 5%; */
 display: grid;
 place-items: center;
-font-size: 25px;
+font-size: 22px;
+/* margin-bottom: 0px; */
 
 }
 
 /* 카테고리 위치 */
 .selection{
+    margin-top: 2%;
     margin-bottom: 5%;
     /* display: grid;
 place-items: center; */
 margin-left: 10px;
 }
 
+
+
+
 .cloum{
- 
+    
     color: rgb(174, 173, 173);
 }
 

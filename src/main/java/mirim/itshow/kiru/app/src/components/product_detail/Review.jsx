@@ -7,8 +7,8 @@ const Review = () => {
     <>
 
     <div className="reviewp">
-        <p>리뷰(0)</p>
-      <p>전체 상품 리뷰 보기</p>
+        <h1>리뷰(0)</h1>
+      <h1>전체 상품 리뷰 보기</h1>
       </div>
       
       <div className="boxs">
@@ -21,18 +21,30 @@ const Review = () => {
     <div className="bar"></div>
     
     <div className="re">
-    <p>아주 좋아요</p>
-    <p>맘에 들어요</p>
-    <p>보통이에요</p>
-    <p>그냥 그래요</p>
-    <p>별로예요</p>
+
+            <div className="rediv">
+              <p>아주 좋아요</p> <div className="rebar"></div>0
+            </div>
+            <div className="rediv">
+              <p>맘에 들어요</p><div className="rebar"></div>0
+            </div>
+            <div className="rediv">
+              <p>보통이에요</p><div className="rebar"></div>0
+            </div>
+            <div className="rediv">
+              <p>그냥 그래요</p><div className="rebar"></div>0
+            </div>
+            <div className="rediv">
+              <p>별로예요</p><div className="rebar"></div>0
+            </div>
+
     </div>
 
      </div>
 
     <div className="sort">
-     <p>별점순</p>
-     <p>최신순</p>
+     <h1>별점순</h1>
+     <h1>최신순</h1>
      </div>
 <div className="box2">
      <select id="phone" className="" >

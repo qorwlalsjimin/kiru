@@ -1,8 +1,6 @@
 .show_more{
-  background: #ffffff;
-  padding: 2% 51.7rem; /* 위/아래 패딩은 10px, 좌/우 패딩은 20px */
-
-  
+  background: #fff;
+  padding: 4% 51.7rem; 
   border: none;
 }
 
@@ -23,13 +21,15 @@
 }
 
 .flex_wrap {
-  max-width: 1000px;
+  max-width: 1400px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   place-items: center;
-  gap: 70px 0px;
+  /* 상품 위 아래 간격 */
+  gap: 70px 0px; 
   margin: 0 auto;
   margin-top: 35px;
+  /* background-color: antiquewhite; */
 }
 
 @media (max-width: 1000px) {

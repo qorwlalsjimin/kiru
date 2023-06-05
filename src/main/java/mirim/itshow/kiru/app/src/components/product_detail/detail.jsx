@@ -9,7 +9,12 @@ import "./detail.css"
 import { CartList } from "../cart/cartList";
 import { TotalCart } from "../cart/totalCart";
 
+
+
 export const Detail = ({ convertPrice, cart, setCart }) => {
+  //색상
+
+
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [count, setCount] = useState(1);
@@ -64,6 +69,7 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
   };
 
   const handleCart = () => {
+    alert("장바구니에 추가되었습니다!");
     const appended = []
     for(const size of Object.keys(selectedOptions)) {
       
@@ -192,6 +198,43 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
     setEndDate(e.target.value);
   };
 
+  const colorData = {
+    "황색": "#F6CF7A",
+    "옥색": "#6bd4b9",
+    "적색": "#a61010",
+    "자색": "#6B3FA0",
+    "분홍색": "#FF8AC3",
+    "연두색": "#AAD975",
+    "연보라색": "#bfb0e3",
+    "청색": "#4161dc",
+    "백색": "#FFFFFF",
+    "남색": "#1c4587",
+    "흑색": "#000000",
+    "청회색": "#9599b9",
+    "녹색": "#539538",
+    "회색": "#c3c4c8",
+    "천청색": "#D5C9DD",
+    "갈색": "#9a5e0a",
+    "주황색": "#ff9900"
+  };
+
+  const [selectedColor, setSelectedColor] = useState('');
+
+
+  // product 객체가 null이거나 유효하지 않은 경우 처리합니다.
+  if (!product || !product.color || !Array.isArray(product.color)) {
+    return null; // 또는 에러 메시지를 표시하거나 기본값을 반환할 수 있습니다.
+  }
+
+  
+  // 상품 정보에서 색상 데이터를 가져옵니다.
+  const colors = product.color;
+
+  const handleColorClick = (color) => {
+    setSelectedColor(color);
+  };
+
+
 
   return (
     product && (
@@ -209,7 +252,7 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
                 {product.name}  </p>
 
               <div className="heart">
-                <i className="ri-star-line" id="star"></i>
+              <img src="/images/ic_round-star-border.svg" alt="" />
               </div>
 
               <span className={styles.price}>
@@ -229,16 +272,27 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
 
               <div className="colorchose">
               <p>색상을 선택해주세요</p>
-            
               </div>
+
               <div className="colorpick">
-              
-               {product.color}
+                {colors.map((color, index) => (
+                  <div
+                    key={index}
+                    className={`color-box ${selectedColor === color ? 'selected' : ''}`}
+                    style={{ backgroundColor: colorData[color] }}
+                    onClick={() => handleColorClick(color)}
+                  >
+                    <p className="color-name" style={{ visibility: selectedColor === color || index === 0 ? 'visible' : 'hidden' }}>
+                      {color}
+                    </p>
+                  </div>
+                ))}
+                  </div>
 
+                 {/* {selectedColor && <p>{selectedColor}</p>} */}
 
-
-            </div>
-
+               {/* {product.color} */}
+          
             {/* <select onChange={(e) => {
                 const selectedColor = e.target.value;
                 // console.log(selected[selectedSize])
@@ -306,6 +360,7 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
                   <i className="ri-subtract-fill"></i>
                   <input type="date" id="start" name="trip-start" value={endDate} min="2023-06-01" max="2023-07-31"   onChange={handleEndDateChange}/>
                 </div>
+             
               </div>
             </div>
             </div>  
@@ -322,7 +377,13 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
              
                   <div className="allBox" key={size}>  
                     
-                    <div> 수량 : {option.count} / {option.value}</div>
+                    <div className="select_color_size">  
+                        {selectedColor && (
+                          <>
+                            <span> {selectedColor}</span>
+                            <span>{colorData[selectedColor]}</span>
+                          </>
+                        )} / {option.value}</div>
 
                     <div className="pricesmall">
                       {convertPrice(product.price*option.count)}원  <i className="ri-close-line" onClick={() => handleBoxClose(size)}></i>
@@ -397,8 +458,6 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
             </div>
           </section>
         </main>
-
-      
 
         <section>
             <p id="detailImg">상세 이미지</p>

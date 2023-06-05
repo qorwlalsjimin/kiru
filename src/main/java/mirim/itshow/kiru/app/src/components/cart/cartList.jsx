@@ -8,7 +8,8 @@ export const CartList = ({
   handleQuantity,
   handleRemove,
   handleCheckList,
-  quantity
+  quantity,
+  selectedColor
 }) => {
 
   if (!cart) {
@@ -52,7 +53,8 @@ export const CartList = ({
   
         <div className={styles.cart_product_info}>
           <p className={styles.product_name}>{cart.name}</p>
-          <span>{cart.size}</span>
+       
+          <span> {selectedColor} / {cart.size}</span>
         </div>
       </div>
 

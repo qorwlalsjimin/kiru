@@ -1,6 +1,4 @@
-.star i{
-    margin-left: 55%;
-}
+
 
 .content{
     height: 100vh;
@@ -31,6 +29,7 @@
    border-bottom: solid 4px #9553C8;
 
 }
+
 
 
 .pricesmall{
@@ -240,11 +239,31 @@
   border-radius: 5px;
 }
 
-.colorpick:focus{
-
- background: purple;
-   
+.colorpick{
+  display: flex;
 }
+
+
+.color-box {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.color-box.selected {
+  opacity: 1; /* 선택된 색상은 투명도를 1로 조정하여 강조합니다 */
+}
+
+.color-name {
+  display: none; /* 일단 모든 색상 이름을 숨깁니다 */
+}
+
+.color-box.selected .color-name {
+  display: block; /* 선택된 색상의 이름만 보여줍니다 */
+}
+
 
 .datedata{
   /* margin-right: 20px;  */

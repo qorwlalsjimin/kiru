@@ -7,7 +7,10 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 
 
-const Header = ({setProducts, handleNavClick}) => {
+const Header = ({setProducts, handleNavClick, setShowMainscreen}) => {
+
+
+  
   const fetchData = async (url) => {
     try {
       const response = await axios.get(url);
@@ -20,6 +23,8 @@ const Header = ({setProducts, handleNavClick}) => {
 
   const handleClick = (nav) => {
     handleNavClick(nav, fetchData);
+    // setShowMainscreen(true);
+
   };
 
 
@@ -34,7 +39,7 @@ const Header = ({setProducts, handleNavClick}) => {
           </div>
 
           <div className="logo">
-            <Link to="/main">
+            <Link to="/mainscreen" onClick={handleClick}>
               <img src="/images/logo.png" alt="" />
             </Link>
           </div>

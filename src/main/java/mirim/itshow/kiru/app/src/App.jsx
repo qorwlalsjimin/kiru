@@ -13,11 +13,16 @@ import Shoes from './components/item/shoes'
 import Accessories from "./components/item/Accessories"
 import { Main } from "./components/main/main";
 import axios from 'axios';
+import {Mainscreen} from "./components/mainscreen/Mainscreen"
 
 function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
- 
+  const [showMainscreen, setShowMainscreen] = useState(true);
+
+  
+
+
   const convertPrice = (price) => {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
@@ -47,15 +52,25 @@ function App() {
     } catch (error) {
       console.error('Error fetching data:', error);
     }
+
+    setShowMainscreen(false);
+  
   };
 
 
 
   return (
+    
+   
+
+
     <BrowserRouter>
+     
       {/* <TopNavigationBar/> */}
       <Header setProducts={setProducts} handleNavClick={handleNavClick}  />
       {/* <Header setProducts={setProducts} /> */}
+      
+      {showMainscreen && <Mainscreen />}
 
       <Routes>
         <Route
@@ -67,27 +82,10 @@ function App() {
               products={products}
               setProducts={setProducts}
             />
-
-
           }
         />
 
 
-
-
-<Route
-          path="/modernized"
-          exact={true}
-          element={
-            <Modernized/> } 
-            />
-
-<Route
-          path="/shoes"
-          exact={true}
-          element={
-            <Shoes/> } 
-            />
 
 
 {/* <Route

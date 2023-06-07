@@ -2,9 +2,9 @@ package mirim.itshow.kiru;
 
 import mirim.itshow.kiru.dao.CategoryRepository;
 import mirim.itshow.kiru.dao.ItemRepository;
-import mirim.itshow.kiru.entity.Category;
-import mirim.itshow.kiru.entity.Item;
-import mirim.itshow.kiru.entity.enum_col.Country;
+import mirim.itshow.kiru.entity_domain.Category;
+import mirim.itshow.kiru.entity_domain.Item;
+import mirim.itshow.kiru.entity_domain.enum_col.Country;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

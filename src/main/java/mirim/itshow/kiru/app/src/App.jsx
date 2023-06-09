@@ -14,17 +14,13 @@ import Accessories from "./components/item/Accessories"
 import { Main } from "./components/main/main";
 import axios from 'axios';
 import { Mainscreen } from "./components/mainscreen/Mainscreen"
+import Heart from "./pages/Heart";
 
 function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   // const [showMainscreen, setShowMainscreen] = useState(true);
   // const [isMainscreenVisible, setMainscreenVisible] = useState(true);
-
-
-
-
-
 
   // const handleNavClick = async (nav) => {
   //   let url = '';
@@ -41,9 +37,6 @@ function App() {
   //     url = '/api/item/item_list/150';
   //   }
 
-
-
-
   //   try {
   //     const response = await axios.get(url);
   //     setProducts(response.data);
@@ -55,19 +48,13 @@ function App() {
 
   // };
 
-
   const handleNavClick = async (nav, fetchData) => {
     fetchData(nav);
     // setShowMainscreen(false);
   };
 
   return (
-
-
-
-
     <BrowserRouter>
-
       {/* <TopNavigationBar/> */}
       <Header products={products} setProducts={setProducts} handleNavClick={handleNavClick} />
       {/* <Header setProducts={setProducts} /> */}
@@ -88,7 +75,6 @@ function App() {
           }
         />
 
-
         <Route
           path="/product/:id"
           element={
@@ -99,22 +85,16 @@ function App() {
             />
           }
         />
-
-
-
-
-
         <Route
           path="/cart"
           element={
             <Basket cart={cart} setCart={setCart} />
           }
         />
-
+        <Route path='/heart' element={<Heart/>}/>
         <Route path='/Login_form' exact element={<Login_form />} />
         <Route path='/Join_form' exact element={<Join_form />} />
         <Route path='/Mainscreen' element={<Mainscreen/>}/>
-
       </Routes>
     </BrowserRouter>
   );

@@ -25,7 +25,6 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products}) => 
       <header>
 
         <div className="container">
-
           <div className='global'>
             <i className="ri-global-line"></i> 한국어
           </div>
@@ -36,35 +35,21 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products}) => 
             </Link>
           </div>
 
-
-
+          {/* 우측 아이콘들 */}
           <div className="toggle">
-            <i><SearchSvg width={"20px"}/></i>
-            <i><StarSvg/></i>
-            <i><Link to="/cart"><CartSvg width={"19px"}/></Link></i>
-            <i><Link to="/login_form"><MemberSvg width={"20px"}/></Link></i>
+            <i><SearchSvg width={"20px"}/></i> {/* 검색 */}
+            <i><Link to="/heart"><StarSvg/></Link></i> {/* 즐겨찾기 */}
+            <i><Link to="/cart"><CartSvg width={"19px"}/></Link></i> {/* 장바구니 */}
+            <i><Link to="/login_form"><MemberSvg width={"20px"}/></Link></i> {/* 로그인/회원가입 */}
           </div>
         </div>
 
-
-        
-      
         <div className="nav">
         <ul className="flex">
-           <li>
-          <Link to="/category/120"><button>개량</button></Link>
-          </li>
-          <li>
-          <Link to="/category/110"><button >전통</button></Link>
-          </li>
-         
-          <li>
-          <Link to="/category/130"><button >신발</button></Link>
-          </li>
-          <li>
-          <Link to="/category/140"><button >악세사리</button></Link>
-          </li>
-       
+          <li><Link to="/category/120"><button>개량</button></Link></li>
+          <li><Link to="/category/110"><button >전통</button></Link></li>
+          <li><Link to="/category/130"><button >신발</button></Link></li>
+          <li><Link to="/category/140"><button >악세사리</button></Link></li>
         </ul>
         </div>
         <Routes>
@@ -72,13 +57,7 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products}) => 
         <Route path="/category/:cid" element={<Main products={products} setProducts={setProducts}/>} />
       </Routes>
     
-  
-
       </header>
-
-
-
-
     </>
   )
 }

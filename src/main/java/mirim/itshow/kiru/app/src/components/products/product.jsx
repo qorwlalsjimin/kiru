@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useEffect, useState } from "react";
 import { useLocation, useParams  } from "react-router-dom";
 import Util from '../../util/product_util'
+import {ReactComponent as StarSvg} from "../../svgfiles/star.svg"
 
 export const Product = ({ product }) => {
   // const [products, setProducts] = useState([]);
@@ -23,7 +24,8 @@ export const Product = ({ product }) => {
             {/* 대표이미지 배열 0방 */}
             {/* console.log(item) */}
             <img src={item.imageUrl[0]} alt="product" />
-            <img src="/images/star.svg" alt="" />
+            <i><StarSvg/></i>
+
           </div>
         </Link>
         <div className={styles.store}>

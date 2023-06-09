@@ -1,5 +1,6 @@
 import React from 'react'
 import ItemListModernized from "./ItemListModernized"
+// import ProductNavigation from './ProductNavigation'
 
 const modernized = () => {
   return (
@@ -9,8 +10,8 @@ const modernized = () => {
       </div>
 
       <div className="selection">
-
-        <div className="cloum c1">
+        {/* <ProductNavigation/> */}
+        {/* <div className="cloum c1">
           <i className="ri-checkbox-blank-circle-fill"></i>
           All
         </div>
@@ -23,7 +24,7 @@ const modernized = () => {
         <div className="cloum c3">
           <i className="ri-checkbox-blank-circle-fill"></i>
           Brand
-        </div>
+        </div> */}
 
       </div>
       

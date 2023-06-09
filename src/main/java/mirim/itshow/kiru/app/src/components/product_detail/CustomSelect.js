@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import FontAwesome from "react-fontawesome";
 import Content from "./size_option/Content";
 import ContentSize from "./size_option/ContentSize";
-// import "../styles/global.css";
 
 class CustomSelect extends Component {
   constructor(props) {
@@ -12,7 +11,7 @@ class CustomSelect extends Component {
     this.ddHeaderExOff = false;
     this.state = {
       listOpen: false,
-      headerTitle: ""
+      headerTitle: this.props.title
     };
     this.close = this.close.bind(this);
   }
@@ -41,6 +40,7 @@ class CustomSelect extends Component {
   close(timeOut) {
     // console.log("close");
     this.ddHeaderExOff = false;
+    this.ddHeaderRadius = false;
     this.setState({
       listOpen: false
     });

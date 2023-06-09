@@ -123,6 +123,10 @@
   border-bottom-right-radius: 0px;
 }
 
+.dd-header-selected {
+  height: 70px;
+}
+
 /* ul */
 .dd-list {
   width: 435px;

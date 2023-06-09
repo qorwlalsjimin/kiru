@@ -69,7 +69,7 @@ export const Mainscreen = () => {
         <ul className="flex-container">
             
         <div className="bold">
-        <li className="bo"><sapn style={{fontWeight: "bold"}}>도와드릴까요?</sapn></li>
+        <li className="bo"><span style={{fontWeight: "bold"}}>도와드릴까요?</span></li>
 
         <div className="fontsizee">
         <li><a href="#"><i className="ri-phone-fill"></i>전화 문의</a></li>
@@ -81,7 +81,7 @@ export const Mainscreen = () => {
         </div>
     
     <div className="bold">
-        <li className="bo"><sapn style={{fontWeight: "bold"}}>거래</sapn></li>
+        <li className="bo"><span style={{fontWeight: "bold"}}>거래</span></li>
 
         <div className="fontsizee">
         <li><a href="#">주문 내역</a></li>
@@ -95,7 +95,7 @@ export const Mainscreen = () => {
 
     
     <div className="bold">
-        <li className="bo"><sapn style={{fontWeight: "bold"}}>입점 브랜드</sapn></li>
+        <li className="bo"><span style={{fontWeight: "bold"}}>입점 브랜드</span></li>
         <div className="fontsizee">
         <li><a href="#">기모노 브랜드</a></li>
         <li><a href="#">한복 브랜드</a></li>
@@ -105,7 +105,7 @@ export const Mainscreen = () => {
     </div>
 
     <div className="bold">
-        <li className="bo"><sapn style={{fontWeight: "bold"}}>법적 고지 및 이용약관</sapn></li>
+        <li className="bo"><span style={{fontWeight: "bold"}}>법적 고지 및 이용약관</span></li>
         <div className="fontsizee">
         <li><a href="#">이용약관</a></li>
         <li><a href="#">개인정보 처리방침</a></li>

@@ -11,6 +11,12 @@ import {Main} from "../../main/main"
 import { Product } from "../../products/product";
 import { Mainscreen } from "../../mainscreen/Mainscreen";
 
+//svg
+import {ReactComponent as SearchSvg} from "../../../svgfiles/search.svg";
+import {ReactComponent as StarSvg} from "../../../svgfiles/star.svg";
+import {ReactComponent as CartSvg} from "../../../svgfiles/cart.svg";
+import {ReactComponent as MemberSvg} from "../../../svgfiles/member.svg";
+
 
 const Header = ({ handleNavClick, setShowMainscreen, setProducts, products}) => {
  
@@ -33,12 +39,10 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products}) => 
 
 
           <div className="toggle">
-
-            <i className="ri-search-line"></i>
-            <i className="ri-star-line"></i>
-            <Link to="/cart"><i className="ri-shopping-cart-2-line" style={{color:"black"}}></i></Link>
-            <Link to="/login_form"> <i className="ri-user-line" style={{color:"black"}}></i></Link>
-
+            <i><SearchSvg width={"20px"}/></i>
+            <i><StarSvg/></i>
+            <i><Link to="/cart"><CartSvg width={"19px"}/></Link></i>
+            <i><Link to="/login_form"><MemberSvg width={"20px"}/></Link></i>
           </div>
         </div>
 

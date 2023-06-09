@@ -246,7 +246,7 @@ export const Detail = ({ cart, setCart }) => {
                 {product.name}  </p>
 
               <div className="heart">
-                <img src="/images/ic_round-star-border.svg" alt="" />
+                <img src="/images/star.svg" alt="" />
               </div>
 
               <span className={styles.price}>

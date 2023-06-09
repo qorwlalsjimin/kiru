@@ -8,6 +8,7 @@ class CustomSelect extends Component {
   constructor(props) {
     super(props);
     this.ddHeaderRadius = false;
+    this.ddHeaderSelected = false;
     this.ddHeaderExOff = false;
     this.state = {
       listOpen: false,
@@ -52,6 +53,9 @@ class CustomSelect extends Component {
     if (!this.state.listOpen) this.ddHeaderRadius = true;
     else this.ddHeaderRadius = false;
 
+    /* set box height when options appear */
+    this.ddHeaderSelected = true;
+
     this.setState(
       {
         headerTitle: title,
@@ -82,7 +86,9 @@ class CustomSelect extends Component {
     return (
       <div className="dd-wrapper">
         <div
-          className={`dd-header ${this.ddHeaderRadius && "dd-header-radius"}`}
+          className={`dd-header ${this.ddHeaderRadius && "dd-header-radius"} ${
+            this.ddHeaderSelected && "dd-header-selected"
+          }`}
           onClick={() => this.toggleList()}
         >
           <div>

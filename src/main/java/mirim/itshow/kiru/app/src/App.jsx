@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState } from "react";
-import  Header  from "./components/header/topNavigationBar/topNavigationBar";
+import Header from "./components/header/topNavigationBar/topNavigationBar";
 import Home from "./pages/home";
 import Product from "./pages/product";
 import Basket from "./pages/basket";
@@ -13,7 +13,7 @@ import Shoes from './components/item/shoes'
 import Accessories from "./components/item/Accessories"
 import { Main } from "./components/main/main";
 import axios from 'axios';
-import {Mainscreen} from "./components/mainscreen/Mainscreen"
+import { Mainscreen } from "./components/mainscreen/Mainscreen"
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -23,7 +23,7 @@ function App() {
 
 
 
- 
+
 
 
   // const handleNavClick = async (nav) => {
@@ -42,7 +42,7 @@ function App() {
   //   }
 
 
-    
+
 
   //   try {
   //     const response = await axios.get(url);
@@ -52,7 +52,7 @@ function App() {
   //   }
 
   //   setShowMainscreen(false);
-  
+
   // };
 
 
@@ -62,16 +62,16 @@ function App() {
   };
 
   return (
-    
-   
+
+
 
 
     <BrowserRouter>
-     
+
       {/* <TopNavigationBar/> */}
-      <Header products={products} setProducts={setProducts} handleNavClick={handleNavClick}  />
+      <Header products={products} setProducts={setProducts} handleNavClick={handleNavClick} />
       {/* <Header setProducts={setProducts} /> */}
-      
+
       {/* <Mainscreen /> */}
 
       {/* <Route path="/products" element={isMainscreenVisible && <Mainscreen />} /> */}
@@ -87,7 +87,7 @@ function App() {
             />
           }
         />
-      
+
 
         <Route
           path="/product/:id"
@@ -100,7 +100,7 @@ function App() {
           }
         />
 
-          
+
 
 
 
@@ -111,8 +111,10 @@ function App() {
           }
         />
 
-<Route path='/Login_form' exact element = {<Login_form />} />
-<Route path='/Join_form' exact element = {<Join_form />} />
+        <Route path='/Login_form' exact element={<Login_form />} />
+        <Route path='/Join_form' exact element={<Join_form />} />
+        <Route path='/Mainscreen' element={<Mainscreen/>}/>
+
       </Routes>
     </BrowserRouter>
   );

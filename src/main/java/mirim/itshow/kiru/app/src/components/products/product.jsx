@@ -23,7 +23,7 @@ export const Product = ({ product }) => {
             {/* 대표이미지 배열 0방 */}
             {/* console.log(item) */}
             <img src={item.imageUrl[0]} alt="product" />
-            <i class="ri-star-line"></i>
+            <i className="ri-star-line"></i>
             
           </div>
         </Link>

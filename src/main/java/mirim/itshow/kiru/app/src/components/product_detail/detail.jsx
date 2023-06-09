@@ -10,6 +10,7 @@ import { CartList } from "../cart/cartList";
 import { TotalCart } from "../cart/totalCart";
 import Util from '../../util/product_util'
 
+import CustomSelect from "./CustomSelect.js";
 
 export const Detail = ({ cart, setCart }) => {
   //색상
@@ -23,9 +24,9 @@ export const Detail = ({ cart, setCart }) => {
     "M": 0,
     "L": 0
   });
-    //date
-    const [startDate, setStartDate] = useState('');
-    const [endDate, setEndDate] = useState('');
+  //date
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
 
   useEffect(() => {
     const fetchItem = async () => {
@@ -71,25 +72,25 @@ export const Detail = ({ cart, setCart }) => {
   const handleCart = () => {
     alert("장바구니에 추가되었습니다!");
     const appended = []
-    for(const size of Object.keys(selectedOptions)) {
-      
-        appended.push(
-          {
-            id: product.itemId,
-            image: product.imageUrl[0],
-            name: product.name,
-            quantity: count,
-            price: product.price,
-            provider: product.provider,
-            brand: product.brand,
-            size: size,
-            quantity: selectedOptions[size].count,
-            color: product.color,
-            startDate,
-            endDate
-          }
-        )
-        debugger;
+    for (const size of Object.keys(selectedOptions)) {
+
+      appended.push(
+        {
+          id: product.itemId,
+          image: product.imageUrl[0],
+          name: product.name,
+          quantity: count,
+          price: product.price,
+          provider: product.provider,
+          brand: product.brand,
+          size: size,
+          quantity: selectedOptions[size].count,
+          color: product.color,
+          startDate,
+          endDate
+        }
+      )
+      debugger;
     }
     console.log(appended)
     /*
@@ -157,7 +158,8 @@ export const Detail = ({ cart, setCart }) => {
 
   const handleSizeSelection = (e) => {
     const selectedSize = e.target.value;
-    //setTotalCount(0); //Reset totalCount when size is selected
+    console.log(selectedColor);
+    setTotalCount(0); //Reset totalCount when size is selected
     setSelectedOptions((prevSelectedOptions) => {
       const updatedOptions = { ...prevSelectedOptions };
       const option = updatedOptions[selectedSize];
@@ -170,7 +172,7 @@ export const Detail = ({ cart, setCart }) => {
         };
       }
       calculateTotalCount(updatedOptions);
-      setShowTotalInfo(true); 
+      setShowTotalInfo(true);
       return updatedOptions;
     });
   };
@@ -183,7 +185,7 @@ export const Detail = ({ cart, setCart }) => {
       return updatedOptions;
     });
   };
-  
+
 
 
   const handleStartDateChange = (e) => {
@@ -224,7 +226,7 @@ export const Detail = ({ cart, setCart }) => {
     return null; // 또는 에러 메시지를 표시하거나 기본값을 반환할 수 있습니다.
   }
 
-  
+
   // 상품 정보에서 색상 데이터를 가져옵니다.
   const colors = product.color;
 
@@ -250,26 +252,26 @@ export const Detail = ({ cart, setCart }) => {
                 {product.name}  </p>
 
               <div className="heart">
-              <img src="/images/ic_round-star-border.svg" alt="" />
+                <img src="/images/ic_round-star-border.svg" alt="" />
               </div>
 
               <span className={styles.price}>
-              
+
 
                 {Util.convertPrice(product.price + "")}
                 <span className={styles.unit}>원</span>
-              
+
               </span>
 
               <div className="description">
 
-             
-              <p>{product.description}</p>
+
+                <p>{product.description}</p>
 
               </div>
 
               <div className="colorchose">
-              <p>색상을 선택해주세요</p>
+                <p>색상을 선택해주세요</p>
               </div>
 
               <div className="colorpick">
@@ -285,13 +287,13 @@ export const Detail = ({ cart, setCart }) => {
                     </p>
                   </div>
                 ))}
-                  </div>
+              </div>
 
-                 {/* {selectedColor && <p>{selectedColor}</p>} */}
+              {/* {selectedColor && <p>{selectedColor}</p>} */}
 
-               {/* {product.color} */}
-          
-            {/* <select onChange={(e) => {
+              {/* {product.color} */}
+
+              {/* <select onChange={(e) => {
                 const selectedColor = e.target.value;
                 // console.log(selected[selectedSize])
                 if(selectedColor in selected) {
@@ -304,21 +306,44 @@ export const Detail = ({ cart, setCart }) => {
 
 
 
-            {/* 설정 */}
-            
+              {/* 설정 */}
+
 
             </div>
 
             <div className="inputboxs">
 
-          <div className="sizeinfo">
-            {/* <div className={styles.delivery}> */}
-            <i class="ri-information-line"></i>  <p>사이즈 정보</p>
-            </div>
-            <div className="selectBox">
-              <p className="sizetitle">사이즈</p>
-            <div className="size">
-            {/* <select onChange={(e) => {
+              <div className="sizeinfo">
+                {/* <div className={styles.delivery}> */}
+                <i className="ri-information-line"></i>  <p>사이즈 정보</p>
+              </div>
+
+              <CustomSelect
+        listOpen
+        resetThenSet={() => {}}
+        list={[
+          {
+            id: 1,
+            title: "S"
+          },
+          {
+            id: 2,
+            title: "M"
+          },
+          {
+            id: 3,
+            title: "L"
+          }
+        ]}
+        onClick = {handleSizeSelection}
+      />
+
+              {/*
+              <div className="selectBox">
+                <p className="sizetitle">사이즈</p>
+                <div className="size">
+
+                   <select onChange={(e) => {
                 const selectedSize = e.target.value;
              
                 if(selectedSize in selected) {
@@ -327,13 +352,13 @@ export const Detail = ({ cart, setCart }) => {
                   })
                 }
 
-            }} > */}
+            }} > 
 
 
-          <select onChange={handleSizeSelection}>
+                  {/* <select onChange={handleSizeSelection}>
              
             <option value="0" selected>
-            {/* <p id="s_text1">사이즈</p> */}
+            <p id="s_text1">사이즈</p>
             <p id="s_text2">사이즈를 선택해주세요</p>
  
            </option>
@@ -342,50 +367,52 @@ export const Detail = ({ cart, setCart }) => {
             <option value="L">{product.size[2]}</option>
  
           </select>
-        </div>
-      </div>   
-            <div className="date">
 
-              <div className="dateBox">
-          
-                <div className="renttitle">
-             
-                  대여 기간
+
+                </div>
+              </div>*/}
+              <div className="date">
+
+                <div className="dateBox">
+
+                  <div className="renttitle">
+
+                    대여 기간
                   </div>
 
-                <div className="datedate">
-                  <input type="date" id="start" name="trip-start" value={startDate} min="2023-06-01" max="2023-07-31" onChange={handleStartDateChange}/>
-                  <i className="ri-subtract-fill"></i>
-                  <input type="date" id="start" name="trip-start" value={endDate} min="2023-06-01" max="2023-07-31"   onChange={handleEndDateChange}/>
+                  <div className="datedate">
+                    <input type="date" id="start" name="trip-start" value={startDate} min="2023-06-01" max="2023-07-31" onChange={handleStartDateChange} />
+                    <i className="ri-subtract-fill"></i>
+                    <input type="date" id="start" name="trip-start" value={endDate} min="2023-06-01" max="2023-07-31" onChange={handleEndDateChange} />
+                  </div>
+
                 </div>
-             
               </div>
             </div>
-            </div>  
             {/* </div> */}
 
             {/* hr bar */}
-          
-             
-              {Object.keys(selectedOptions).map((size, index) => {
-               
-                const option = selectedOptions[size];
-                return option.count !== 0 ? (
-                  <>
-             
-                  <div className="allBox" key={size}>  
-                    
-                    <div className="select_color_size">  
-                        {selectedColor && (
-                          <>
-                            <span> {selectedColor}</span>
-                            <span>{colorData[selectedColor]}</span>
-                          </>
-                        )} / {option.value}</div>
+
+
+            {Object.keys(selectedOptions).map((size, index) => {
+
+              const option = selectedOptions[size];
+              return option.count !== 0 ? (
+                <>
+
+                  <div className="allBox" key={size}>
+
+                    <div className="select_color_size">
+                      {selectedColor && (
+                        <>
+                          <span> {selectedColor}</span>
+                          <span>{colorData[selectedColor]}</span>
+                        </>
+                      )} / {option.value}</div>
 
                     <div className="pricesmall">
-                      {Util.convertPrice(product.price*option.count)}원  <i className="ri-close-line" onClick={() => handleBoxClose(size)}></i>
-                      </div>
+                      {Util.convertPrice(product.price * option.count)}원  <i className="ri-close-line" onClick={() => handleBoxClose(size)}></i>
+                    </div>
 
                     <div className="countbtn">
                       <button className="m" onClick={() => handleQuantityChange(size, "minus")}>-</button>
@@ -393,78 +420,78 @@ export const Detail = ({ cart, setCart }) => {
                         <span>{option.count}</span>
                       </div>
                       <button className="p" onClick={() => handleQuantityChange(size, "plus")}>+</button>
-                     
+
                     </div>
-                  
 
-                      
+
+
                   </div>
-                
-                  </>
-                ) : null;
-              })}
-              
-              {totalCount > 0 && showTotalInfo && (
-                    <div className={styles.sum}>
 
-                     
-                      <span className={styles.total}>
-                        총 수량 <span className={styles.total_count}>{totalCount}개</span>
-                      </span>
+                </>
+              ) : null;
+            })}
 
-                      <div className={styles.total_info}>
-                   
-                        <span className={styles.total_price}>
-                        
-                          <span className={styles.total_unit}>    
+            {totalCount > 0 && showTotalInfo && (
+              <div className={styles.sum}>
+
+
+                <span className={styles.total}>
+                  총 수량 <span className={styles.total_count}>{totalCount}개</span>
+                </span>
+
+                <div className={styles.total_info}>
+
+                  <span className={styles.total_price}>
+
+                    <span className={styles.total_unit}>
                       <div className="datedata">
                         {startDate} - {endDate}
-                    
+
                       </div>
-                        
-                        총 대여료 </span>
-                          {Util.convertPrice(product.price * totalCount)}원
-                          
-                        </span>
-                      </div>
-                    </div>
-                    
-                    )}
+
+                      총 대여료 </span>
+                    {Util.convertPrice(product.price * totalCount)}원
+
+                  </span>
+                </div>
+              </div>
+
+            )}
 
 
-           
+
 
 
 
             {/* </div> */}
-            
-      
+
+
 
             {/* <div className={styles.line}></div> */}
             <div className="detailbtn">
-            <div className={styles.btn}>
-              <button className={styles.btn_buy}>대여신청하기</button>
-              <button
-                className={styles.btn_cart}
-                onClick={() => {
-                  handleCart();
-                }}
-              >
-                장바구니
-              </button>
-            </div>
+              <div className={styles.btn}>
+                <button className={styles.btn_buy}>대여신청하기</button>
+                <button
+                  className={styles.btn_cart}
+                  onClick={() => {
+                    handleCart();
+                  }}
+                >
+                  장바구니
+                </button>
+              </div>
             </div>
           </section>
         </main>
 
         <section>
-            <p id="detailImg">상세 이미지</p>
+          <p id="detailImg">상세 이미지</p>
           <p id="d">* 사용하시는 기기의 해상도에 따라 실제 상품 색감과 다르게 보일 수 있습니다.</p>
-        <div className="detailimg">
-        <img src={product.imageUrl[0]} alt="product" />
-        <img src={product.imageUrl[1]} alt="product" />
-        <img src={product.imageUrl[2]} alt="product" />
-        </div>
+          <div className="detailimg">
+            <img src={product.imageUrl[0]} alt="product" />
+            <img src={product.imageUrl[1]} alt="product" />
+            <img src={product.imageUrl[2]} alt="product" />
+          </div>
 
         </section>
         <Detail2 />

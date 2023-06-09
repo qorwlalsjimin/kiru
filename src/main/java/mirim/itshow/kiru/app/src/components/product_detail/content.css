@@ -1,0 +1,29 @@
+.dd-header-content {
+    display: flex;
+  }
+  
+  .dd-header-title {
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 22px;
+    margin-left: 16px;
+  }
+  
+  .dd-header-ex {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #bdbdbd;
+    margin-left: 10px;
+  }
+  
+  .dd-header-ex-off {
+    /* disappear explanation when options appear */
+    opacity: 0;
+  }
+  
+  .dd-header-icon {
+    margin-right: 20px;
+    margin-left: 200px;
+  }
+  

@@ -7,7 +7,7 @@
 
 
 .logintext .bsi{
-    border-bottom: solid 3px #9553C8;
+    border-bottom: solid 4px #9553C8;
 }
 
 .pass input{
@@ -18,16 +18,19 @@
     border-bottom: solid 1px black;
 }
 
+
+
 .passment{
     font-size: 2%;
-    margin-right: 15%;
+    margin-right: 19%;
+    color: #bdbaba;
 }
 
 .must{
     font-size: 5%;
-    margin-right: 22.5%;
+    margin-right: 23%;
     margin-top: 10px;
-
+    color: #bdbaba;
 }
 
 .pass i{
@@ -35,7 +38,7 @@
 }
 
 .mail1{
-    width: 10%;
+    width: 12%;
     height: 50px;
     border: none;
     /* margin-top: 35px; */
@@ -51,10 +54,11 @@
 }
 
 .mail3{
-    width: 6%;
+    width: 4%;
     height: 50px;
     margin-left: 1%;
     border: none;
+    text-align: center;
     /* margin-top: 35px; */
     border-bottom: solid 1px black;
 }
@@ -80,30 +84,61 @@
     border-bottom: solid 1px black;
 }
 
-.address{
-    width: 6%;
+.address1{
+    text-align: center;
+    width: 8%;
     height: 50px;
     margin-right: 1%;
     border: none;
-
+    /* margin-right: 20px; */
     border-bottom: solid 1px black;
 
 }
 
 .font{
-    margin-right: 19%;
+    margin-right: 22%;
     margin-top: 2%;
-    font-size: 15px;
+    font-size: 17px;
 }
 
+.agree{
+    display: flex;
+    justify-content: center;
+    line-height:45px;
+}
+
+.allsection{
+    margin-right: 25.5rem;
+}
+
+.ag1{
+    margin-right: 10rem;
+}
+
+.ag2{
+    margin-right: 12.5rem;
+}
+
+.ag3{
+    margin-right: 15.5rem;
+}
+
+.bar{
+    width: 25%;
+    height: 1px;
+    background-color: #BDBDBD;
+    margin-left: 37.5%;
+}
 
 .ment2{
    /* position: absolute; */
    /* left: 10%; */
-   font-size: -4rem;
+   font-size: 13px;
    /* margin-top: 10px; */
    /* margin-bottom: 10%; */
-   margin-right: 4%;
+   margin-right: 10.5%;
+   color: #424242;
+   font-weight: bold;
    /* margin-left: 600px; */
    /* margin-top: 2%; */
     /* margin-top: 2%; */
@@ -126,11 +161,11 @@ button:hover{
 .sibtn button{
     margin-top: 2%;
     margin-bottom: 15%;
-    padding: 20px;
+    padding: 25px;
     width: 25vw;
     background-color: #9553C8;
     color: #fff;
-    border-radius: 5px;
+    border-radius: 7px;
     border: none;
 }
 

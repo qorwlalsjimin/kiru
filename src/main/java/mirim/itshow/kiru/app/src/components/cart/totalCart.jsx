@@ -5,9 +5,10 @@ import React, { useContext } from 'react';
 import "./cart.css"
 // import Detail from "../product_detail/detail";
 import { DetailContext } from "../product_detail/detail";
+import Util from '../../util/product_util'
 
 
-export const TotalCart = ({ total, setTotal, cart, convertPrice,found, startDate, endDate}) => {
+export const TotalCart = ({ total, setTotal, cart,found, startDate, endDate}) => {
   const [totalQuantity, setTotalQuantity] = useState(0); // 누적된 총 수량 값
  
   
@@ -44,6 +45,7 @@ export const TotalCart = ({ total, setTotal, cart, convertPrice,found, startDate
   }, [cart, found]);
 
 
+  console.log("sd" +  startDate); console.log("ed" +  endDate);
   return (
     
     <>
@@ -62,16 +64,16 @@ export const TotalCart = ({ total, setTotal, cart, convertPrice,found, startDate
         </div>
 
        
-          {/* debugger; */}
+          {  }
           <p className={styles.cart_product_sale}>
-    
+            
             대여기간 <span className="star_end">{startDate}-{endDate}</span>
 
           </p>
 
         <div className={styles.payment}>
 
-        <p>총 대여료 <div className={styles.cart_prouct_payment}> {convertPrice(total)}</div>원</p>
+        <p>총 대여료 <div className={styles.cart_prouct_payment}> {Util.convertPrice(total)}</div>원</p>
         </div>
         </div>
       </div>

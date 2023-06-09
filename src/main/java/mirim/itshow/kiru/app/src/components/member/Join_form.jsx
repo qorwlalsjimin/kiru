@@ -28,14 +28,14 @@ const Join_form = (props) => {
   });*/
 
   const [group, setGroup] = useState({
-    email: 'asdf@naver.com',
-    password: '1234',
-    passwordConfirm: '1234',
-    lastName: 'Yu',
-    firstName: 'Byung Suk',
-    phone: '010-1234-5678',
+    email: '',
+    password: '',
+    passwordConfirm: '',
+    lastName: '',
+    firstName: '',
+    phone: '',
     address: '',
-    address2: '저쩌구',
+    address2: '',
     showPassword: false,
     showPassword2: false
   });
@@ -163,7 +163,7 @@ useEffect(() => {
     <form onSubmit={handleSubmit}>
 
     <p className="ment2">계정을 생성하여 더 빠른 온라인 결제 혜택을 누려보세요.</p>
-    <p className="must">*필수 항목</p>
+    <p className="must">* 필수 항목</p>
    
     <h3 className="font">아이디 설정</h3>
       
@@ -224,7 +224,7 @@ useEffect(() => {
       <h3 className="font">주소</h3>
 
       <div className="ads">
-      <input id="address" className="address" name="address" type="text" value={group.address} onChange={handleChange} /> 
+      <input id="address" className="address1" name="address" type="text"  placeholder="우편번호"  value={group.address} onChange={handleChange} /> 
       <button type="button"  onClick={onClickButton} >주소검색</button>
       {isOpen && (<Modal
         open={isOpen}
@@ -237,17 +237,40 @@ useEffect(() => {
 
       <div className="pass">
 
-      <input id="address" className="address" name="address" type="text" value={group.address} onChange={handleChange} />  {/**value={setInputAddressValue} */}
+      <input id="address" className="address2" name="address" type="text"  placeholder="주소"  value={group.address} onChange={handleChange} />  {/**value={setInputAddressValue} */}
       <br />
-      <input id="address" className="address" name="address2" placeholder="상세주소"  type="text" value={group.address2} onChange={handleChange} /> 
+      <input id="address" className="address3" name="address2" placeholder="상세주소"  type="text" value={group.address2} onChange={handleChange} /> 
       </div>
 
       <br />
-        
+
+      
+
+      <div className="agree allsection">
+      <input type="checkbox" />  <p>전체 선택</p> 
+      </div> 
+
+        <div className="bar"></div>
+
+        <div className="otheragree">
+
+        <div className="agree ag1">
+          <input type="checkbox" />   <p>본인은 <span style={{textDecoration: "underline;"}}> 개인정보처리방침</span>을 읽고 이에 동의합니다. </p> 
+        </div>
+
+        <div className="agree ag2">
+          <input type="checkbox" />   <p>개인정보의 수집 및 이용에 대한 동의 (필수) </p> <p style={{textDecoration: "underline;"}}>상세보기</p>
+        </div>
+
+        <div className="agree ag3">
+          <input type="checkbox" />   <p>개인정보의 제 3자 제공 동의 (선택)</p> <p style={{textDecoration: "underline;"}}>상세보기</p>
+        </div>
+
+        </div>
       </div>
 
       <div className="sibtn">
-      <Link to="/Login_form">  <button type="submit" >회원가입하기</button> </Link>
+      <Link to="/Login_form">  <button type="submit" >회원가입 하기</button> </Link>
       </div>
     </form>
     </div>

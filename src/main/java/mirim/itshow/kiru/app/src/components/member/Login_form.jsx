@@ -81,7 +81,8 @@ const Login_form = () => {
           <label>
             <div className="idremem">
               <input type="checkbox" checked={group.rememberID} onChange={handleChange} />
-              아이디 기억하기
+              {/* <i className="ri-checkbox-blank-circle-line"></i> */}
+              <p>아이디 기억하기</p>
             </div>
           </label>
           <br />

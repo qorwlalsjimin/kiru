@@ -1,10 +1,11 @@
 import React from 'react'
 import "./cart.css"
+import { Link } from "react-router-dom";
 
 const shoppingIng = () => {
   return (
     <div>
-        <button className='ing'><i class="ri-arrow-left-s-line"></i>쇼핑 계속하기</button>
+   <Link to="/main"><button className='ing'><i class="ri-arrow-left-s-line"></i>쇼핑 계속하기</button></Link> 
     </div>
   )
 }

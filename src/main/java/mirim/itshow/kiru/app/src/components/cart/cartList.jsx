@@ -1,9 +1,11 @@
 import styles from "./cart.module.css";
 import "../product_detail/detail"
+import Util from '../../util/product_util'
+
+
 
 export const CartList = ({
   cart,
-  convertPrice,
   checkLists,
   handleQuantity,
   handleRemove,
@@ -19,16 +21,19 @@ export const CartList = ({
   // console.log(cart)
   //상태를 만들고 input에서 선택된 
 
-
+  const id = `box_${cart.id}`; // 고유한 id 값 생성
 
  
   return (
 
     <section className={styles.cart_product_list}>
        
+
+
+       
        <input
         type="checkbox"
-        id={cart.id}
+        id={id}
       
         onChange={(e) => {
           handleCheckList(e.currentTarget.checked, `${cart.id}`);
@@ -42,8 +47,6 @@ export const CartList = ({
 
    
         <>
-        
-       
 
       <div className={styles.cart_product_wrap}>
         <div className={styles.cart_product_image}>
@@ -63,7 +66,7 @@ export const CartList = ({
       <div className={styles.ri}>
           <span>  {cart.brand}</span>         
           <span>{cart.quantity} </span>
-          <span> {convertPrice(cart.price)}원</span>
+          <span> {Util.convertPrice(cart.price)}원</span>
           
           </div>
           </div>

@@ -1,33 +1,19 @@
 // import styles from "./topNavigationBar.module.css";
-import { Link } from "react-router-dom";
+// import { Link, Navigate } from "react-router-dom";
 import {nav} from "../../../data/Data"
 import "./header.css"
 import "./script"
-import { useEffect, useState } from "react";
+import { Link, Navigate, Routes, Router, Route } from "react-router-dom";
 import axios from 'axios';
+// import Main from "../main/main";
+import {Main} from "../../main/main"
+// import { Redirect} from "react-router-dom";
+import { Product } from "../../products/product";
+import { Mainscreen } from "../../mainscreen/Mainscreen";
 
 
-const Header = ({setProducts, handleNavClick, setShowMainscreen}) => {
-
-
-  
-  const fetchData = async (url) => {
-    try {
-      const response = await axios.get(url);
-      setProducts(response.data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
-
-
-  const handleClick = (nav) => {
-    handleNavClick(nav, fetchData);
-    // setShowMainscreen(true);
-
-  };
-
-
+const Header = ({ handleNavClick, setShowMainscreen, setProducts, products}) => {
+ 
   return (
     <>
       <header>
@@ -37,9 +23,9 @@ const Header = ({setProducts, handleNavClick, setShowMainscreen}) => {
           <div className='global'>
             <i className="ri-global-line"></i> 한국어
           </div>
-
+         
           <div className="logo">
-            <Link to="/mainscreen" onClick={handleClick}>
+            <Link to="/Mainscreen">
               <img src="/images/logo.png" alt="" />
             </Link>
           </div>
@@ -50,41 +36,39 @@ const Header = ({setProducts, handleNavClick, setShowMainscreen}) => {
 
             <i className="ri-search-line"></i>
             <i className="ri-star-line"></i>
-            <Link to="/cart"><i className="ri-shopping-cart-2-line"></i></Link>
-            <Link to="/login_form"> <i className="ri-user-line"></i></Link>
+            <Link to="/cart"><i className="ri-shopping-cart-2-line" style={{color:"black"}}></i></Link>
+            <Link to="/login_form"> <i className="ri-user-line" style={{color:"black"}}></i></Link>
 
           </div>
         </div>
 
 
         
-
+      
         <div className="nav">
         <ul className="flex">
-          <li>
-            <button onClick={() => handleClick('전통한복')}>전통</button>
+           <li>
+          <Link to="/category/120"><button>개량</button></Link>
           </li>
           <li>
-            <button onClick={() => handleClick('개량한복')}>개량</button>
+          <Link to="/category/110"><button >전통</button></Link>
+          </li>
+         
+          <li>
+          <Link to="/category/130"><button >신발</button></Link>
           </li>
           <li>
-            <button onClick={() => handleClick('신발')}>신발</button>
+          <Link to="/category/140"><button >악세사리</button></Link>
           </li>
-          <li>
-            <button onClick={() => handleClick('악세사리')}>악세사리</button>
-          </li>
-          <li>
-            <button onClick={() => handleClick('세트')}>세트</button>
-          </li>
+       
         </ul>
         </div>
-
-
-
-
-
-
-
+        <Routes>
+        <Route path="/" element={<Mainscreen />} />
+        <Route path="/category/:cid" element={<Main products={products} setProducts={setProducts}/>} />
+      </Routes>
+    
+  
 
       </header>
 

@@ -7,51 +7,47 @@ import axios from 'axios';
 import "../header/topNavigationBar/header.css"
 import Header from "../header/topNavigationBar/topNavigationBar"
 // import { getProducts } from "../../service/fetcher";
+import { useLocation, useParams  } from "react-router-dom";
 
-export const Main = ({ convertPrice, products, setProducts }) => {
+export const Main = ({  products, setProducts, category }) => {
   const [visibleProducts, setVisibleProducts] = useState([]);
   const [showMore, setShowMore] = useState(false);
   const [selectedNav, setSelectedNav] = useState('');
- 
+
+  // const location = useLocation();
+  const { cid } = useParams()
+
+
   useEffect(() => {
-    fetchData('/api/item/item_list/110');
-  }, []);
+    const fetchData = async (url) => {
+      try {
+        const response = await axios.get(url);
+        setProducts(response.data);
+        setVisibleProducts(response.data.slice(0, 16));
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    // debugger;
+    // const category = getCategoryFromPath(location.pathname);
+    fetchData(`/api/item/item_list/${cid}`);
+  }, [cid]);
+
+  
 
   const handleShowMore = () => {
     setVisibleProducts(products);
     setShowMore(true);
   };
+
+  console.log("products" + products)
+  if(products) {
+    console.log(products.length)
+    console.log(showMore);
+    console.log("???" + (products && !showMore && products.length > 16));
+  }
   
-  const handleNavClick = (nav, fetchData) => {
-    let url = '';
-
-    if (nav === '전통한복') {
-      url = '/api/item/item_list/110';
-    } else if (nav === '개량한복') {
-      url = '/api/item/item_list/120';
-    } else if (nav === '신발') {
-      url = '/api/item/item_list/130';
-    } else if (nav === '악세사리') {
-      url = '/api/item/item_list/140';
-    } else if (nav === '세트') {
-      url = '/api/item/item_list/150';
-    }
-
-    setSelectedNav(nav);
-    fetchData(url);
-  };
-
-  const fetchData = async (url) => {
-    try {
-      const response = await axios.get(url);
-      setProducts(response.data);
-      setVisibleProducts(response.data.slice(0, 16));
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
-
-
 
   return (
     <>
@@ -59,7 +55,7 @@ export const Main = ({ convertPrice, products, setProducts }) => {
 
       <div>
         <div className='Banner'>
-          <h2> 전통한복</h2>
+          <h2>전통한복</h2>
 
           <div className="selection">
 
@@ -89,14 +85,13 @@ export const Main = ({ convertPrice, products, setProducts }) => {
                 <Product
                   key={`key-${product.id}`}
                   product={product}
-                  convertPrice={convertPrice}
                 />
               );
             })}
           </main>
         </ul>
 
-        {!showMore && products.length > 16 && (
+        {products && !showMore && products.length > 16 && (
         <button className={styles.show_more} onClick={handleShowMore}>
           더보기
         </button>
@@ -120,6 +115,7 @@ export const Main = ({ convertPrice, products, setProducts }) => {
           );
         })}
       </main> */}
+    
     </>
   );
 };

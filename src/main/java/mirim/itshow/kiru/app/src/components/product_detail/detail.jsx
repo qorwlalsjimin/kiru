@@ -8,10 +8,10 @@ import "./combobox.js"
 import "./detail.css"
 import { CartList } from "../cart/cartList";
 import { TotalCart } from "../cart/totalCart";
+import Util from '../../util/product_util'
 
 
-
-export const Detail = ({ convertPrice, cart, setCart }) => {
+export const Detail = ({ cart, setCart }) => {
   //색상
 
 
@@ -129,8 +129,6 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
       },
     }));
   };
-
-
 
 
   const handleQuantityChange = (name, action) => {
@@ -258,7 +256,7 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
               <span className={styles.price}>
               
 
-                {convertPrice(product.price + "")}
+                {Util.convertPrice(product.price + "")}
                 <span className={styles.unit}>원</span>
               
               </span>
@@ -370,7 +368,7 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
           
              
               {Object.keys(selectedOptions).map((size, index) => {
-                
+               
                 const option = selectedOptions[size];
                 return option.count !== 0 ? (
                   <>
@@ -386,7 +384,7 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
                         )} / {option.value}</div>
 
                     <div className="pricesmall">
-                      {convertPrice(product.price*option.count)}원  <i className="ri-close-line" onClick={() => handleBoxClose(size)}></i>
+                      {Util.convertPrice(product.price*option.count)}원  <i className="ri-close-line" onClick={() => handleBoxClose(size)}></i>
                       </div>
 
                     <div className="countbtn">
@@ -425,7 +423,7 @@ export const Detail = ({ convertPrice, cart, setCart }) => {
                       </div>
                         
                         총 대여료 </span>
-                          {convertPrice(product.price * totalCount)}원
+                          {Util.convertPrice(product.price * totalCount)}원
                           
                         </span>
                       </div>

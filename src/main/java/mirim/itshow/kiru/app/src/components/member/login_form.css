@@ -24,16 +24,18 @@
     position: absolute;
     margin-top: 20px;
     left: 37.3%;   
+    font-size: 15px;
+    color: #757575;
 }
 
 .loginbtn button{
-    margin-top: 5%;
-    padding: 20px;
+    /* margin-top: 5%; */
+    padding: 25px;
     width: 25vw;
     background-color: #9553C8;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 7px;
 }
 
 /* 이메일/휴대폰 번호, input*/
@@ -46,17 +48,18 @@
 }
 
 .idremem{
-    position: absolute;
+    /* position: absolute; */
     margin-top: 5%;
-    left: 37.3%;
-    font-size: 12px;
+    /* left: 37.3%; */
+    display: flex;
+    margin-left: 45rem;
+    font-size: 13px;
+    /* background-color: #32e732;s */
+    /* margin-bottom: 2px; */
+    /* text-align: left; */
 }
 
 
-.idremem input{
-    width: 13px;
-    
-}
 
 /* 
 input::-webkit-input-placeholder {
@@ -94,9 +97,13 @@ input::-webkit-input-placeholder {
     margin-left: 37.4%;
     /* margin-left: 600px; */
     margin-top: 2%;
+    color: #424242;
+    font-weight: bold;
     
 }
 
+
+input::placeholder {color:#BDBDBD;}
 /* 
 .blo{
     border-bottom: solid 1px black;
@@ -106,5 +113,23 @@ input::-webkit-input-placeholder {
 
 
 .logintext .blo{
-    border-bottom: solid 3px #9553C8;
+    border-bottom: solid 4px #9553C8;
+    border-radius: 2px;
 }
+
+input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: 1px solid black;
+    appearance: none;
+    cursor: pointer;
+    margin-right: 10px;
+    /* transition: background 0.2s; */
+  }
+
+  input[type="checkbox"]:checked {
+    background: #32e732;
+    border: none;
+  }
+

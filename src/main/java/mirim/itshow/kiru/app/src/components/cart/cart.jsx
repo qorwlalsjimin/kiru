@@ -4,8 +4,10 @@ import { CartHeader } from "./cartHeader";
 import { CartList } from "./cartList";
 import { TotalCart } from "./totalCart";
 import {Btn} from "./btn"; 
+ import Util from '../../util/product_util'
 
-export const Cart = ({ cart, setCart, convertPrice }) => {
+
+export const Cart = ({ cart, setCart }) => {
   const [total, setTotal] = useState(0);
   const [checkLists, setCheckLists] = useState([]);
 
@@ -81,7 +83,6 @@ export const Cart = ({ cart, setCart, convertPrice }) => {
               key={`key-${cart.id}`}
               cart={cart}
               setCart={setCart}
-              convertPrice={convertPrice}
               handleQuantity={handleQuantity}
               handleRemove={handleRemove}
               handleCheckList={handleCheckList}
@@ -101,7 +102,6 @@ export const Cart = ({ cart, setCart, convertPrice }) => {
           cart={cart}
           total={total}
           setTotal={setTotal}
-          convertPrice={convertPrice}
           found={found}
         />
       ) : (

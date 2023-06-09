@@ -1,0 +1,155 @@
+
+.footerall2{
+    /* height: 80vh; */
+    background-color: black;
+    color: #fff;
+  }
+  
+  
+  .flex-container {
+  
+    /* margin-right: 20px; */
+      display: flex;
+      justify-content: space-between;
+      padding: 2rem 16%;
+      margin-bottom: 25px;
+      /* margin-right: ; */
+    }
+  
+  
+  .ma{
+    margin-right: 10%;
+  }
+  
+    .bold{
+      line-height: 2;
+   
+    }
+  
+    .bold i{
+      margin-right: 20px;
+    }
+    li{
+      list-style: none;
+    }
+  
+    .hrr{
+      place-items: center;
+      display: grid;
+    
+     
+      /* margin-left: 24%; */
+      /* margin-top: 5%; */
+    }
+  
+  
+  .hr_white{
+    background-color: #fff;
+    width: 71%;
+    height: 1px;
+  }
+  
+  hr{
+    background-color: #fff;
+  }
+  
+    .footunder p{
+      /* position: absolute; */
+      /* bottom: 4.3%; */
+      /* left: 30%; */
+    
+      font-size: 13px;
+    } 
+  
+  .footunder{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-inline: 14.3%;
+    margin-bottom: 20px;
+  }
+  
+  
+  /* 
+    .footunder img{
+      position: absolute;
+      left: 24%;
+      bottom: 5%;
+      width: 7rem;
+    } */
+  
+    .icon2{
+     /* position: absolute; */
+     /* left: 70%; */
+     /* bottom: 5%; */
+     /* padding: 0 3%; */
+     font-size: 27px;
+    } 
+  
+    
+  .logogery_img{
+    margin-top: 10px;
+  }
+  
+  
+  
+    .icon2 > * {
+      margin-left: 27px;
+    }
+  
+  .fontsize{
+    font-size: 14px;
+  }
+  
+  
+  
+  
+  .bo{
+      margin-bottom: 10px;
+  }
+  
+  .flower img{
+   width: 500px;
+   animation: swing ease-in-out 3s infinite alternate;
+  
+  }
+  
+  
+  .f1{
+     position: absolute;
+     bottom: -16%;
+     left: 37%;
+   
+  
+  }
+  
+  .f1 img{
+      animation-duration: 10s;
+      animation-direction: alternate-reverse;
+  }
+  
+  .f2{
+      position: absolute;
+      bottom: -19%;
+      left: 42%;
+  }
+  
+  .f2 img{
+      animation-duration: 4.5s;
+      animation-direction: alternate-reverse;
+  }
+   
+   .f3{
+      position: absolute;
+      bottom:-17%; 
+      left: 47%;
+  }
+  
+  .f3 img{
+      animation-duration: 2.5s;
+      animation-direction: alternate-reverse;
+  }   
+  
+  .fontsizee a{
+    color: #fff;
+  }

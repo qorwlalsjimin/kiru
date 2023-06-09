@@ -18,46 +18,48 @@ import {Mainscreen} from "./components/mainscreen/Mainscreen"
 function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
-  const [showMainscreen, setShowMainscreen] = useState(true);
-
-  
-
-
-  const convertPrice = (price) => {
-    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  };
+  // const [showMainscreen, setShowMainscreen] = useState(true);
+  // const [isMainscreenVisible, setMainscreenVisible] = useState(true);
 
 
-  const handleNavClick = async (nav) => {
-    let url = '';
 
-    if (nav === '전통한복') {
-      url = '/api/item/item_list/110';
-    } else if (nav === '개량한복') {
-      url = '/api/item/item_list/120';
-    } else if (nav === '신발') {
-      url = '/api/item/item_list/130';
-    } else if (nav === '악세사리') {
-      url = '/api/item/item_list/140';
-    } else if (nav === '세트') {
-      url = '/api/item/item_list/150';
-    }
+ 
+
+
+  // const handleNavClick = async (nav) => {
+  //   let url = '';
+
+  //   if (nav === '전통한복') {
+  //     url = '/api/item/item_list/110';
+  //   } else if (nav === '개량한복') {
+  //     url = '/api/item/item_list/120';
+  //   } else if (nav === '신발') {
+  //     url = '/api/item/item_list/130';
+  //   } else if (nav === '악세사리') {
+  //     url = '/api/item/item_list/140';
+  //   } else if (nav === '세트') {
+  //     url = '/api/item/item_list/150';
+  //   }
 
 
     
 
-    try {
-      const response = await axios.get(url);
-      setProducts(response.data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
+  //   try {
+  //     const response = await axios.get(url);
+  //     setProducts(response.data);
+  //   } catch (error) {
+  //     console.error('Error fetching data:', error);
+  //   }
 
-    setShowMainscreen(false);
+  //   setShowMainscreen(false);
   
+  // };
+
+
+  const handleNavClick = async (nav, fetchData) => {
+    fetchData(nav);
+    // setShowMainscreen(false);
   };
-
-
 
   return (
     
@@ -67,50 +69,45 @@ function App() {
     <BrowserRouter>
      
       {/* <TopNavigationBar/> */}
-      <Header setProducts={setProducts} handleNavClick={handleNavClick}  />
+      <Header products={products} setProducts={setProducts} handleNavClick={handleNavClick}  />
       {/* <Header setProducts={setProducts} /> */}
       
-      {showMainscreen && <Mainscreen />}
+      {/* <Mainscreen /> */}
 
+      {/* <Route path="/products" element={isMainscreenVisible && <Mainscreen />} /> */}
       <Routes>
         <Route
           path="/main"
           exact={true}
           element={
             <Home
-              convertPrice={convertPrice}
+              // convertPrice={convertPrice}
               products={products}
               setProducts={setProducts}
             />
           }
         />
-
-
-
-
-{/* <Route
-          path="/Accessories"
-          exact={true}
-          element={
-            <Accessories/> } 
-            />
- */}
       
 
         <Route
           path="/product/:id"
           element={
             <Product
-              convertPrice={convertPrice}
+              // convertPrice={convertPrice}
               cart={cart}
               setCart={setCart}
             />
           }
         />
+
+          
+
+
+
         <Route
           path="/cart"
           element={
-            <Basket cart={cart} setCart={setCart} convertPrice={convertPrice} />
+            <Basket cart={cart} setCart={setCart} />
           }
         />
 

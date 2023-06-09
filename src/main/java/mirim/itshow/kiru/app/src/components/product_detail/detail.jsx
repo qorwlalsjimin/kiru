@@ -14,8 +14,6 @@ import CustomSelect from "./CustomSelect.js";
 
 export const Detail = ({ cart, setCart }) => {
   //색상
-
-
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [count, setCount] = useState(1);
@@ -40,8 +38,6 @@ export const Detail = ({ cart, setCart }) => {
 
     fetchItem();
   }, []);
-
-
 
 
   // 상세페이지에서 물건 수량 조절
@@ -106,7 +102,6 @@ export const Detail = ({ cart, setCart }) => {
       color: product.color
     };
     */
-
 
     /*
     const found = cart.find((el) => el.id === cartItem.id);
@@ -235,7 +230,6 @@ export const Detail = ({ cart, setCart }) => {
   };
 
 
-
   return (
     product && (
       <>
@@ -256,18 +250,12 @@ export const Detail = ({ cart, setCart }) => {
               </div>
 
               <span className={styles.price}>
-
-
                 {Util.convertPrice(product.price + "")}
                 <span className={styles.unit}>원</span>
-
               </span>
 
               <div className="description">
-
-
                 <p>{product.description}</p>
-
               </div>
 
               <div className="colorchose">
@@ -303,80 +291,38 @@ export const Detail = ({ cart, setCart }) => {
                 }
 
             }} > */}
-
-
-
               {/* 설정 */}
-
-
             </div>
 
             <div className="inputboxs">
-
               <div className="sizeinfo">
                 {/* <div className={styles.delivery}> */}
                 <i className="ri-information-line"></i>  <p>사이즈 정보</p>
               </div>
 
               <CustomSelect
-        listOpen
-        resetThenSet={() => {}}
-        list={[
-          {
-            id: 1,
-            title: "S"
-          },
-          {
-            id: 2,
-            title: "M"
-          },
-          {
-            id: 3,
-            title: "L"
-          }
-        ]}
-        onClick = {handleSizeSelection}
-      />
+                listOpen
+                resetThenSet={() => { }}
+                list={[
+                  {
+                    id: 1,
+                    title: "S"
+                  },
+                  {
+                    id: 2,
+                    title: "M"
+                  },
+                  {
+                    id: 3,
+                    title: "L"
+                  }
+                ]}
+                onClick={handleSizeSelection}
+              />
 
-              {/*
-              <div className="selectBox">
-                <p className="sizetitle">사이즈</p>
-                <div className="size">
-
-                   <select onChange={(e) => {
-                const selectedSize = e.target.value;
-             
-                if(selectedSize in selected) {
-                  setSelected(p => {
-                    return { ...p, [selectedSize]: p[selectedSize] + count }
-                  })
-                }
-
-            }} > 
-
-
-                  {/* <select onChange={handleSizeSelection}>
-             
-            <option value="0" selected>
-            <p id="s_text1">사이즈</p>
-            <p id="s_text2">사이즈를 선택해주세요</p>
- 
-           </option>
-            <option value="S">{product.size[0]}</option>
-            <option value="M">{product.size[1]}</option>
-            <option value="L">{product.size[2]}</option>
- 
-          </select>
-
-
-                </div>
-              </div>*/}
               <div className="date">
-
                 <div className="dateBox">
-
                   <div className="renttitle">
-
                     대여 기간
                   </div>
 
@@ -385,7 +331,6 @@ export const Detail = ({ cart, setCart }) => {
                     <i className="ri-subtract-fill"></i>
                     <input type="date" id="start" name="trip-start" value={endDate} min="2023-06-01" max="2023-07-31" onChange={handleEndDateChange} />
                   </div>
-
                 </div>
               </div>
             </div>
@@ -393,15 +338,11 @@ export const Detail = ({ cart, setCart }) => {
 
             {/* hr bar */}
 
-
             {Object.keys(selectedOptions).map((size, index) => {
-
               const option = selectedOptions[size];
               return option.count !== 0 ? (
                 <>
-
                   <div className="allBox" key={size}>
-
                     <div className="select_color_size">
                       {selectedColor && (
                         <>
@@ -409,7 +350,6 @@ export const Detail = ({ cart, setCart }) => {
                           <span>{colorData[selectedColor]}</span>
                         </>
                       )} / {option.value}</div>
-
                     <div className="pricesmall">
                       {Util.convertPrice(product.price * option.count)}원  <i className="ri-close-line" onClick={() => handleBoxClose(size)}></i>
                     </div>
@@ -420,52 +360,32 @@ export const Detail = ({ cart, setCart }) => {
                         <span>{option.count}</span>
                       </div>
                       <button className="p" onClick={() => handleQuantityChange(size, "plus")}>+</button>
-
                     </div>
-
-
-
                   </div>
-
                 </>
               ) : null;
             })}
 
             {totalCount > 0 && showTotalInfo && (
               <div className={styles.sum}>
-
-
                 <span className={styles.total}>
                   총 수량 <span className={styles.total_count}>{totalCount}개</span>
                 </span>
-
                 <div className={styles.total_info}>
-
                   <span className={styles.total_price}>
-
                     <span className={styles.total_unit}>
                       <div className="datedata">
                         {startDate} - {endDate}
-
                       </div>
-
                       총 대여료 </span>
                     {Util.convertPrice(product.price * totalCount)}원
-
                   </span>
                 </div>
               </div>
 
             )}
 
-
-
-
-
-
             {/* </div> */}
-
-
 
             {/* <div className={styles.line}></div> */}
             <div className="detailbtn">

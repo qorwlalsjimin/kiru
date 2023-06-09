@@ -14,6 +14,8 @@ export const Main = ({  products, setProducts, category }) => {
   const [showMore, setShowMore] = useState(false);
   const [selectedNav, setSelectedNav] = useState('');
 
+
+
   // const location = useLocation();
   const { cid } = useParams()
 
@@ -55,7 +57,14 @@ export const Main = ({  products, setProducts, category }) => {
 
       <div>
         <div className='Banner'>
-          <h2>전통한복</h2>
+          <h2>
+            
+            {cid === '120' && '개량한복'}
+            {cid === '110' && '전통한복'}
+            {cid === '130' && '신발'}
+            {cid === '140' && '악세사리'}
+            
+            </h2>
 
           <div className="selection">
 

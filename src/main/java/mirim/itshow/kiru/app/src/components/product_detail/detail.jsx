@@ -300,6 +300,20 @@ export const Detail = ({ cart, setCart }) => {
                 <i className="ri-information-line"></i>  <p>사이즈 정보</p>
               </div>
 
+              {/* 예전 select 코드 */}
+              {/* <select onChange={handleSizeSelection}>
+
+                <option value="0" selected>
+                  <p id="s_text1">사이즈</p>
+                  <p id="s_text2">사이즈를 선택해주세요</p>
+
+                </option>
+                <option value="S">{product.size[0]}</option>
+                <option value="M">{product.size[1]}</option>
+                <option value="L">{product.size[2]}</option>
+
+              </select> */}
+
               <CustomSelect
                 listOpen
                 resetThenSet={() => { }}

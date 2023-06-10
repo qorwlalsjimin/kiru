@@ -48,7 +48,7 @@ class CustomSelect extends Component {
 
   selectItem(title, id, stateKey) {
     // console.log("selectItem");
-
+    
     /* set radius when options appear */
     if (!this.state.listOpen) this.ddHeaderRadius = true;
     else this.ddHeaderRadius = false;

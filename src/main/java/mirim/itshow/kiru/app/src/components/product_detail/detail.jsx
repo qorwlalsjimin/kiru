@@ -152,12 +152,16 @@ export const Detail = ({ cart, setCart }) => {
   };
 
   const handleSizeSelection = (e) => {
+    // console.log("음..");
     const selectedSize = e.target.value;
     console.log(selectedColor);
+    // console.log("selectedSize: ", selectedSize);
     setTotalCount(0); //Reset totalCount when size is selected
     setSelectedOptions((prevSelectedOptions) => {
       const updatedOptions = { ...prevSelectedOptions };
+      // console.log("updatedOptions: ", updatedOptions);
       const option = updatedOptions[selectedSize];
+      // console.log("option: ",option);
       if (option) {
         option.count += 1;
       } else {
@@ -301,18 +305,17 @@ export const Detail = ({ cart, setCart }) => {
               </div>
 
               {/* 예전 select 코드 */}
-              {/* <select onChange={handleSizeSelection}>
+              <select onChange={handleSizeSelection}>
 
-                <option value="0" selected>
-                  <p id="s_text1">사이즈</p>
-                  <p id="s_text2">사이즈를 선택해주세요</p>
-
+                <option value="0">
+                  {/* <p id="s_text2">사이즈를 선택해주세요</p> */}
+                  사이즈를 선택해주세요
                 </option>
                 <option value="S">{product.size[0]}</option>
                 <option value="M">{product.size[1]}</option>
                 <option value="L">{product.size[2]}</option>
 
-              </select> */}
+              </select>
 
               <CustomSelect
                 listOpen
@@ -331,7 +334,8 @@ export const Detail = ({ cart, setCart }) => {
                     title: "L"
                   }
                 ]}
-                onClick={handleSizeSelection}
+                // onClick이 안 돼서 안 되는 상황
+                onClick={handleSizeSelection} 
               />
 
               <div className="date">

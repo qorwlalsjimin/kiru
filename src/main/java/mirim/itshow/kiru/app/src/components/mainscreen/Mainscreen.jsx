@@ -6,6 +6,25 @@ import "./marquee.js"
 export const Mainscreen = () => {
   return (
         <div>
+        
+
+        <section className="page_1" >
+          <img src="/images/subtract.png" className='people1' alt="" />
+
+
+        </section>
+        <section className="page_2"  >
+          
+          <h1 className='choice'>choice</h1>
+          
+          
+          </section>
+        <section className="page_3" style={{backgroundColor:"#F5DCEA"}}></section>
+        <section className="page_4" style={{backgroundColor: "#6D16DC"}}></section>
+
+
+
+
       <section className='page_5'>
        <h1 className='title Merchandise'>Merchandise</h1>
 
@@ -23,29 +42,104 @@ export const Mainscreen = () => {
         </div>
         </div>
 
-        <div className="marquee">
-          <ul className="marquee-content">
-            <li><div className='brand logo'> </div></li>
-            <li><div className='brand logo'> </div></li>
-            <li><div className='brand logo'> </div></li>
-            <li><div className='brand logo'> </div></li>
-            <li><div className='brand logo'> </div></li>
-            <li><div className='brand logo'> </div></li>
-            <li><div className='brand logo'> </div></li>
-          </ul>
+       
+        <div class="slider">
+        <div class="slide-track">
+		<div class="slide">
+			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
+		</div>
+	</div>
         </div>
 
-        <div className="marquee">
-          <ul className="marquee-content">
-            <li><div className='brand logo'> </div></li>
-            <li><div className='brand logo'> </div></li>
-            <li><div className='brand logo'> </div></li>
-            <li><div className='brand logo'> </div></li>
-            <li><div className='brand logo'> </div></li>
-            <li><div className='brand logo'> </div></li>
-            <li><div className='brand logo'> </div></li>
-          </ul>
+
+        <div class="slider2">
+	<div class="slide-track">
+		<div class="slide">
+			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
+		</div>
+		<div class="slide">
+			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
+		</div>
+	</div>
         </div>
+
+
+
           </section>         
 
 

@@ -1,21 +1,23 @@
 .Banner h2{
    
-  
     margin-top: 5%;
     display: grid;
     place-items: center;
     /* position: absolute; */
     /* top: 20%; */
+
 }
 
 
 .selection{
     /* margin-top: 2%; */
 }
+
+
 .Banner{
     /* height: 30vh; */
     /* background-color: rgb(229, 231, 231); */
-    margin-bottom: 10%;
+    margin-bottom: 6%;
 
 }
 

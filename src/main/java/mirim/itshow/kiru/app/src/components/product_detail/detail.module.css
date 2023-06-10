@@ -47,10 +47,10 @@
 }
 
 .product_info .product_name {
-  font-size: 36px;
- 
+  font-size: 30px;
   line-height: 45px;
   color: #000000;
+  /* background-color: #9553C8; */
   margin-bottom: 20px;
 }
 .product_name {
@@ -62,7 +62,7 @@ font-weight: bold;
   font-size: 26px;
   line-height: 45px;
   color: #000000;
-  margin-bottom: 40px;
+  margin-bottom: 35px;
 }
 
 .product_info .unit {

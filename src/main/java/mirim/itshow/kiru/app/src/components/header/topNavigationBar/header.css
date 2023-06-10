@@ -12,14 +12,16 @@ header .nav{
     padding-inline: 10%;
     box-shadow: 0 6px 20px -10px rgb(203, 201, 201);
 }
-/* 
-.nav li:active{
-    color: #9553C8;
+
+.nav ul li a.active button {
+    color: #894DB8;
     
-} */
-
-
-
+  }
+/* 
+  .nav ul li a.selected button {
+    color: #894DB8;
+  }
+   */
 
 .icons i{
     margin-left: 30px;
@@ -100,27 +102,30 @@ li{
 display: grid;
 place-items: center;
 font-size: 22px;
-/* margin-bottom: 0px; */
-
+/* margin-bottom: 3px; */
 }
 
 /* 카테고리 위치 */
-.selection{
-    margin-top: 2%;
-    margin-bottom: 5%;
-    /* display: grid;
-place-items: center; */
-margin-left: 10px;
+.category{
+    margin-top: 1.5%;
+    /* margin-bottom: 5%; */
+    /* display: grid;*/
+    justify-content: center;
+    place-items: center; 
+    display: flex;
+   
 }
-
-
 
 
 .cloum{
-    
+    line-height: 23px;
     color: rgb(174, 173, 173);
+    margin-inline: 25px;
+    margin-left: 44px;
 }
 
+
+
 .cloum i{
-    font-size: 10px;
+    font-size: 1px;
 }

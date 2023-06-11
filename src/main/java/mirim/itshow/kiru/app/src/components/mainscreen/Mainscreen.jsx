@@ -1,20 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react';
 import $ from 'jquery';
 import "./mainscreen.css"
 import "./footer_black.css"
 import "./marquee.js"
-import { gsap } from "gsap";
+import {FullPage, Slide} from 'react-full-page';
 
 export const Mainscreen = () => {
+
   return (
         <div>
         
-
+        <FullPage >
+          <Slide>
         <section className="page_1" >
           <img src="/images/Subtract.png" className='people1' alt="" />
 
 
         </section>
+        </Slide>
+
+        <Slide>
         <section className="page_2"  >
           
           <h1 className='choice'>choice</h1>
@@ -66,19 +71,28 @@ export const Mainscreen = () => {
 
           </div> */}
           </section>
+          </Slide>
 
-
+          <Slide>
         <section className="page_3" style={{backgroundColor:"#F5DCEA"}}></section>
+        </Slide>
+
+
+        <Slide>
         <section className="page_4" style={{backgroundColor: "#6D16DC"}}></section>
+        </Slide>
 
 
 
-
+        <Slide>
       <section className='page_5'>
        <h1 className='title Merchandise'>Merchandise</h1>
 
       </section>
+      </Slide>
 
+
+      <Slide>
         <section className='page_6'> 
 
         <div className="titleh1">
@@ -92,7 +106,7 @@ export const Mainscreen = () => {
         </div>
 
        
-        <div class="slider">
+        {/* <div class="slider">
         <div class="slide-track">
 		<div class="slide">
 			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
@@ -185,25 +199,27 @@ export const Mainscreen = () => {
 			<img src="https://t3.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/Aay/image/t5G9QrwYFAOD3fif7IQAa6D0Ppg" height="200" width="200" alt="" />
 		</div>
 	</div>
-        </div>
+        </div> */}
 
 
 
           </section>         
+          </Slide>
 
 
 
-
+          <Slide>
            <section className='page_7'> 
 
            <h1 className='titleh1 kimono'> 기모노 보러가기 </h1>  
         </section>
-       
+        </Slide>
 
 
 
 
 
+        <Slide>
     <footer className="two">
 
     <div className="footerall2">
@@ -288,9 +304,9 @@ export const Mainscreen = () => {
     </div>
     </div>
 </footer>
+</Slide>
     
-    
-  
+</FullPage>
         </div>
    
       

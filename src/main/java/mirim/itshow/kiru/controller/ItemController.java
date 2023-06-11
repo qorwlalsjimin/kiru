@@ -43,7 +43,7 @@ public class ItemController {
     }
 
     //카테고리별로 가지고 있는 브랜드 목록
-    @GetMapping("/item_list/{categoryPId}/brand_list")
+    @GetMapping("/item_list/{categoryPId}/brand")
     public Collection<CategoryBrand> selectBrandList(@PathVariable Long categoryPId){
         System.out.println("brand 이름목록 get");
         return itemService.selectBrandList(categoryPId);

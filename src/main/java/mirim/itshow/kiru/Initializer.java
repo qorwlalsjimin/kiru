@@ -32,43 +32,43 @@ class Initializer implements CommandLineRunner {
                 new Category(100L, 0L, "*한복"),
 
                 new Category(110L, 100L, "전통"),
-                new Category(111L, 110L, "황금바늘.Goodneedle"),
-                new Category(112L, 110L, "민한복.Minhanbok"),
-                new Category(113L, 110L, "본한복.Bonhanbok"),
+                new Category(111L, 110L, "황금바늘"),
+                new Category(112L, 110L, "민한복"),
+                new Category(113L, 110L, "본한복"),
 
                 new Category(120L, 100L, "개량"),
-                new Category(121L, 120L, "단하.Danha"),
-                new Category(122L, 120L, "차이킴.Tchaikim"),
-                new Category(123L, 120L, "리슬.Leesle"),
+                new Category(121L, 120L, "단하"),
+                new Category(122L, 120L, "차이킴"),
+                new Category(123L, 120L, "리슬"),
 
                 new Category(130L, 100L, "신발"),
-                new Category(131L, 130L, "블랑수블랑.Blanc sur blanc"),
-                new Category(132L, 130L, "리우앤비우.Riuviu"),
+                new Category(131L, 130L, "블랑수블랑"),
+                new Category(132L, 130L, "리우앤비우"),
 
                 new Category(140L, 100L, "악세서리"),
-                new Category(141L, 140L, "돌실나이.Dolsilnai"),
-                new Category(142L, 140L, "차이킴.Tchaikim"),
-                new Category(143L, 140L, "나빔.Nabim"),
-                new Category(144L, 140L, "하플리.Happly"),
+                new Category(141L, 140L, "돌실나이"),
+                new Category(142L, 140L, "차이킴"),
+                new Category(143L, 140L, "나빔"),
+                new Category(144L, 140L, "하플리"),
 
                 new Category(150L, 100L, "세트"),
 
 
                 new Category(200L, 200L, "*일본"),
                 new Category(210L, 200L, "기모노"),
-                new Category(211L, 210L, "소라노카오리.Sorano Kaori"),
-                new Category(212L, 210L, "하나비라.Hanabira"),
-                new Category(213L, 210L, "스즈노기모노.Suzuno kimono"),
+                new Category(211L, 210L, "소라노카오리"),
+                new Category(212L, 210L, "하나비라"),
+                new Category(213L, 210L, "스즈노기모노"),
 
                 new Category(220L, 200L, "유카타"),
-                new Category(221L, 220L, "소라노카오리.Sorano kaori"),
+                new Category(221L, 220L, "소라노카오리"),
 
                 new Category(230L, 200L, "신발"),
-                new Category(231L, 230L, "くるり.Kururi"),
+                new Category(231L, 230L, "くるり"),
 
                 new Category(240L, 200L, "악세서리"),
-                new Category(241L, 240L, "くるり.Kururi"),
-                new Category(242L, 240L, "パピヨン.papillon")
+                new Category(241L, 240L, "くるり"),
+                new Category(242L, 240L, "パピヨン")
         };
         Arrays.stream(categories).forEach(category -> categoryRepository.save(category));
 

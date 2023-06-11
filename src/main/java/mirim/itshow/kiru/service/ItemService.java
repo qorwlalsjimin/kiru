@@ -1,5 +1,6 @@
 package mirim.itshow.kiru.service;
 
+import mirim.itshow.kiru.dao.CategoryBrand;
 import mirim.itshow.kiru.dao.CategoryRepository;
 import mirim.itshow.kiru.dao.ItemRepository;
 import mirim.itshow.kiru.entity_domain.Item;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -78,5 +80,9 @@ public class ItemService {
     // 상품 검색
     public List<Item> selectSearchItem(String keyword) {
         return itemRepository.findByNameAndBrandLike(keyword);
+    }
+
+    public Collection<CategoryBrand> selectBrandList(Long categoryPId) {
+        return categoryRepository.findByCategoryPId(categoryPId);
     }
 }

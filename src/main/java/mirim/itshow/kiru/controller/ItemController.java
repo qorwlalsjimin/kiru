@@ -1,5 +1,7 @@
 package mirim.itshow.kiru.controller;
 
+import mirim.itshow.kiru.dao.CategoryBrand;
+import mirim.itshow.kiru.entity_domain.Category;
 import mirim.itshow.kiru.entity_domain.Item;
 import mirim.itshow.kiru.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +22,7 @@ public class ItemController {
     private ItemService itemService;
 
     //카테고리별 All 상품 목록 (cf. 카테고리 안 나눈 전체 상품 목록은 필요 없음)
-    @GetMapping("/item_list/{categoryPId}")
+    @GetMapping("/item_list/{categoryPId}/all")
     public Collection<Item> selectCategoryPIdItem(@PathVariable Long categoryPId){
         System.out.println("카테고리별 전체 상품목록 get");
         return itemService.selectItemByCategoryPId(categoryPId); // 카테고리 부모 id 입력 (전통한복, 개량한복, ...)
@@ -34,10 +36,17 @@ public class ItemController {
     }
 
     //카테고리별 Brand 상품 목록
-    @GetMapping("/item_list/{category}/{brandId}")
+    @GetMapping("/item_list/{category}/brand/{brandId}")
     public Collection<Item> selectBrandItem(@PathVariable Long category, @PathVariable Long brandId){
         System.out.println("brand 상품목록 get");
         return itemService.selectBrandItem(category, brandId);
+    }
+
+    //카테고리별로 가지고 있는 브랜드 목록
+    @GetMapping("/item_list/{categoryPId}/brand_list")
+    public Collection<CategoryBrand> selectBrandList(@PathVariable Long categoryPId){
+        System.out.println("brand 이름목록 get");
+        return itemService.selectBrandList(categoryPId);
     }
 
     //하나의 상품 상세 정보

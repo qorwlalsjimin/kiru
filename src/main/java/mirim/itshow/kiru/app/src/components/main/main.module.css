@@ -1,9 +1,7 @@
 .show_more{
   background: #fff;
-  padding: 5% 58.10rem; 
+  padding: 4% 51.7rem; 
   border: none;
-  color: #757575;
-  /* background-color: #757575; */
 }
 
 .filter {
@@ -30,7 +28,7 @@
   /* 상품 위 아래 간격 */
   gap: 70px 0px; 
   margin: 0 auto;
-  /* margin-top: 5px; */
+  margin-top: 35px;
   /* background-color: antiquewhite; */
 }
 

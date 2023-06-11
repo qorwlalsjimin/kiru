@@ -16,11 +16,9 @@ export const Main = ({ products, setProducts, category }) => {
 
   // const location = useLocation();
   const { cid } = useParams()
-  let [fetchUrl, setFetchUrl] = useState(`/api/item/item_list/${cid}`);
+  let fetchUrl = `/api/item/item_list/${cid}/`;
 
-  //https://stackoverflow.com/questions/56410369/can-i-call-separate-function-in-useeffect
   useEffect(() => {
-    
     const fetchData = async (url) => {
       console.log("url", url);
       try {
@@ -36,6 +34,10 @@ export const Main = ({ products, setProducts, category }) => {
     // const category = getCategoryFromPath(location.pathname);
     fetchData(fetchUrl);
   }, [cid]);
+
+  function getData(){
+    
+  }
 
 
   const handleShowMore = () => {
@@ -53,20 +55,6 @@ export const Main = ({ products, setProducts, category }) => {
   function categoryHandler(param) {
     console.log("Clicked", param);
 
-    switch (param) {
-      case "all":
-        setFetchUrl(`/api/item/item_list/${cid}`);
-        break;
-      case "best":
-        setFetchUrl(fetchUrl+'/best');
-        break;
-      case "brand":
-        setFetchUrl(fetchUrl+'/211');
-        break;
-      default:
-        console.log("예외값");
-        break;
-    }
   }
 
   return (

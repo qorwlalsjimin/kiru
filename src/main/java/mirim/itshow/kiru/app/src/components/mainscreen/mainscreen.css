@@ -89,60 +89,100 @@ section{
     min-height: 100vh;
 }
 
+/* Carousel */
+.about-us-service-title {
+  text-align: center;
+}
 
-.slider, .slider2 {
-    /* background: white; */
-   
+.carousel-container {
+  padding: 20px;
+  display: flex;
+  text-align: center;
+  position: relative;
+  height: 450px;
+  max-width: 1200px;
+  min-width: 400px;
+  margin: 0 auto;
+}
 
-    /* box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125); */
-    height: 200px;
-    /* margin-bottom: 20%; */
-    margin: auto;
-    overflow: hidden;
-    /* position: relative; */
-    width: 2000px;
-    margin-top: 2%;
-  }
-  
-  .slider::before,
-  .slider::after {
-    /* background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%); */
-    content: "";
-    height: 100px;
-    position: absolute;
-    width: 200px;
-    z-index: 2;
-  }
-  
-  .slider::after {
-    right: 0;
-    top: 0;
-    transform: rotateZ(180deg);
-  }
-  
-  .slider::before {
-    left: 0;
-    top: 0;
-  }
-  
-  .slide-track {
-    animation: scroll 40s linear infinite;
-    display: flex;
-    width: calc(250px * 14);
-  }
-  
-  .slide {
-    height: 100px;
-    width: 250px;
-  }
-  
-  @keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(calc(-250px * 7));
-    }
-  }
-  
+.carousel-card {
+  height: 300px;
+  width: 200px;
+  padding: 20px;
+  transition: 1s;
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  /* background-color: #F58220; */
+  color: black;
+  cursor: pointer;
+  box-shadow: 1px 2px 3px grey;
+}
 
+.carousel-icon {
+  /* border-radius: 50%; */
+  height: 250px;
+  width: 250px;
+}
+
+#far-left {
+  left: 15%;
+  /* margin-right: 20px; */
+  z-index: 15;
+  transform: scale(1.4) translateY(0%) translateX(-85%);
+  background-color: #a58585;
+}
+
+
+#left {
+  left: 30%;
+  transform: scale(.9) translateY(0%) translateX(-50%);
+  z-index: 10;
+  /* background-color: #983d3d; */
+  
+}
+
+#center {
+  left: 50%;
+  transform: scale(.9) translateY(0%) translateX(-50%);
+  z-index: 15;
+  /* background-color: #c33a3a; */
+
+}
+
+#right {
+  left: 70%;
+  transform: scale(.9) translateY(0%) translateX(-50%);
+  z-index: 10;
+  /* background-color: #C3C3C3; */
+}
+
+#far-right {
+  left: 80%;
+  transform: scale(.9) translateY(0%) translateX(-50%);
+  z-index: 5;
+  background-color: #eac3c3;
+}
+
+
+.prev-button{
+padding: 50px;  
+margin-left: 70%;
+cursor: pointer;
+/* position: absolute; */
+
+}
+
+
+.next-button{
+  padding: 50px; 
+  /* margin-bottom: 10px; */
+  cursor: pointer;
+  /* position: absolute; */
+}
+
+.nextbtn{
+  cursor: pointer;
+ 
+ 
+}

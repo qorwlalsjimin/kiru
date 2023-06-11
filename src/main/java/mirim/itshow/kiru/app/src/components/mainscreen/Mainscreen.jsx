@@ -1,7 +1,9 @@
 import React from 'react'
+import $ from 'jquery';
 import "./mainscreen.css"
 import "./footer_black.css"
 import "./marquee.js"
+import { gsap } from "gsap";
 
 export const Mainscreen = () => {
   return (
@@ -9,16 +11,63 @@ export const Mainscreen = () => {
         
 
         <section className="page_1" >
-          <img src="/images/subtract.png" className='people1' alt="" />
+          <img src="/images/Subtract.png" className='people1' alt="" />
 
 
         </section>
         <section className="page_2"  >
           
           <h1 className='choice'>choice</h1>
-          
-          
+
+          <div class="carousel-container">
+  <div class="carousel-card" id="far-left">
+    <img class="carousel-icon" src="/images/mask.png" alt=""/>
+    <h3 class="carousel-title">#1 전통한복</h3>
+   
+  </div>
+  <div class="carousel-card" id="left">
+    <img class="carousel-icon" src="/images/mask.png" alt=""/>
+    <h3 class="carousel-title">#2 개량한복</h3>
+   
+  </div>
+  <div class="carousel-card" id="center">
+    <img class="carousel-icon" src="/images/mask.png" alt=""/>
+    <h3 class="carousel-title">#3 신발</h3>
+   
+  </div>
+  <div class="carousel-card" id="right">
+    <img class="carousel-icon" src="/images/mask.png" alt=""/>
+    <h3 class="carousel-title">#4 악세사리</h3>
+   
+  </div>
+  
+</div>
+
+
+<img src="/images/left.png" alt="" class="prev-button"/>
+<img src="/images/right.png" alt="" class="next-button" />
+
+
+          {/* <div class="carousel-track">
+          <div class="carousel-track">
+          <img src="/images/mask.png" alt="" />
+
+         
+          <img src="/images/mask.png" alt="" />
+
+          <img src="/images/mask.png" alt="" />
+
+          <img src="/images/mask.png" alt="" />
+
+          </div>
+          <img src="/images/left.png" alt="" class="prev-button"/>
+
+          <img src="/images/right.png" alt="" class="next-button" />
+
+          </div> */}
           </section>
+
+
         <section className="page_3" style={{backgroundColor:"#F5DCEA"}}></section>
         <section className="page_4" style={{backgroundColor: "#6D16DC"}}></section>
 

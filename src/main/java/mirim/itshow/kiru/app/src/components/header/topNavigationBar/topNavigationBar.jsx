@@ -16,10 +16,14 @@ import {ReactComponent as SearchSvg} from "../../../svgfiles/search.svg";
 import {ReactComponent as StarSvg} from "../../../svgfiles/star.svg";
 import {ReactComponent as CartSvg} from "../../../svgfiles/cart.svg";
 import {ReactComponent as MemberSvg} from "../../../svgfiles/member.svg";
+import { useState } from "react";
 
 
 const Header = ({ handleNavClick, setShowMainscreen, setProducts, products}) => {
- 
+  let [isBrand, setIsBrand] = useState(true);
+  function navHandler() {
+    setIsBrand(true);
+  }
   return (
     <>
       <header>
@@ -46,15 +50,15 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products}) => 
 
         <div className="nav">
         <ul className="flex">
-          <li><Link to="/category/120"><button>개량</button></Link></li>
-          <li><Link to="/category/110"><button >전통</button></Link></li>
-          <li><Link to="/category/130"><button >신발</button></Link></li>
-          <li><Link to="/category/140"><button >악세사리</button></Link></li>
+          <li onClick={navHandler}><Link to="/category/120/all"><button>개량</button></Link></li>
+          <li onClick={navHandler}><Link to="/category/110/all"><button >전통</button></Link></li>
+          <li onClick={navHandler}><Link to="/category/130/all"><button >신발</button></Link></li>
+          <li onClick={navHandler}><Link to="/category/140/all"><button >악세사리</button></Link></li>
         </ul>
         </div>
         <Routes>
         <Route path="/" element={<Mainscreen />} />
-        <Route path="/category/:cid" element={<Main products={products} setProducts={setProducts}/>} />
+          <Route path="/category/:cid/:cname" element={<Main products={products} setProducts={setProducts} isBrand={isBrand} setIsBrand={setIsBrand} />} />
       </Routes>
     
       </header>

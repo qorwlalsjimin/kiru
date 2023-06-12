@@ -1,30 +1,65 @@
 
 * {
-    margin: 0;
+    
     padding: 0;
     box-sizing: border-box;
-  
+    /* z-index: 1; */
     /* overflow-x: hidden */
   }
+
+
+  body{
+    margin: 0;
+  }
+
+  *, *::before, *::after {
+    box-sizing: inherit;
+  }
+  
 
 html{
   scroll-snap-type: y mandatory;
 }
  
+
 section{
     height: 100vh;
     /* width: 100vw; */
     scroll-snap-stop: always;
 }
-.page_1{
-  height: 87vh;
-}
+
+
+
 
 .titleh1{
+    color: #fff;
     display: grid;
+    /* background-color: ; */
     place-items: center;
     /* height: 100vh; */
-    color: #fff;
+    
+}
+
+.skimono{
+  color: #ffffff;
+  /* margin-left: 30px; */
+  place-items: center;
+  display: grid;
+  /* padding-top: 20%; */
+  position: absolute;
+  left: 37%;
+  margin-top: 25%;
+  font-size: 5rem;
+  /* background-color: #904ED4 */
+}
+
+
+.kimono{
+  color: #fff;
+  display: grid;
+  place-items: center;
+  background-color: #acacc5;
+  /* place-items: center; */
 }
 
 .brand{
@@ -66,7 +101,7 @@ section{
 }
 
 .page_6, .page_7 {
-    background-color: black;
+    background-color: #1E1E20;
 }
 
 .Merchandise{
@@ -80,6 +115,21 @@ section{
     background-image: url("../../../public/images/background.png");
     background-size: cover;
 }
+
+.page_2{
+  /* background-color: #a58585; */
+}
+
+.studioshot{
+  color: #fff;
+  font-size: 4rem;
+  padding: 4%;
+
+  /* position: absolute; */
+  /* display: flex; */
+  /* margin-top: 20%; */
+}
+
 
 .people1{
     margin: auto;
@@ -128,10 +178,13 @@ section{
   box-shadow: 1px 2px 3px grey;
 }
 
+/* 이미지 사이즈 */
 .carousel-icon {
   /* border-radius: 50%; */
-  height: 250px;
-  width: 250px;
+  
+  height: 500px;
+  width:  550px;
+
 }
 
 #far-left {
@@ -179,7 +232,6 @@ padding: 50px;
 margin-left: 70%;
 cursor: pointer;
 /* position: absolute; */
-
 }
 
 
@@ -192,6 +244,143 @@ cursor: pointer;
 
 .nextbtn{
   cursor: pointer;
- 
- 
+  margin-top: 20%;
 }
+
+.nextbtn:hover{
+  color: #6D16DC;
+}
+
+
+.bumper {
+  text-align: center;
+  padding: 128px 16px;
+  background-color: #efefef;
+}
+
+.containerr {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.space-holder {
+  position: relative;
+  width: 100%;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.horizontal {
+  position: absolute;
+  height: 100%;
+  will-change: transform;
+  /* background-color:red; */
+}
+
+
+
+
+.cards {
+  position: relative;
+  height: 100%;
+  padding: 0 0 0 150px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  
+}
+
+.sample-card {
+  position: relative;
+  height: 300px;
+  width: 500px;
+  background-color: #111f30;
+  margin-right: 75px;
+  flex-shrink: 0;
+}
+
+
+/* card css */
+.card {
+  box-sizing: border-box;
+ /* background-color: #1E1E20; */
+  /* display: flex; */
+  /* background-color: blue; */
+  /* color: white; */
+  /* border: 2px solid cyan; */
+  /* border-radius: 12px; */
+  /* line-height: 300px; */
+  /* text-align: center; */
+  font-size: 30px;
+  position: absolute;
+  /* top: calc(50% - 150px); */
+  /* overflow: hidden; */
+  display: flex;
+  left: calc(50% - 100px);
+  opacity: 1;
+  transition: transform 1s;
+  transition: opacity 1s;
+}
+
+.hidden {
+  opacity: 0;
+  z-index: 5;
+  transform: translateX(0) scale(0.4);
+}
+
+.p1 {
+  transform: translateX(max(-18vw, -180px)) translateY(2.5vh) scale(0.7);
+  z-index: 10;
+  /* -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px); */
+  margin-right: 20px;
+    transition: transform 1s;
+}
+.p2 {
+  transform: translateX(max(-12vw, 200px)) scale(0.6);
+  /* z-index: 20; */
+  /* margin-right:0px; */
+    /* -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(2px); */
+    transition: transform 1s;
+}
+.p3 {
+  transform: translateX(min(29.1vw, 580px)) scale(0.6);
+  /* z-index: 30; */
+    transition: transform 1s;
+}
+.p4 {
+  transform: translateX(min(60vw, 900px)) scale(0.6);
+  /* z-index: 20; */
+      /* -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(2px); */
+    transition: transform 1s;
+}
+/* .p5 {
+  transform: translateX(min(18vw, 180px)) scale(0.6);
+  z-index: 10;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+    transition: transform 1s;
+} */
+

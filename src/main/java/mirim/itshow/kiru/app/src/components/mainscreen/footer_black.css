@@ -1,18 +1,17 @@
 
 .footerall2{
-    /* height: 80vh; */
+    height: 32vh;
     background-color: black;
     color: #fff;
   }
   
   
   .flex-container {
-  
     /* margin-right: 20px; */
       display: flex;
       justify-content: space-between;
       padding: 2rem 16%;
-      margin-bottom: 25px;
+      /* margin-bottom: 25px; */
       /* margin-right: ; */
     }
   

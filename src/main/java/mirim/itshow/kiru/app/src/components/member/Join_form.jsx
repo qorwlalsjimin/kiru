@@ -70,7 +70,7 @@ const Join_form = (props) => {
     let submitForm = {
       "memberEmail": group.email,
       "memberPw": group.password,
-      "name": group.firstName + group.lastName,
+      "name": group.lastName+group.firstName,
       "address": group.address,
       "phone": group.phone
     }
@@ -79,8 +79,13 @@ const Join_form = (props) => {
       //응답 성공 
       const response = await axios.post('/auth/signup', submitForm);
       console.log(response);
+      setTimeout(() => {
+        alert("회원가입이 완료되었습니다.");
+        navigate("/Login_form");
+      }, 500);
     } catch (error) {
       //응답 실패
+      alert("회원가입 실패");
       console.error(error);
     }
   }

@@ -1,6 +1,6 @@
 package mirim.itshow.kiru.service;
 
-import mirim.itshow.kiru.dao.CategoryBrand;
+import mirim.itshow.kiru.dao.CategoryList;
 import mirim.itshow.kiru.dao.CategoryRepository;
 import mirim.itshow.kiru.dao.ItemRepository;
 import mirim.itshow.kiru.entity_domain.Item;
@@ -82,7 +82,12 @@ public class ItemService {
         return itemRepository.findByNameAndBrandLike(keyword);
     }
 
-    public Collection<CategoryBrand> selectBrandList(Long categoryPId) {
+    public Collection<CategoryList> selectBrandList(Long categoryPId) {
         return categoryRepository.findByCategoryPId(categoryPId);
+    }
+
+    //한복, 기모노 카테고리 목록
+    public Collection<CategoryList> selectCategory(Long countryId) {
+        return categoryRepository.findByCategoryPId(countryId);
     }
 }

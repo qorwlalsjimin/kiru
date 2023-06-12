@@ -1,7 +1,6 @@
 package mirim.itshow.kiru.controller;
 
-import mirim.itshow.kiru.dao.CategoryBrand;
-import mirim.itshow.kiru.entity_domain.Category;
+import mirim.itshow.kiru.dao.CategoryList;
 import mirim.itshow.kiru.entity_domain.Item;
 import mirim.itshow.kiru.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,9 +43,16 @@ public class ItemController {
 
     //카테고리별로 가지고 있는 브랜드 목록
     @GetMapping("/item_list/{categoryPId}/brand")
-    public Collection<CategoryBrand> selectBrandList(@PathVariable Long categoryPId){
+    public Collection<CategoryList> selectBrandList(@PathVariable Long categoryPId){
         System.out.println("brand 이름목록 get");
         return itemService.selectBrandList(categoryPId);
+    }
+
+    //한복(100), 기모노(200) 카테고리 목록
+    @GetMapping("/category/{countryId}")
+    public Collection<CategoryList> selectCategory(@PathVariable Long countryId){
+        System.out.println("카테고리 목록 get");
+        return itemService.selectCategory(countryId);
     }
 
     //하나의 상품 상세 정보

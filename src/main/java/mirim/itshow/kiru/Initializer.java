@@ -34,7 +34,7 @@ class Initializer implements CommandLineRunner {
                 new Category(110L, 100L, "전통"),
                 new Category(111L, 110L, "황금바늘"),
                 new Category(112L, 110L, "민한복"),
-                new Category(113L, 110L, "본한복"),
+                new Category(113L, 110L, "복한복"),
 
                 new Category(120L, 100L, "개량"),
                 new Category(121L, 120L, "단하"),
@@ -54,7 +54,7 @@ class Initializer implements CommandLineRunner {
                 new Category(150L, 100L, "세트"),
 
 
-                new Category(200L, 200L, "*일본"),
+                new Category(200L, 0L, "*일본"),
                 new Category(210L, 200L, "기모노"),
                 new Category(211L, 210L, "소라노카오리"),
                 new Category(212L, 210L, "하나비라"),

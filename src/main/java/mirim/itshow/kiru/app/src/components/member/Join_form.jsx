@@ -18,6 +18,8 @@ const Join_form = (props) => {
     address2: '' ///상세주소
   });
 
+  console.log(group);
+
   //주소 검색 modal
   const [isOpen, setIsOpen] = useState(false);
   const onClickButton = () => {
@@ -30,7 +32,8 @@ const Join_form = (props) => {
   const [isDisabled, setIsDisabled] = useState(false);
 
   function handleEmailChange2(event) {
-    const value = event.target.value;
+    const { name, value } = event.target;
+    setGroup({ ...group, [name]: value });
     if (value !== "") {
       setIsDisabled(true);
       setSelectedEmail(value);
@@ -56,19 +59,18 @@ const Join_form = (props) => {
   }
 
   const handleChange = (event) => {
-    const { name, value } = event.target
-
-    setGroup({ ...group, [name]: value })
+    const { name, value } = event.target;
+    if(name == "emailInput") setGroup({ ...group, [name]: value })
+    else setGroup({ ...group, [name]: value })
   }
 
 
   //제출
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("제출할때욤", group);
 
     let submitForm = {
-      "memberEmail": group.email,
+      "memberEmail": group.email + "@" + group.emailInput,
       "memberPw": group.password,
       "name": group.lastName+group.firstName,
       "address": group.address,
@@ -108,9 +110,9 @@ const Join_form = (props) => {
             <div className="form">
 
               <input type="text" className="mail1" name='email' id="email" placeholder="이메일*" defaultValue={group.email} onChange={handleChange} required /> @
-              <input type="text" className="mail2" name="emailInput" defaultValue={selectedEmail} disabled={isDisabled} />
+              <input type="text" className="mail2" name="emailInput" defaultValue={selectedEmail} disabled={isDisabled} onChange={handleChange}/>
 
-              <select name="email" className="mail3" onChange={handleEmailChange2}>
+              <select name="emailInput" className="mail3" onChange={handleEmailChange2}>
                 <option defaultValue="">선택</option>
                 <option defaultValue="naver.com">naver.com</option>
                 <option defaultValue="gmail.com">gmail.com</option>

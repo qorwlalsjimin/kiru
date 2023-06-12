@@ -5,6 +5,7 @@ import mirim.itshow.kiru.dao.CategoryRepository;
 import mirim.itshow.kiru.dao.ItemRepository;
 import mirim.itshow.kiru.entity_domain.Item;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +18,7 @@ public class ItemService {
 
     private final ItemRepository itemRepository;
     private final CategoryRepository categoryRepository;
+    Sort sort = Sort.by("itemId");
 
     @Autowired //하나면 생략 가능함
     public ItemService(ItemRepository itemRepository, CategoryRepository categoryRepository) {
@@ -52,13 +54,13 @@ public class ItemService {
 
     // 카테고리별 All 상품 목록
     public List<Item> selectItemByCategoryPId(Long categoryPId){
-        return itemRepository.findByCategory_CategoryPId(categoryPId);
+        return itemRepository.findByCategory_CategoryPId(categoryPId, sort.ascending());
     }
 
     // 카테고리별 best 상품 목록
     public List<Item> selectBestItem(Long categoryPId){
 //        return itemRepository.findAll(Sort.by(Sort.Direction.DESC, "itemId"));
-        return itemRepository.findByCategory_CategoryPId(categoryPId); //TODO best 기준 아직 못정함
+        return itemRepository.findByCategory_CategoryPId(categoryPId, sort.descending()); //TODO best 기준 아직 못정함
     }
 
     // 카테고리별 Brand 상품 목록

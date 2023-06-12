@@ -6,8 +6,8 @@ import EventBanner from "../eventBanner/eventBanner";
 import { topNavigationBar } from "../header/topNavigationBar/topNavigationBar"
 import { Product } from "../products/product";
 import axios from 'axios';
-import Header from "../header/topNavigationBar/topNavigationBar"
-// import { getProducts } from "../../service/fetcher";
+import Header from "../header/topNavigationBar/topNavigationBar";
+import Footer from "../footer/Footer";
 import { useLocation, useParams } from "react-router-dom";
 
 export const Main = ({ products, setProducts,  isBrand, setIsBrand }) => {
@@ -73,7 +73,7 @@ export const Main = ({ products, setProducts,  isBrand, setIsBrand }) => {
     setShowMore(true);
   };
 
-  // All Best Brand 클랙
+  // All Best Brand 클릭
   function categoryHandler(param) {
     setCname(param); //all, best, brand로 바꿈
     brandDatas(); //브랜드 목록 가져오기
@@ -81,6 +81,7 @@ export const Main = ({ products, setProducts,  isBrand, setIsBrand }) => {
     else setIsBrand(true);
   }
 
+  // 브랜드 목록 클릭
   function brandHandler(brandId) {
     setCname(`brand/${brandId}`);
   }
@@ -155,6 +156,7 @@ export const Main = ({ products, setProducts,  isBrand, setIsBrand }) => {
         )}
       </div>
 
+      <Footer/>
     </>
   );
 };

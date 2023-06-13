@@ -36,8 +36,6 @@ public class Member {
 
     @Column(nullable = false)
     private String phone; //사용자 전화번호
-
-    //TODO 프론트에서 null로 옴
     @Column
     private LocalDateTime createTimestamp; //사용자 가입 시간
 

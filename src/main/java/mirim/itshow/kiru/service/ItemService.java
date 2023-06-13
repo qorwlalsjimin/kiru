@@ -28,13 +28,11 @@ public class ItemService {
 
     // 상품 정보 초기화
     public void persistNewItem(){
-        //TODO 이 데이터 안 들어가게
         Item item1 = new Item();
         item1.setName("테스트");
         item1.setPrice(0);
         item1.setDescription("제외해야할 데이터");
         item1.setCategory(categoryRepository.findById(0L).orElse(null));
-        //TODO 상품 하나씩은 되는데 목록은 안 됨
         itemRepository.save(item1);
     }
 

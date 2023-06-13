@@ -38,8 +38,6 @@ public class SecurityConfig {
         return (web) -> web.ignoring()
                 .antMatchers("/h2-console/**", "/favicon.ico");
     }
-
-    //TODO
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
             // CSRF 설정 Disable

@@ -29,6 +29,7 @@ function App() {
 
       {/* <Route path="/products" element={isMainscreenVisible && <Mainscreen />} /> */}
       <Routes>
+        {/* 메인 */}
         <Route
           path="/main"
           exact={true}
@@ -41,6 +42,7 @@ function App() {
           }
         />
 
+        {/* 상품 상세 */}
         <Route
           path="/product/:id"
           element={
@@ -51,18 +53,28 @@ function App() {
             />
           }
         />
+
+        {/* 장바구니 */}
         <Route
           path="/cart"
           element={
             <Basket cart={cart} setCart={setCart} />
           }
         />
-        <Route path='/heart' element={<Heart/>}/>
-        <Route path='/Login_form' exact element={<Login_form />} />
-        <Route path='/Join_form' exact element={<Join_form />} />
-     
-   
-      <Route path='/Mainscreen' element={<Mainscreen/>}/>
+
+        {/* 즐겨찾기 */}
+        <Route path='/heart' element={<Heart />} />
+        
+        {/* 로그인 */}
+        <Route path='/Login_form' element={<Login_form />} />
+
+        {/* 회원가입 */}
+        <Route path='/Join_form' exact
+          element={<Join_form />}
+        />
+
+        {/* 메인화면 */}
+        <Route path='/Mainscreen' element={<Mainscreen />} />
       </Routes>
     </BrowserRouter>
   );

@@ -28,6 +28,15 @@ section{
     scroll-snap-stop: always;
 }
 
+.ps{
+  padding: 5%;
+  margin-top: 16%;
+  line-height: 25px;
+  /* background-color: #1E1E20; */
+  width: 500px;
+}
+
+
 
 
 
@@ -164,26 +173,14 @@ section{
   margin: 0 auto;
 }
 
-.carousel-card {
-  height: 300px;
-  width: 200px;
-  padding: 20px;
-  transition: 1s;
-  opacity: 1;
-  position: absolute;
-  top: 0;
-  /* background-color: #F58220; */
-  color: black;
-  cursor: pointer;
-  box-shadow: 1px 2px 3px grey;
-}
+
 
 /* 이미지 사이즈 */
 .carousel-icon {
   /* border-radius: 50%; */
-  
+  margin-top: 20px;
   height: 500px;
-  width:  550px;
+  width:  580px;
 
 }
 
@@ -238,13 +235,15 @@ cursor: pointer;
 .next-button{
   padding: 50px; 
   /* margin-bottom: 10px; */
-  cursor: pointer;
+  /* cursor: pointer; */
   /* position: absolute; */
 }
 
 .nextbtn{
   cursor: pointer;
-  margin-top: 20%;
+  /* position: absolute; */
+  /* margin-top: 20%; */
+  /* margin-bottom: 0%; */
 }
 
 .nextbtn:hover{
@@ -319,16 +318,20 @@ cursor: pointer;
   /* border-radius: 12px; */
   /* line-height: 300px; */
   /* text-align: center; */
+  /* margin-top: 20px; */
   font-size: 30px;
   position: absolute;
+  /* margin-bottom: 20px; */
   /* top: calc(50% - 150px); */
   /* overflow: hidden; */
   display: flex;
-  left: calc(50% - 100px);
+  left: calc(53% - 100px);
   opacity: 1;
+  top: 120%;
   transition: transform 1s;
   transition: opacity 1s;
 }
+
 
 .hidden {
   opacity: 0;
@@ -337,31 +340,45 @@ cursor: pointer;
 }
 
 .p1 {
-  transform: translateX(max(-18vw, -180px)) translateY(2.5vh) scale(0.7);
+  transform: translateX(max(-18vw, -180px)) translateY(2.5vh) scale(0.6);
   z-index: 10;
+  
   /* -webkit-filter: blur(5px);
   -moz-filter: blur(5px);
   -o-filter: blur(5px);
   -ms-filter: blur(5px);
   filter: blur(5px); */
   margin-right: 20px;
-    transition: transform 1s;
+  transition: transform 1s;
 }
+
+.p1 img{
+  height: 700px;
+  /* margin-bottom: 0px; */
+ 
+}
+
+
+
 .p2 {
-  transform: translateX(max(-12vw, 200px)) scale(0.6);
+  transform: translateX(max(-12vw, 186px)) scale(0.6);
   /* z-index: 20; */
   /* margin-right:0px; */
     /* -webkit-filter: blur(2px);
+  
   -moz-filter: blur(2px);
   -o-filter: blur(2px);
   -ms-filter: blur(2px);
   filter: blur(2px); */
+  margin-top: 65px;
     transition: transform 1s;
 }
 .p3 {
   transform: translateX(min(29.1vw, 580px)) scale(0.6);
   /* z-index: 30; */
-    transition: transform 1s;
+  margin-top: 65px;
+  transition: transform 1s;
+
 }
 .p4 {
   transform: translateX(min(60vw, 900px)) scale(0.6);

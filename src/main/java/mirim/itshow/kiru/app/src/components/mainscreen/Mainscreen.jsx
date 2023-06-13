@@ -23,7 +23,7 @@ export const Mainscreen = (products, setProducts, handleNavClick) => {
       index = cards.length + index;
     }
     while (cardCount < cards.length) {
-      cards[index].classList.remove('p1', 'p2', 'p3', 'p4', 'p5', 'hidden');
+      cards[index].classList.remove('p1', 'p2', 'p3', 'p4', 'hidden');
       if (cardCount < 5) {
         cards[index].classList.add('p' + (cardCount + 1));
       } else {
@@ -64,6 +64,8 @@ export const Mainscreen = (products, setProducts, handleNavClick) => {
     setCurrentCard(card);
     triggerClick(card);
   }
+
+ 
   
   return (
     <div>
@@ -87,10 +89,15 @@ export const Mainscreen = (products, setProducts, handleNavClick) => {
               <div className="card"> <div className="s"><p>#2 개량한복</p><img src="/images/mask.png" className='carousel-icon' alt="" /></div></div>
               <div className="card"><div className="s"><p>#3 악세사리</p> <img src="/images/mask3.png"className='carousel-icon' alt="" /></div></div>
               <div className="card"> <div className="s"><p>#4 신발</p><img src="/images/mask4.png" className='carousel-icon'alt="" /></div></div>
-
             </div>
         
 
+          <div className="ps">
+            <h2>전통한복</h2><br/>
+              <h4 style={{color:"#424242"}}>전통 한복에 비해 편하고<br />
+                활동하기 쉬운 기능적이면서도<br />
+                한복의 전통성을 느낄 수 있는 한복입니다.</h4>
+          </div>
 
             {/* <div className="image-scroll-container" >
              

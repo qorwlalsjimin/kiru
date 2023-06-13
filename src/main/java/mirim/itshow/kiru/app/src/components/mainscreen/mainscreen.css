@@ -7,6 +7,12 @@
     /* overflow-x: hidden */
   }
 
+  @font-face {
+    font-family: 'lostgun Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('lostgun Regular'), url('./lostgun-cufonfonts-webfont/lostgun-Regular.woff') format('woff');
+    }
 
   body{
     margin: 0;
@@ -34,6 +40,7 @@ section{
   line-height: 25px;
   /* background-color: #1E1E20; */
   width: 500px;
+  font-size: 20px;
 }
 
 
@@ -91,9 +98,11 @@ section{
 
 
 
+
 .choice{
     padding: 5%;
     font-size: 7rem;
+    font-family: 'lostgun Regular';
 }
 
 
@@ -118,6 +127,7 @@ section{
     place-items: center;
     min-height: 60vh;
     font-size: 7rem;
+    font-family:  'lostgun Regular';
 }
 
 .page_1{
@@ -131,12 +141,94 @@ section{
 
 .studioshot{
   color: #fff;
-  font-size: 4rem;
-  padding: 4%;
-
+  font-size: 8rem;
+  padding: 6%;
+ 
+  position: absolute;
   /* position: absolute; */
   /* display: flex; */
-  /* margin-top: 20%; */
+  margin-top: 20%;
+ 
+}
+
+.wall-item{
+  display: flex;
+  margin-left: 50%;
+ 
+ 
+}
+
+
+.bacgroundcar {
+  background-color: #fff;
+  width: 400px;
+  height: 530px;
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+.wall{
+  /* background-color: #a58585; */
+  height: 100vh;
+  overflow: hidden; 
+}
+
+.line1{
+  position: relative;
+  top: -1550px; 
+  margin-right: 35px;
+
+}
+
+.line2{
+  position: relative;
+  top: -200px; 
+}
+
+
+.bacgroundcar{
+  margin-bottom: 35px;
+}
+
+.border-card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 380px;
+  height: 510px;
+  border: 2px solid rgb(34, 33, 33);
+}
+
+.border-card img{
+  width: 350px;
+  height: 480px;
+}
+
+#pink{
+  border: 2px solid #B19AE3;
+}
+
+#green{
+  border: 2px solid #B2BA88;
+}
+
+
+#blue{
+  border: 2px solid #bbdbf8;
+}
+
+.studioshot h1{
+  font-family: 'lostgun Regular';
+}
+
+.openevent{
+  color: #fff;
+  padding-left: 6%;
+  padding-top: 4%;
+  font-size: 25px;
+  position: absolute;
+ 
 }
 
 
@@ -158,31 +250,15 @@ section{
 }
 
 /* Carousel */
-.about-us-service-title {
-  text-align: center;
-}
-
-.carousel-container {
-  padding: 20px;
-  display: flex;
-  text-align: center;
-  position: relative;
-  height: 450px;
-  max-width: 1200px;
-  min-width: 400px;
-  margin: 0 auto;
-}
-
-
 
 /* 이미지 사이즈 */
 .carousel-icon {
   /* border-radius: 50%; */
   margin-top: 20px;
-  height: 500px;
-  width:  580px;
-
+  height: 570px;
+  width:  690px;
 }
+
 
 #far-left {
   left: 15%;
@@ -228,26 +304,37 @@ section{
 padding: 50px;  
 margin-left: 70%;
 cursor: pointer;
+/* margin-bottom: 120px; */
 /* position: absolute; */
+}
+
+.containerdy{
+  /* background-color: #494949; */
 }
 
 
 .next-button{
+  /* margin-bottom: 120px; */
   padding: 50px; 
+  /* padding-bottom: 40px; */
   /* margin-bottom: 10px; */
   /* cursor: pointer; */
   /* position: absolute; */
 }
 
-.nextbtn{
-  cursor: pointer;
-  /* position: absolute; */
-  /* margin-top: 20%; */
-  /* margin-bottom: 0%; */
-}
+ .tie{
+  /* background-color: #1E1E20; */
+  /* display: flex; */
+ }
 
 .nextbtn:hover{
   color: #6D16DC;
+}
+
+.Linearbar{
+  height: 5px;
+  background-color: #494949;
+  bottom: 0;
 }
 
 
@@ -257,11 +344,6 @@ cursor: pointer;
   background-color: #efefef;
 }
 
-.containerr {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-}
 
 .space-holder {
   position: relative;
@@ -286,29 +368,11 @@ cursor: pointer;
 
 
 
-.cards {
-  position: relative;
-  height: 100%;
-  padding: 0 0 0 150px;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: flex-start;
-  align-items: center;
-  
-}
-
-.sample-card {
-  position: relative;
-  height: 300px;
-  width: 500px;
-  background-color: #111f30;
-  margin-right: 75px;
-  flex-shrink: 0;
-}
 
 
 /* card css */
 .card {
+
   box-sizing: border-box;
  /* background-color: #1E1E20; */
   /* display: flex; */
@@ -319,15 +383,16 @@ cursor: pointer;
   /* line-height: 300px; */
   /* text-align: center; */
   /* margin-top: 20px; */
-  font-size: 30px;
+  font-size: 40px;
   position: absolute;
   /* margin-bottom: 20px; */
   /* top: calc(50% - 150px); */
   /* overflow: hidden; */
   display: flex;
-  left: calc(53% - 100px);
+  left: calc(37% - 100px);
   opacity: 1;
-  top: 120%;
+  top: 125%;
+  color: #494949;
   transition: transform 1s;
   transition: opacity 1s;
 }
@@ -339,21 +404,33 @@ cursor: pointer;
   transform: translateX(0) scale(0.4);
 }
 
+
+
+.hidden {
+  /* 이미지가 숨겨진 스타일 설정 */
+  opacity: 0;
+  transform: translateX(20px) scale(0.9);
+}
+
+
+
+
 .p1 {
   transform: translateX(max(-18vw, -180px)) translateY(2.5vh) scale(0.6);
   z-index: 10;
   
-  /* -webkit-filter: blur(5px);
-  -moz-filter: blur(5px);
-  -o-filter: blur(5px);
-  -ms-filter: blur(5px);
-  filter: blur(5px); */
-  margin-right: 20px;
+  /* -webkit-filter: blur(5px); */
+  /* -moz-filter: blur(5px); */
+  /* -o-filter: blur(5px); */
+  /* -ms-filter: blur(5px); */
+  /* filter: blur(5px);  */
+  /* margin-right: 20px; */
   transition: transform 1s;
+  /* border:1px solid red; */
 }
 
 .p1 img{
-  height: 700px;
+  height: 855px;
   /* margin-bottom: 0px; */
  
 }
@@ -361,8 +438,8 @@ cursor: pointer;
 
 
 .p2 {
-  transform: translateX(max(-12vw, 186px)) scale(0.6);
-  /* z-index: 20; */
+  transform: translateX(max(-12vw, 260px)) scale(0.6);
+  z-index: 20;
   /* margin-right:0px; */
     /* -webkit-filter: blur(2px);
   
@@ -370,25 +447,30 @@ cursor: pointer;
   -o-filter: blur(2px);
   -ms-filter: blur(2px);
   filter: blur(2px); */
-  margin-top: 65px;
-    transition: transform 1s;
-}
-.p3 {
-  transform: translateX(min(29.1vw, 580px)) scale(0.6);
-  /* z-index: 30; */
-  margin-top: 65px;
+  margin-top: 80px;
   transition: transform 1s;
-
+  /* border:1px solid green; */
 }
+
+.p3 {
+  transform: translateX(min(38vw, 700px)) scale(0.6);
+  z-index: 30;
+  margin-top: 80px;
+  transition: transform 1s;
+  /* border:1px solid blue; */
+}
+
 .p4 {
-  transform: translateX(min(60vw, 900px)) scale(0.6);
-  /* z-index: 20; */
-      /* -webkit-filter: blur(2px);
+  transform: translateX(min(65vw, 500px)) scale(0.1);
+   z-index: 0;
+  -webkit-filter: blur(2px);
   -moz-filter: blur(2px);
   -o-filter: blur(2px);
   -ms-filter: blur(2px);
-  filter: blur(2px); */
-    transition: transform 1s;
+  filter: blur(2px); 
+   /* transition: transform 1s;*/
+    /* border:1px solid purple; */
+    visibility: hidden;
 }
 /* .p5 {
   transform: translateX(min(18vw, 180px)) scale(0.6);

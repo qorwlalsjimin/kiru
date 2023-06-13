@@ -5,11 +5,17 @@ import "./footer_black.css"
 import "./marquee.js"
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import CustomEase from "gsap/CustomEase";
 // import { animateScroll as scroll } from 'react-scroll';
 // import { useFullPage } from 'react-scroll-full-page';
 
-// import { FullPage, Slide } from 'react-full-page';
+import { FullPage, Slide } from 'react-full-page';
 import Header from "../header/topNavigationBar/topNavigationBar"
+
+
+
+gsap.registerPlugin(CustomEase);
+gsap.registerPlugin(ScrollTrigger);
 
 export const Mainscreen = (products, setProducts, handleNavClick) => {
   const [currentCard, setCurrentCard] = useState(0);
@@ -17,15 +23,17 @@ export const Mainscreen = (products, setProducts, handleNavClick) => {
   const [ignoreClick, setIgnoreClick] = useState(false);
 
   function cardShift() {
-    let cardCount = 0;
+  let cardCount = 0;
     let index = currentCard - 2;
     if (index < 0) {
       index = cards.length + index;
     }
+
     while (cardCount < cards.length) {
       cards[index].classList.remove('p1', 'p2', 'p3', 'p4', 'hidden');
-      if (cardCount < 5) {
+      if (cardCount < cards.length) { //?
         cards[index].classList.add('p' + (cardCount + 1));
+         cards[index].classList.add('visible'); // 추가: 이미지가 보이도록 함
       } else {
         cards[index].classList.add('hidden');
       }
@@ -34,6 +42,7 @@ export const Mainscreen = (products, setProducts, handleNavClick) => {
       if (index > cards.length - 1) {
         index = 0;
       }
+      
     }
   }
 
@@ -65,90 +74,190 @@ export const Mainscreen = (products, setProducts, handleNavClick) => {
     triggerClick(card);
   }
 
+  //fullpage
+  const containerRef = useRef(null);
+  const sectionsRef = useRef([]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const container = containerRef.current;
+      const sections = sectionsRef.current;
+
+      const currentSection = Math.floor(container.scrollTop / container.offsetHeight);
+      sections.forEach((section, index) => {
+        if (index === currentSection) {
+          section.classList.add('active');
+        } else {
+          section.classList.remove('active');
+        }
+      });
+    };
+
+    const container = containerRef.current;
+    container.addEventListener('scroll', handleScroll);
+    handleScroll();
+
+    return () => {
+      container.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+ 
+  // page_4
+
  
   
   return (
     <div>
+     
+         
+       
       {/* <Header  products={products} setProducts={setProducts} handleNavClick={handleNavClick} /> */}
-      
+    
     <div className="scroll">
       <div id="fullpage">
-          <section className="page_1" >
+      
+          <section className="page_1"  ref={(el) => sectionsRef.current[0] = el}>
             <img src="/images/Subtract.png" className='people1' alt="" />
 
 
           </section>
-       
-          <section className="page_2 sectionPin" >
-          <h1 className='choice'>category</h1>
+     
+          
+          <section className="page_2 sectionPin"  ref={(el) => sectionsRef.current[1] = el} >
+          <h1 className='choice'>Category</h1>
 
 
 
           <div className="containerdy">
-          <div className="card"><div className="s"><p>#1 전통한복</p><img src="/images/mask1.png" className='carousel-icon' alt="" /></div></div>
-              <div className="card"> <div className="s"><p>#2 개량한복</p><img src="/images/mask.png" className='carousel-icon' alt="" /></div></div>
-              <div className="card"><div className="s"><p>#3 악세사리</p> <img src="/images/mask3.png"className='carousel-icon' alt="" /></div></div>
-              <div className="card"> <div className="s"><p>#4 신발</p><img src="/images/mask4.png" className='carousel-icon'alt="" /></div></div>
+          <div className="card"><div className="s"><h4>#4 악세사리</h4><img src="/images/mask3.png" className='carousel-icon' alt="" /></div></div>
+              <div className="card"> <div className="s"><h4>#1 개량한복</h4><img src="/images/mask.png" className='carousel-icon' alt="" /></div></div>
+              <div className="card"><div className="s"><h4>#2 전통한복</h4> <img src="/images/mask1.png"className='carousel-icon' alt="" /></div></div>
+              <div className="card"> <div className="s"><h4>#3 신발</h4><img src="/images/mask4.png" className='carousel-icon'alt="" /></div></div>
             </div>
         
-
-          <div className="ps">
-            <h2>전통한복</h2><br/>
-              <h4 style={{color:"#424242"}}>전통 한복에 비해 편하고<br />
+          <div className="tie">
+            <div className="ps">
+              <h2>전통한복</h2><br />
+              <h4 style={{ color: "#424242" }}>전통 한복에 비해 편하고<br />
                 활동하기 쉬운 기능적이면서도<br />
                 한복의 전통성을 느낄 수 있는 한복입니다.</h4>
-          </div>
+            </div>
+            <div className="nextbtn">
+              <img src="/images/left.svg" alt="" className="prev-button" id="aleft" onClick={handleLeftClick} />
+              <img src="/images/right.svg" alt="" className="next-button" id="aright" onClick={handleRightClick} />
 
-            {/* <div className="image-scroll-container" >
-             
-             
-             
-             
-            </div> */}
+            </div>
+            </div>
 
+        <div className="Linearbar"></div>
 
-
-
-        <div className="nextbtn">
-            <img src="/images/left.svg" alt="" class="prev-button"  id="aleft" onClick={handleLeftClick}/>
-            <img src="/images/right.svg" alt="" class="next-button"  id="aright" onClick={handleRightClick} />
-        </div>
-
-
-            {/* <div class="carousel-track">
-          <div class="carousel-track">
-          <img src="/images/mask.png" alt="" />
-
-         
-          <img src="/images/mask.png" alt="" />
-
-          <img src="/images/mask.png" alt="" />
-
-          <img src="/images/mask.png" alt="" />
-
-          </div>
-          <img src="/images/left.png" alt="" class="prev-button"/>
-
-          <img src="/images/right.png" alt="" class="next-button" />
-
-          </div> */}
+          
           </section>
-      
-          <section className="page_3" style={{ backgroundColor: "#F5DCEA" }}></section>
-       
+     
+          <section className="page_3" style={{ backgroundColor: "#F5DCEA" }}></section> 
+        
           <section className="page_4" style={{ backgroundColor: "#6D16DC" }}>
 
-            <div className="studioshot">
-              <h1>studio</h1>
-              <h1>shot</h1>
+            
+
+            <div className="wall" >
+              <div className="openevent">#open event 컨셉 사진의 주인공이 되어 보세요!</div>
+
+              <div className="studioshot" >
+                <h1>studio</h1>
+                <h1>shot</h1>
+              </div>
+              
+              <div className="wall-item">
+
+                <div className="line1" >
+                  <div className="bacgroundcar">
+                    <div className="border-card" id='pink'>
+                      <img src="/images/card3.png" alt="" />
+                    </div>
+                  </div>
+
+                  <div className="bacgroundcar">
+                    <div className="border-card" id='pink'>
+                      <img src="/images/card1.png" alt="" />
+                    </div>
+                  </div>
+
+                  <div className="bacgroundcar">
+                  <div className="border-card" id='blue'>
+                  <img src="https://thumb.sixshop.kr/uploadedFiles/73034/default/image_1647481197591.jpg?width=2500" alt="" />
+                  </div>
+                  </div>
+
+                  <div className="bacgroundcar">
+                  <div className="border-card" id='pink'>
+                  <img src="/images/card1.png" alt="" />
+                  </div>
+                  </div>
+              
+               
+
+                  <div className="bacgroundcar">
+                  <div className="border-card" id='green'>
+                  <img src="/images/card2.png" alt="" />
+                  </div>
+                  </div>
+
+               
+
+              </div>
+
+
+              <div className="line2">
+
+             
+                  <div className="bacgroundcar">
+                  <div className="border-card" id='green'>
+                  <img src="/images/card4.png" alt="" />
+                  </div>
+                  </div>
+
+           
+
+                  <div className="bacgroundcar">
+                  <div className="border-card" id='pink'>
+                  <img src="/images/card3.png" alt="" />
+                  </div>
+                  </div>
+
+                  <div className="bacgroundcar">
+                  <div className="border-card" id='pink'>
+                  <img src="/images/card5.png" alt="" />
+                  </div>
+                  </div>
+
+
+                  <div className="bacgroundcar">
+                  <div className="border-card" id='blue'>
+                  <img src="https://thumb.sixshop.kr/uploadedFiles/73034/default/image_1647481198148.jpg?width=2500" alt="" />
+                  </div>
+                  </div>
+
+
+              <div className="bacgroundcar">
+                  <div className="border-card" id='green'>
+                  <img src="/images/card2.png" alt="" />
+                  </div>
+
+                  </div>
+
+              </div>
+            </div>
+
             </div>
 
 
+
+
           </section>
-       
+         
           <section className='page_5'>
             <h1 className='title Merchandise'>Merchandise</h1>
-
           </section>
        
           <section className='page_6'>

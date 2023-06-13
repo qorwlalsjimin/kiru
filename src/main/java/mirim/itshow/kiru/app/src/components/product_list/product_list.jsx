@@ -1,29 +1,27 @@
-import styles from "./main.module.css";
+import styles from "./product_list.module.css";
 import "../header/topNavigationBar/header.css"
 import "./brand_nav.css"
 import { useEffect, useState } from "react";
-import EventBanner from "../eventBanner/eventBanner";
-import { topNavigationBar } from "../header/topNavigationBar/topNavigationBar"
 import { Product } from "../products/product";
 import axios from 'axios';
-import Header from "../header/topNavigationBar/topNavigationBar";
 import Footer from "../footer/Footer";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { getCookie } from "../../util/cookie";
 
-export const Main = ({ products, setProducts,  isBrand, setIsBrand }) => {
+export const Main = ({ products, setProducts, isBrand, setIsBrand }) => {
   const [visibleProducts, setVisibleProducts] = useState([]);
   const [showMore, setShowMore] = useState(false);
 
   // 파라미터로 받아온 카테고리 id, All/Best/Brand
   let paramCid = useParams().cid;
   let paramCname = useParams().cname;
-  let [ cid, setCid ] = useState(paramCid);
+  let [cid, setCid] = useState(paramCid);
   let [cname, setCname] = useState(paramCname);
 
   // 상품 목록 조회
   let fetchUrl = `/api/item/item_list/${cid}/`;
   // let [isBrand, setIsBrand] = useState(true);
-  
+
   // 브랜드 목록
   let [brands, setBrands] = useState({});
 
@@ -36,8 +34,14 @@ export const Main = ({ products, setProducts,  isBrand, setIsBrand }) => {
   // 카테고리별 브랜드 목록 가져오기
   async function brandDatas() {
     try {
-      const response = await axios.get(`/api/item/item_list/${cid}/brand`);
-      console.log(response);
+      // api 데이터 받아오기
+      const response = await axios.get(`/api/item/item_list/${cid}/brand`, {
+        headers: {
+          'Authorization': getCookie("is_login") // header에 토큰 추가
+        }
+      });
+
+      // 데이터 저장
       setBrands(response.data);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -47,15 +51,24 @@ export const Main = ({ products, setProducts,  isBrand, setIsBrand }) => {
   // 상품 데이터 가져오기
   useEffect(() => {
     fetchUrl = `/api/item/item_list/${cid}/` + cname;
-    console.log("백:상품 데이터 가져올때 " + fetchUrl);
     const fetchData = async (url) => {
       try {
-        if (cname != "brand") {
-          const response = await axios.get(url);
+        if (cname != "brand") { //브랜드가 아닐때
+          const response = await axios.get(url, {
+            headers: {
+              'Authorization': getCookie("is_login")
+            }
+          });
+          // const response = await axios.api(url); //TODO
           setProducts(response.data);
           setVisibleProducts(response.data.slice(0, 16));
-        } else {
-          const response = await axios.get(`${url}/${(Number(cid) + 1)}`);
+        } else { //브랜드일때
+          // const response = await axios.api(`${url}/${(Number(cid) + 1)}`);
+          const response = await axios.get(`${url}/${(Number(cid) + 1)}`, {
+            headers: {
+              'Authorization': getCookie("is_login")
+            }
+          });
           setProducts(response.data);
           setVisibleProducts(response.data.slice(0, 16));
         }
@@ -126,18 +139,18 @@ export const Main = ({ products, setProducts,  isBrand, setIsBrand }) => {
 
         {/* 브랜드 목록 */}
         <nav className={`brand_nav ${isBrand && "is_brand"}`}>
-            {Object.values(brands).map((brand) => {
-              return (
-                <span key={brand.categoryId} onClick={brandHandler.bind(this, brand.categoryId)} style={{ marginRight: "10px" }}>{brand.title}</span>
-              );
-            })}
+          {Object.values(brands).map((brand) => {
+            return (
+              <span key={brand.categoryId} onClick={brandHandler.bind(this, brand.categoryId)} style={{ marginRight: "10px" }}>{brand.title}</span>
+            );
+          })}
         </nav>
 
         {/* 상품 목록 */}
         <ul>
           <main className={styles.flex_wrap}>
             {visibleProducts.map((product) => {
-              console.log("product: "+product);
+              console.log("product: " + product);
               return (
                 <Product
                   key={`key-${product.itemId}`}
@@ -156,7 +169,7 @@ export const Main = ({ products, setProducts,  isBrand, setIsBrand }) => {
         )}
       </div>
 
-      <Footer/>
+      <Footer />
     </>
   );
 };

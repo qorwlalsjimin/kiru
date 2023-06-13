@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
+import { getCookie } from "../util/cookie";
 
 export default function Heart() {
 
@@ -12,15 +13,21 @@ export default function Heart() {
 
     // 카테고리 목록
     let [categorys, setCategorys] = useState({});
-    
+
     // 상품 데이터 가져오기
     useEffect(() => {
         const fetchData = async (url) => {
             try {
-                const response = await axios.get(url);
+                const response = await axios.get(url, {
+                    headers: {
+                        'Authorization': `Bearer ${getCookie("is_login")}`
+                    }
+                });
                 setProducts(response.data);
             } catch (error) {
-                console.error('Error fetching data:', error);
+                if (error.status = 401) {
+                    alert('로그인 후 이용해주세요.');
+                }
             }
         };
 
@@ -34,16 +41,20 @@ export default function Heart() {
         categoryDatas(); //카테고리 목록 가져오기
     }
 
-      // 나라별 카테고리 목록 가져오기
+    // 나라별 카테고리 목록 가져오기
     async function categoryDatas() {
-    try {
-      const response = await axios.get(`/api/heart/all/${country}`);
-      console.log(response);
-      setCategorys(response.data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
+        try {
+            const response = await axios.get(`/api/heart/all/${country}`, {
+                headers: {
+                    'Authorization': `Bearer ${getCookie("is_login")}`
+                }
+            });
+            console.log(response);
+            setCategorys(response.data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
     }
-  }
 
     return (
         <>

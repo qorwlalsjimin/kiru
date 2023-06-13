@@ -1,7 +1,7 @@
 import "./header.css"
 import "./script"
 import { Link, Navigate, Routes, Router, Route } from "react-router-dom";
-import { Main } from "../../main/main"
+import { Main } from "../../product_list/product_list"
 import { Mainscreen } from "../../mainscreen/Mainscreen";
 
 
@@ -12,6 +12,7 @@ import { ReactComponent as CartSvg } from "../../../svgfiles/cart.svg";
 import { ReactComponent as MemberSvg } from "../../../svgfiles/member.svg";
 import { useEffect, useRef, useState } from "react";
 import SearchModal from "./SearchModal";
+import { getCookie, removeCookie } from "../../../util/cookie";
 
 
 const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) => {
@@ -40,6 +41,21 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
       document.removeEventListener("mousedown", modlalClose);
     };
   }, [show]);
+
+  // 로그아웃
+  function logoutHandler(isLogin) {
+    console.log("클릭햇는데..", !!isLogin);
+    if (!!isLogin) {
+      let isLogout = window.confirm("로그아웃하시겠습니까?");
+      if (isLogout) removeCookie('is_login');
+    } else {
+      <Navigate to="/Login_form" />
+    }
+    console.log("흑" + !!isLogin);
+    // let isLogout = window.confirm("로그아웃하시겠습니까?");
+    // if (isLogout) removeCookie('is_login');
+    // console.log(getCookie('is_login'));
+  }
 
 
   return (
@@ -98,7 +114,9 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
             )}
             <i><Link to="/heart"><StarSvg /></Link></i> {/* 즐겨찾기 */}
             <i><Link to="/cart"><CartSvg width={"19px"} /></Link></i> {/* 장바구니 */}
-            <i><Link to="/login_form"><MemberSvg width={"20px"} /></Link></i> {/* 로그인/회원가입 */}
+            <i>
+              <MemberSvg width={"20px"} onClick={logoutHandler(getCookie('is_login'))} />
+            </i> {/* 로그인/회원가입 */}
           </div>
         </div>
 

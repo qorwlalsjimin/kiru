@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { getCookie } from "../../util/cookie";
 import './join_form.css'
 import Modal from "./Modal";
 
@@ -60,7 +61,7 @@ const Join_form = (props) => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    if(name == "emailInput") setGroup({ ...group, [name]: value })
+    if (name == "emailInput") setGroup({ ...group, [name]: value })
     else setGroup({ ...group, [name]: value })
   }
 
@@ -72,14 +73,20 @@ const Join_form = (props) => {
     let submitForm = {
       "memberEmail": group.email + "@" + group.emailInput,
       "memberPw": group.password,
-      "name": group.lastName+group.firstName,
+      "name": group.lastName + group.firstName,
       "address": group.address,
       "phone": group.phone
     }
-    
+
     try {
       //응답 성공 
-      const response = await axios.post('/auth/signup', submitForm);
+      const response = await axios.post('/auth/signup', submitForm,
+        {
+          headers: {
+            'Authorization': `Bearer ${getCookie("is_login")}`
+          }
+        }
+      );
       console.log(response);
       setTimeout(() => {
         alert("회원가입이 완료되었습니다.");
@@ -110,7 +117,7 @@ const Join_form = (props) => {
             <div className="form">
 
               <input type="text" className="mail1" name='email' id="email" placeholder="이메일*" defaultValue={group.email} onChange={handleChange} required /> @
-              <input type="text" className="mail2" name="emailInput" defaultValue={selectedEmail} disabled={isDisabled} onChange={handleChange}/>
+              <input type="text" className="mail2" name="emailInput" defaultValue={selectedEmail} disabled={isDisabled} onChange={handleChange} />
 
               <select name="emailInput" className="mail3" onChange={handleEmailChange2}>
                 <option defaultValue="">선택</option>

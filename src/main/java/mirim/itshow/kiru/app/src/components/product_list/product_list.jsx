@@ -37,7 +37,7 @@ export const Main = ({ products, setProducts, isBrand, setIsBrand }) => {
       // api 데이터 받아오기
       const response = await axios.get(`/api/item/item_list/${cid}/brand`, {
         headers: {
-          'Authorization': getCookie("is_login") // header에 토큰 추가
+          'Authorization': `Bearer ${getCookie("is_login")}` // header에 토큰 추가
         }
       });
 
@@ -56,7 +56,7 @@ export const Main = ({ products, setProducts, isBrand, setIsBrand }) => {
         if (cname != "brand") { //브랜드가 아닐때
           const response = await axios.get(url, {
             headers: {
-              'Authorization': getCookie("is_login")
+              'Authorization': `Bearer ${getCookie("is_login")}`
             }
           });
           // const response = await axios.api(url); //TODO
@@ -66,7 +66,7 @@ export const Main = ({ products, setProducts, isBrand, setIsBrand }) => {
           // const response = await axios.api(`${url}/${(Number(cid) + 1)}`);
           const response = await axios.get(`${url}/${(Number(cid) + 1)}`, {
             headers: {
-              'Authorization': getCookie("is_login")
+              'Authorization': `Bearer ${getCookie("is_login")}`
             }
           });
           setProducts(response.data);

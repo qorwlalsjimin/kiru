@@ -11,6 +11,7 @@ import { TotalCart } from "../cart/totalCart";
 import Util from '../../util/product_util'
 
 import CustomSelect from "./CustomSelect.js";
+import { getCookie } from "../../util/cookie";
 
 export const Detail = ({ cart, setCart }) => {
   //색상
@@ -29,7 +30,11 @@ export const Detail = ({ cart, setCart }) => {
   useEffect(() => {
     const fetchItem = async () => {
       try {
-        const response = await axios.get(`/api/item/${id}`); // Replace 1 with the actual item ID
+        const response = await axios.get(`/api/item/${id}`, {
+          headers: {
+            'Authorization': `Bearer ${getCookie("is_login")}`
+          }
+        });
         setProduct(response.data);
       } catch (error) {
         console.error(error);

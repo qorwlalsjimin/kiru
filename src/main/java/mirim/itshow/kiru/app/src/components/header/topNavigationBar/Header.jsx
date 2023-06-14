@@ -1,8 +1,10 @@
 import "./header.css"
-import "./script"
 import { Link, Navigate, Routes, Router, Route, useNavigate } from "react-router-dom";
 import { ProductList } from "../../product_list/ProductList"
 import { Mainscreen } from "../../mainscreen/Mainscreen";
+import { useEffect, useRef, useState } from "react";
+import SearchModal from "./SearchModal";
+import { getCookie, removeCookie } from "../../../util/cookie";
 
 
 //svg
@@ -10,10 +12,6 @@ import { ReactComponent as SearchSvg } from "../../../svgfiles/search.svg";
 import { ReactComponent as StarSvg } from "../../../svgfiles/star.svg";
 import { ReactComponent as CartSvg } from "../../../svgfiles/cart.svg";
 import { ReactComponent as MemberSvg } from "../../../svgfiles/member.svg";
-import { useEffect, useRef, useState } from "react";
-import SearchModal from "./SearchModal";
-import { getCookie, removeCookie } from "../../../util/cookie";
-import { Cookies } from "react-cookie";
 
 
 const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) => {

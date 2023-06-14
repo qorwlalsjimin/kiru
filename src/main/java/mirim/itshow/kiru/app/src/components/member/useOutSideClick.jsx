@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-function useOutSideClick(ref, callback) {
+function UseOutSideClick(ref, callback) {
   useEffect(() => {
     const handleClick = (event) => {
       if (ref.current && !ref.current.contains(event.target)) {
@@ -14,4 +14,4 @@ function useOutSideClick(ref, callback) {
   }, [ref, callback]);
 }
 
-export default useOutSideClick;
+export default UseOutSideClick;

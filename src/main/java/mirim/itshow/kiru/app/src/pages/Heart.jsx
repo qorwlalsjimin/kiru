@@ -18,7 +18,7 @@ export default function Heart() {
     // 상품 데이터 가져오기
     useEffect(() => {
         const fetchData = async (url) => {
-            setToken();
+            // setToken();
             try {
                 const response = await axios.get(url, {
                     headers: {

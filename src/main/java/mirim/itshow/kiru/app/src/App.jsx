@@ -1,14 +1,14 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState } from "react";
-import Header from "./components/header/topNavigationBar/topNavigationBar";
-import Home from "./pages/home";
-import Product from "./pages/product";
-import Basket from "./pages/basket";
-import Login_form from "./components/member/Login_form";
-import Join_form from "./components/member/Join_form";
+import Home from "./pages/Home";
+import Product from "./pages/Product";
+import Basket from "./pages/Basket";
+import Login_form from "./components/member/LoginForm";
+import Join_form from "./components/member/JoinForm";
 import { Mainscreen } from "./components/mainscreen/Mainscreen"
 import Heart from "./pages/Heart";
+import Header from "./components/header/topNavigationBar/Header";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -21,7 +21,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* <TopNavigationBar/> */}
+      {/* <Header/> */}
       <Header products={products} setProducts={setProducts} handleNavClick={handleNavClick} />
       {/* <Header setProducts={setProducts} /> */}
 

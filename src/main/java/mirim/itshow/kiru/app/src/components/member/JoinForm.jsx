@@ -6,7 +6,7 @@ import './join_form.css'
 import Modal from "./Modal";
 
 
-const Join_form = (props) => {
+const JoinForm = (props) => {
   const navigate = useNavigate();
   const [group, setGroup] = useState({
     email: '', //이메일
@@ -222,4 +222,4 @@ const Join_form = (props) => {
   )
 };
 
-export default Join_form;
+export default JoinForm;

@@ -3,7 +3,7 @@ import styles from "./product.module.css";
 import axios from 'axios';
 import { useEffect, useState } from "react";
 import { useLocation, useParams  } from "react-router-dom";
-import Util from '../../util/product_util'
+import Util from '../../util/productUtil'
 import {ReactComponent as StarSvg} from "../../svgfiles/star.svg"
 
 export const Product = ({ product }) => {

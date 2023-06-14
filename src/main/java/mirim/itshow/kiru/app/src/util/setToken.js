@@ -1,6 +1,7 @@
 import axios from "axios";
 import { getCookie, setCookie } from "./cookie";
 
+/* 보류!!! 시간 남으면 하자 */
 const setToken = async (state) => {
     // HEADER에 토큰 설정
     axios.defaults.headers.common['Authorization'] = getCookie('accessToken')

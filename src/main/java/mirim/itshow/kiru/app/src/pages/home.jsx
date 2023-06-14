@@ -1,4 +1,4 @@
-import { Main as ProductList } from "../components/product_list/product_list";
+import { ProductList } from "../components/product_list/ProductList";
 
 
 const Tradition = ({ products, setProducts }) => {

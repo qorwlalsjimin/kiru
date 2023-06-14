@@ -1,10 +1,8 @@
 import styles from "./cart.module.css";
 import { useState } from "react";
-import { CartHeader } from "./cartHeader";
-import { CartList } from "./cartList";
-import { TotalCart } from "./totalCart";
-import {Btn} from "./btn"; 
- import Util from '../../util/product_util'
+import { CartHeader } from "./CartHeader";
+import { CartList } from "./CartList";
+import { TotalCart } from "./TotalCart";
 
 
 export const Cart = ({ cart, setCart }) => {

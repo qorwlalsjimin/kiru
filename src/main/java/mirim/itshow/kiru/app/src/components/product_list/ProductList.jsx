@@ -2,13 +2,14 @@ import styles from "./product_list.module.css";
 import "../header/topNavigationBar/header.css"
 import "./brand_nav.css"
 import { useEffect, useState } from "react";
-import { Product } from "../products/product";
+import { Product } from "../products/Product";
 import axios from 'axios';
 import Footer from "../footer/Footer";
 import { useParams } from "react-router-dom";
 import { getCookie } from "../../util/cookie";
+import setToken from "../../util/setToken";
 
-export const Main = ({ products, setProducts, isBrand, setIsBrand }) => {
+export const ProductList = ({ products, setProducts, isBrand, setIsBrand }) => {
   const [visibleProducts, setVisibleProducts] = useState([]);
   const [showMore, setShowMore] = useState(false);
 
@@ -64,6 +65,7 @@ export const Main = ({ products, setProducts, isBrand, setIsBrand }) => {
           setVisibleProducts(response.data.slice(0, 16));
         } else { //브랜드일때
           // const response = await axios.api(`${url}/${(Number(cid) + 1)}`);
+          // setToken();
           const response = await axios.get(`${url}/${(Number(cid) + 1)}`, {
             headers: {
               'Authorization': `Bearer ${getCookie("accessToken")}`

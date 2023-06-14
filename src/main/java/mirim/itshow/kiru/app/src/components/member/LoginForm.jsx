@@ -5,7 +5,7 @@ import Footer from '../footer/Footer';
 import axios from 'axios';
 import { getCookie, setCookie } from '../../util/cookie';
 
-const Login_form = () => {
+const LoginForm = () => {
   const navigate = useNavigate();
 
   // 로그인 폼
@@ -118,4 +118,4 @@ const Login_form = () => {
   )
 };
 
-export default Login_form;
+export default LoginForm;

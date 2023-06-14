@@ -4,8 +4,8 @@ import React, { useContext } from 'react';
 // import styles from "../product_detail/detail.module.css"
 import "./cart.css"
 // import Detail from "../product_detail/detail";
-import { DetailContext } from "../product_detail/detail";
-import Util from '../../util/product_util'
+import { DetailContext } from "../product_detail/Detail";
+import Util from '../../util/productUtil'
 
 
 export const TotalCart = ({ total, setTotal, cart,found, startDate, endDate}) => {

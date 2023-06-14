@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 // import './PopupPostCode.js'
-import useOutSideClick from "./useOutSideClick";
+import useOutSideClick from "./UseOutSideClick";
 import DaumPost from "./DaumPost";
 import { useEffect, useRef } from "react";
 

@@ -1,7 +1,7 @@
 import "./header.css"
 import "./script"
 import { Link, Navigate, Routes, Router, Route, useNavigate } from "react-router-dom";
-import { Main } from "../../product_list/product_list"
+import { ProductList } from "../../product_list/ProductList"
 import { Mainscreen } from "../../mainscreen/Mainscreen";
 
 
@@ -57,6 +57,18 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
       navigate("/login_form");      
     }
   }
+  
+  /* 로그아웃 */
+  function starHandler(accessToken) {
+    console.log(accessToken);
+    let isLogin = !!accessToken;
+    if (isLogin) {
+      navigate("/heart");    
+    } else {  
+      window.alert('로그인 후 사용해주세요.');
+      navigate("/login_form");
+    }
+  }
 
   return (
     <>
@@ -78,7 +90,7 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
             <i><SearchSvg width={"20px"} onClick={open} /></i> {/* 검색 */}
             {/* 검색 Modal */}
             {show ? <SearchModal/> : <></>}
-            <i><Link to="/heart"><StarSvg /></Link></i> {/* 즐겨찾기 */}
+            <i><StarSvg onClick={starHandler.bind(this, getCookie('accessToken'))}/></i> {/* 즐겨찾기 */}
             <i><Link to="/cart"><CartSvg width={"19px"} /></Link></i> {/* 장바구니 */}
             <i><MemberSvg width={"20px"} onClick={logoutHandler.bind(this, getCookie('accessToken'))}/></i> {/* 로그인/회원가입 */}
           </div>
@@ -94,7 +106,7 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
         </div>
         <Routes>
           <Route path="/" element={<Mainscreen />} />
-          <Route path="/category/:cid/:cname" element={<Main products={products} setProducts={setProducts} isBrand={isBrand} setIsBrand={setIsBrand} />} />
+          <Route path="/category/:cid/:cname" element={<ProductList products={products} setProducts={setProducts} isBrand={isBrand} setIsBrand={setIsBrand} />} />
         </Routes>
 
       </header>

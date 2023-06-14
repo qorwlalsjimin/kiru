@@ -2,13 +2,13 @@ import styles from "./detail.module.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 // import { getProducts } from "../../service/fetcher";
-import Detail2 from "./detail2"
+import Detail2 from "./Detail2"
 import axios from "axios";
-import "./combobox.js"
+import "./Combobox.js"
 import "./detail.css"
-import { CartList } from "../cart/cartList";
-import { TotalCart } from "../cart/totalCart";
-import Util from '../../util/product_util'
+import { CartList } from "../cart/CartList";
+import { TotalCart } from "../cart/TotalCart";
+import Util from '../../util/productUtil'
 
 import CustomSelect from "./CustomSelect.js";
 import { getCookie } from "../../util/cookie";

@@ -80,10 +80,10 @@ export const Mainscreen = (products, setProducts, handleNavClick) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const container = containerRef.current;
+      const fullpage = containerRef.current;
       const sections = sectionsRef.current;
 
-      const currentSection = Math.floor(container.scrollTop / container.offsetHeight);
+      const currentSection = Math.floor(fullpage.scrollTop / window.innerHeight);
       sections.forEach((section, index) => {
         if (index === currentSection) {
           section.classList.add('active');
@@ -93,15 +93,20 @@ export const Mainscreen = (products, setProducts, handleNavClick) => {
       });
     };
 
-    const container = containerRef.current;
-    container.addEventListener('scroll', handleScroll);
-    handleScroll();
+    const fullpage = containerRef.current;
+
+    if (fullpage) {
+      fullpage.addEventListener('scroll', handleScroll);
+      handleScroll();
+    }
 
     return () => {
-      container.removeEventListener('scroll', handleScroll);
+      if (fullpage) {
+        fullpage.removeEventListener('scroll', handleScroll);
+      }
     };
   }, []);
- 
+
   // page_4
 
  
@@ -109,31 +114,31 @@ export const Mainscreen = (products, setProducts, handleNavClick) => {
   return (
     <div>
      
+     <div className="fullpage">
          
-       
-      {/* <Header  products={products} setProducts={setProducts} handleNavClick={handleNavClick} /> */}
-    
-    <div className="scroll">
-      <div id="fullpage">
+       <FullPage>
       
-          <section className="page_1"  ref={(el) => sectionsRef.current[0] = el}>
-            <img src="/images/Subtract.png" className='people1' alt="" />
-
-
-          </section>
-     
+        <Slide>
           
-          <section className="page_2 sectionPin"  ref={(el) => sectionsRef.current[1] = el} >
+
+            <section className="page_1" ref={(ref) => sectionsRef.current[0] = ref}>
+              <img src="/images/Subtract.png" className='people1' alt="" />
+            </section>
+        </Slide>
+
+             
+    <Slide>
+          <section className="page_2 sectionPin">
           <h1 className='choice'>Category</h1>
 
 
 
-          <div className="containerdy">
+          {/* <div className="containerdy">
           <div className="card"><div className="s"><h4>#4 악세사리</h4><img src="/images/mask3.png" className='carousel-icon' alt="" /></div></div>
               <div className="card"> <div className="s"><h4>#1 개량한복</h4><img src="/images/mask.png" className='carousel-icon' alt="" /></div></div>
               <div className="card"><div className="s"><h4>#2 전통한복</h4> <img src="/images/mask1.png"className='carousel-icon' alt="" /></div></div>
               <div className="card"> <div className="s"><h4>#3 신발</h4><img src="/images/mask4.png" className='carousel-icon'alt="" /></div></div>
-            </div>
+            </div> */}
         
           <div className="tie">
             <div className="ps">
@@ -150,12 +155,17 @@ export const Mainscreen = (products, setProducts, handleNavClick) => {
             </div>
 
         <div className="Linearbar"></div>
-
-          
           </section>
+          </Slide>
      
-          <section className="page_3" style={{ backgroundColor: "#F5DCEA" }}></section> 
+            <Slide>
+            
+             <section className="page_3" style={{ backgroundColor: "#F5DCEA" }}></section>
+             
+              </Slide>
         
+
+          <Slide>
           <section className="page_4" style={{ backgroundColor: "#6D16DC" }}>
 
             
@@ -250,16 +260,16 @@ export const Mainscreen = (products, setProducts, handleNavClick) => {
             </div>
 
             </div>
-
-
-
-
           </section>
-         
+          </Slide> 
+
+          <Slide>
           <section className='page_5'>
             <h1 className='title Merchandise'>Merchandise</h1>
           </section>
-       
+          </Slide>
+
+          <Slide>
           <section className='page_6'>
 
             <div className="titleh1">
@@ -371,7 +381,9 @@ export const Mainscreen = (products, setProducts, handleNavClick) => {
 
 
           </section>
-       
+          </Slide>
+
+          <Slide>
           <section className='page_7'>
 
          <div className="showkimono">
@@ -381,10 +393,9 @@ export const Mainscreen = (products, setProducts, handleNavClick) => {
           {/* <h1 className="kimono">기모노 보러가기</h1> */}
 
           </section>
-          
+          </Slide>
 
-
-         
+            <Slide>
           <footer className="two">
 
             <div className="footerall2">
@@ -469,11 +480,14 @@ export const Mainscreen = (products, setProducts, handleNavClick) => {
               </div>
             </div>
           </footer>
-
-
-    </div>
-    </div>
-      </div>
+          </Slide>
+         
+      
+         
+          </FullPage>
+          
+          </div>
+          </div>
 
   )
 }

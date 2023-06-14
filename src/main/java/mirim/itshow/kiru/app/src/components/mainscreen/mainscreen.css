@@ -133,10 +133,22 @@ section{
 .page_1{
     background-image: url("../../../public/images/background.png");
     background-size: cover;
+    
 }
 
-.page_2{
+
+.page_1 img{
+  position: absolute;
+  left: 35%;
+  top: 13%;
+}
+
+
+.fullpage{
   /* background-color: #a58585; */
+  position: relative;
+  top: -136px;
+
 }
 
 .studioshot{

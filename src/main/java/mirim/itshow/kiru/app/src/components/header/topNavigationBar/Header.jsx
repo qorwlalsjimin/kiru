@@ -19,26 +19,6 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
   function navHandler() {
     setIsBrand(true);
   }
-
-  // 검색 Modal
-  const [show, setShow] = useState(0);
-  const open = (e) => {
-    setShow(1);
-  };
-  const ref = useRef();
-
-  useEffect(() => {
-    const modlalClose = (e) => {
-      if (show && ref.current && !ref.current.contains(e.target)) {
-        setShow(false);
-      }
-    };
-    document.addEventListener("mousedown", modlalClose);
-    return () => {
-      document.removeEventListener("mousedown", modlalClose);
-    };
-  }, [show]);
-
   
   /* 로그아웃 */
   const navigate = useNavigate();
@@ -85,9 +65,12 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
 
           {/* 우측 아이콘들 */}
           <div className="toggle">
-            <i><SearchSvg width={"20px"} onClick={open} /></i> {/* 검색 */}
+            <i><SearchSvg width={"20px"} /></i> {/* 검색 */}
             {/* 검색 Modal */}
-            {show ? <SearchModal/> : <></>}
+            {/* {show ? 
+              <div className="search_modal">ㅎㅇ
+            </div>
+            : <></>} */}
             <i><StarSvg onClick={starHandler.bind(this, getCookie('accessToken'))}/></i> {/* 즐겨찾기 */}
             <i><Link to="/cart"><CartSvg width={"19px"} /></Link></i> {/* 장바구니 */}
             <i><MemberSvg width={"20px"} onClick={logoutHandler.bind(this, getCookie('accessToken'))}/></i> {/* 로그인/회원가입 */}

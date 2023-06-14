@@ -1,7 +1,6 @@
 import styles from "./detail.module.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-// import { getProducts } from "../../service/fetcher";
 import Detail2 from "./Detail2"
 import axios from "axios";
 import "./Combobox.js"
@@ -26,6 +25,9 @@ export const Detail = ({ cart, setCart }) => {
   //date
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
+
+  //사이즈
+  const [headerTitle, setHeaderTitle] = useState('');
 
   useEffect(() => {
     const fetchItem = async () => {
@@ -91,27 +93,8 @@ export const Detail = ({ cart, setCart }) => {
           endDate
         }
       )
-      debugger;
     }
     console.log(appended)
-    /*
-    const cartItem = {
-      id: product.id,
-      image: product.image,
-      name: product.name,
-      quantity: count,
-      price: product.price,
-      provider: product.provider,
-      brand: product.brand,
-      size: product.size,
-      color: product.color
-    };
-    */
-
-    /*
-    const found = cart.find((el) => el.id === cartItem.id);
-    if (found) setQuantity(cartItem.id, found.quantity + count);
-    else setCart(cart => cart.concat(cartItem));*/
     setCart(cart => cart.concat(appended));
   };
 
@@ -157,16 +140,13 @@ export const Detail = ({ cart, setCart }) => {
   };
 
   const handleSizeSelection = (e) => {
-    // console.log("음..");
     const selectedSize = e.target.value;
-    console.log(selectedColor);
-    // console.log("selectedSize: ", selectedSize);
+    console.log("여기", selectedSize);
+    console.log("detail: ", headerTitle);
     setTotalCount(0); //Reset totalCount when size is selected
     setSelectedOptions((prevSelectedOptions) => {
       const updatedOptions = { ...prevSelectedOptions };
-      // console.log("updatedOptions: ", updatedOptions);
       const option = updatedOptions[selectedSize];
-      // console.log("option: ",option);
       if (option) {
         option.count += 1;
       } else {
@@ -243,34 +223,40 @@ export const Detail = ({ cart, setCart }) => {
     product && (
       <>
         <main className={styles.main}>
+
+          {/* 대표 이미지 */}
           <section className={styles.product}>
             <div className={styles.product_img}>
               <img src={product.imageUrl[0]} alt="product" />
             </div>
           </section>
+
+          {/* 상품 정보 */}
           <section className={styles.product}>
             <div className={styles.product_info}>
               <p className={styles.seller_store}>{product.provider}</p>
-              <p className={styles.product_name}>
-                {product.name}  </p>
-
+              <p className={styles.product_name}>{product.name}  </p>
+              
+              {/* 즐겨찾기 */}
               <div className="heart">
                 <img src="/images/star.svg" alt="" />
               </div>
 
+              {/* 상품 가격 */}
               <span className={styles.price}>
                 {Util.convertPrice(product.price + "")}
                 <span className={styles.unit}>원</span>
               </span>
 
+              {/* 상품 설명 */}
               <div className="description">
                 <p>{product.description}</p>
               </div>
 
+              {/* 색상 선택 */}
               <div className="colorchose">
                 <p>색상을 선택해주세요</p>
               </div>
-
               <div className="colorpick">
                 {colors.map((color, index) => (
                   <div
@@ -279,31 +265,17 @@ export const Detail = ({ cart, setCart }) => {
                     style={{ backgroundColor: colorData[color] }}
                     onClick={() => handleColorClick(color)}
                   >
-                    <p className="color-name" style={{ visibility: selectedColor === color || index === 0 ? 'visible' : 'hidden' }}>
+                    <p key={index} className="color-name" style={{ visibility: selectedColor === color || index === 0 ? 'visible' : 'hidden' }}>
                       {color}
                     </p>
                   </div>
                 ))}
               </div>
-
-              {/* {selectedColor && <p>{selectedColor}</p>} */}
-
-              {/* {product.color} */}
-
-              {/* <select onChange={(e) => {
-                const selectedColor = e.target.value;
-                // console.log(selected[selectedSize])
-                if(selectedColor in selected) {
-                  setSelected(p => {
-                    return { selectedColor}
-                  })
-                }
-
-            }} > */}
-              {/* 설정 */}
             </div>
 
+            {/* 선택 */}
             <div className="inputboxs">
+              {/* 사이즈 */}
               <div className="sizeinfo">
                 {/* <div className={styles.delivery}> */}
                 <i className="ri-information-line"></i>  <p>사이즈 정보</p>
@@ -311,7 +283,6 @@ export const Detail = ({ cart, setCart }) => {
 
               {/* 예전 select 코드 */}
               <select onChange={handleSizeSelection}>
-
                 <option value="0">
                   {/* <p id="s_text2">사이즈를 선택해주세요</p> */}
                   사이즈를 선택해주세요
@@ -322,27 +293,31 @@ export const Detail = ({ cart, setCart }) => {
 
               </select>
 
-              <CustomSelect
-                listOpen
-                resetThenSet={() => { }}
-                list={[
-                  {
-                    id: 1,
-                    title: "S"
-                  },
-                  {
-                    id: 2,
-                    title: "M"
-                  },
-                  {
-                    id: 3,
-                    title: "L"
-                  }
-                ]}
-                // onClick이 안 돼서 안 되는 상황
-                onClick={handleSizeSelection} 
-              />
+              <div>
+                <CustomSelect
+                  listOpen
+                  resetThenSet={() => { }}
+                  list={[
+                    {
+                      id: 1,
+                      title: "S"
+                    },
+                    {
+                      id: 2,
+                      title: "M"
+                    },
+                    {
+                      id: 3,
+                      title: "L"
+                    }
+                  ]}
+                  // onClick이 안 돼서 안 되는 상황
+                  headerTitle={headerTitle}
+                  setHeaderTitle={setHeaderTitle}
+                />
+              </div>
 
+              {/* 날짜 */}
               <div className="date">
                 <div className="dateBox">
                   <div className="renttitle">
@@ -361,11 +336,11 @@ export const Detail = ({ cart, setCart }) => {
 
             {/* hr bar */}
 
-            {Object.keys(selectedOptions).map((size, index) => {
+            {Object.keys(selectedOptions).map((size) => {
               const option = selectedOptions[size];
               return option.count !== 0 ? (
-                <>
-                  <div className="allBox" key={size}>
+                <div key={size}>
+                  <div className="allBox">
                     <div className="select_color_size">
                       {selectedColor && (
                         <>
@@ -385,7 +360,7 @@ export const Detail = ({ cart, setCart }) => {
                       <button className="p" onClick={() => handleQuantityChange(size, "plus")}>+</button>
                     </div>
                   </div>
-                </>
+                </div>
               ) : null;
             })}
 

@@ -1,6 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useState } from "react";
+import React, { useState } from "react";
 import Home from "./pages/Home";
 import Product from "./pages/Product";
 import Basket from "./pages/Basket";
@@ -9,7 +9,11 @@ import Join_form from "./components/member/JoinForm";
 import { Mainscreen } from "./components/mainscreen/Mainscreen"
 import Heart from "./pages/Heart";
 import Header from "./components/header/topNavigationBar/Header";
+import { createContext } from "react";
 
+// context
+export const Size = createContext(null);
+  
 function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);

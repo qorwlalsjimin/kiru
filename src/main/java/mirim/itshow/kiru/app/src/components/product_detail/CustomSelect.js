@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import FontAwesome from "react-fontawesome";
+import { Size } from "../../App";
 import Content from "./size_option/Content";
 import ContentSize from "./size_option/ContentSize";
 
@@ -11,14 +12,13 @@ class CustomSelect extends Component {
     this.ddHeaderExOff = false;
     this.state = {
       listOpen: false,
-      headerTitle: this.props.title
+      headerTitle: props.headerTitle
     };
     this.close = this.close.bind(this);
   }
 
   componentDidUpdate() {
     // console.log("componentdidUpdate", this.ddHeaderExOff);
-
     const { listOpen } = this.state;
     setTimeout(() => {
       if (listOpen) {
@@ -33,7 +33,6 @@ class CustomSelect extends Component {
 
   componentWillUnmount() {
     // console.log("componentWillUnmount");
-
     window.removeEventListener("click", this.close);
   }
 
@@ -55,7 +54,6 @@ class CustomSelect extends Component {
 
     /* set box height when options appear */
     this.ddHeaderSelected = true;
-
     this.setState(
       {
         headerTitle: title,
@@ -83,6 +81,7 @@ class CustomSelect extends Component {
   render() {
     const { list } = this.props;
     const { listOpen, headerTitle } = this.state;
+    console.log("커스텀: ", headerTitle);
     return (
       <div className="dd-wrapper">
         <div

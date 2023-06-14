@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { getCookie } from "../util/cookie";
 import setToken from "../util/setToken";
+import { useNavigate } from "react-router-dom";
 
 export default function Heart() {
 
@@ -14,6 +15,9 @@ export default function Heart() {
 
     // 카테고리 목록
     let [categorys, setCategorys] = useState({});
+
+    // redirect
+    let navigate = useNavigate();
 
     // 상품 데이터 가져오기
     useEffect(() => {
@@ -29,6 +33,7 @@ export default function Heart() {
             } catch (error) {
                 if (error.status = 401) {
                     alert('로그인 후 이용해주세요.');
+                    navigate('/login_form');
                 }
             }
         };

@@ -13,22 +13,49 @@ import CustomSelect from "./CustomSelect.js";
 import { getCookie } from "../../util/cookie";
 
 export const Detail = ({ cart, setCart }) => {
-  //색상
-  const { id } = useParams();
-  const [product, setProduct] = useState(null);
-  const [count, setCount] = useState(1);
-  const [selected, setSelected] = useState({
-    "S": 0,
-    "M": 0,
-    "L": 0
-  });
-  //date
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+  
+  /* 변수 선언 */
+  const { id } = useParams(); //상품 id
 
-  //사이즈
-  const [headerTitle, setHeaderTitle] = useState('');
+  const [product, setProduct] = useState(null); //상품 정보
 
+  const [count, setCount] = useState(1); //장바구니에 담을 상품 수량
+
+  const [startDate, setStartDate] = useState(''); //대여 시작일
+
+  const [endDate, setEndDate] = useState(''); //대여 마감일
+
+  const [selectedColor, setSelectedColor] = useState(''); // 색상
+
+  const colorData = { // 색상표
+    "황색": "#F6CF7A",
+    "옥색": "#6bd4b9",
+    "적색": "#a61010",
+    "자색": "#6B3FA0",
+    "분홍색": "#FF8AC3",
+    "연두색": "#AAD975",
+    "연보라색": "#bfb0e3",
+    "청색": "#4161dc",
+    "백색": "#FFFFFF",
+    "남색": "#1c4587",
+    "흑색": "#000000",
+    "청회색": "#9599b9",
+    "녹색": "#539538",
+    "회색": "#c3c4c8",
+    "천청색": "#D5C9DD",
+    "갈색": "#9a5e0a",
+    "주황색": "#ff9900"
+  };
+
+  const [size, setSize] = useState(''); //사이즈
+
+  //박스 수량 
+  const [selectedOptions, setSelectedOptions] = useState({});
+  const [totalCount, setTotalCount] = useState(1);
+  const [showTotalInfo, setShowTotalInfo] = useState(false); 
+
+
+  /* 상품 정보 가져오기 */
   useEffect(() => {
     const fetchItem = async () => {
       try {
@@ -47,31 +74,32 @@ export const Detail = ({ cart, setCart }) => {
   }, []);
 
 
-  // 상세페이지에서 물건 수량 조절
-  const handleQuantity = (type) => {
-    if (type === "plus") {
-      setCount(count + 1);
-    } else {
-      if (count === 1) return;
-      setCount(count - 1);
-    }
-  };
+  /* 상품 수량 조절 */
+  // const handleQuantity = (type) => {
+  //   if (type === "plus") { // +버튼
+  //     setCount(count + 1);
+  //   } else if (type === "minus") { // -버튼 
+  //     if (count === 1) return;
+  //     setCount(count - 1);
+  //   }
+  // };
 
-  // 장바구니에 중복된 물건을 담을 때 사용
-  const setQuantity = (id, quantity) => {
-    const found = cart.filter((el) => el.id === id)[0];
-    const idx = cart.indexOf(found);
-    const cartItem = {
-      id: product.id,
-      image: product.image,
-      name: product.name,
-      quantity: quantity,
-      price: product.price,
-      provider: product.provider,
-    };
-    setCart([...cart.slice(0, idx), cartItem, ...cart.slice(idx + 1)]);
-  };
+  /* 장바구니에 중복된 물건을 담을 때 */
+  // const setQuantity = (id, quantity) => {
+  //   const found = cart.filter((el) => el.id === id)[0];
+  //   const idx = cart.indexOf(found);
+  //   const cartItem = {
+  //     id: product.id,
+  //     image: product.image,
+  //     name: product.name,
+  //     quantity: quantity,
+  //     price: product.price,
+  //     provider: product.provider,
+  //   };
+  //   setCart([...cart.slice(0, idx), cartItem, ...cart.slice(idx + 1)]);
+  // };
 
+  /* 장바구니에 상품 추가 */
   const handleCart = () => {
     alert("장바구니에 추가되었습니다!");
     const appended = []
@@ -98,23 +126,20 @@ export const Detail = ({ cart, setCart }) => {
     setCart(cart => cart.concat(appended));
   };
 
-  //박스 수량 
-  const [selectedOptions, setSelectedOptions] = useState({});
-  const [totalCount, setTotalCount] = useState(1);
-  const [showTotalInfo, setShowTotalInfo] = useState(false);
-
-  const handleOptionSelection = (e) => {
-    const { name, value } = e.target;
-    setSelectedOptions((prevSelectedOptions) => ({
-      ...prevSelectedOptions,
-      [name]: {
-        value,
-        count: 1,
-      },
-    }));
-  };
+  /* 알 수 없음 */
+  // const handleOptionSelection = (e) => {
+  //   const { name, value } = e.target;
+  //   setSelectedOptions((prevSelectedOptions) => ({
+  //     ...prevSelectedOptions,
+  //     [name]: {
+  //       value,
+  //       count: 1,
+  //     },
+  //   }));
+  // };
 
 
+  /* 상품 수량 조절 */
   const handleQuantityChange = (name, action) => {
     setSelectedOptions((prevSelectedOptions) => {
       const updatedOptions = { ...prevSelectedOptions };
@@ -131,6 +156,7 @@ export const Detail = ({ cart, setCart }) => {
     });
   };
 
+  /* 총합 금액 계산 */
   const calculateTotalCount = (options) => {
     let totalCount = 0;
     Object.values(options).forEach((option) => {
@@ -139,10 +165,19 @@ export const Detail = ({ cart, setCart }) => {
     setTotalCount(totalCount);
   };
 
-  const handleSizeSelection = (e) => {
-    const selectedSize = e.target.value;
-    console.log("여기", selectedSize);
-    console.log("detail: ", headerTitle);
+  
+  /* 상품 정보에서 색상 데이터를 가져오기 */
+  const colors = product.color;
+
+  /* 색상 선택 */
+  const handleColorClick = (color) => {
+    setSelectedColor(color);
+  };
+
+
+  /* 사이즈 선택 */
+  useEffect(() => {
+    const selectedSize = size;
     setTotalCount(0); //Reset totalCount when size is selected
     setSelectedOptions((prevSelectedOptions) => {
       const updatedOptions = { ...prevSelectedOptions };
@@ -159,8 +194,9 @@ export const Detail = ({ cart, setCart }) => {
       setShowTotalInfo(true);
       return updatedOptions;
     });
-  };
+  },[size]);
 
+  /* 선택한 상품 박스 지우기 */
   const handleBoxClose = (size) => {
     setSelectedOptions((prevSelectedOptions) => {
       const updatedOptions = { ...prevSelectedOptions };
@@ -171,53 +207,23 @@ export const Detail = ({ cart, setCart }) => {
   };
 
 
-
+  /* 대여 날짜 선택 */
   const handleStartDateChange = (e) => {
     //debugger;
     setStartDate(e.target.value);
   };
 
+  /* 반납 날짜 선택 */
   const handleEndDateChange = (e) => {
     //debugger;
     setEndDate(e.target.value);
   };
 
-  const colorData = {
-    "황색": "#F6CF7A",
-    "옥색": "#6bd4b9",
-    "적색": "#a61010",
-    "자색": "#6B3FA0",
-    "분홍색": "#FF8AC3",
-    "연두색": "#AAD975",
-    "연보라색": "#bfb0e3",
-    "청색": "#4161dc",
-    "백색": "#FFFFFF",
-    "남색": "#1c4587",
-    "흑색": "#000000",
-    "청회색": "#9599b9",
-    "녹색": "#539538",
-    "회색": "#c3c4c8",
-    "천청색": "#D5C9DD",
-    "갈색": "#9a5e0a",
-    "주황색": "#ff9900"
-  };
 
-  const [selectedColor, setSelectedColor] = useState('');
-
-
-  // product 객체가 null이거나 유효하지 않은 경우 처리합니다.
+  /* product 객체 유효성 검사 */
   if (!product || !product.color || !Array.isArray(product.color)) {
     return null; // 또는 에러 메시지를 표시하거나 기본값을 반환할 수 있습니다.
   }
-
-
-  // 상품 정보에서 색상 데이터를 가져옵니다.
-  const colors = product.color;
-
-  const handleColorClick = (color) => {
-    setSelectedColor(color);
-  };
-
 
   return (
     product && (
@@ -280,19 +286,8 @@ export const Detail = ({ cart, setCart }) => {
                 {/* <div className={styles.delivery}> */}
                 <i className="ri-information-line"></i>  <p>사이즈 정보</p>
               </div>
-
-              {/* 예전 select 코드 */}
-              <select onChange={handleSizeSelection}>
-                <option value="0">
-                  {/* <p id="s_text2">사이즈를 선택해주세요</p> */}
-                  사이즈를 선택해주세요
-                </option>
-                <option value="S">{product.size[0]}</option>
-                <option value="M">{product.size[1]}</option>
-                <option value="L">{product.size[2]}</option>
-
-              </select>
-
+              
+              {/* select 박스 */}
               <div>
                 <CustomSelect
                   listOpen
@@ -311,9 +306,7 @@ export const Detail = ({ cart, setCart }) => {
                       title: "L"
                     }
                   ]}
-                  // onClick이 안 돼서 안 되는 상황
-                  headerTitle={headerTitle}
-                  setHeaderTitle={setHeaderTitle}
+                  setSize={setSize}
                 />
               </div>
 

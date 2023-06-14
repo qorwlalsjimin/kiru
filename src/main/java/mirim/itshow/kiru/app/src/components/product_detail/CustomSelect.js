@@ -19,6 +19,8 @@ class CustomSelect extends Component {
 
   componentDidUpdate() {
     // console.log("componentdidUpdate", this.ddHeaderExOff);
+    this.props.setSize(this.state.headerTitle);
+    
     const { listOpen } = this.state;
     setTimeout(() => {
       if (listOpen) {

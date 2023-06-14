@@ -13,6 +13,7 @@ import { ReactComponent as MemberSvg } from "../../../svgfiles/member.svg";
 import { useEffect, useRef, useState } from "react";
 import SearchModal from "./SearchModal";
 import { getCookie, removeCookie } from "../../../util/cookie";
+import { Cookies } from "react-cookie";
 
 
 const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) => {
@@ -23,11 +24,9 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
 
   // 검색 Modal
   const [show, setShow] = useState(0);
-
   const open = (e) => {
     setShow(1);
   };
-
   const ref = useRef();
 
   useEffect(() => {
@@ -43,21 +42,21 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
   }, [show]);
 
   
-  // 로그아웃
-  function logoutHandler(isLogin) {
-    console.log("클릭햇는데..", !!isLogin);
-    // if (!!isLogin) {
-    //   let isLogout = window.confirm("로그아웃하시겠습니까?");
-    //   if (isLogout) removeCookie('access_token');
-    // } else {
-    //   <Navigate to="/Login_form" />
-    // }
-    // console.log("흑" + !!isLogin);
-    // let isLogout = window.confirm("로그아웃하시겠습니까?");
-    // if (isLogout) removeCookie('access_token');
-    // console.log(getCookie('access_token'));
+  /* 로그아웃 */
+  const navigate = useNavigate();
+  function logoutHandler(accessToken) {
+    console.log(accessToken);
+    let isLogin = !!accessToken;
+    if (isLogin) {
+      let isLogout = window.confirm('로그아웃하시겠습니까?');
+      if (isLogout) {
+        removeCookie('accessToken');
+        window.location.reload();
+      }
+    } else {
+      navigate("/login_form");      
+    }
   }
-
 
   return (
     <>
@@ -78,46 +77,10 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
           <div className="toggle">
             <i><SearchSvg width={"20px"} onClick={open} /></i> {/* 검색 */}
             {/* 검색 Modal */}
-            {show ? (
-              <div className="search_modal" show={show} ref={ref}>
-                <div className="modla-desk">
-                  <div className="search_area">
-                    <form>
-                      <input></input>
-                      <button type="submit">🔍</button>
-                    </form>
-                  </div>
-                  {/* --search_area */}
-                  <div className="result_area">
-                    <ul>
-                      <li>
-                        <span>🔍</span>
-                        <span>검색어</span>
-                        <span>&nbsp;&nbsp;&nbsp;&nbsp;X</span>
-                      </li>
-                      <li>
-                        <span>🔍</span>
-                        <span>검색어</span>
-                        <span>&nbsp;&nbsp;&nbsp;&nbsp;X</span>
-                      </li>
-                      <li>
-                        <span>🔍</span>
-                        <span>검색어</span>
-                        <span>&nbsp;&nbsp;&nbsp;&nbsp;X</span>
-                      </li>
-                    </ul>
-                  </div>{" "}
-                  {/* --result_area */}
-                </div>
-              </div>
-            ) : (
-              <></>
-            )}
+            {show ? <SearchModal/> : <></>}
             <i><Link to="/heart"><StarSvg /></Link></i> {/* 즐겨찾기 */}
             <i><Link to="/cart"><CartSvg width={"19px"} /></Link></i> {/* 장바구니 */}
-            <i><Link to="/login_form">
-              <MemberSvg width={"20px"} onClick={logoutHandler(getCookie('access_token'))} /></Link>
-            </i> {/* 로그인/회원가입 */}
+            <i><MemberSvg width={"20px"} onClick={logoutHandler.bind(this, getCookie('accessToken'))}/></i> {/* 로그인/회원가입 */}
           </div>
         </div>
 

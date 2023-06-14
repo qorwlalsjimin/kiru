@@ -60,7 +60,7 @@ const Login_form = () => {
 
       setTimeout(() => {
         alert(`${submitForm.email}님 환영합니다`);
-        navigate("/");
+        navigate("/Mainscreen");
       }, 500);
     } catch (error) {
       //응답 실패

@@ -1,13 +1,10 @@
-import { Main } from "../components/main/main";
+import { Main as ProductList } from "../components/product_list/product_list";
 
 
 const Tradition = ({ products, setProducts }) => {
   return (
     <>  
-  
-    
-  
-    <Main
+    <ProductList
       products={products}
       setProducts={setProducts}
     />

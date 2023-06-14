@@ -57,7 +57,6 @@ const Login_form = () => {
       setCookie("accessToken", `${accessToken}`);
       setCookie("expiredTime", `${expiredTime}`);
       setCookie("refreshToken", `${refreshToken}`);
-      console.log(getCookie('accessToken'));
 
       setTimeout(() => {
         alert(`${submitForm.email}님 환영합니다`);
@@ -66,7 +65,7 @@ const Login_form = () => {
     } catch (error) {
       //응답 실패
       if (error.response.status === 401) {
-        alert('로그인이 실패하였습니다. 아이디/비밀번호를 확인해주세요');
+        alert('로그인 실패하였습니다. 아이디/비밀번호를 확인해주세요');
       }
       console.error(error);
     }

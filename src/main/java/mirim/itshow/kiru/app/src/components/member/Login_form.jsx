@@ -46,16 +46,18 @@ const Login_form = () => {
       const response = await axios.post('/auth/login',
         submitForm,
         {headers: {
-          'Authorization': `Bearer ${getCookie("is_login")}`
+          'Authorization': `Bearer ${getCookie("accessToken")}`
         }}
       );
       
       //토큰 받기
       let accessToken = response.data.accessToken;
-      let accessTokenExpiresIn = response.data.accessTokenExpiresIn;
+      let expiredTime = response.data.accessTokenExpiresIn;
       let refreshToken = response.data.refreshToken;
-      console.log(accessToken, accessTokenExpiresIn, refreshToken);
-      setCookie("is_login", `${accessToken}`);
+      setCookie("accessToken", `${accessToken}`);
+      setCookie("expiredTime", `${expiredTime}`);
+      setCookie("refreshToken", `${refreshToken}`);
+      console.log(getCookie('accessToken'));
 
       setTimeout(() => {
         alert(`${submitForm.email}님 환영합니다`);

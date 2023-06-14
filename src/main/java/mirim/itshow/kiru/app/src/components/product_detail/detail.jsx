@@ -32,7 +32,7 @@ export const Detail = ({ cart, setCart }) => {
       try {
         const response = await axios.get(`/api/item/${id}`, {
           headers: {
-            'Authorization': `Bearer ${getCookie("is_login")}`
+            'Authorization': `Bearer ${getCookie("accessToken")}`
           }
         });
         setProduct(response.data);

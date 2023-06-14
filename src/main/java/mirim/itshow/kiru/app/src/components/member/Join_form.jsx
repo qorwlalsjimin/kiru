@@ -83,7 +83,7 @@ const Join_form = (props) => {
       const response = await axios.post('/auth/signup', submitForm,
         {
           headers: {
-            'Authorization': `Bearer ${getCookie("is_login")}`
+            'Authorization': `Bearer ${getCookie("accessToken")}`
           }
         }
       );

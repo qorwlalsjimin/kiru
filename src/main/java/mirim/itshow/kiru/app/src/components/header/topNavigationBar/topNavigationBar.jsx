@@ -1,6 +1,6 @@
 import "./header.css"
 import "./script"
-import { Link, Navigate, Routes, Router, Route } from "react-router-dom";
+import { Link, Navigate, Routes, Router, Route, useNavigate } from "react-router-dom";
 import { Main } from "../../product_list/product_list"
 import { Mainscreen } from "../../mainscreen/Mainscreen";
 
@@ -42,19 +42,20 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
     };
   }, [show]);
 
+  
   // 로그아웃
   function logoutHandler(isLogin) {
     console.log("클릭햇는데..", !!isLogin);
-    if (!!isLogin) {
-      let isLogout = window.confirm("로그아웃하시겠습니까?");
-      if (isLogout) removeCookie('is_login');
-    } else {
-      <Navigate to="/Login_form" />
-    }
-    console.log("흑" + !!isLogin);
+    // if (!!isLogin) {
+    //   let isLogout = window.confirm("로그아웃하시겠습니까?");
+    //   if (isLogout) removeCookie('access_token');
+    // } else {
+    //   <Navigate to="/Login_form" />
+    // }
+    // console.log("흑" + !!isLogin);
     // let isLogout = window.confirm("로그아웃하시겠습니까?");
-    // if (isLogout) removeCookie('is_login');
-    // console.log(getCookie('is_login'));
+    // if (isLogout) removeCookie('access_token');
+    // console.log(getCookie('access_token'));
   }
 
 
@@ -114,8 +115,8 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
             )}
             <i><Link to="/heart"><StarSvg /></Link></i> {/* 즐겨찾기 */}
             <i><Link to="/cart"><CartSvg width={"19px"} /></Link></i> {/* 장바구니 */}
-            <i>
-              <MemberSvg width={"20px"} onClick={logoutHandler(getCookie('is_login'))} />
+            <i><Link to="/login_form">
+              <MemberSvg width={"20px"} onClick={logoutHandler(getCookie('access_token'))} /></Link>
             </i> {/* 로그인/회원가입 */}
           </div>
         </div>

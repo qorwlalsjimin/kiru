@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { getCookie } from "../util/cookie";
+import setToken from "../util/setToken";
 
 export default function Heart() {
 
@@ -17,10 +18,11 @@ export default function Heart() {
     // 상품 데이터 가져오기
     useEffect(() => {
         const fetchData = async (url) => {
+            setToken();
             try {
                 const response = await axios.get(url, {
                     headers: {
-                        'Authorization': `Bearer ${getCookie("is_login")}`
+                        'Authorization': `Bearer ${getCookie("accessToken")}`
                     }
                 });
                 setProducts(response.data);
@@ -46,7 +48,7 @@ export default function Heart() {
         try {
             const response = await axios.get(`/api/heart/all/${country}`, {
                 headers: {
-                    'Authorization': `Bearer ${getCookie("is_login")}`
+                    'Authorization': `Bearer ${getCookie("accessToken")}`
                 }
             });
             console.log(response);

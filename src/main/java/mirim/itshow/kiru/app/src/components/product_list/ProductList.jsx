@@ -112,7 +112,7 @@ export const ProductList = ({ products, setProducts, isBrand, setIsBrand }) => {
     <>
       <div>
         <div className='Banner'>
-          <h2>
+          <h2 className="category_title">
             {cid === '120' && '개량한복'}
             {cid === '110' && '전통한복'}
             {cid === '130' && '신발'}

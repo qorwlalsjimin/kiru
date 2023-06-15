@@ -1,6 +1,6 @@
 import "./header.css"
 import "./search_modal.css"
-import { Link, Navigate, Routes, Router, Route, useNavigate } from "react-router-dom";
+import { Link, NavLink, Navigate, Routes, Router, Route, useNavigate } from "react-router-dom";
 import { ProductList } from "../../product_list/ProductList"
 import { Mainscreen } from "../../mainscreen/Mainscreen";
 import { useEffect, useRef, useState } from "react";
@@ -24,7 +24,7 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
   const [keyword, setKeyword] = useState("");
 
   /* 최근 검색 목록 */
-  let [recentKeywords, setRecentKeywords] = useState(["전통한복"]);
+  let [recentKeywords, setRecentKeywords] = useState(["전통한복", "원피스", "거들썬", "수궁화", "기모노"]);
 
   /* 모달창 유무 */
   const [show, setShow] = useState(0);
@@ -133,7 +133,7 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
                             <input onChange={handleChange} name="keyword"></input>
                           </div>
                         </Grid.Column>
-                        <Grid.Column width={4}>
+                        <Grid.Column width={4} style={{padding: "20px 13px 14px 18px"}}>
                           <span className="submit_text">검색</span>
                         </Grid.Column>
                       </Grid>
@@ -161,10 +161,10 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
 
         <div className="nav">
           <ul className="flex">
-            <li onClick={navHandler}><Link to="/category/120/all"><button>개량</button></Link></li>
-            <li onClick={navHandler}><Link to="/category/110/all"><button >전통</button></Link></li>
-            <li onClick={navHandler}><Link to="/category/130/all"><button >신발</button></Link></li>
-            <li onClick={navHandler}><Link to="/category/140/all"><button >악세사리</button></Link></li>
+            <li onClick={navHandler}><NavLink to="/category/120/all" className="category_name">개량</NavLink></li>
+            <li onClick={navHandler}><NavLink to="/category/110/all" className="category_name">전통</NavLink></li>
+            <li onClick={navHandler}><NavLink to="/category/130/all" className="category_name">신발</NavLink></li>
+            <li onClick={navHandler}><NavLink to="/category/140/all" className="category_name">악세사리</NavLink></li>
           </ul>
         </div>
         <Routes>

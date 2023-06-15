@@ -1,112 +1,94 @@
-header .nav{
+header .nav {
     background-color: #fff;
     height: 5vh;
-    /* box-shadow:  0 5px 20px rgb(0, 22 84 / 10%); */
-    /* justify-content:space-between; */
-    /* padding: 19px 0; */
-    /* text-align: center; */
-   
     padding-inline: 10%;
     box-shadow: 0 6px 20px -10px rgb(203, 201, 201);
 }
 
-
-header{
+header {
     position: sticky;
     top: 0;
     background-color: #fff;
     z-index: 999;
 }
 
-
-.nav ul li a.active button {
+.nav .active {
     color: #894DB8;
-    
-  }
-/* 
-  .nav ul li a.selected button {
-    color: #894DB8;
-  }
-   */
+}
 
-.icons i{
+.nav .category_name{
+    color: #757575;
+}
+
+.nav .category_name:hover{
+    color: #894DB8;
+}
+
+.icons i {
     margin-left: 30px;
     cursor: pointer;
-    /* font-size: 10px; */
-    /* color: black; */
 }
 
-/* 검색 모달 */
-.search_modal{
-  height: 280px;
-  width: 290px;
-  margin: 27px auto;
-  border-radius: 8px;
-  background: #ffffff;
-  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.3);
-}
-/* --검색 모달 */
 
-
-header a{
+header a {
     /* margin-right: 20px; */
     font-size: 15px;
 }
 
-.toggle{
-  display: flex;
-  justify-content: center;
-  align-items: center; 
+.toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.toggle i{
+.toggle i {
     cursor: pointer;
     margin-left: 30px;
 }
 
-li{
+li {
     font-weight: normal;
 }
 
 
 
 
-.global{
+.global {
     cursor: pointer;
 }
 
-.logo img{
-   height: 26px;
-   margin-left: 150px;
+.logo img {
+    height: 26px;
+    margin-left: 150px;
 }
 
-.flex{
+.flex {
     margin-right: -1%;
     margin-top: 28px;
     text-align: center;
     justify-content: center;
 }
 
-.flex li{
+.flex li {
     padding: 10px;
 }
 
 
-.container{
- 
+.container {
+
     padding-top: 24px;
     display: flex;
     justify-content: space-between;
     margin-inline: 14%;
-    
+
 }
 
-.nav li{
+.nav li {
     display: inline;
 }
 
 /* nav */
-.flex button{
+.flex button {
     border: none;
     background-color: #fff;
     margin-inline: 15px;
@@ -115,27 +97,27 @@ li{
 
 
 /* 카테고리 */
-.Banner h2{
-/* margin-top: 5%; */
-display: grid;
-place-items: center;
-font-size: 22px;
-/* margin-bottom: 3px; */
+.Banner h2 {
+    /* margin-top: 5%; */
+    display: grid;
+    place-items: center;
+    font-size: 22px;
+    /* margin-bottom: 3px; */
 }
 
 /* 카테고리 위치 */
-.category{
+.category {
     margin-top: 1.5%;
     /* margin-bottom: 5%; */
     /* display: grid;*/
     justify-content: center;
-    place-items: center; 
+    place-items: center;
     display: flex;
-   
+
 }
 
 
-.cloum{
+.cloum {
     line-height: 23px;
     color: rgb(174, 173, 173);
     margin-inline: 25px;
@@ -144,6 +126,6 @@ font-size: 22px;
 
 
 
-.cloum i{
+.cloum i {
     font-size: 1px;
 }

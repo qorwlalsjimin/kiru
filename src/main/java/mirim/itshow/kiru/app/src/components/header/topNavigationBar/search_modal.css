@@ -1,3 +1,20 @@
+/* 모달창 */
+.modal {
+    position: absolute;
+    font-family: sans-serif;
+    height: 280px;
+    width: 290px;
+    margin-top: 245px;
+    margin-right: 380px;
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.3);
+}
+
+.modal-desk {
+    padding: 12px;
+}
+
 /* 검색창 */
 .search_area {
     margin-bottom: 18px;
@@ -23,50 +40,41 @@
     margin-left: 13px;
 }
 
-/* 검색 결과 리스트 */
-.main {}
-
-.modal {
-    position: absolute;
-    font-family: sans-serif;
-    height: 280px;
-    width: 290px;
-    margin-top: 245px;
-    margin-right: 380px;
-    border-radius: 8px;
-    background: #ffffff;
-    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.3);
-}
-
-.modal ul {
-    list-style-type: none;
-}
-
-.x_icon {
-    text-align: right;
-    margin-left: 5px;
-}
-
-.modal-desk {
-    padding: 12px;
-}
-
 /* 검색어 제출 버튼 */
 span.submit_text {
     font-weight: 500;
     font-size: 15px;
     line-height: 22px;
     cursor: pointer;
+    color: #757575;
 }
 
-/* 최근 검색어 */
+
+/* 검색 결과 리스트 */
+.modal ul {
+    margin-top: 26px;
+    padding: 0px 7px 0px 7px;
+    list-style-type: none;
+}
+
+.search_li{
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center; 
+}
+
 span.keyword{
     font-weight: 500;
     font-size: 15px;
     line-height: 22px;
     cursor:pointer;
+    margin-left: 11px;
 }
 
 .x_icon{
     cursor:pointer;
+    text-align: right;
+    margin-left: 5px;
+    position: absolute;
+    right: 23px;
 }

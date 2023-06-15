@@ -14,6 +14,7 @@ import { ReactComponent as SearchSvg } from "../../svgfiles/search.svg";
 import { ReactComponent as StarSvg } from "../../svgfiles/star.svg";
 import { ReactComponent as CartSvg } from "../../svgfiles/cart.svg";
 import { ReactComponent as MemberSvg } from "../../svgfiles/member.svg";
+import SearchResult from "../../pages/SearchResult";
 
 
 const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) => {
@@ -51,15 +52,15 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
 
   /* input 받기 */
   const handleChange = (e) => {
-    let keyword = e.target.value;
-    console.log(keyword);
+    setKeyword(e.target.value);
   };
 
   /* 검색 기능 */
   function searchHandle(e) {
-    console.log("submit");
-    setRecentKeywords(...recentKeywords, keyword);
-    navigate("/category/140/all")
+    console.log("submit", recentKeywords);
+    // setRecentKeywords(...recentKeywords, keyword);
+    // console.log("추가", recentKeywords);
+    navigate(`/result/${keyword}`)
     // navigate(`/result`)
   }
 
@@ -121,7 +122,7 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
                 <div className="modal" show={show} ref={ref}>
                   <div className="modal-desk">
                     {/* search_area */}
-                    <form className="search_area" onSubmit={searchHandle}>
+                    <div className="search_area">
                       <Grid>
                         <Grid.Column width={12}>
                           <div>
@@ -133,13 +134,14 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
                           </div>
                         </Grid.Column>
                         <Grid.Column width={4} style={{padding: "20px 13px 14px 18px"}}>
-                          <span className="submit_text">검색</span>
+                          <span className="submit_text" onClick={searchHandle}>검색</span>
                         </Grid.Column>
                       </Grid>
-                    </form>
+                    </div>
                     {/* --search_area */}
         
                     {/* result_list */}
+                    {console.log(recentKeywords)}
                     <div className="result_area">
                       <ul className="search_list">
                         {Object.values(recentKeywords).map((keyword, index) => (
@@ -167,8 +169,14 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
           </ul>
         </div>
         <Routes>
+          {/* 메인 */}
           <Route path="/" element={<Mainscreen />} />
+
+          {/* 상품 목록 */}
           <Route path="/category/:cid/:cname" element={<ProductList products={products} setProducts={setProducts} isBrand={isBrand} setIsBrand={setIsBrand} />} />
+          
+          {/* 검색 결과 */}
+          <Route path='/result/:keyword' element={<SearchResult/>} />
         </Routes>
 
       </header>

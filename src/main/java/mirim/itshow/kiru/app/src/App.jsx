@@ -80,10 +80,6 @@ function App() {
 
         {/* 메인화면 */}
         <Route path='/Mainscreen' element={<Mainscreen />} />
-
-        {/* 검색 결과 */}
-        <Route path='/result' element={<SearchResult/>} />
-
       </Routes>
     </BrowserRouter>
   );

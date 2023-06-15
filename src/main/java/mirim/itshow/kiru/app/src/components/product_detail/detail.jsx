@@ -165,10 +165,6 @@ export const Detail = ({ cart, setCart }) => {
     setTotalCount(totalCount);
   };
 
-  
-  /* 상품 정보에서 색상 데이터를 가져오기 */
-  const colors = product.color;
-
   /* 색상 선택 */
   const handleColorClick = (color) => {
     setSelectedColor(color);
@@ -219,11 +215,14 @@ export const Detail = ({ cart, setCart }) => {
     setEndDate(e.target.value);
   };
 
-
+  
   /* product 객체 유효성 검사 */
   if (!product || !product.color || !Array.isArray(product.color)) {
     return null; // 또는 에러 메시지를 표시하거나 기본값을 반환할 수 있습니다.
   }
+  
+  /* 상품 정보에서 색상 데이터를 가져오기 */
+  const colors = product.color;
 
   return (
     product && (

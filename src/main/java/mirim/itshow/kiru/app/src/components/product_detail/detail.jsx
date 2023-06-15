@@ -63,6 +63,7 @@ export const Detail = ({ cart, setCart }) => {
 
 
   /* 상품 정보 가져오기 */
+  // TODO 즐겨찾기에서 로그아웃이 안 됨 
   useEffect(() => {
     const fetchItem = async () => {
       try {
@@ -110,9 +111,12 @@ export const Detail = ({ cart, setCart }) => {
   /* 즐겨찾기에 추가 */
   const navigate = useNavigate();
   const heartHandle = () => {
-    console.log(id);
+    if (!(!!getCookie('accessToken'))) {
+      alert('로그인 후 이용해주세요.');
+      navigate('/login_form');
+      return;
+    }
 
-    console.log(`즐찾: Bearer ${getCookie("accessToken")}`);
     try {
       if (isHeart) { //즐겨찾기 해제
         const response = axios.delete(`/api/heart/delete/${id}`,
@@ -137,6 +141,7 @@ export const Detail = ({ cart, setCart }) => {
         setIsHeart(true)
       }
     } catch (e) {
+      alert('로그인 후 사용해주세요.');
       if (e.response.status === 401) {
         alert('로그인 후 사용해주세요.');
         navigate("/login_form");

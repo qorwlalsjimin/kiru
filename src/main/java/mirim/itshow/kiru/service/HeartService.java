@@ -90,6 +90,8 @@ public class HeartService {
 
     // 전체 해제
     public void deleteAll() {
+        for(Item item : itemRepository.findByHeart(true))
+            item.setHeart(false);
         heartItemRepository.deleteAll();
     }
 }

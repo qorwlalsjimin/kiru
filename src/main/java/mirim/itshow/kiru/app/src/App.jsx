@@ -1,19 +1,17 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import React, { useState } from "react";
-import Home from "./pages/home";
-import Product from "./pages/product";
-import Basket from "./pages/basket";
 import Login_form from "./components/member/LoginForm";
 import Join_form from "./components/member/JoinForm";
 import { Mainscreen } from "./components/mainscreen/Mainscreen"
 import Heart from "./pages/heart";
-import Header from "./components/header/Header";
-import { createContext } from "react";
+import Home from "./pages/home";
+import Product from "./pages/product";
+import Basket from "./pages/basket";
 import SearchResult from "./pages/searchResult";
+import Header from "./components/header/Header";
 
 // context
-export const Size = createContext(null);
   
 function App() {
   const [products, setProducts] = useState([]);

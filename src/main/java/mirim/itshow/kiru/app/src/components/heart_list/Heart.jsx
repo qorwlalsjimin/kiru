@@ -1,4 +1,5 @@
 import styles from "../product_list/product_list.module.css";
+import "./heart.module.css";
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
@@ -77,12 +78,22 @@ export default function Heart() {
     }
 
     // 즐겨찾기 아이콘 클릭
-    function heartHandler() {
-        window.location.reload();
-
+    function btnDeleteHandler() {
+        const response = axios.delete(`/api/heart/delete/all`,
+        {
+          headers: {
+            'Authorization': `Bearer ${getCookie("accessToken")}`
+          }
+            }
+        ); 
+        console.log(response.data);
+        setProducts([]);
     }
+
+
     return (
         <>
+            {/* NAV바 */}
             <div className='Banner'>
                 <h2>즐겨찾기</h2>
 
@@ -122,6 +133,9 @@ export default function Heart() {
                     })}
                 </main>
             </ul>
+
+            {/* 전 상품 삭제 버튼 */}
+            <button className="btn_delete_all" onClick={btnDeleteHandler}>전 상품 삭제</button>
         </>
     )
 }

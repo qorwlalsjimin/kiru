@@ -83,7 +83,7 @@ class CustomSelect extends Component {
   render() {
     const { list } = this.props;
     const { listOpen, headerTitle } = this.state;
-    console.log("커스텀: ", headerTitle);
+    // console.log("커스텀: ", headerTitle);
     return (
       <div className="dd-wrapper">
         <div

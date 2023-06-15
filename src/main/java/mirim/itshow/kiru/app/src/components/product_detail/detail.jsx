@@ -1,21 +1,28 @@
 import styles from "./detail.module.css";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import Detail2 from "./Detail2"
-import axios from "axios";
-import "./Combobox.js"
 import "./detail.css"
-import { CartList } from "../cart/CartList";
-import { TotalCart } from "../cart/TotalCart";
-import Util from '../../util/productUtil'
 
-import CustomSelect from "./CustomSelect.js";
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+
+import axios from "axios";
+
+import Util from '../../util/productUtil'
+import "./Combobox.js"
 import { getCookie } from "../../util/cookie";
 
+import CustomSelect from "./CustomSelect.js";
+import Detail2 from "./Detail2"
+
+import { ReactComponent as Star } from '../../svgfiles/star.svg';
+import { ReactComponent as StarPurple } from '../../svgfiles/star_purple.svg';
+
+
 export const Detail = ({ cart, setCart }) => {
-  
+
   /* 변수 선언 */
   const { id } = useParams(); //상품 id
+
+  const [isHeart, setIsHeart] = useState(false); //즐겨찾기 유무
 
   const [product, setProduct] = useState(null); //상품 정보
 
@@ -52,7 +59,7 @@ export const Detail = ({ cart, setCart }) => {
   //박스 수량 
   const [selectedOptions, setSelectedOptions] = useState({});
   const [totalCount, setTotalCount] = useState(1);
-  const [showTotalInfo, setShowTotalInfo] = useState(false); 
+  const [showTotalInfo, setShowTotalInfo] = useState(false);
 
 
   /* 상품 정보 가져오기 */
@@ -65,6 +72,7 @@ export const Detail = ({ cart, setCart }) => {
           }
         });
         setProduct(response.data);
+        setIsHeart(response.data.heart);
       } catch (error) {
         console.error(error);
       }
@@ -98,6 +106,43 @@ export const Detail = ({ cart, setCart }) => {
   //   };
   //   setCart([...cart.slice(0, idx), cartItem, ...cart.slice(idx + 1)]);
   // };
+
+  /* 즐겨찾기에 추가 */
+  const navigate = useNavigate();
+  const heartHandle = () => {
+    console.log(id);
+
+    console.log(`즐찾: Bearer ${getCookie("accessToken")}`);
+    try {
+      if (isHeart) { //즐겨찾기 해제
+        const response = axios.delete(`/api/heart/delete/${id}`,
+          {
+            headers: {
+              'Authorization': `Bearer ${getCookie("accessToken")}`
+            }
+          }
+        ); 
+        console.log("삭제");
+        setIsHeart(false)
+
+      } else { //즐겨찾기 추가
+        const response = axios.post('/api/heart/new', { "itemId": id },
+          {
+            headers: {
+              'Authorization': `Bearer ${getCookie("accessToken")}`
+            }
+          }
+        );    
+        console.log("추가");
+        setIsHeart(true)
+      }
+    } catch (e) {
+      if (e.response.status === 401) {
+        alert('로그인 후 사용해주세요.');
+        navigate("/login_form");
+      }
+    }
+  }
 
   /* 장바구니에 상품 추가 */
   const handleCart = () => {
@@ -190,7 +235,7 @@ export const Detail = ({ cart, setCart }) => {
       setShowTotalInfo(true);
       return updatedOptions;
     });
-  },[size]);
+  }, [size]);
 
   /* 선택한 상품 박스 지우기 */
   const handleBoxClose = (size) => {
@@ -215,12 +260,12 @@ export const Detail = ({ cart, setCart }) => {
     setEndDate(e.target.value);
   };
 
-  
+
   /* product 객체 유효성 검사 */
   if (!product || !product.color || !Array.isArray(product.color)) {
     return null; // 또는 에러 메시지를 표시하거나 기본값을 반환할 수 있습니다.
   }
-  
+
   /* 상품 정보에서 색상 데이터를 가져오기 */
   const colors = product.color;
 
@@ -241,10 +286,11 @@ export const Detail = ({ cart, setCart }) => {
             <div className={styles.product_info}>
               <p className={styles.seller_store}>{product.provider}</p>
               <p className={styles.product_name}>{product.name}  </p>
-              
+
               {/* 즐겨찾기 */}
-              <div className="heart">
-                <img src="/images/star.svg" alt="" />
+              <div className="heart" onClick={heartHandle}>
+                {console.log(isHeart)}
+                {(isHeart)?<StarPurple/>:<Star/>}
               </div>
 
               {/* 상품 가격 */}
@@ -285,7 +331,7 @@ export const Detail = ({ cart, setCart }) => {
                 {/* <div className={styles.delivery}> */}
                 <i className="ri-information-line"></i>  <p>사이즈 정보</p>
               </div>
-              
+
               {/* select 박스 */}
               <div>
                 <CustomSelect

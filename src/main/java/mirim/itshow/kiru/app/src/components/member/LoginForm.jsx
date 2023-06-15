@@ -49,6 +49,7 @@ const LoginForm = () => {
           'Authorization': `Bearer ${getCookie("accessToken")}`
         }}
       );
+      console.log("로그인: " + response.data.accessToken);
       
       //토큰 받기
       let accessToken = response.data.accessToken;

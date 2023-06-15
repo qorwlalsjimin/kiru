@@ -152,7 +152,7 @@ export const ProductList = ({ products, setProducts, isBrand, setIsBrand }) => {
         <ul>
           <main className={styles.flex_wrap}>
             {visibleProducts.map((product) => {
-              console.log("product: " + product);
+              // console.log("여기 product: " + Object.values(product));
               return (
                 <Product
                   key={`key-${product.itemId}`}

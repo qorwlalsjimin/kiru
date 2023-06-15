@@ -110,7 +110,7 @@ export const Detail = ({ cart, setCart }) => {
 
   /* 즐겨찾기에 추가 */
   const navigate = useNavigate();
-  const heartHandle = () => {
+  const heartHandle = (itemId) => {
     if (!(!!getCookie('accessToken'))) {
       alert('로그인 후 이용해주세요.');
       navigate('/login_form');
@@ -119,25 +119,23 @@ export const Detail = ({ cart, setCart }) => {
 
     try {
       if (isHeart) { //즐겨찾기 해제
-        const response = axios.delete(`/api/heart/delete/${id}`,
+        const response = axios.delete(`/api/heart/delete/${itemId}`,
           {
             headers: {
               'Authorization': `Bearer ${getCookie("accessToken")}`
             }
           }
         ); 
-        console.log("삭제");
         setIsHeart(false)
 
       } else { //즐겨찾기 추가
-        const response = axios.post('/api/heart/new', { "itemId": id },
+        const response = axios.post('/api/heart/new', { "itemId": itemId },
           {
             headers: {
               'Authorization': `Bearer ${getCookie("accessToken")}`
             }
           }
         );    
-        console.log("추가");
         setIsHeart(true)
       }
     } catch (e) {
@@ -293,8 +291,7 @@ export const Detail = ({ cart, setCart }) => {
               <p className={styles.product_name}>{product.name}  </p>
 
               {/* 즐겨찾기 */}
-              <div className="heart" onClick={heartHandle}>
-                {console.log(isHeart)}
+              <div className="heart" onClick={heartHandle.bind(this, id)}>
                 {(isHeart)?<StarPurple/>:<Star/>}
               </div>
 

@@ -14,7 +14,7 @@ import { ReactComponent as SearchSvg } from "../../svgfiles/search.svg";
 import { ReactComponent as StarSvg } from "../../svgfiles/star.svg";
 import { ReactComponent as CartSvg } from "../../svgfiles/cart.svg";
 import { ReactComponent as MemberSvg } from "../../svgfiles/member.svg";
-import SearchResult from "../../pages/SearchResult";
+import SearchResult from "../../pages/searchResult";
 
 
 const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) => {

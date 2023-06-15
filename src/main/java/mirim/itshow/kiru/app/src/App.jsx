@@ -1,16 +1,16 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import React, { useState } from "react";
-import Home from "./pages/Home";
-import Product from "./pages/Product";
-import Basket from "./pages/Basket";
+import Home from "./pages/home";
+import Product from "./pages/product";
+import Basket from "./pages/basket";
 import Login_form from "./components/member/LoginForm";
 import Join_form from "./components/member/JoinForm";
 import { Mainscreen } from "./components/mainscreen/Mainscreen"
-import Heart from "./pages/Heart";
+import Heart from "./pages/heart";
 import Header from "./components/header/Header";
 import { createContext } from "react";
-import SearchResult from "./pages/SearchResult";
+import SearchResult from "./pages/searchResult";
 
 // context
 export const Size = createContext(null);

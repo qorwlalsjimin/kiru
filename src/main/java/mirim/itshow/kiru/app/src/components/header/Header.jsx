@@ -1,20 +1,19 @@
 import "./header.css"
 import "./search_modal.css"
-import { Link, NavLink, Navigate, Routes, Router, Route, useNavigate } from "react-router-dom";
-import { ProductList } from "../../product_list/ProductList"
-import { Mainscreen } from "../../mainscreen/Mainscreen";
+
+import { Link, NavLink, UseNavigate, Routes, Router, Route, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import SearchModal from "./SearchModal";
-import { getCookie, removeCookie } from "../../../util/cookie";
 import RecentSearchList from "./RecentSearchList";
 import { Grid } from "semantic-ui-react";
-
+import { Mainscreen } from "../mainscreen/Mainscreen";
+import { ProductList } from "../product_list/ProductList";
+import { getCookie, removeCookie } from "../../util/cookie";
 
 //svg
-import { ReactComponent as SearchSvg } from "../../../svgfiles/search.svg";
-import { ReactComponent as StarSvg } from "../../../svgfiles/star.svg";
-import { ReactComponent as CartSvg } from "../../../svgfiles/cart.svg";
-import { ReactComponent as MemberSvg } from "../../../svgfiles/member.svg";
+import { ReactComponent as SearchSvg } from "../../svgfiles/search.svg";
+import { ReactComponent as StarSvg } from "../../svgfiles/star.svg";
+import { ReactComponent as CartSvg } from "../../svgfiles/cart.svg";
+import { ReactComponent as MemberSvg } from "../../svgfiles/member.svg";
 
 
 const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) => {
@@ -58,10 +57,10 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
 
   /* 검색 기능 */
   function searchHandle(e) {
-    console.log("흐응?");
-    console.log(recentKeywords);
-    console.log(e.target.value);
+    console.log("submit");
     setRecentKeywords(...recentKeywords, keyword);
+    navigate("/category/140/all")
+    // navigate(`/result`)
   }
 
   /* nav 클릭 */

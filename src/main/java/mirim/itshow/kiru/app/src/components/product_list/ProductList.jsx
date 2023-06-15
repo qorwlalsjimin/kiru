@@ -1,5 +1,5 @@
 import styles from "./product_list.module.css";
-import "../header/topNavigationBar/header.css"
+import "../header/header.css"
 import "./brand_nav.css"
 import { useEffect, useState } from "react";
 import { Product } from "../products/Product";

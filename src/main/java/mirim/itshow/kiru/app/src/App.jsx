@@ -8,8 +8,9 @@ import Login_form from "./components/member/LoginForm";
 import Join_form from "./components/member/JoinForm";
 import { Mainscreen } from "./components/mainscreen/Mainscreen"
 import Heart from "./pages/Heart";
-import Header from "./components/header/topNavigationBar/Header";
+import Header from "./components/header/Header";
 import { createContext } from "react";
+import SearchResult from "./pages/SearchResult";
 
 // context
 export const Size = createContext(null);
@@ -79,6 +80,10 @@ function App() {
 
         {/* 메인화면 */}
         <Route path='/Mainscreen' element={<Mainscreen />} />
+
+        {/* 검색 결과 */}
+        <Route path='/result' element={<SearchResult/>} />
+
       </Routes>
     </BrowserRouter>
   );

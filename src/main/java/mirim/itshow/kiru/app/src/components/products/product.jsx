@@ -12,6 +12,7 @@ export const Product = ({ product }) => {
 
   const item = product;
   const [isHeart, setIsHeart] = useState((!!getCookie('accessToken')) ? item.heart : false); //즐겨찾기 유무 (이렇게 안 해주면 로그인 안 해도 즐겨찾기가 보인다)
+  // console.log(product);
 
   const svgStyles = {
     cursor: "pointer"

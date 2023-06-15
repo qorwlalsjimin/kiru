@@ -1,5 +1,5 @@
 import styles from "../product_list/product_list.module.css";
-import "./heart.module.css";
+import "./heart.css";
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
@@ -13,6 +13,9 @@ export default function Heart() {
 
     // 상품 데이터
     let [products, setProducts] = useState({});
+
+    // 상품 데이터 있는지 없는지
+    let [makeHidden, setMakeHidden] = useState(true); //원래 보여주기
 
     // 카테고리 목록
     let [categorys, setCategorys] = useState({});
@@ -34,7 +37,17 @@ export default function Heart() {
                     }
                 });
                 setProducts(response.data);
-                console.log(products);
+
+                console.log("여기", response.data)
+
+                if ((response.data.length || 0) > 0) {
+                    setMakeHidden(true);
+                    console.log("true 됏자나", response.data.length || 0); //안 보임
+                }
+                else if ((response.data.length || 0) < 1) {
+                    setMakeHidden(false);
+                    console.log("false 됏자나", response.data.length || 0); //글 보임
+                }
             } catch (error) {
                 if (error.status = 401) {
                     alert('로그인 후 이용해주세요.');
@@ -55,9 +68,9 @@ export default function Heart() {
                     'Authorization': `Bearer ${getCookie("accessToken")}`
                 }
             });
-            console.log(response);
+            // console.log(response);
             setCategorys(response.data);
-            console.log("카테고리", categorys);
+            // console.log("카테고리", categorys);
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -66,7 +79,7 @@ export default function Heart() {
 
     // 한복 or 기모노
     function countryHandler(param) {
-        console.log("백: ", param);
+        // console.log("백: ", param);
         setCountry(param); //hanbok, kimono로 바꿈
         categoryDatas(); //카테고리 목록 가져오기
     }
@@ -80,13 +93,13 @@ export default function Heart() {
     // 즐겨찾기 아이콘 클릭
     function btnDeleteHandler() {
         const response = axios.delete(`/api/heart/delete/all`,
-        {
-          headers: {
-            'Authorization': `Bearer ${getCookie("accessToken")}`
-          }
+            {
+                headers: {
+                    'Authorization': `Bearer ${getCookie("accessToken")}`
+                }
             }
-        ); 
-        console.log(response.data);
+        );
+        // console.log(response.data);
         setProducts([]);
     }
 
@@ -111,7 +124,7 @@ export default function Heart() {
             </div>
 
             {/* 카테고리 목록 */}
-            <nav className={`brand_nav ${false && "is_brand"}`}>
+            <nav className={`brand_nav ${makeHidden && "is_brand"}`}>
                 {Object.values(categorys).map((brand) => {
                     return (
                         <span key={brand.categoryId} onClick={brandHandler.bind(this, brand.categoryId)} style={{ marginRight: "10px" }}>{brand.title}</span>
@@ -133,6 +146,13 @@ export default function Heart() {
                     })}
                 </main>
             </ul>
+
+            {/* 즐겨찾기 없을때 */}
+            {/* TODO CSS가 안 먹힘 */}
+            <div className={`nav ${makeHidden ? "notice_hidden" : ""}`}> 
+                {console.log("클래스명: ", makeHidden)}
+                <h2>즐겨찾기를 추가해주세요.</h2>
+            </div>
 
             {/* 전 상품 삭제 버튼 */}
             <button className="btn_delete_all" onClick={btnDeleteHandler}>전 상품 삭제</button>

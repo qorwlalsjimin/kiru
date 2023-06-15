@@ -57,9 +57,7 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
 
   /* 검색 기능 */
   function searchHandle(e) {
-    console.log("submit", recentKeywords);
-    // setRecentKeywords(...recentKeywords, keyword);
-    // console.log("추가", recentKeywords);
+    console.log("추가", recentKeywords);
     navigate(`/result/${keyword}`)
     // navigate(`/result`)
   }
@@ -141,7 +139,7 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
                     {/* --search_area */}
         
                     {/* result_list */}
-                    {console.log(recentKeywords)}
+                    {/* {console.log(recentKeywords)} */}
                     <div className="result_area">
                       <ul className="search_list">
                         {Object.values(recentKeywords).map((keyword, index) => (

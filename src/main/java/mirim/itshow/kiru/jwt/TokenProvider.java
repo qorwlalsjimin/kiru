@@ -136,6 +136,7 @@ public class TokenProvider {
      * @return
      */
     public boolean validateToken(String token) {
+        System.out.println("검증할 토큰"+token);
         try {
             //Jwts 클래스로 비밀키를 전달하고 토큰으로 클레임을 만들 수 있다면 true 반환
             Jwts.parserBuilder().setSigningKey(key).build()

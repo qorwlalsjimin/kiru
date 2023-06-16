@@ -38,15 +38,15 @@ export default function Heart() {
                 });
                 setProducts(response.data);
 
-                console.log("여기", response.data)
+                // console.log("여기", response.data)
 
                 if ((response.data.length || 0) > 0) {
                     setMakeHidden(true);
-                    console.log("true 됏자나", response.data.length || 0); //안 보임
+                    // console.log("true 됏자나", response.data.length || 0); //안 보임
                 }
                 else if ((response.data.length || 0) < 1) {
                     setMakeHidden(false);
-                    console.log("false 됏자나", response.data.length || 0); //글 보임
+                    // console.log("false 됏자나", response.data.length || 0); //글 보임
                 }
             } catch (error) {
                 if (error.status = 401) {
@@ -101,6 +101,7 @@ export default function Heart() {
         );
         // console.log(response.data);
         setProducts([]);
+        window.location.reload();
     }
 
 
@@ -150,7 +151,7 @@ export default function Heart() {
             {/* 즐겨찾기 없을때 */}
             {/* TODO CSS가 안 먹힘 */}
             <div className={`nav ${makeHidden ? "notice_hidden" : ""}`}> 
-                {console.log("클래스명: ", makeHidden)}
+                {/* {console.log("클래스명: ", makeHidden)} */}
                 <h2>즐겨찾기를 추가해주세요.</h2>
             </div>
 

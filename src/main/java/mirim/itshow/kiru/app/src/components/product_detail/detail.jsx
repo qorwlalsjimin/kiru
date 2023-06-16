@@ -72,8 +72,8 @@ export const Detail = ({ cart, setCart }) => {
             'Authorization': `Bearer ${getCookie("accessToken")}`
           }
         });
-        setProduct(response.data);
-        setIsHeart(response.data.heart);
+        setProduct(response.data); //상품 정보
+        setIsHeart(response.data.heart); //즐겨찾기 유무
       } catch (error) {
         console.error(error);
       }
@@ -82,31 +82,6 @@ export const Detail = ({ cart, setCart }) => {
     fetchItem();
   }, []);
 
-
-  /* 상품 수량 조절 */
-  // const handleQuantity = (type) => {
-  //   if (type === "plus") { // +버튼
-  //     setCount(count + 1);
-  //   } else if (type === "minus") { // -버튼 
-  //     if (count === 1) return;
-  //     setCount(count - 1);
-  //   }
-  // };
-
-  /* 장바구니에 중복된 물건을 담을 때 */
-  // const setQuantity = (id, quantity) => {
-  //   const found = cart.filter((el) => el.id === id)[0];
-  //   const idx = cart.indexOf(found);
-  //   const cartItem = {
-  //     id: product.id,
-  //     image: product.image,
-  //     name: product.name,
-  //     quantity: quantity,
-  //     price: product.price,
-  //     provider: product.provider,
-  //   };
-  //   setCart([...cart.slice(0, idx), cartItem, ...cart.slice(idx + 1)]);
-  // };
 
   /* 즐겨찾기에 추가 */
   const navigate = useNavigate();
@@ -147,7 +122,7 @@ export const Detail = ({ cart, setCart }) => {
     }
   }
 
-  /* 장바구니에 상품 추가 */
+  /* TODO 장바구니에 상품 추가 */
   const handleCart = () => {
     alert("장바구니에 추가되었습니다!");
     const appended = []
@@ -174,31 +149,21 @@ export const Detail = ({ cart, setCart }) => {
     setCart(cart => cart.concat(appended));
   };
 
-  /* 알 수 없음 */
-  // const handleOptionSelection = (e) => {
-  //   const { name, value } = e.target;
-  //   setSelectedOptions((prevSelectedOptions) => ({
-  //     ...prevSelectedOptions,
-  //     [name]: {
-  //       value,
-  //       count: 1,
-  //     },
-  //   }));
-  // };
-
 
   /* 상품 수량 조절 */
-  const handleQuantityChange = (name, action) => {
-    setSelectedOptions((prevSelectedOptions) => {
+  const handleQuantityChange = (size, action) => { //사이즈, plus/minus
+    setSelectedOptions((prevSelectedOptions) => { //박스 하나의 정보
       const updatedOptions = { ...prevSelectedOptions };
-      const option = updatedOptions[name];
+      // console.log("업데이트된 옵션", updatedOptions, prevSelectedOptions);
+      const option = updatedOptions[size];
+      // console.log("옵션: ", option);
       if (option) {
         const updatedCount = action === 'plus' ? option.count + 1 : option.count - 1;
-        updatedOptions[name] = {
+        updatedOptions[size] = {
           ...option,
-          count: updatedCount >= 0 ? updatedCount : 0,
+          count: updatedCount >= 1 ? updatedCount : 1, // 1 이하로는 수정 조절 못함
         };
-        calculateTotalCount(updatedOptions);
+        calculateTotalCount(updatedOptions); //총합 계산
       }
       return updatedOptions;
     });

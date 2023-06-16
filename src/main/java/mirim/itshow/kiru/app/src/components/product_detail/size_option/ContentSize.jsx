@@ -8,7 +8,7 @@ import { ReactComponent as ArrowDown } from "../../../svgfiles/arrow_down.svg";
 export default function ContentSize({ headerTitle, listOpen }) {
   return (
     <>
-      {console.log(headerTitle)}
+      {/* {console.log(headerTitle)} */}
       <div className="dd-header-content">
         <div>
           <div className="dd-header-title">Size</div>

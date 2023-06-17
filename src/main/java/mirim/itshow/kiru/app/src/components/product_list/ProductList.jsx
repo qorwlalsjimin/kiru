@@ -34,7 +34,7 @@ export const ProductList = ({ products, setProducts, isBrand, setIsBrand }) => {
   let [isBrandActive, setIsBrandActive] = useState(false);
 
   // 브랜드 nav 클릭했는지
-  let [isBrandsActive, setIsBrandsActive] = useState([]);
+  let [isBrandsActive, setIsBrandsActive] = useState([false, false, false, false]);
 
   // parameter의 값을 useState로 쓰기 위함
   useEffect(() => {
@@ -135,11 +135,18 @@ export const ProductList = ({ products, setProducts, isBrand, setIsBrand }) => {
   function brandHandler(brandId, index) {
     // console.log(index);
     setCname(`brand/${brandId}`);
-    setIsBrandsActive[index] = true;
+    let copy = isBrandsActive;
 
-    Object.values(isBrandActive).map((brand, other) => {
-      if (other != index) setIsBrandsActive[other] = false;
+    copy[index] = true; //선택한 거
+
+    Object.values(isBrandsActive).map((brand, other) => { //선택 안 한 거
+      if (other != index) copy[other] = false;
     })
+
+    setIsBrandsActive(copy);
+
+
+    console.log(isBrandsActive);
   }
 
   // console.log("products" + products)
@@ -183,9 +190,9 @@ export const ProductList = ({ products, setProducts, isBrand, setIsBrand }) => {
         {/* 브랜드 목록 */}
         <nav className={`brand_nav ${isBrand && "is_brand"}`}>
           {Object.values(brands).map((brand, index) => {
-            console.log(index, `${isBrandActive[index] && "active_brand"}`);
+            // console.log(isBrandActive[1], `${isBrandActive[index] && "active_brand"}`);
             return (
-              <span key={brand.categoryId} className={`${isBrandActive[index] && "active_brand"}`} onClick={brandHandler.bind(this, brand.categoryId, index)} style={{ marginRight: "54px" }}>{brand.title}</span>
+              <span key={brand.categoryId} className={`${isBrandsActive[index] && "active_brand"}`} onClick={brandHandler.bind(this, brand.categoryId, index)} style={{ marginRight: "54px" }}>{brand.title}</span>
             );
           })}
         </nav>

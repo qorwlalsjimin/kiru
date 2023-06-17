@@ -10,7 +10,6 @@ import CustomEase from "gsap/CustomEase";
 // import { useFullPage } from 'react-scroll-full-page';
 
 import { FullPage, Slide } from 'react-full-page';
-import Header from "../header/topNavigationBar/topNavigationBar"
 
 
 
@@ -116,18 +115,13 @@ export const Mainscreen = (products, setProducts, handleNavClick) => {
      
      <div className="fullpage">
          
-       <FullPage>
       
-        <Slide>
           
 
             <section className="page_1" ref={(ref) => sectionsRef.current[0] = ref}>
               <img src="/images/Subtract.png" className='people1' alt="" />
             </section>
-        </Slide>
-
-             
-    <Slide>
+      
           <section className="page_2 sectionPin">
           <h1 className='choice'>Category</h1>
 
@@ -156,16 +150,11 @@ export const Mainscreen = (products, setProducts, handleNavClick) => {
 
         <div className="Linearbar"></div>
           </section>
-          </Slide>
-     
-            <Slide>
+          
             
              <section className="page_3" style={{ backgroundColor: "#F5DCEA" }}></section>
              
-              </Slide>
-        
-
-          <Slide>
+            
           <section className="page_4" style={{ backgroundColor: "#6D16DC" }}>
 
             
@@ -261,15 +250,11 @@ export const Mainscreen = (products, setProducts, handleNavClick) => {
 
             </div>
           </section>
-          </Slide> 
-
-          <Slide>
+        
           <section className='page_5'>
             <h1 className='title Merchandise'>Merchandise</h1>
           </section>
-          </Slide>
-
-          <Slide>
+          
           <section className='page_6'>
 
             <div className="titleh1">
@@ -381,9 +366,7 @@ export const Mainscreen = (products, setProducts, handleNavClick) => {
 
 
           </section>
-          </Slide>
-
-          <Slide>
+        
           <section className='page_7'>
 
          <div className="showkimono">
@@ -393,9 +376,7 @@ export const Mainscreen = (products, setProducts, handleNavClick) => {
           {/* <h1 className="kimono">기모노 보러가기</h1> */}
 
           </section>
-          </Slide>
-
-            <Slide>
+         
           <footer className="two">
 
             <div className="footerall2">
@@ -480,11 +461,7 @@ export const Mainscreen = (products, setProducts, handleNavClick) => {
               </div>
             </div>
           </footer>
-          </Slide>
-         
-      
-         
-          </FullPage>
+        
           
           </div>
           </div>

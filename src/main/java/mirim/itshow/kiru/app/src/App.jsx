@@ -1,12 +1,12 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState } from "react";
-import Header from "./components/header/topNavigationBar/topNavigationBar";
+import Header from "./components/header/Header";
 import Home from "./pages/home";
 import Product from "./pages/product";
 import Basket from "./pages/basket";
-import Login_form from "./components/member/Login_form";
-import Join_form from "./components/member/Join_form";
+import Login_form from "./components/member/LoginForm";
+import Join_form from "./components/member/JoinForm";
 import { Mainscreen } from "./components/mainscreen/Mainscreen"
 import Heart from "./pages/Heart";
 

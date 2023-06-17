@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { getCookie } from "../../util/cookie";
-import { Product } from "../products/Product";
+import { Product } from "../products/product";
 
 export default function Heart() {
 

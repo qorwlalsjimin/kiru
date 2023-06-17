@@ -2,7 +2,8 @@ import styles from "./product_list.module.css";
 import "../header/header.css"
 import "./brand_nav.css"
 import { useEffect, useState } from "react";
-import { Product } from "../products/Product";
+import { Product } from "../products/product";
+
 import axios from 'axios';
 import Footer from "../footer/Footer";
 import { useParams } from "react-router-dom";

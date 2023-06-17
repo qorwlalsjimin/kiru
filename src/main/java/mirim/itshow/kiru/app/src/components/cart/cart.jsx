@@ -1,8 +1,8 @@
 import styles from "./cart.module.css";
 import { useState } from "react";
-import { CartHeader } from "./CartHeader";
-import { CartList } from "./CartList";
-import { TotalCart } from "./TotalCart";
+import { CartHeader } from "./cartHeader";
+import { CartList } from "./cartList";
+import { TotalCart } from "./totalCart";
 
 
 export const Cart = ({ cart, setCart }) => {

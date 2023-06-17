@@ -7,11 +7,11 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import Util from '../../util/productUtil'
-import "./Combobox.js"
+import "./combobox.js"
 import { getCookie } from "../../util/cookie";
 
 import CustomSelect from "./CustomSelect.js";
-import Detail2 from "./Detail2"
+import Detail2 from "./detail2"
 
 import { ReactComponent as Star } from '../../svgfiles/star.svg';
 import { ReactComponent as StarPurple } from '../../svgfiles/star_purple.svg';

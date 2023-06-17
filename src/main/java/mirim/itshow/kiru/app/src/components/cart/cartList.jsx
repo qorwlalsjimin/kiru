@@ -1,5 +1,5 @@
 import styles from "./cart.module.css";
-import "../product_detail/Detail"
+
 import Util from '../../util/productUtil'
 
 export const CartList = ({

@@ -4,7 +4,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { getCookie } from "../../util/cookie";
-import { Product } from "../products/Product";
+import { Product } from "../products/product";
+
 
 export default function SearchResult() {
     let [keyword, setKeyword] = useState(useParams().keyword);

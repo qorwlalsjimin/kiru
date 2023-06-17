@@ -34,7 +34,7 @@ export const ProductList = ({ products, setProducts, isBrand, setIsBrand }) => {
   let [isBrandActive, setIsBrandActive] = useState(false);
 
   // 브랜드 nav 클릭했는지
-  let [isBrandsActive, setIsBrandsActive] = useState([false, false, false, false]);
+  let [isBrandsActive, setIsBrandsActive] = useState([true, false, false, false]);
 
   // parameter의 값을 useState로 쓰기 위함
   useEffect(() => {

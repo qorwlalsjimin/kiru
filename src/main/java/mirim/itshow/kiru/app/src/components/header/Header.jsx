@@ -1,6 +1,13 @@
 import "./header.css"
 import "./search_modal.css"
 
+//svg
+import { ReactComponent as SearchSvg } from "../../svgfiles/search.svg";
+import { ReactComponent as SearchArea } from "../../svgfiles/search_area.svg";
+import { ReactComponent as StarSvg } from "../../svgfiles/star.svg";
+import { ReactComponent as CartSvg } from "../../svgfiles/cart.svg";
+import { ReactComponent as MemberSvg } from "../../svgfiles/member.svg";
+
 import { Link, NavLink, UseNavigate, Routes, Router, Route, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import RecentSearchList from "./RecentSearchList";
@@ -8,12 +15,6 @@ import { Grid } from "semantic-ui-react";
 import { Mainscreen } from "../mainscreen/Mainscreen";
 import { ProductList } from "../product_list/ProductList";
 import { getCookie, removeCookie } from "../../util/cookie";
-
-//svg
-import { ReactComponent as SearchSvg } from "../../svgfiles/search.svg";
-import { ReactComponent as StarSvg } from "../../svgfiles/star.svg";
-import { ReactComponent as CartSvg } from "../../svgfiles/cart.svg";
-import { ReactComponent as MemberSvg } from "../../svgfiles/member.svg";
 import SearchResult from "../search_result_list/SearchResult";
 
 
@@ -124,10 +125,7 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
                       <Grid>
                         <Grid.Column width={12}>
                           <div>
-                            <img
-                              className="search_input"
-                              src="images/search_input.png"
-                            />
+                            <SearchArea className="search_input"/>
                             <input onChange={handleChange} name="keyword"></input>
                           </div>
                         </Grid.Column>

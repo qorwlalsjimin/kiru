@@ -33,7 +33,7 @@
     outline: none;
 }
 
-.search_area img {
+.search_area .search_input {
     position: absolute;
 }
 

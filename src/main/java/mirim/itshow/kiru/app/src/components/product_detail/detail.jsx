@@ -102,7 +102,7 @@ export const Detail = ({ cart, setCart }) => {
               'Authorization': `Bearer ${getCookie("accessToken")}`
             }
           }
-        ); 
+        );
         setIsHeart(false)
 
       } else { //즐겨찾기 추가
@@ -112,7 +112,7 @@ export const Detail = ({ cart, setCart }) => {
               'Authorization': `Bearer ${getCookie("accessToken")}`
             }
           }
-        );    
+        );
         setIsHeart(true)
       }
     } catch (e) {
@@ -207,9 +207,9 @@ export const Detail = ({ cart, setCart }) => {
       console.log("**setSelectedOptions", selectedOptions);
       const updatedOptions = { ...selectedOptions }; //이전에 선택했던 옵션
       const option = updatedOptions[selectedSize]; //해당 사이즈를 가져옴
-      
+
       // console.log("**옵션", updatedOptions);
-      
+
       if (!!size == false) return selectedOptions; //사이즈 선택한 상태 아니면 x (렌더링 문제)
 
       // console.log("option: ", option);
@@ -217,7 +217,7 @@ export const Detail = ({ cart, setCart }) => {
         option.count += 1;
       } else {
         if (!(!!selectedColor)) {
-          window.alert('색상 먼저 선택해주세요.'); 
+          window.alert('색상 먼저 선택해주세요.');
           return {};
         }
         updatedOptions[selectedSize] = {
@@ -231,7 +231,7 @@ export const Detail = ({ cart, setCart }) => {
     });
     calculateTotalCount(selectedOptions);
     setShowTotalInfo(true);
-    console.log("여기",selectedOptions);
+    console.log("여기", selectedOptions);
   }, [size]);
 
   /* 선택한 상품 박스 지우기 */
@@ -271,174 +271,172 @@ export const Detail = ({ cart, setCart }) => {
   return (
     product && (
       <>
+        {/* 상품 정보 */}
         <main className={styles.main}>
+          <div className={styles.product_information}>
 
-          {/* 대표 이미지 */}
-          <section className={styles.product}>
-            <div className={styles.product_img}>
-              <img src={product.imageUrl[0]} alt="product" />
-            </div>
-          </section>
-
-          {/* 상품 정보 */}
-          <section className={styles.product}>
-            <div className={styles.product_info}>
-              <p className={styles.seller_store}>{product.provider}</p>
-              <p className={styles.product_name}>{product.name}  </p>
-
-              {/* 즐겨찾기 */}
-              <div className="heart" onClick={heartHandle.bind(this, id)}>
-                {(isHeart)?<StarPurple/>:<Star/>}
+            {/* 대표 이미지 */}
+            <section className={styles.product}>
+              <div className={styles.product_img}>
+                <img src={product.imageUrl[0]} alt="product" />
               </div>
+            </section>
 
-              {/* 상품 가격 */}
-              <span className={styles.price}>
-                {Util.convertPrice(product.price + "")}
-                <span className={styles.unit}>원</span>
-              </span>
+            {/* 상품 정보 */}
+            <section className={styles.product}>
+              <div className={styles.product_info}>
+                <p className={styles.seller_store}>{product.provider}</p>
+                <p className={styles.product_name}>{product.name}  </p>
 
-              {/* 상품 설명 */}
-              <div className="description">
-                <p>{product.description}</p>
-              </div>
-
-              {/* 색상 선택 */}
-              <div className="colorchose">
-                <p>색상을 선택해주세요</p>
-              </div>
-              <div className="colorpick">
-                {colors.map((color, index) => (
-                  <div
-                    key={index}
-                    className={`color-box ${selectedColor === color ? 'selected' : ''}`}
-                    style={{ backgroundColor: colorData[color] }}
-                    onClick={() => handleColorClick(color)}
-                  >
-                    <p key={index} className="color-name" style={{ visibility: selectedColor === color || index === 0 ? 'visible' : 'hidden' }}>
-                      {color}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* 선택 */}
-            <div className="inputboxs">
-              {/* 사이즈 */}
-              <div className="sizeinfo">
-                {/* <div className={styles.delivery}> */}
-                <i className="ri-information-line"></i>  <p>사이즈 정보</p>
-              </div>
-
-              {/* select 박스 */}
-              <div>
-                <CustomSelect
-                  listOpen
-                  resetThenSet={() => { }}
-                  list={[
-                    {
-                      id: 1,
-                      title: "S"
-                    },
-                    {
-                      id: 2,
-                      title: "M"
-                    },
-                    {
-                      id: 3,
-                      title: "L"
-                    }
-                  ]}
-                  setSize={setSize}
-                />
-              </div>
-
-              {/* 날짜 */}
-              <div className="date">
-                <div className="dateBox">
-                  <div className="renttitle">
-                    대여 기간
-                  </div>
-
-                  <div className="datedate">
-                    <input type="date" id="start" name="trip-start" value={startDate} min="2023-06-01" max="2023-07-31" onChange={handleStartDateChange} />
-                    <i className="ri-subtract-fill"></i>
-                    <input type="date" id="start" name="trip-start" value={endDate} min="2023-06-01" max="2023-07-31" onChange={handleEndDateChange} />
-                  </div>
+                {/* 즐겨찾기 */}
+                <div className="heart" onClick={heartHandle.bind(this, id)}>
+                  {(isHeart) ? <StarPurple /> : <Star />}
                 </div>
-              </div>
-            </div>
-            {/* </div> */}
 
-            {/* hr bar */}
-
-            {Object.keys(selectedOptions).map((size) => {
-              const option = selectedOptions[size];
-              console.log("박스 띄워질때", selectedOptions);
-              return option.count !== 0 ? (
-                <div key={size}>
-                  <div className="allBox">
-                    <div className="select_color_size">
-                      {selectedColor && (
-                        <>
-                          <span> {selectedColor}</span>
-                          <span>{colorData[selectedColor]}</span>
-                        </>
-                      )} {`/ ${option.size}`}</div>
-                    <div className="pricesmall">
-                      {Util.convertPrice(product.price * option.count)}원  <i className="ri-close-line" onClick={() => handleBoxClose(size)}></i>
-                    </div>
-
-                    <div className="countbtn">
-                      <button className="m" onClick={() => handleQuantityChange(size, "minus")}>-</button>
-                      <div className="countBox">
-                        <span>{option.count}</span>
-                      </div>
-                      <button className="p" onClick={() => handleQuantityChange(size, "plus")}>+</button>
-                    </div>
-                  </div>
-                </div>
-              ) : null;
-            })}
-
-            {totalCount > 0 && showTotalInfo && (
-              <div className={styles.sum}>
-                <span className={styles.total}>
-                  총 수량 <span className={styles.total_count}>{totalCount}개</span>
+                {/* 상품 가격 */}
+                <span className={styles.price}>
+                  {Util.convertPrice(product.price + "")}
+                  <span className={styles.unit}>원</span>
                 </span>
-                <div className={styles.total_info}>
-                  <span className={styles.total_price}>
-                    <span className={styles.total_unit}>
-                      <div className="datedata">
-                        {startDate} - {endDate}
-                      </div>
-                      총 대여료 </span>
-                    {Util.convertPrice(product.price * totalCount)}원
-                  </span>
+
+                {/* 상품 설명 */}
+                <div className="description">
+                  <p>{product.description}</p>
+                </div>
+
+                {/* 색상 선택 */}
+                <div className="colorchose">
+                  <p>색상을 선택해주세요</p>
+                </div>
+                <div className="colorpick">
+                  {colors.map((color, index) => (
+                    <div
+                      key={index}
+                      className={`color-box ${selectedColor === color ? 'selected' : ''}`}
+                      style={{ backgroundColor: colorData[color] }}
+                      onClick={() => handleColorClick(color)}
+                    >
+                      <p key={index} className="color-name" style={{ visibility: selectedColor === color || index === 0 ? 'visible' : 'hidden' }}>
+                        {color}
+                      </p>
+                    </div>
+                  ))}
                 </div>
               </div>
 
-            )}
+              {/* 선택 */}
+              <div className="inputboxs">
+                {/* 사이즈 */}
+                <div className="sizeinfo">
+                  {/* <div className={styles.delivery}> */}
+                  <i className="ri-information-line"></i>  <p>사이즈 정보</p>
+                </div>
 
-            {/* </div> */}
+                {/* select 박스 */}
+                <div>
+                  <CustomSelect
+                    listOpen
+                    resetThenSet={() => { }}
+                    list={[
+                      {
+                        id: 1,
+                        title: "S"
+                      },
+                      {
+                        id: 2,
+                        title: "M"
+                      },
+                      {
+                        id: 3,
+                        title: "L"
+                      }
+                    ]}
+                    setSize={setSize}
+                  />
+                </div>
 
-            {/* <div className={styles.line}></div> */}
-            <div className="detailbtn">
-              <div className={styles.btn}>
-                <button className={styles.btn_buy}>대여신청하기</button>
-                <button
-                  className={styles.btn_cart}
-                  onClick={() => {
-                    handleCart();
-                  }}
-                >
-                  장바구니
-                </button>
+                {/* 날짜 */}
+                <div className="date">
+                  <div className="dateBox">
+                    <div className="renttitle">
+                      대여 기간
+                    </div>
+
+                    <div className="datedate">
+                      <input type="date" id="start" name="trip-start" value={startDate} min="2023-06-01" max="2023-07-31" onChange={handleStartDateChange} />
+                      <i className="ri-subtract-fill"></i>
+                      <input type="date" id="start" name="trip-start" value={endDate} min="2023-06-01" max="2023-07-31" onChange={handleEndDateChange} />
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </section>
+
+              {Object.keys(selectedOptions).map((size) => {
+                const option = selectedOptions[size];
+                console.log("박스 띄워질때", selectedOptions);
+                return option.count !== 0 ? (
+                  <div key={size}>
+                    <div className="allBox">
+                      <div className="select_color_size">
+                        {selectedColor && (
+                          <>
+                            <span> {selectedColor}</span>
+                            <span>{colorData[selectedColor]}</span>
+                          </>
+                        )} {`/ ${option.size}`}</div>
+                      <div className="pricesmall">
+                        {Util.convertPrice(product.price * option.count)}원  <i className="ri-close-line" onClick={() => handleBoxClose(size)}></i>
+                      </div>
+
+                      <div className="countbtn">
+                        <button className="m" onClick={() => handleQuantityChange(size, "minus")}>-</button>
+                        <div className="countBox">
+                          <span>{option.count}</span>
+                        </div>
+                        <button className="p" onClick={() => handleQuantityChange(size, "plus")}>+</button>
+                      </div>
+                    </div>
+                  </div>
+                ) : null;
+              })}
+
+              {totalCount > 0 && showTotalInfo && (
+                <div className={styles.sum}>
+                  <span className={styles.total}>
+                    총 수량 <span className={styles.total_count}>{totalCount}개</span>
+                  </span>
+                  <div className={styles.total_info}>
+                    <span className={styles.total_price}>
+                      <span className={styles.total_unit}>
+                        <div className="datedata">
+                          {startDate} - {endDate}
+                        </div>
+                        총 대여료 </span>
+                      {Util.convertPrice(product.price * totalCount)}원
+                    </span>
+                  </div>
+                </div>
+
+              )}
+
+              <div className="detailbtn">
+                <div className={styles.btn}>
+                  <button className={styles.btn_buy}>대여신청하기</button>
+                  <button
+                    className={styles.btn_cart}
+                    onClick={() => {
+                      handleCart();
+                    }}
+                  >
+                    장바구니
+                  </button>
+                </div>
+              </div>
+            </section>
+          </div>
         </main>
 
+        {/* 상품 설명 */}
         <section>
           <p id="detailImg">상세 이미지</p>
           <p id="d">* 사용하시는 기기의 해상도에 따라 실제 상품 색감과 다르게 보일 수 있습니다.</p>

@@ -114,7 +114,7 @@ class Initializer implements CommandLineRunner {
                         .description("올가을 최고의 소재 명주! \n그 중에 '연두와 베이지'의 세련미 넘치는 컬러 조합입니다.")
                         .imageUrl(new String[]{"https://i.postimg.cc/1tFSsknB/image.png", "http://www.goldhanbok.com/web/upload/NNEditor/20150926/10_shop1_214428.jpg",
                                 "http://www.goldhanbok.com/web/upload/NNEditor/20150926/07_shop1_214427.jpg"})
-                        .color(new String[]{"녹색&분홍색"})
+                        .color(new String[]{"녹색"})
                         .size(new String[]{"S", "M", "L"}).categoryId(categoryRepository.findById(111L).orElse(null))
                         .country(Country.hanbok)
                         .brand("황금바늘").build(),
@@ -136,7 +136,7 @@ class Initializer implements CommandLineRunner {
                         .description("아이보리 저고리에 잔잔한 꽃과 나비가 노니는 모습을 한땀한땀 손자수로 표현하였습니다. 은은하면서 고급스런 최고급 소재인 명주를 사용하여 우아하게 완성한 '꽃나비'를 만나보세요.")
                         .imageUrl(new String[]{"https://i.postimg.cc/QMwsL8tV/image.png", "https://i.ibb.co/PF3Vc6h/image.jpg",
                                 "https://i.ibb.co/Mfwf79m/image.jpg"})
-                        .color(new String[]{"밝은녹색", "분홍색"})
+                        .color(new String[]{"연두색", "분홍색"})
                         .size(new String[]{"S", "M", "L"}).categoryId(categoryRepository.findById(111L).orElse(null))
                         .country(Country.hanbok)
                         .brand("황금바늘").build(),
@@ -354,7 +354,7 @@ class Initializer implements CommandLineRunner {
                         .price(28000)
                         .description("전통 대슘치마를 모티브로 한 원피스입니다. 밑단이 자연스럽게 퍼져 예쁜 핏을 자랑합니다.  \n어깨 끈과 아랫단 포인트로 사랑스러움을 더했습니다.")
                         .imageUrl(new String[]{"https://i.postimg.cc/442PCh4P/image.png", "https://contents.sixshop.com/thumbnails/uploadedFiles/73034/product/image_1615079603011_2500.jpg", "https://contents.sixshop.com/thumbnails/uploadedFiles/73034/product/image_1615079602655_2500.jpg"})
-                        .color(new String[]{"분홍"})
+                        .color(new String[]{"분홍색"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(121L).orElse(null))
                         .country(Country.hanbok)
@@ -366,7 +366,7 @@ class Initializer implements CommandLineRunner {
                         .price(30000)
                         .description("전통 대슘치마를 모티브로 한 원피스입니다. \n어깨 끈과 아랫단 포인트로 사랑스러움을 더했습니다.")
                         .imageUrl(new String[]{"https://i.postimg.cc/PJ7Q10V9/image.png", "https://contents.sixshop.com/thumbnails/uploadedFiles/73034/product/image_1675651894831_2500.jpg", "https://contents.sixshop.com/thumbnails/uploadedFiles/73034/product/image_1675651895653_2500.jpg"})
-                        .color(new String[]{"밝은녹색"})
+                        .color(new String[]{"연두색"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(121L).orElse(null))
                         .country(Country.hanbok)
@@ -499,7 +499,7 @@ class Initializer implements CommandLineRunner {
                         .price(42000)
                         .description("수궁가거들썬드레스에는 수궁가를 모티브로 제작한 차이킴만의  시그니처프린팅원단을 사용하였습니다.  \n수궁가거들썬드레스로 시원하고 멋스러운 봄, 여름 스타일링을 완성해보세요. ")
                         .imageUrl(new String[]{"https://i.postimg.cc/nLfTRbVt/image.png", "https://m.tchaikim.co.kr/web/product/extra/big/202205/eaa501a95f4b5af7c6770e7af80da514.jpg", "https://m.tchaikim.co.kr/web/product/extra/big/202205/44526a592e398d0eb1557143dbb6667b.jpg"})
-                        .color(new String[]{"하양", "백색"})
+                        .color(new String[]{"백색"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(122L).orElse(null))
                         .country(Country.hanbok)
@@ -523,7 +523,7 @@ class Initializer implements CommandLineRunner {
                         .price(42000)
                         .description("시그니처 프린팅인 사군자와 시원한 면100% 원단을 사용하여 로맨틱한 실루엣으로 연출하여 드레시하게 착용가능한 철릭원피스입니다.")
                         .imageUrl(new String[]{"https://i.postimg.cc/4yy17XPp/image.png", "https://m.tchaikim.co.kr/web/product/extra/big/202304/cee59b9d3db53271e20918642fec4cf5.jpg", "https://m.tchaikim.co.kr/web/product/extra/big/202304/82ba6ebb5c0cf0b54acc584065dfc9b9.jpg"})
-                        .color(new String[]{"밝은녹색"})
+                        .color(new String[]{"연두색"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(122L).orElse(null))
                         .country(Country.hanbok)
@@ -844,7 +844,7 @@ class Initializer implements CommandLineRunner {
                         .price(29000)
                         .description("깨끗한 화이트 컬러에 붉은 꽃 패턴이 매혹적인 이미지를 선사합니다.")
                         .imageUrl(new String[]{"https://i.postimg.cc/Jz6tnHKh/image.png", "https://ae01.alicdn.com/kf/Hbf6d8dff4b494189bd315eef5f2c7729e/-.jpg_Q90.jpg_.webp"})
-                        .color(new String[]{"백색", "분홍"})
+                        .color(new String[]{"백색", "분홍색"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(211L).orElse(null))
                         .country(Country.kimono)
@@ -957,7 +957,7 @@ class Initializer implements CommandLineRunner {
                         .imageUrl(new String[]{"https://i.postimg.cc/4ykYGCPb/image.png",
                                 "https://m.media-amazon.com/images/I/717PK1VnTjL._AC_UL500_.jpg",
                                 "https://m.media-amazon.com/images/I/61d45Gyo53L._AC_UL500_.jpg"})
-                        .color(new String[]{"남색", "분홍", "자색"})
+                        .color(new String[]{"남색", "분홍색", "자색"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(213L).orElse(null))
                         .country(Country.kimono)
@@ -996,7 +996,7 @@ class Initializer implements CommandLineRunner {
                         .imageUrl(new String[]{"https://i.postimg.cc/Dy3GkGYk/image.png",
                                 "https://m.media-amazon.com/images/I/71EQd-zTH0L._AC_UL500_.jpg",
                                 "https://m.media-amazon.com/images/I/71s-sqIsjOL._AC_UL500_.jpg"})
-                        .color(new String[]{"분홍", "황색", "남색"})
+                        .color(new String[]{"분홍색", "황색", "남색"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(213L).orElse(null))
                         .country(Country.kimono)
@@ -1113,7 +1113,7 @@ class Initializer implements CommandLineRunner {
                         .price(18150)
                         .description("모양과 질감이 아름다운 받침대에 산뜻하고 하얀 코끈, 단정한 외관으로 착용감은 편안한 캐주얼부터 세미정장까지 폭넓게")
                         .imageUrl(new String[]{"https://i.imgur.com/7DLdaLP.png", "https://kururi.itembox.design/product/208/000000020876/000000020876-08-l.jpg?t=20230516143908", "https://kururi.itembox.design/product/208/000000020876/000000020876-12-l.jpg?t=20230516143908"})
-                        .color(new String[]{"하늘색"})
+                        .color(new String[]{"천청색"})
                         .size(new String[]{"230", "240", "250"})
                         .categoryId(categoryRepository.findById(231L).orElse(null))
                         .country(Country.kimono)

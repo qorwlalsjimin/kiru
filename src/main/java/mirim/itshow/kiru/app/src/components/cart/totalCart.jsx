@@ -4,7 +4,7 @@ import React, { useContext } from 'react';
 // import styles from "../product_detail/detail.module.css"
 import "./cart.css"
 // import Detail from "../product_detail/detail";
-import { DetailContext } from "../product_detail/Detail";
+// import { DetailContext } from "../product_detail/Detail";
 import Util from '../../util/productUtil'
 
 

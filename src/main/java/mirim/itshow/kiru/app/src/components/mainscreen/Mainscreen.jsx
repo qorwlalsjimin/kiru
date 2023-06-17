@@ -10,6 +10,7 @@ import CustomEase from "gsap/CustomEase";
 // import { useFullPage } from 'react-scroll-full-page';
 
 import { FullPage, Slide } from 'react-full-page';
+import Header from "../header/topNavigationBar/topNavigationBar"
 
 
 

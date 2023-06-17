@@ -1,0 +1,53 @@
+/* .container_page {
+    width: 600vw;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .firstContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: yellow;
+
+    /* position: relative;
+    top: -150px;
+    z-index: 1; 
+  }
+  
+  .lastContainer {
+    display: flex;
+    height: 100vh;
+    background: yellow;
+  }
+  
+  .panel {
+    width: 100vw;
+    height: 100vh;
+    
+  }
+
+.description{
+    position: fixed;
+}
+
+.horizontal{
+    width: 50vw;
+}
+  .red {
+    background: red;
+    margin-left: 2%;
+    
+  }
+  .orange {
+    background: orange;
+  }
+  .purple {
+    background: purple;
+  }
+  .blue {
+    background-color: blue;
+  } */

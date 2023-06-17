@@ -1,18 +1,15 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import React, { useState } from "react";
-import Login_form from "./components/member/LoginForm";
-import Join_form from "./components/member/JoinForm";
-import { Mainscreen } from "./components/mainscreen/Mainscreen"
-import Heart from "./pages/heart";
+import { useState } from "react";
+import Header from "./components/header/topNavigationBar/topNavigationBar";
 import Home from "./pages/home";
 import Product from "./pages/product";
 import Basket from "./pages/basket";
-import SearchResult from "./pages/searchResult";
-import Header from "./components/header/Header";
+import Login_form from "./components/member/Login_form";
+import Join_form from "./components/member/Join_form";
+import { Mainscreen } from "./components/mainscreen/Mainscreen"
+import Heart from "./pages/Heart";
 
-// context
-  
 function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
@@ -24,7 +21,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* <Header/> */}
+      {/* <TopNavigationBar/> */}
       <Header products={products} setProducts={setProducts} handleNavClick={handleNavClick} />
       {/* <Header setProducts={setProducts} /> */}
 
@@ -32,7 +29,6 @@ function App() {
 
       {/* <Route path="/products" element={isMainscreenVisible && <Mainscreen />} /> */}
       <Routes>
-        {/* 메인 */}
         <Route
           path="/main"
           exact={true}
@@ -45,7 +41,6 @@ function App() {
           }
         />
 
-        {/* 상품 상세 */}
         <Route
           path="/product/:id"
           element={
@@ -56,28 +51,18 @@ function App() {
             />
           }
         />
-
-        {/* 장바구니 */}
         <Route
           path="/cart"
           element={
             <Basket cart={cart} setCart={setCart} />
           }
         />
-
-        {/* 즐겨찾기 */}
-        <Route path='/heart' element={<Heart />} />
-        
-        {/* 로그인 */}
-        <Route path='/Login_form' element={<Login_form />} />
-
-        {/* 회원가입 */}
-        <Route path='/Join_form' exact
-          element={<Join_form />}
-        />
-
-        {/* 메인화면 */}
-        <Route path='/Mainscreen' element={<Mainscreen />} />
+        <Route path='/heart' element={<Heart/>}/>
+        <Route path='/Login_form' exact element={<Login_form />} />
+        <Route path='/Join_form' exact element={<Join_form />} />
+     
+   
+      <Route path='/Mainscreen' element={<Mainscreen/>}/>
       </Routes>
     </BrowserRouter>
   );

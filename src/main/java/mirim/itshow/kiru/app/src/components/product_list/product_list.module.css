@@ -1,8 +1,22 @@
-.show_more{
-  background: #fff;
-  padding: 4% 51.7rem; 
-  border: none;
+.category_title{
+  margin-top: 117px;
 }
+
+div.show_more{
+  text-align: center;
+  margin-top: 100px;
+}
+
+span.show_more_text{
+  color: #757575;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+
+  cursor: pointer;
+}
+
 
 .filter {
   display: flex;
@@ -27,8 +41,7 @@
   place-items: center;
   /* 상품 위 아래 간격 */
   gap: 70px 0px; 
-  margin: 0 auto;
-  margin-top: 35px;
+  margin: 35px auto;
   /* background-color: antiquewhite; */
 }
 

@@ -15,6 +15,7 @@ import Detail2 from "./detail2"
 
 import { ReactComponent as Star } from '../../svgfiles/star.svg';
 import { ReactComponent as StarPurple } from '../../svgfiles/star_purple.svg';
+import useDidMountEffect from "../../hooks/useDidMountEffect";
 
 
 export const Detail = ({ cart, setCart }) => {
@@ -43,7 +44,7 @@ export const Detail = ({ cart, setCart }) => {
     "연두색": "#AAD975",
     "연보라색": "#bfb0e3",
     "청색": "#4161dc",
-    "백색": "#FFFFFF",
+    "백색": "#F5F5DC",
     "남색": "#1c4587",
     "흑색": "#000000",
     "청회색": "#9599b9",
@@ -51,7 +52,8 @@ export const Detail = ({ cart, setCart }) => {
     "회색": "#c3c4c8",
     "천청색": "#D5C9DD",
     "갈색": "#9a5e0a",
-    "주황색": "#ff9900"
+    "주황색": "#ff9900",
+    "베이지색": "f3cf98"
   };
 
   const [size, setSize] = useState(''); //사이즈
@@ -118,13 +120,13 @@ export const Detail = ({ cart, setCart }) => {
       if (e.response.status === 401) {
         alert('로그인 후 사용해주세요.');
         navigate("/login_form");
+        window.scrollTo({ top: 0 });
       }
     }
   }
 
   /* TODO 장바구니에 상품 추가 */
   const handleCart = () => {
-    alert("장바구니에 추가되었습니다!");
     const appended = []
     for (const size of Object.keys(selectedOptions)) {
 
@@ -147,11 +149,17 @@ export const Detail = ({ cart, setCart }) => {
     }
     console.log(appended)
     setCart(cart => cart.concat(appended));
+
+    alert("장바구니에 추가되었습니다!");
+    setTimeout(() => {
+      navigate("/cart");
+    }, 500);
   };
 
 
   /* 상품 수량 조절 */
   const handleQuantityChange = (size, action) => { //사이즈, plus/minus
+    console.log("handleQuantityChange");
     setSelectedOptions((prevSelectedOptions) => { //박스 하나의 정보
       const updatedOptions = { ...prevSelectedOptions };
       // console.log("업데이트된 옵션", updatedOptions, prevSelectedOptions);
@@ -171,44 +179,67 @@ export const Detail = ({ cart, setCart }) => {
 
   /* 총합 금액 계산 */
   const calculateTotalCount = (options) => {
+    console.log("calculateTotalCount")
+    // console.log(options);
+    // console.log(selectedOptions);
     let totalCount = 0;
+    console.log("금액 계산 나와", options);
     Object.values(options).forEach((option) => {
       totalCount += option.count;
     });
+    console.log("여기", selectedOptions);
     setTotalCount(totalCount);
   };
 
   /* 색상 선택 */
   const handleColorClick = (color) => {
+    console.log("handleColorClick");
     setSelectedColor(color);
   };
 
 
   /* 사이즈 선택 */
   useEffect(() => {
+    console.log("**size useEffect", size);
     const selectedSize = size;
     setTotalCount(0); //Reset totalCount when size is selected
-    setSelectedOptions((prevSelectedOptions) => {
-      const updatedOptions = { ...prevSelectedOptions };
-      const option = updatedOptions[selectedSize];
+    setSelectedOptions((selectedOptions) => {
+      console.log("**setSelectedOptions", selectedOptions);
+      const updatedOptions = { ...selectedOptions }; //이전에 선택했던 옵션
+      const option = updatedOptions[selectedSize]; //해당 사이즈를 가져옴
+      
+      // console.log("**옵션", updatedOptions);
+      
+      if (!!size == false) return selectedOptions; //사이즈 선택한 상태 아니면 x (렌더링 문제)
+
+      // console.log("option: ", option);
       if (option) {
         option.count += 1;
       } else {
+        if (!(!!selectedColor)) {
+          window.alert('색상 먼저 선택해주세요.'); 
+          return {};
+        }
         updatedOptions[selectedSize] = {
-          value: selectedSize,
-          count: 1,
+          size: selectedSize,
+          color: selectedColor,
+          count: 1
         };
       }
-      calculateTotalCount(updatedOptions);
-      setShowTotalInfo(true);
+
       return updatedOptions;
     });
+    calculateTotalCount(selectedOptions);
+    setShowTotalInfo(true);
+    console.log("여기",selectedOptions);
   }, [size]);
 
   /* 선택한 상품 박스 지우기 */
   const handleBoxClose = (size) => {
-    setSelectedOptions((prevSelectedOptions) => {
-      const updatedOptions = { ...prevSelectedOptions };
+    console.log("handleBoxClose");
+    setSelectedOptions((selectedOptions) => {
+      const updatedOptions = { ...selectedOptions };
+      console.log(updatedOptions);
       delete updatedOptions[size];
       calculateTotalCount(updatedOptions);
       return updatedOptions;
@@ -343,6 +374,7 @@ export const Detail = ({ cart, setCart }) => {
 
             {Object.keys(selectedOptions).map((size) => {
               const option = selectedOptions[size];
+              console.log("박스 띄워질때", selectedOptions);
               return option.count !== 0 ? (
                 <div key={size}>
                   <div className="allBox">
@@ -352,7 +384,7 @@ export const Detail = ({ cart, setCart }) => {
                           <span> {selectedColor}</span>
                           <span>{colorData[selectedColor]}</span>
                         </>
-                      )} / {option.value}</div>
+                      )} {`/ ${option.size}`}</div>
                     <div className="pricesmall">
                       {Util.convertPrice(product.price * option.count)}원  <i className="ri-close-line" onClick={() => handleBoxClose(size)}></i>
                     </div>

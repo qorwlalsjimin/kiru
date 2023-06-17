@@ -1,0 +1,78 @@
+/* 카테고리 이름 */
+.Banner {
+    margin-top: 117px;
+}
+
+.Banner h2.category_title {
+    letter-spacing: 1px;
+    font-family: Pretendard-Regular;
+}
+
+/* 정렬 기준 nav */
+.selection {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+div.cloum {
+    display: block;
+    text-align: center;
+    cursor: pointer;
+}
+
+div.cloum:hover {
+    color: black;
+    transition: 0.2s ease-in;
+}
+
+div.cloum:not(:hover) {
+    transition: 0.2s ease-out;
+}
+
+.active_sort{
+    color: black;
+}
+
+
+/* 브랜드 nav */
+.brand_nav {
+    margin: 40px 0 53px 283px;
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+}
+
+nav.is_brand {
+    visibility: hidden;
+}
+
+.brand_nav span{
+    cursor: pointer;
+}
+
+.brand_nav span:hover {
+    color: #6D16DC;
+    transition: 0.5s ease-out;
+}
+
+.brand_nav span:not(:hover) {
+    transition: 0.5s ease-out;
+}
+
+.active_brand{
+    color:#6D16DC;
+}
+
+
+/* 각 상품 */
+img.product {
+    width: 320px;
+    transition: all 0.7s linear;
+}
+
+img.product:hover {
+    transform: scale(1.3);
+}

@@ -15,7 +15,8 @@ export const Product = ({ product }) => {
   // console.log(product);
 
   const svgStyles = {
-    cursor: "pointer"
+    cursor: "pointer",
+    marginTop: "-43px"
   }
 
   /* 즐겨찾기에 추가 */
@@ -69,7 +70,7 @@ export const Product = ({ product }) => {
 
         </Link>
         {/* 즐겨찾기 버튼 */}
-        <div onClick={heartHandle.bind(this, item.itemId)} style={svgStyles}>
+        <div className={styles.star_icon} onClick={heartHandle.bind(this, item.itemId)} style={svgStyles}>
           <i>{(isHeart) ? <StarPurple /> : <StarSvg />}</i>
         </div>
 

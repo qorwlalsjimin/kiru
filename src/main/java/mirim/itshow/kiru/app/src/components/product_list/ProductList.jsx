@@ -1,6 +1,7 @@
 import styles from "./product_list.module.css";
 import "../header/header.css"
 import "./brand_nav.css"
+import "./product_list.css"
 import { useEffect, useState } from "react";
 import { Product } from "../products/product";
 
@@ -25,7 +26,15 @@ export const ProductList = ({ products, setProducts, isBrand, setIsBrand }) => {
   // let [isBrand, setIsBrand] = useState(true);
 
   // 브랜드 목록
-  let [brands, setBrands] = useState({});
+  let [brands, setBrands] = useState({ "": "" });
+
+  // Sort기준 nav 클릭했는지
+  let [isAllActive, setIsAllActive] = useState(true);
+  let [isBestActive, setIsBestActive] = useState(false);
+  let [isBrandActive, setIsBrandActive] = useState(false);
+
+  // 브랜드 nav 클릭했는지
+  let [isBrandsActive, setIsBrandsActive] = useState([]);
 
   // parameter의 값을 useState로 쓰기 위함
   useEffect(() => {
@@ -92,14 +101,45 @@ export const ProductList = ({ products, setProducts, isBrand, setIsBrand }) => {
   // All Best Brand 클릭
   function categoryHandler(param) {
     setCname(param); //all, best, brand로 바꿈
+
+    //TODO 코드 줄이기
+    switch (param) {
+      case "all":
+        setIsAllActive(true);
+        setIsBestActive(false);
+        setIsBrandActive(false);
+
+        setIsBrand(true);
+        break;
+      case "best":
+        setIsAllActive(false);
+        setIsBestActive(true);
+        setIsBrandActive(false);
+
+        setIsBrand(true);
+        break;
+      case "brand":
+        setIsAllActive(false);
+        setIsBestActive(false);
+        setIsBrandActive(true);
+
+        setIsBrand(false);
+        break;
+      default:
+        break;
+    }
     brandDatas(); //브랜드 목록 가져오기
-    if (param == "brand") setIsBrand(false);
-    else setIsBrand(true);
   }
 
   // 브랜드 목록 클릭
-  function brandHandler(brandId) {
+  function brandHandler(brandId, index) {
+    // console.log(index);
     setCname(`brand/${brandId}`);
+    setIsBrandsActive[index] = true;
+
+    Object.values(isBrandActive).map((brand, other) => {
+      if (other != index) setIsBrandsActive[other] = false;
+    })
   }
 
   // console.log("products" + products)
@@ -122,18 +162,18 @@ export const ProductList = ({ products, setProducts, isBrand, setIsBrand }) => {
 
           {/* All Best Brand 정렬 */}
           <div className="selection">
-            <div className="cloum c1" onClick={categoryHandler.bind(this, 'all')}>
-              <i className="ri-checkbox-blank-circle-fill"></i>
+            <div className={`cloum c1 ${isAllActive && "active_sort"}`} onClick={categoryHandler.bind(this, 'all')}>
+              <i className="ri-checkbox-blank-circle-fill"></i><br />
               All
             </div>
 
-            <div className="cloum c2" onClick={categoryHandler.bind(this, 'best')}>
-              <i className="ri-checkbox-blank-circle-fill"></i>
+            <div className={`cloum c2 ${isBestActive && "active_sort"}`} onClick={categoryHandler.bind(this, 'best')}>
+              <i className="ri-checkbox-blank-circle-fill"></i><br />
               Best
             </div>
 
-            <div className="cloum c3" onClick={categoryHandler.bind(this, 'brand')}>
-              <i className="ri-checkbox-blank-circle-fill"></i>
+            <div className={`cloum c3 ${isBrandActive && "active_sort"}`} onClick={categoryHandler.bind(this, 'brand')}>
+              <i className="ri-checkbox-blank-circle-fill"></i><br />
               Brand
             </div>
 
@@ -142,9 +182,10 @@ export const ProductList = ({ products, setProducts, isBrand, setIsBrand }) => {
 
         {/* 브랜드 목록 */}
         <nav className={`brand_nav ${isBrand && "is_brand"}`}>
-          {Object.values(brands).map((brand) => {
+          {Object.values(brands).map((brand, index) => {
+            console.log(index, `${isBrandActive[index] && "active_brand"}`);
             return (
-              <span key={brand.categoryId} onClick={brandHandler.bind(this, brand.categoryId)} style={{ marginRight: "10px" }}>{brand.title}</span>
+              <span key={brand.categoryId} className={`${isBrandActive[index] && "active_brand"}`} onClick={brandHandler.bind(this, brand.categoryId, index)} style={{ marginRight: "54px" }}>{brand.title}</span>
             );
           })}
         </nav>
@@ -166,9 +207,11 @@ export const ProductList = ({ products, setProducts, isBrand, setIsBrand }) => {
 
         {/* 더보기 */}
         {products && !showMore && products.length > 16 && (
-          <button className={styles.show_more} onClick={handleShowMore}>
-            더보기
-          </button>
+          <div className={styles.show_more} >
+            <span className={styles.show_more_text} onClick={handleShowMore}>
+              더보기
+            </span>
+          </div>
         )}
       </div>
 

@@ -6,6 +6,9 @@ import axios from 'axios';
 import { getCookie, setCookie } from '../../util/cookie';
 
 const LoginForm = () => {
+  
+  window.scrollTo({ top: 0 });
+  
   const navigate = useNavigate();
 
   // 로그인 폼

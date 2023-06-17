@@ -15,9 +15,9 @@ const Footer = () => {
                             <li className="bo"><span style={{ fontWeight: "bold" }}>도와드릴까요?</span></li>
 
                             <div className="fontsize">
-                                <li><a href="#"><i className="ri-phone-fill"></i>전화 문의</a></li>
-                                <li><a href="#"><i className="ri-mail-line"></i>문의하기</a></li>
-                                <li><a href="#"><i className="ri-map-pin-fill"></i>수거함 찾기</a></li>
+                                <li><a href="#"><i className="ri-phone-fill"></i><span>전화 문의</span></a></li>
+                                <li><a href="#"><i className="ri-mail-line"></i><span>문의하기</span></a></li>
+                                <li><a href="#"><i className="ri-map-pin-fill"></i><span>수거함 찾기</span></a></li>
                             </div>
 
 
@@ -27,9 +27,9 @@ const Footer = () => {
                             <li className="bo"><span style={{ fontWeight: "bold" }}>거래</span></li>
 
                             <div className="fontsize">
-                                <li><a href="#">주문 내역</a></li>
-                                <li><a href="#">반품&환불</a></li>
-                                <li><a href="#">FAQ</a></li>
+                                <li><a href="#"><span>주문 내역</span></a></li>
+                                <li><a href="#"><span>반품&환불</span></a></li>
+                                <li><a href="#"><span>FAQ</span></a></li>
                             </div>
 
                         </div>
@@ -38,18 +38,18 @@ const Footer = () => {
                         <div className="bold">
                             <li className="bo"><span style={{ fontWeight: "bold" }}>입점 브랜드</span></li>
                             <div className="fontsize">
-                                <li><a href="#">기모노 브랜드</a></li>
-                                <li><a href="#">한복 브랜드</a></li>
+                                <li><a href="#"><span>기모노 브랜드</span></a></li>
+                                <li><a href="#"><span>한복 브랜드</span></a></li>
                             </div>
                         </div>
 
                         <div className="bold">
                             <li className="bo"><span style={{ fontWeight: "bold" }}>법적 고지 및 이용약관</span></li>
                             <div className="fontsize">
-                                <li><a href="#">이용약관</a></li>
-                                <li><a href="#">개인정보 처리방침</a></li>
-                                <li><a href="#">사업자정보확인</a></li>
-                                <li><a href="#">판매 약관</a></li>
+                                <li><a href="#"><span>이용약관</span></a></li>
+                                <li><a href="#"><span>개인정보 처리방침</span></a></li>
+                                <li><a href="#"><span>사업자정보확인</span></a></li>
+                                <li><a href="#"><span>판매 약관</span></a></li>
                             </div>
 
                         </div>

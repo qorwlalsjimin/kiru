@@ -1,29 +1,43 @@
 .dd-header-content {
-    display: flex;
-  }
-  
-  .dd-header-title {
-    font-weight: 800;
-    font-size: 14px;
-    line-height: 22px;
-    margin-left: 16px;
-  }
-  
-  .dd-header-ex {
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 14px;
-    color: #bdbdbd;
-    margin-left: 10px;
-  }
-  
-  .dd-header-ex-off {
-    /* disappear explanation when options appear */
-    opacity: 0;
-  }
-  
-  .dd-header-icon {
-    margin-right: 20px;
-    margin-left: 200px;
-  }
-  
+  display: flex;
+}
+
+.dd-header-content .size{
+  margin-left: 334px;
+}
+
+.dd-header-title {
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 22px;
+  margin: 13px 16px;
+}
+
+/* 선택된 사이즈 */
+.dd-header-size {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 19px;
+
+  margin-left: 16px;
+
+  position: relative;
+  bottom: 8px;
+}
+
+.dd-header-ex {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #bdbdbd;
+  margin-left: 10px;
+}
+
+.dd-header-ex-off {
+  opacity: 0;
+}
+
+.dd-header-icon {
+  margin-left: 235px;
+}

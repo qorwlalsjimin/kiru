@@ -11,10 +11,10 @@ export default function ContentSize({ headerTitle, listOpen }) {
       {/* {console.log(headerTitle)} */}
       <div className="dd-header-content">
         <div>
-          <div className="dd-header-title">Size</div>
-          <div className="">{headerTitle}</div>
+          <div className="dd-header-title">사이즈</div>
+          <div className="dd-header-size">{headerTitle}</div>
         </div>
-        <div className="dd-header-icon">
+        <div className="dd-header-icon size">
           {listOpen ? <ArrowUp /> : <ArrowDown />}
         </div>
       </div>

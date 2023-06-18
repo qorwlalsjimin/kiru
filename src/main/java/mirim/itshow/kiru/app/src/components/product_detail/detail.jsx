@@ -1,4 +1,3 @@
-import styles from "./detail.module.css";
 import "./detail.css"
 
 import { useEffect, useState } from "react";
@@ -270,24 +269,24 @@ export const Detail = ({ cart, setCart }) => {
 
   return (
     product && (
-      <div className={styles.detail_all}>
+      <div className="detail_all">
         {/* 상품 정보 */}
-        <main className={styles.main}>
-          <div className={styles.product_information}>
+        <main className="main">
+          <div className="product_information">
 
             {/* 대표 이미지 */}
-            <section className={styles.product}>
-              <div className={styles.product_img}>
-                <img src={product.imageUrl[0]}  className={styles.img_represent} />
-                <img src="/images/shadow.png" className={styles.img_shadow} />
+            <section className="product">
+              <div className="product_img">
+                <img src={product.imageUrl[0]}  className="img_represent" />
+                <img src="/images/shadow.png" className="img_shadow" />
               </div>
             </section>
 
             {/* 상품 정보 */}
-            <section className={styles.product}>
-              <div className={styles.product_info}>
-                <p className={styles.seller_store}>{product.provider}</p>
-                <p className={styles.product_name}>{product.name}  </p>
+            <section className="product">
+              <div className="product_info">
+                <p className="seller_store">{product.provider}</p>
+                <p className="product_name">{product.name}  </p>
 
                 {/* 즐겨찾기 */}
                 <div className="heart" onClick={heartHandle.bind(this, id)}>
@@ -295,9 +294,9 @@ export const Detail = ({ cart, setCart }) => {
                 </div>
 
                 {/* 상품 가격 */}
-                <span className={styles.price}>
+                <span className="price">
                   {Util.convertPrice(product.price + "")}
-                  <span className={styles.unit}>원</span>
+                  <span className="unit">원</span>
                 </span>
 
                 {/* 상품 설명 */}
@@ -329,7 +328,6 @@ export const Detail = ({ cart, setCart }) => {
               <div className="inputboxs">
                 {/* 사이즈 */}
                 <div className="sizeinfo">
-                  {/* <div className={styles.delivery}> */}
                   <i className="ri-information-line"></i>  <p>사이즈 정보</p>
                 </div>
 
@@ -402,13 +400,13 @@ export const Detail = ({ cart, setCart }) => {
               })}
 
               {totalCount > 0 && showTotalInfo && (
-                <div className={styles.sum}>
-                  <span className={styles.total}>
-                    총 수량 <span className={styles.total_count}>{totalCount}개</span>
+                <div className="sum">
+                  <span className="total">
+                    총 수량 <span className="total_count">{totalCount}개</span>
                   </span>
-                  <div className={styles.total_info}>
-                    <span className={styles.total_price}>
-                      <span className={styles.total_unit}>
+                  <div className="total_info">
+                    <span className="total_price">
+                      <span className="total_unit">
                         <div className="datedata">
                           {startDate} - {endDate}
                         </div>
@@ -421,10 +419,10 @@ export const Detail = ({ cart, setCart }) => {
               )}
 
               <div className="detailbtn">
-                <div className={styles.btn}>
-                  <button className={styles.btn_buy}>대여신청하기</button>
+                <div className="btn">
+                  <button className="btn_buy">대여신청하기</button>
                   <button
-                    className={styles.btn_cart}
+                    className="btn_cart"
                     onClick={() => {
                       handleCart();
                     }}
@@ -438,7 +436,7 @@ export const Detail = ({ cart, setCart }) => {
         </main>
 
         {/* 상품 설명 */}
-        <section>
+        {/* <section>
           <p id="detailImg">상세 이미지</p>
           <p id="d">* 사용하시는 기기의 해상도에 따라 실제 상품 색감과 다르게 보일 수 있습니다.</p>
           <div className="detailimg">
@@ -447,8 +445,10 @@ export const Detail = ({ cart, setCart }) => {
             <img src={product.imageUrl[2]} alt="product" />
           </div>
 
-        </section>
-        <Detail2 />
+        </section> */}
+
+        {/* 리뷰 */}
+        {/* <Detail2 /> */}
       </div>
     )
   );

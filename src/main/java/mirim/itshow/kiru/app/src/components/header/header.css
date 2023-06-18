@@ -12,6 +12,11 @@ header {
     z-index: 999;
 }
 
+.nav li.left{
+    margin-right: 50px;
+}
+
+
 .nav .active li {
     color: #894DB8;
 }

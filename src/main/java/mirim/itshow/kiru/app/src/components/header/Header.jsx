@@ -162,9 +162,9 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
 
         <div className="nav">
           <ul className="flex">
-            <NavLink to="/category/120/all" className="category_name"><li onClick={navHandler}>개량</li></NavLink>
-            <NavLink to="/category/110/all" className="category_name"><li onClick={navHandler}>전통</li></NavLink>
-            <NavLink to="/category/130/all" className="category_name"><li onClick={navHandler}>신발</li></NavLink>
+            <NavLink to="/category/120/all" className="category_name"><li onClick={navHandler} className="left">개량</li></NavLink>
+            <NavLink to="/category/110/all" className="category_name"><li onClick={navHandler} className="left">전통</li></NavLink>
+            <NavLink to="/category/130/all" className="category_name"><li onClick={navHandler} className="left">신발</li></NavLink>
             <NavLink to="/category/140/all" className="category_name"><li onClick={navHandler}>악세사리</li></NavLink>
           </ul>
         </div>

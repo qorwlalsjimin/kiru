@@ -43,6 +43,7 @@
 .wrapper_login .logintext .signup_btn {
     float: right;
     width: 50%;
+    padding-top: 0.5px;
     border-bottom: solid 1px #BDBDBD;
     border-radius: 2px;
 }
@@ -93,6 +94,7 @@ input::placeholder {
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
+    font-family: Pretendard-Regular;
     line-height: 29px;
 
     margin-top: 36px;
@@ -119,6 +121,7 @@ input::placeholder {
 
 .idremem p {
     margin-left: 11px;
+    cursor: pointer;
 }
 
 /* 로그인 버튼 */

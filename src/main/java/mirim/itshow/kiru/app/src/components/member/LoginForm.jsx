@@ -107,10 +107,9 @@ const LoginForm = () => {
             <br />
 
             <label className="idremem_container">
-              <div className="idremem">
+              <div className="idremem" onClick={handleRememberIDChange}>
                 {/* <input type="checkbox" checked={group.rememberID} onChange={handleChange} /> */}
-                {(isChecked) ? <Checked onClick={handleRememberIDChange}/> : <Unchecked onClick={handleRememberIDChange}/>}
-                {console.log(isChecked)}
+                {(isChecked) ? <Checked/> : <Unchecked />}
                 <p className="child">아이디 기억하기</p>
               </div>
             </label>

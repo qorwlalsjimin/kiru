@@ -42,6 +42,7 @@ section{
 .page_3{
   height: 300vh;
   background: linear-gradient( to bottom, #F5DCEA, #DCEDF5, #F5F3DC );
+  position: relative;
 }
 
 .untact, .travel,.collaboration {
@@ -51,23 +52,28 @@ section{
 }
 
 .backtext{
-  margin-top: 4.81%;
+  top: 42.8%;
+  position: absolute;
+  /* margin-top: 4.81%; */
+  left: 44%;
 }
 
 .backtext h1{
   color: #DC16D4;
-  margin-left: 43.4%;
+ 
   position: absolute;
   transform: rotate(15deg); 
 }
 .backtext2{
+  top: 72.7%;
   position: absolute;
-  margin-top: 18.6%;
+  /* margin-top: 18.6%; */
 }
 
 .backtext2 h1{
+ 
   color: #DC16D4;
-  margin-left: 22.3%;
+  margin-left: 23.5%;
   transform: rotate(-15deg);
 }
 
@@ -78,7 +84,7 @@ background-color: #fff;
 width: 700px;
 height: 700px;
 border-radius: 50%;
-position: relative;
+position: absolute;
 
 top: 7%;
 left: 7%;
@@ -90,11 +96,10 @@ transform: rotate(-18deg);
 .untact{
   background-color: #fff;
   width: 700px;
-  
 	height: 700px;
-  position: relative;
+  position: absolute;
   left: 50%;
-  top: 17%;
+  top: 35%;
   transform: rotate(15deg);
 
 }
@@ -102,18 +107,16 @@ transform: rotate(-18deg);
 
 
 .collaboration{
-  top: 25%;
+  top: 65%;
   left: 20%;
   width: 700px;
   height: 700px;
   border-radius: 50%;
-  position: relative;
+  position: absolute;
   background-color: #fff;
   transform: rotate(-15deg);
   
 }
-
-
 
 
 
@@ -197,27 +200,38 @@ transform: rotate(-18deg);
  
 }
 
+.page_7{
+  position: relative;
+}
+
+
 .skimono{
   color: #ffffff;
-  /* margin-left: 30px; */
-  place-items: center;
-  display: grid;
-  /* padding-top: 20%; */
   position: absolute;
+  /* margin-top: 30px; */
+  top: 50%;
+ 
   left: 37%;
-  margin-top: 25%;
   font-size: 5rem;
   /* background-color: #904ED4 */
 }
 
 
-.kimono{
-  color: #fff;
-  display: grid;
-  place-items: center;
-  background-color: #acacc5;
-  /* place-items: center; */
+body::-webkit-scrollbar {
+  width: 10px;  /* 스크롤바의 너비 */
 }
+
+body::-webkit-scrollbar-thumb {
+  height: 14%; /* 스크롤바의 길이 */
+  background: #a3a3a5; /* 스크롤바의 색상 */
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-track {
+ 
+}
+
+
 
 .brand{
     width: 50px;

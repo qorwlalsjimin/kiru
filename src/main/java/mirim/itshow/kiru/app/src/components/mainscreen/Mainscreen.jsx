@@ -13,9 +13,8 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 
-gsap.registerPlugin(ScrollToPlugin);
-gsap.registerPlugin(CustomEase);
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollToPlugin,CustomEase,ScrollTrigger );
+
 
 
 
@@ -25,33 +24,38 @@ export const Mainscreen = () => {
 
 
   //fullpage
-//   gsap.registerPlugin(ScrollTrigger);
-//   gsap.registerPlugin(ScrollToPlugin);
+  // gsap.registerPlugin(ScrollTrigger);
+  // gsap.registerPlugin(ScrollToPlugin);
   
-//   let sections = gsap.utils.toArray("#panner");
+  // let sections = gsap.utils.toArray("#panner");
   
-//   function goToSection(i) {
-//     gsap.to(window, {
-//       scrollTo: { y: i * window.innerHeight, autoKill: false, ease: "Power3.easeInOut" },
-//       duration: 0.85
-//     });
-//   }
+  // function goToSection(i) {
+  //   gsap.to(window, {
+  //     scrollTo: { y: i * window.innerHeight, autoKill: false, ease: "Power3.easeInOut" },
+  //     duration: 0.85
+  //   });
+  // }
   
   
-//   sections.forEach((eachPanel, i) => {
+  // sections.forEach((eachPanel, i) => {
     
   
-//     ScrollTrigger.create({
-//       trigger: eachPanel,
-//       onEnter: () => goToSection(i)
-//     });
+  //   ScrollTrigger.create({
+  //     trigger: eachPanel,
+  //     onEnter: () => goToSection(i)
+  //   });
   
-//     ScrollTrigger.create({
-//       trigger: eachPanel,
-//       start: "bottom bottom",
-//       onEnterBack: () => goToSection(i)
-//     });
-//   });
+  //   ScrollTrigger.create({
+  //     trigger: eachPanel,
+  //     start: "bottom bottom",
+  //     onEnterBack: () => goToSection(i)
+  //   });
+  // });
+
+
+  //scrollsmooth
+ 
+
 
 
 //slide
@@ -187,32 +191,24 @@ useEffect(() => {
 }, []);
 
 
-const travelRef = useRef(null);
-  const _01Ref = useRef(null);
+let reveal = document.querySelectorAll(".reveal") 
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+reveal.forEach( (el) => {
+  let headings = el.querySelectorAll(".object, .object .num" )
 
-    const travelTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: travelRef.current,
-        start: 'top 50%', // travel 요소의 머리가 화면 중앙에서 시작하면 애니메이션 실행
-        end: 'bottom 50%', // travel 요소의 머리가 화면 하단에 도달하면 애니메이션 종료
-        toggleActions: 'play none none none', // 스크롤 방향에 따라 애니메이션 재생 또는 중지
-      },
-    });
-
-    travelTimeline
-      .from(travelRef.current, {
-        y: 200, // travel 요소가 아래에서 올라오는 애니메이션
-        opacity: 0,
-        duration: 1,
+  let tl = gsap.timeline ()
+  .from(headings, {y:80, stagger:1, opacity:0, duration:1.5, ease:"power3.out"})
+  // .from(btn, {y:80, opacity:0, duration:1, ease:"power3.out"},'-=0.6')
+  
+  ScrollTrigger.create ({
+		  trigger: el,
+			start: "center 100%", 
+      end:"top 50%",
+			markers: true,
+			toggleActions: "play none none reverse ",
+      animation:tl
       })
-      .to(_01Ref.current, {
-        scale: 1, // _01 요소가 나타나는 애니메이션
-        duration: 1,
-      });
-  }, []);
+})
 
 
   
@@ -342,8 +338,9 @@ const line1Ref = useRef(null);
     });
   }, []);
 
-  
-  
+
+ 
+
 //line move
 
 
@@ -430,40 +427,48 @@ const line1Ref = useRef(null);
             <Slide> */}
             
              <section className="page_3 panner " id="map" >
-              
+            
+          
+             <article class = "reveal">
                 <div ref={objectRefs.current[0]} className="travel object" data-value={15} data-rotate={-18} >
                 <div className="figure-content" id='f1'>
-                    <h1  className="_01">#01</h1>
+                    <h1  className="_01 num">#01</h1>
                   <h1 className="_01-title">TRAVEL</h1>
                   <h1 className="figure-ps">한복과 기모노를 입고<br/>  즐거운 여행을 떠나보세요!</h1>
                 </div>
                 </div>
+               </article>
+                            
 
-              
+               <article class = "reveal">             
                 <div ref={objectRefs.current[1]} className="untact object" data-value={16} data-rotate={15}  >
                   <div className="figure-content" id='f2'>
-                      <h1 className="_02">#02</h1>
+                      <h1 className="_02 num">#02</h1>
                       <h1 className="_02-title">UNTACT&nbsp;SURVICE</h1>
                       <h1 className="figure-ps">한국이나 일본 숙소에서 받고 <br /> 역에서 반납해주세요!</h1>
                   </div>
                 </div>
-                <div className="backtext">
+                <div className="backtext btt">
                       <h1 className='_02-title'>UNTACT&nbsp;SURVICE</h1>
-                  </div>
-                
+                </div>
+                </article>
+                            
            
+
+                <article class = "reveal">
                 <div ref={objectRefs.current[2]} className="collaboration object" data-value={12} data-rotate={-15}  >
                   <div className="figure-content" id='f3'>
-                      <h1 className="_03">#03</h1>
+                      <h1 className="_03 num">#03</h1>
                       <h1 className="_03-title">COLLABORATION</h1>
                       <h1 className="figure-ps">당신의 취향에 맞는 <br/> 한복과 기모노를 선택해보세요</h1>
                   </div>
                 </div>
-                <div className="backtext2">
+                <div className="backtext2 btt">
                 <h1 className="_03-title">COLLABORATION</h1>
              
                 </div>
-                
+                </article>
+                            
 
              </section>
             
@@ -477,7 +482,7 @@ const line1Ref = useRef(null);
             <div className="wall" >
               <div className="openevent">#open event 컨셉 사진의 주인공이 되어 보세요!</div>
 
-              <div className="studioshot" >
+              <div className="studioshot" id='quote'>
                 <h1>studio<br/>shot</h1>
             
               </div>
@@ -791,8 +796,7 @@ const line1Ref = useRef(null);
           <Link to="/main_kimono"> <h1 className=' skimono' >기모노 보러가기</h1></Link>
          
           </div>
-          {/* <h1 className="kimono">기모노 보러가기</h1> */}
-
+      
           </section>
           {/* </Slide>
 

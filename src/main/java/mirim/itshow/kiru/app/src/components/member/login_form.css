@@ -1,135 +1,134 @@
-.login{
-    text-align: center;
-    
-}
-
-.box{
+.wrapper_login {
     display: flex;
     justify-content: center;
-    text-align: center;  
 }
 
-
-.form{
-    margin-top: 4%;
+.wrapper_login .content {
+    width: 32%;
+    height: 50%;
     text-align: center;
-    /* justify-content: center; */
 }
 
 
-
-.findpass button{
-    background-color: #fff;
-    border: none;
-    position: absolute;
-    margin-top: 20px;
-    left: 37.3%;   
-    font-size: 15px;
-    color: #757575;
+.form {
+    margin-top: 4%;
+    /* text-align: center; */
 }
 
-.loginbtn button{
-    /* margin-top: 5%; */
-    padding: 25px;
-    width: 25vw;
-    background-color: #9553C8;
-    color: #fff;
-    border: none;
-    border-radius: 7px;
+/* 로그인 회원가입 버튼 */
+.logintext button {
+    width: 50%;
+    margin-top: 100px;
+    /* padding: 19%; */
+
+}
+
+.logintext button h1 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 38px;
+}
+
+.logintext {
+    margin-bottom: 20px;
+}
+
+.wrapper_login .logintext .login_btn {
+    width: 50%;
+    border-bottom: solid 4px #6D16DC;
+    border-radius: 2px;
+}
+
+.wrapper_login .logintext .signup_btn {
+    float: right;
+    width: 50%;
+    border-bottom: solid 1px #BDBDBD;
+    border-radius: 2px;
+}
+
+/* 환영글 */
+.ment {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 29px;
+    float: left;
+
+    margin-bottom: 80px;
 }
 
 /* 이메일/휴대폰 번호, input*/
-#text{
-    width: 25%;
+#text {
+    width: 100%;
     height: 50px;
     border: none;
     margin-top: 35px;
     border-bottom: solid 1px black;
 }
 
-.idremem{
-    /* position: absolute; */
-    margin-top: 5%;
-    /* left: 37.3%; */
-    display: flex;
-    margin-left: 45rem;
-    font-size: 13px;
-    /* background-color: #32e732;s */
-    /* margin-bottom: 2px; */
-    /* text-align: left; */
+input {
+    padding: 10px;
 }
 
-
-
-/* 
-input::-webkit-input-placeholder {
-    position: absolute;
-    bottom: 0;
-} */
-
-/* .logintext h1{
-    display: inline;
-    padding: 20px;
-    text-decoration: underline;
-   
-    justify-content: center;
-    text-align: center;
-} */
-
-.logintext button{
-    width: 50%;
-    margin-top: 100px;
-    padding: 19%;
-    
+input:focus {
+    outline: none;
 }
 
-.logintext{
-    display: flex;
-    justify-content: center;
-    text-align: center;  
+input::placeholder {
+    color: #BDBDBD;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 29px;
 }
 
-.ment{
-    /* position: absolute; */
-    font-size: -4rem;
-    /* margin-top: 10px; */
-    /* margin-bottom: 10%; */
-    margin-left: 37.4%;
-    /* margin-left: 600px; */
-    margin-top: 2%;
-    color: #424242;
-    font-weight: bold;
-    
-}
-
-
-input::placeholder {color:#BDBDBD;}
-/* 
-.blo{
-    border-bottom: solid 1px black;
-} */
-
-
-
-
-.logintext .blo{
-    border-bottom: solid 4px #9553C8;
-    border-radius: 2px;
-}
-
-input[type="checkbox"] {
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
-    border: 1px solid black;
-    appearance: none;
-    cursor: pointer;
-    margin-right: 10px;
-    /* transition: background 0.2s; */
-  }
-
-  input[type="checkbox"]:checked {
-    background: #32e732;
+/* 비밀번호 찾기 */
+.findpass button {
+    background-color: #fff;
     border: none;
-  }
+    font-size: 15px;
+    color: #757575;
 
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 29px;
+
+    margin-top: 36px;
+    float: left;
+}
+
+/* 아이디 기억하기 */
+.idremem {
+    clear: left;
+    float: left;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+
+    margin-top: 85px;
+    margin-bottom: 10px;
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.idremem p {
+    margin-left: 11px;
+}
+
+/* 로그인 버튼 */
+.loginbtn button {
+    clear: left;
+    float: left;
+    padding: 25px;
+    width: 100%;
+    background-color: #9553C8;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+}

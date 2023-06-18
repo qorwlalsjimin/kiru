@@ -129,3 +129,7 @@ li {
 .cloum i {
     font-size: 1px;
 }
+
+svg:hover{
+    fill: orange;
+}

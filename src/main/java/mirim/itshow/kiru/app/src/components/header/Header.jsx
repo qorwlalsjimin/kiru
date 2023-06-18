@@ -2,11 +2,16 @@ import "./header.css"
 import "./search_modal.css"
 
 //svg
-import { ReactComponent as SearchSvg } from "../../svgfiles/search.svg";
 import { ReactComponent as SearchArea } from "../../svgfiles/search_area.svg";
+import { ReactComponent as Search } from "../../svgfiles/search.svg";
 import { ReactComponent as StarSvg } from "../../svgfiles/star.svg";
 import { ReactComponent as CartSvg } from "../../svgfiles/cart.svg";
 import { ReactComponent as MemberSvg } from "../../svgfiles/member.svg";
+
+import { ReactComponent as SearchGray } from "../../svgfiles/search_gray.svg";
+import { ReactComponent as StarSvgGray } from "../../svgfiles/star_gray.svg";
+import { ReactComponent as CartSvgGray } from "../../svgfiles/cart_gray.svg";
+import { ReactComponent as MemberSvgGray } from "../../svgfiles/member_gray.svg";
 
 import { Link, NavLink, UseNavigate, Routes, Router, Route, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
@@ -36,7 +41,6 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
   };
 
   const ref = useRef();
-
 
   /* 검색 모달창 */
   useEffect(() => {
@@ -114,7 +118,7 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
 
           {/* 우측 아이콘들 */}
           <div className="toggle">
-            <i><SearchSvg width={"20px"} onClick={open} /></i> {/* 검색 */}
+            <i><Search width={"20px"} onClick={open} /></i> {/* 검색 */}
             {/* 검색 Modal */}
             {show ? 
               (
@@ -150,7 +154,7 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
                 </div>
               ) 
             : <></>}
-            <i><StarSvg onClick={starHandler.bind(this, getCookie('accessToken'))} /></i> {/* 즐겨찾기 */}
+            <i><StarSvg onClick={starHandler.bind(this, getCookie('accessToken'))}/></i> {/* 즐겨찾기 */}
             <i><Link to="/cart"><CartSvg width={"19px"} /></Link></i> {/* 장바구니 */}
             <i><MemberSvg width={"20px"} onClick={logoutHandler.bind(this, getCookie('accessToken'))} /></i> {/* 로그인/회원가입 */}
           </div>

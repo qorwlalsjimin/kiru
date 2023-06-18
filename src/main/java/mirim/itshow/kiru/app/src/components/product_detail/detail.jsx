@@ -270,7 +270,7 @@ export const Detail = ({ cart, setCart }) => {
 
   return (
     product && (
-      <>
+      <div className={styles.detail_all}>
         {/* 상품 정보 */}
         <main className={styles.main}>
           <div className={styles.product_information}>
@@ -278,7 +278,8 @@ export const Detail = ({ cart, setCart }) => {
             {/* 대표 이미지 */}
             <section className={styles.product}>
               <div className={styles.product_img}>
-                <img src={product.imageUrl[0]} alt="product" />
+                <img src={product.imageUrl[0]}  className={styles.img_represent} />
+                <img src="/images/shadow.png" className={styles.img_shadow} />
               </div>
             </section>
 
@@ -448,7 +449,7 @@ export const Detail = ({ cart, setCart }) => {
 
         </section>
         <Detail2 />
-      </>
+      </div>
     )
   );
 };

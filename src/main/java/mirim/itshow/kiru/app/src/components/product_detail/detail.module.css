@@ -1,29 +1,42 @@
+/* 전체 */
+/* .detail_all{
+  margin: 0 300px;
+} */
+
 .main{
   background-color: #F5F5F5;
+  width: 100%;
+  height: 1080px;
 }
 
 .product_information {
+  margin: 0 300px;
   max-width: 1440px;
-  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 80px;
+  padding-top: 80px;
 }
 
 .product {
-  width: 600px;
-  height: 600px;
-  display: flex;
-  flex-direction: column;
+  /* width: 600px;
+  height: 600px; */
+  /* display: flex;
+  flex-direction: column; */
   margin-right: 50px;
 }
 
-.product_img {
-  width: 86%;
-  height: 100%;
-  border-radius: 10px;
-  /* background-color: #767676; */
+img.img_represent {
+  max-height: 639px;
+  max-width: 492px; 
+}
+
+img.img_shadow{
+  margin-top: -30px;
+}
+
+.product_img{
+  /* text-align: center; */
 }
 
 .product_img img {

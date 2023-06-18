@@ -1,4 +1,6 @@
 import './login_form.css';
+import {ReactComponent as Unchecked} from '../../svgfiles/unchecked.svg'
+import {ReactComponent as Checked} from '../../svgfiles/checked.svg'
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Footer from '../footer/Footer';
@@ -10,6 +12,8 @@ const LoginForm = () => {
   window.scrollTo({ top: 0 });
   
   const navigate = useNavigate();
+
+  const [isChecked, setIsChecked] = useState(false); //아이디 기억하기
 
   // 로그인 폼
   const [group, setGroup] = useState({
@@ -25,9 +29,11 @@ const LoginForm = () => {
   }
 
   /* 아이디 기억하기 */
-  // const handleRememberIDChange = (event) => {
-  //   setRememberID(event.target.checked);
-  // };
+  const handleRememberIDChange = () => {
+    // setRememberID(event.target.checked);
+    setIsChecked(!isChecked);
+    console.log(isChecked)
+  };
 
   /* 비밀번호 찾기 */
   const handleFindPassword = () => {
@@ -78,16 +84,17 @@ const LoginForm = () => {
 
   return (
     <>
+      <div className="wrapper_login">
       <section className="content">
         {/* 로그인, 회원가입 선택 */}
         <div className="logintext">
-          <Link to="/Login_form"><button className='blo'><h1>Login</h1></button> </Link>
-          <Link to="/Join_form"><button><h1>Sign up</h1> </button> </Link>
+          <Link to="/Login_form"><button className='login_btn'><h1>Login</h1></button> </Link>
+          <Link to="/Join_form"><button className='signup_btn'><h1>Sign up</h1> </button> </Link>
         </div>
 
         {/* 로그인 폼 */}
         <form onSubmit={handleSubmit}>
-          <p className="ment">kiru에 방문해주셔서 감사합니다.</p>
+          <p className="ment">kiru에 방문해주셔서 감사합니다.</p><br/>
           <div className="form">
             <input type="email" id='text' name='inputid' placeholder="이메일/휴대폰 번호" value={group.email} onChange={handleChange} />
             <br />
@@ -99,11 +106,12 @@ const LoginForm = () => {
             </div>
             <br />
 
-            <label>
+            <label className="idremem_container">
               <div className="idremem">
-                <input type="checkbox" checked={group.rememberID} onChange={handleChange} />
-                {/* <i className="ri-checkbox-blank-circle-line"></i> */}
-                <p>아이디 기억하기</p>
+                {/* <input type="checkbox" checked={group.rememberID} onChange={handleChange} /> */}
+                {(isChecked) ? <Checked onClick={handleRememberIDChange}/> : <Unchecked onClick={handleRememberIDChange}/>}
+                {console.log(isChecked)}
+                <p className="child">아이디 기억하기</p>
               </div>
             </label>
             <br />
@@ -115,6 +123,7 @@ const LoginForm = () => {
           </div>
         </form>
       </section>
+      </div>
 
       <Footer />
     </>

@@ -13,7 +13,7 @@ import { ReactComponent as StarSvgGray } from "../../svgfiles/star_gray.svg";
 import { ReactComponent as CartSvgGray } from "../../svgfiles/cart_gray.svg";
 import { ReactComponent as MemberSvgGray } from "../../svgfiles/member_gray.svg";
 
-import { Link, NavLink, UseNavigate, Routes, Router, Route, useNavigate } from "react-router-dom";
+import { Link, NavLink, UseNavigate, Routes, Router, Route, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import RecentSearchList from "./RecentSearchList";
 import { Grid } from "semantic-ui-react";
@@ -24,6 +24,8 @@ import SearchResult from "../search_result_list/SearchResult";
 
 
 const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) => {
+  const ref = useRef();
+
   let [isBrand, setIsBrand] = useState(true);
 
   /* 검색어 */
@@ -38,33 +40,50 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
   /* 검색 아이콘 클릭했을때 */
   const open = (e) => {
     setShow(1);
+    // ref.current.focus(); //input 자동 선택
   };
 
-  const ref = useRef();
 
   /* 검색 모달창 */
   useEffect(() => {
-    const modlalClose = (e) => {
+    const modalClose = (e) => {
       if (show && ref.current && !ref.current.contains(e.target)) {
         setShow(false);
       }
     };
-    document.addEventListener("mousedown", modlalClose);
+    document.addEventListener("mousedown", modalClose);
     return () => {
-      document.removeEventListener("mousedown", modlalClose);
+      document.removeEventListener("mousedown", modalClose);
     };
   }, [show]);
 
+  /* 검색 화면 새로고침 */
+  // useEffect(() => {
+  //   console.log("뭔데.", keyword);
+    
+  //   navigate(`/result/${keyword}`);
+  // }, [recentKeywords]);
+
   /* input 받기 */
   const handleChange = (e) => {
-    setKeyword(e.target.value);
+    // console.log("input: ", recentKeywords);
+    let keyword = e.target.value;
+    setKeyword(keyword);
   };
 
   /* 검색 기능 */
   function searchHandle(e) {
-    console.log("추가", recentKeywords);
-    navigate(`/result/${keyword}`)
-    // navigate(`/result`)
+    console.log("추가", keyword, recentKeywords);
+    
+    if (!!keyword) {
+      setRecentKeywords(keywords => [...keywords, keyword]);
+      console.log("흑...");
+      navigate(`/result/${keyword}`);
+    }
+    else {
+      window.alert('검색어를 입력해주세요.');
+    }
+    setShow(false);
   }
 
   /* nav 클릭 */
@@ -144,8 +163,8 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
                     {/* {console.log(recentKeywords)} */}
                     <div className="result_area">
                       <ul className="search_list">
-                        {Object.values(recentKeywords).map((keyword, index) => (
-                          <RecentSearchList key={index} keyword={keyword} />
+                        {Object.values(recentKeywords).reverse().splice(0, 5).map((keyword, index) => (
+                          <RecentSearchList key={index} keyword={keyword} recentKeywords={recentKeywords} setRecentKeywords={setRecentKeywords} />
                         ))}
                       </ul>
                     </div>

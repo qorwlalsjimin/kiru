@@ -3,6 +3,30 @@ div.notice_hidden {
     background-color: yellow;
 }
 
+.notice{
+    margin: 100px 0 200px 0;
+}
+
+h2 {
+    margin: 36px 0 6px 0;
+    font-family: 'Pretendard-Regular';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 38px;
+}
+
+h3 {
+    margin: 0;
+    font-family: 'Pretendard-Regular';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 38px;
+    color: #424242;
+}
+
+/* 
 h2 {
     margin: 36px 0 0 0;
     font-family: 'Pretendard-Regular';
@@ -20,4 +44,4 @@ h3 {
     font-size: 24px;
     line-height: 38px;
     color: #424242;
-}
+} */

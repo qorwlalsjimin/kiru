@@ -1,6 +1,7 @@
-import styles from "./cart.module.css";
-
-import Util from '../../util/productUtil'
+import styles from "./cart.css";
+import Util from '../../util/productUtil';
+import { ReactComponent as Unchecked } from '../../svgfiles/unchecked_cart.svg';
+import { ReactComponent as Checked } from '../../svgfiles/checked_cart.svg';
 
 export const CartList = ({
   cart,
@@ -12,74 +13,39 @@ export const CartList = ({
   selectedColor
 }) => {
 
+  // 카트가 없는 경우 null 반환
   if (!cart) {
     return null;
   }
-  // debugger;
-  // console.log(cart)
-  //상태를 만들고 input에서 선택된 
 
   const id = `box_${cart.id}`; // 고유한 id 값 생성
 
- 
   return (
+    <section className="cart_product_list">
+      <div className="le_row">
 
-    <section className={styles.cart_product_list}>
-       
+        {/* 체크박스 */}
+        <Unchecked />
 
-
-       
-       <input
-        type="checkbox"
-        id={id}
-      
-        onChange={(e) => {
-          handleCheckList(e.currentTarget.checked, `${cart.id}`);
-        }}
-        checked={checkLists.includes(`${cart.id}`) ? true : false}
-      /> 
-   
-       {cart && checkLists.includes(`${cart.id}`) && (
-        <i className="ri-check-line" style={{ position: "absolute", top: "45%", left: "2.6%", transform: "translate(-50%, -50%)" }}></i>
-      )} 
-
-   
-        <>
-
-      <div className={styles.cart_product_wrap}>
-        <div className={styles.cart_product_image}>
+        {/* 이미지 */}
+        <div className="cart_product_image">
           <img src={cart.image} alt="product-img" />
         </div>
 
-  
-        <div className={styles.cart_product_info}>
-          <p className={styles.product_name}>{cart.name}</p>
-       
-          <span> {selectedColor} / {cart.size}</span>
-        </div>
-      </div>
-
-
-      <div className={styles.ri2}>
-      <div className={styles.ri}>
-          <span>  {cart.brand}</span>         
-          <span>{cart.quantity} </span>
-          <span> {Util.convertPrice(cart.price)}원</span>
-          
-          </div>
-          </div>
-
-
-      <div className={styles.cart_product_count}>
-        <div className={styles.count}>
+        {/* 옵션 */}
+        <div className="cart_product_info">
+          <p className="product_name">{cart.name}</p>
+          {console.log(cart)}
+          <span className="product_option"> {cart.color} / {cart.size}</span>
         </div>
 
       </div>
-      <div className={styles.cart_product_price}> </div>
 
-      </>
-
+      <div className="ri_row">
+          <span>{cart.brand}</span>
+          <span>{cart.quantity}<br/><button className="btn_change">옵션/수량 변경</button></span>
+          <span>{Util.convertPrice(cart.price)}원</span>
+      </div>
     </section>
-   
   );
 };

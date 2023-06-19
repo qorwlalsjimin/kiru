@@ -455,16 +455,8 @@ export const Detail = ({ cart, setCart }) => {
 
               <div className="detailbtn">
                 <div className="btn">
-
                   <button className="btn_buy">대여신청하기</button>
-
-                  <button
-                    className="btn_cart"
-                    onClick={() => {
-                      handleCart();
-                    }}
-                  >장바구니</button>
-
+                  <button className="btn_cart" onClick={() => { handleCart(); }}>장바구니</button>
                 </div>
               </div>
             </section>

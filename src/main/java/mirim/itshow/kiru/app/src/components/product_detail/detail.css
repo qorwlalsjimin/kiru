@@ -371,18 +371,18 @@
 }
 
 /* 버튼 */
-.detailbtn {
+.detail_all .detailbtn {
   margin-top: 24px;
 }
 
-.btn {
+.detail_all .btn {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 
-.btn button {
+.detail_all .btn button {
   height: 53px;
   display: flex;
   align-items: center;
@@ -402,7 +402,7 @@
   text-align: center;
 }
 
-.btn .btn_buy {
+.detail_all .btn .btn_buy {
   display: flex;
   justify-content: center;
 
@@ -411,7 +411,7 @@
   color: #ffffff;
 }
 
-.btn .btn_cart {
+.detail_all .btn .btn_cart {
   display: flex;
   justify-content: center;
 

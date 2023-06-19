@@ -20,7 +20,7 @@ export default function Heart() {
     let [products, setProducts] = useState({});
 
     // 상품 데이터 있는지 없는지
-    let [makeHidden, setMakeHidden] = useState(true); //원래 보여주기
+    let [makeHidden, setMakeHidden] = useState(true); 
 
     // 카테고리 목록
     let [categorys, setCategorys] = useState({});

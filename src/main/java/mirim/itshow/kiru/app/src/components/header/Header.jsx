@@ -14,7 +14,7 @@ import { ReactComponent as CartSvgGray } from "../../svgfiles/cart_gray.svg";
 import { ReactComponent as MemberSvgGray } from "../../svgfiles/member_gray.svg";
 
 import { Link, NavLink, UseNavigate, Routes, Router, Route, useNavigate, useParams } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import RecentSearchList from "./RecentSearchList";
 import { Grid } from "semantic-ui-react";
 import { Mainscreen } from "../mainscreen/Mainscreen";
@@ -57,13 +57,7 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
     };
   }, [show]);
 
-  /* 검색 화면 새로고침 */
-  // useEffect(() => {
-  //   console.log("뭔데.", keyword);
-    
-  //   navigate(`/result/${keyword}`);
-  // }, [recentKeywords]);
-
+  
   /* input 받기 */
   const handleChange = (e) => {
     // console.log("input: ", recentKeywords);
@@ -73,11 +67,12 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
 
   /* 검색 기능 */
   function searchHandle(e) {
-    console.log("추가", keyword, recentKeywords);
+    // console.log("추가", keyword, recentKeywords);
     
     if (!!keyword) {
       setRecentKeywords(keywords => [...keywords, keyword]);
-      console.log("흑...");
+      console.log("헤더에서 키워드", keyword);
+      setKeyword(keyword);
       navigate(`/result/${keyword}`);
     }
     else {
@@ -152,7 +147,7 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
                             <input onChange={handleChange} name="keyword"></input>
                           </div>
                         </Grid.Column>
-                        <Grid.Column width={4} style={{padding: "20px 13px 14px 18px"}}>
+                        <Grid.Column width={4} style={{ padding: "20px 13px 14px 18px" }}>
                           <span className="submit_text" onClick={searchHandle}>검색</span>
                         </Grid.Column>
                       </Grid>

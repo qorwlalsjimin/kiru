@@ -329,7 +329,7 @@ class Initializer implements CommandLineRunner {
                         .name("화조도 그라데이션 드레스")
                         .price(39000)
                         .description("이 전경 작가님의 화조도 패턴과 그라데이션을 사용해 디자인된 드레스입니다. \n어깨 끈 포인트로 러블리한 분위기를 더합니다.")
-                        .imageUrl(new String[]{"https://i.postimg.cc/bYCBvC8f/image.png", "https://contents.sixshop.com/thumbnails/uploadedFiles/73034/product/image_1668050223705_2500.jpg", "https://contents.sixshop.com/thumbnails/uploadedFiles/73034/product/image_1675412600168_2500.jpg"})
+                        .imageUrl(new String[]{"https://i.postimg.cc/bYCBvC8f/image.png", "https://contents.sixshop.com/thumbnails/uploadedFiles/73034/product/image_1668050223705_2500.jpg", "https://contents.sixshop.com/thumbnails/uploadedFiles/73034/product/image_1668059109471_1000.jpg"})
                         .color(new String[]{"남색", "적색", "보라"})
                         .size(new String[]{"S", "M", "L"})
                         .categoryId(categoryRepository.findById(121L).orElse(null))

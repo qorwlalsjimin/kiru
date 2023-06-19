@@ -1,11 +1,73 @@
-button.btn_delete_all{
+/* 한복 기모노 nav */
+
+/* 정렬 기준 nav */
+.selection {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+div.cloum {
+    display: block;
+    cursor: pointer;
+    margin: 0 35px;
+}
+
+div.cloum:hover {
+    color: black;
+    transition: 0.2s ease-in;
+}
+
+div.cloum:not(:hover) {
+    transition: 0.2s ease-out;
+}
+
+.active_sort{
+    color: black;
+}
+
+/* 즐겨찾기 타이틀 */
+.Banner h2{
+    font-family: Pretendard-Regular;
+}
+
+/* 전체 상품 삭제 */
+.btn_wrapper{
+    margin-top: 56px;
+    width: 86.5%;
+}
+
+button.btn_delete_all {
+    float: right;
+
     background: #FFFFFF;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
-    color: tomato;
+    border: none;
+    width: 189px;
+    height: 59px;
+
+    color: black;
+    font-family: 'Pretendard-Regular';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    /* identical to box height, or 160% */
+
+    text-align: center;
 }
 
-div.notice_hidden{
+/* 즐겨찾기한 상품 없음 안내 */
+div.notice{
+    text-align: center;
+}
+
+div.notice h2{
+    font-family: Pretendard-Regular;
+}
+
+div.notice_hidden {
     display: none;
     background-color: yellow;
 }

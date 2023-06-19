@@ -1,76 +1,71 @@
-.reviewp{
+.reviewp {
+    margin-top: 50px;
+    margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
-    margin-inline: 20%;
-    margin-top: 3%;   
 }
 
-.reviewp h1{
-    font-size: 20px;
+.reviewp h1 {
+    font-family: 'Pretendard-Regular';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 38px;
+    margin: 0;
 }
 
-
+/* 박스 */
 .boxs{
-    display: grid;
-    place-items: center;
-
-}
-.box{
-   margin: 20px;
-    width: 60%;
-    height: 300px;
-    border: 2px solid rgb(219, 219, 219);
-    border-radius: 10px;
-    /* bor */
-    /* background-color: grey; */
+    text-align: left;
 }
 
-.box i{
+.boxs .box{
+    width: 100%;
+    height: 352px;
+    background-color: white;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    display: flex;
+}
+
+.boxs .icon{
+    width: 33.3%;
+    background-color: olive;
+}
+
+.boxs .re{
+    width: 66.7%;
+    background-color: tomato;
+}
+
+.box i {
     color: #9553C8;
 }
 
-.icon {
-    position: absolute;
-    font-size: 5rem;
-    left: 27%;
 
-    /* top: 100%; */
-    margin-top: 5%;
-}
-
-.bar{
-    width: 2px;
-    height: 80%;
-    margin-right: 34%;
-    margin-top: 3%;
-    background-color: rgb(219, 219, 219);
-}
-
-
-.rediv{
-    display: flex;
-}
-
-.re{
-    /* position: absolute; */
-    /* margin-top: 35px; */
-    line-height: 3;
-    /* display: flex; */
-    /* left: 50%; */
-}
-
+/* 정렬 */
 .sort{
     display: flex;
-    margin-right: 67rem;
-    
-}
-.sort h1{
-    margin-left: 20px;
-    font-size: 16px;
+    justify-content: space-between;
+    background-color: #9553C8;
 }
 
-.box2{
-    width: 60%;
+.sort h1 {
+    text-align: left;
+    float: right;
+    background-color: white;
+    font-family: 'Pretendard-Regular';
+    font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 29px;
+margin: 0;
+}
+
+
+/* 별점, 키 , 몸무게 */
+.box2 {
+    width: 100%;
     height: 85px;
     margin-top: 70px;
     border: 2px solid rgb(219, 219, 219);
@@ -78,12 +73,15 @@
 
 }
 
-.box2 select{
+.box2 select {
     margin-left: 20px;
     margin-top: 20px;
 }
 
-.r_w{
+.r_w {
+    position: relative;
+    right: 0;
+
     width: 10%;
     height: 50px;
     background: #9553C8;
@@ -91,7 +89,4 @@
     border: none;
     border-radius: 6px;
     margin-top: 20px;
-    /* position: absolute; */
-    /* bottom: -80%; */
-    /* right: 20%; */
 }

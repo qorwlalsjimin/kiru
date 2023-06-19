@@ -16,6 +16,7 @@ import { ReactComponent as Star } from '../../svgfiles/star.svg';
 import { ReactComponent as StarPurple } from '../../svgfiles/star_purple.svg';
 import { ReactComponent as DateLine } from '../../svgfiles/date_line.svg';
 import useDidMountEffect from "../../hooks/useDidMountEffect";
+import Footer from "../footer/Footer";
 
 
 export const Detail = ({ cart, setCart }) => {
@@ -471,24 +472,44 @@ export const Detail = ({ cart, setCart }) => {
         </main>
 
         {/* 상품 설명 */}
-        <section className="detail_information">
+        <div className="detail_information">
           <div className="detail_container">
             <div className="text">
               <p className="ment">상세 이미지</p>
               <p className="ex">* 사용하시는 기기의 해상도에 따라 실제 상품 색감과 다르게 보일 수 있습니다.</p>
             </div>
             <div className="detailimg">
+              {/* 이미지들 */}
               <img src={product.imageUrl[0]} alt="product" />
               {/* <div className="wrapper"><img src={product.imageUrl[0]} alt="product" /></div> */}
-              <p className="ex bottom">{product.description}</p>
+              <p className="ex_bottom" style={{ color: "#454545" }}>{(product.description).split("").map((a) => (a === ".") ? <br /> : a)}</p>
               <div className="wrapper"><img src={product.imageUrl[1]} alt="product" /></div>
               <div className="wrapper"><img src={product.imageUrl[2]} alt="product" /></div>
             </div>
+            
+              {/* 사이즈 설명 */}
+              <div className="size">
+                <p>
+                  사이즈<br />
+                  Size : S, M, L<br />
+                  총 길이 ( 말기 포함 ) : 123cm, 126cm, 128cm<br />
+                  말기 : 17cm, 20cm, 22cm <br />
+                  말기 폭 : 112cm, 115cm, 117cm<br />
+                  Fabric : Polyester 100%
+                </p>
+            </div>
+            
+            
+              {/* 리뷰 */}
+              <Detail2 />
           </div>
-        </section>
+          
+        </div>
 
-        {/* 리뷰 */}
-        {/* <Detail2 /> */}
+        {/* 푸터 */}
+        <div className="footer">
+          <Footer/>
+        </div>
       </div>
     )
   );

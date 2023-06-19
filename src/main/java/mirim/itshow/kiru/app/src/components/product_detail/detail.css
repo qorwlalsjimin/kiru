@@ -141,8 +141,10 @@
   margin-right: 10px;
 
   display: flex;
-  justify-content: center; /* 플랙스 박스 정렬 */
-  align-items: center; /* 플랙스 아이템 정렬 */
+  justify-content: center;
+  /* 플랙스 박스 정렬 */
+  align-items: center;
+  /* 플랙스 아이템 정렬 */
 }
 
 .white_circle {
@@ -375,6 +377,7 @@
 
 .btn {
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -562,7 +565,7 @@ hr {
   align-items: center;
 }
 
-.sum .total_info span{
+.sum .total_info span {
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -571,18 +574,18 @@ hr {
   color: #000000;
 }
 
-.sum .total_info span .bold{
+.sum .total_info span .bold {
   font-size: 17px;
 }
 
 /* 대여 날짜 */
-.datedata{
+.datedata {
   position: relative;
   top: 2px;
   display: flex;
 }
 
-.datedata .line{
+.datedata .line {
   position: relative;
   bottom: 4px;
   padding: 0 8px;
@@ -592,21 +595,21 @@ hr {
 
 /* 상품 상세 사진&설명 컨테이너 */
 /*   전체 */
-section.detail_information{
+div.detail_information {
   display: flex;
   justify-content: center;
   text-align: center;
   margin-top: 100px;
 }
 
-.detail_container{
+.detail_container {
   width: 64%;
-  background-color: wheat;
 }
 
 
+
 /*   텍스트 */
-.detail_container p.ment{
+.detail_container p.ment {
   width: 100%;
   font-style: normal;
   font-weight: 500;
@@ -618,27 +621,93 @@ section.detail_information{
   margin-bottom: 7px;
 }
 
-.detail_container p.ex{
+.detail_container p.ex {
   width: 100%;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 22px;
   color: #757575;
+
+  margin-bottom: 50px;
 }
 
-.detail_container .bottom{
-  color: #454545;
-}
 
-/*   이미지 */
-.detail_container .detailimg .wrapper{
+/* 첫번째 이미지 */
+.detail_container .detailimg {
   margin: 0 auto;
-  width: 665px;
-  height: 665px;
-  overflow: hidden;
 }
 
-/* .detail_container img{
-  transform: scale(0.7);
-} */
+/* 사진 가운데에 설명 */
+.detail_container p.ex_bottom {
+  width: 100%;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  color: #454545;
+
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+.detail_container .detailimg .wrapper {
+  margin: 0 auto;
+  width: 580px;
+  margin-bottom: 50px;
+}
+
+.detail_container .detailimg .wrapper img {
+  width: 580px;
+}
+
+/*   사이즈 */
+.detail_container .size {
+  display: flex;
+  justify-content: center;
+}
+
+.detail_container .size p {
+  margin-bottom: 178px;
+}
+
+/* 후기, 상품 문의, 안내사항 */
+/*   nav */
+.detail2_container {
+  display: flex;
+  justify-content: center;
+}
+
+.detail_container .content {
+  background-color: burlywood;
+  width: 100%;
+}
+
+.detail2_container .content .btn button {
+  width: 33.3%;
+  background-color: white;
+  border-radius: 0;
+  border-bottom: 1px solid #BDBDBD;
+}
+
+.detail2_container .content .btn button.active,
+button.active {
+  border-bottom: 5px solid #6D16DC;
+  border-radius: 3px;
+  position: relative;
+  top: 1px;
+}
+
+.detail2_container button.active h1 {
+  color: #6D16DC;
+}
+
+.detail2_container button h1 {
+  margin: 28px auto;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 38px;
+  text-align: center;
+  color: #000000;
+  font-family: Pretendard-Regular;
+}

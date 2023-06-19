@@ -1,5 +1,6 @@
 import styles from "../product_list/product_list.module.css";
 import "./heart.css";
+import { ReactComponent as Danger } from "../../svgfiles/danger.svg";
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
@@ -10,6 +11,10 @@ export default function Heart() {
 
     // 상품 목록 조회
     let [country, setCountry] = useState('hanbok');
+
+    // nav 클릭했는지
+    let [isHanbokActive, setIsHanbokActive] = useState(true);
+    let [isKimonoActive, setIsKimonoActive] = useState(false);
 
     // 상품 데이터
     let [products, setProducts] = useState({});
@@ -79,9 +84,23 @@ export default function Heart() {
 
     // 한복 or 기모노
     function countryHandler(param) {
-        // console.log("백: ", param);
         setCountry(param); //hanbok, kimono로 바꿈
         categoryDatas(); //카테고리 목록 가져오기
+
+
+        //TODO 코드 줄이기
+        switch (param) {
+            case "hanbok":
+                setIsHanbokActive(true);
+                setIsKimonoActive(false);
+                break;
+            case "kimono":
+                setIsHanbokActive(false);
+                setIsKimonoActive(true);
+                break;
+            default:
+                break;
+        }
     }
 
 
@@ -113,12 +132,12 @@ export default function Heart() {
 
                 {/* 한복 기모노 정렬 */}
                 <div className="selection">
-                    <div className="cloum c1" onClick={countryHandler.bind(this, 'hanbok')}>
-                        <i className="ri-checkbox-blank-circle-fill"></i>
+                    <div className={`cloum c1 ${isHanbokActive && "active_sort"}`} onClick={countryHandler.bind(this, 'hanbok')}>
+                        <i className="ri-checkbox-blank-circle-fill"></i><br />
                         한복
                     </div>
-                    <div className="cloum c2" onClick={countryHandler.bind(this, 'kimono')}>
-                        <i className="ri-checkbox-blank-circle-fill"></i>
+                    <div className={`cloum c2 ${isKimonoActive && "active_sort"}`} onClick={countryHandler.bind(this, 'kimono')}>
+                        <i className="ri-checkbox-blank-circle-fill"></i><br />
                         기모노
                     </div>
                 </div>
@@ -148,15 +167,17 @@ export default function Heart() {
                 </main>
             </ul>
 
+            <div className={`btn_wrapper ${makeHidden ? "" : "notice_hidden"}`}>
+                {/* 전 상품 삭제 버튼 */}
+                <button className="btn_delete_all" onClick={btnDeleteHandler}>전 상품 삭제</button>
+            </div>
+            
             {/* 즐겨찾기 없을때 */}
             {/* TODO CSS가 안 먹힘 */}
-            <div className={`nav ${makeHidden ? "notice_hidden" : ""}`}> 
-                {/* {console.log("클래스명: ", makeHidden)} */}
+            <div className={`notice ${makeHidden ? "notice_hidden" : ""}`}>
+                <Danger/>
                 <h2>즐겨찾기를 추가해주세요.</h2>
             </div>
-
-            {/* 전 상품 삭제 버튼 */}
-            <button className="btn_delete_all" onClick={btnDeleteHandler}>전 상품 삭제</button>
         </>
     )
 }

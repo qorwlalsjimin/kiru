@@ -6,6 +6,7 @@ import Util from '../../util/productUtil'
 
 export const TotalCart = ({ total, setTotal, cart, found, startDate, endDate }) => {
   const [totalQuantity, setTotalQuantity] = useState(0); // 누적된 총 수량 값
+  setTotal(total);
 
   useEffect(() => {
     if (found) {

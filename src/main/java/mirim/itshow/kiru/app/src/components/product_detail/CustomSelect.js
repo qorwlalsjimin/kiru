@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { useEffect } from "react-router-dom";
 import FontAwesome from "react-fontawesome";
 import { Size } from "../../App";
 import Content from "./size_option/Content";
@@ -17,9 +18,11 @@ class CustomSelect extends Component {
     this.close = this.close.bind(this);
   }
 
+
   componentDidUpdate() {
     // console.log("componentdidUpdate", this.ddHeaderExOff);
     this.props.setSize(this.state.headerTitle);
+    // console.log("사이즈 변경-커스텀", this.state.headerTitle);
     
     const { listOpen } = this.state;
     setTimeout(() => {
@@ -93,7 +96,8 @@ class CustomSelect extends Component {
           onClick={() => this.toggleList()}
         >
           <div>
-            {headerTitle ? (
+            {/* {console.log("사이즈가 보이느냐", !!this.props.size)} */}
+            {(headerTitle) ? (
               <ContentSize headerTitle={headerTitle} listOpen={listOpen} />
             ) : (
               <Content listOpen={listOpen} ddHeaderExOff={this.ddHeaderExOff} />

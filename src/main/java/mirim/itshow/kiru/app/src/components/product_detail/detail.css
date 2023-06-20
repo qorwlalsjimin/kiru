@@ -31,6 +31,7 @@
 .product_img .size {
   text-align: center;
   width: 617px;
+  overflow: hidden;
   height: 630px;
 }
 
@@ -49,8 +50,13 @@
 }
 
 .product_img .img_shadow_shoes {
-  width: 31.1%;
+  width: 61.1%;
+  height: 60px;
   margin-top: -150px;
+}
+
+.product_img .is_hidden{
+  visibility: hidden;
 }
 
 /*  */
@@ -147,9 +153,8 @@
 
   display: flex;
   justify-content: center;
-  /* 플랙스 박스 정렬 */
   align-items: center;
-  /* 플랙스 아이템 정렬 */
+  text-align: center;
 }
 
 .white_circle {
@@ -157,7 +162,6 @@
   height: 8px;
   border-radius: 50%;
   background-color: white;
-
   position: absolute;
 }
 
@@ -427,9 +431,10 @@
 }
 
 /* 구분선 */
-hr {
+.hr {
+  width: 100%;
   margin: 24px 0;
-  color: #e4e4e4;
+  background-color: #bdbdbd;
 }
 
 /* 선택한 옵션 박스 */

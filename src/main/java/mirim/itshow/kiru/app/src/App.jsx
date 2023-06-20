@@ -9,6 +9,7 @@ import Login_form from "./components/member/LoginForm";
 import Join_form from "./components/member/JoinForm";
 import { Mainscreen } from "./components/mainscreen/Mainscreen"
 import Heart from "./pages/Heart";
+import Rent from "./components/rent/Rent";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -60,6 +61,7 @@ function App() {
         <Route path='/heart' element={<Heart/>}/>
         <Route path='/Login_form' exact element={<Login_form />} />
         <Route path='/Join_form' exact element={<Join_form />} />
+        <Route path='/rent_form' exact element={<Rent />} />
      
    
       <Route path='/Mainscreen' element={<Mainscreen/>}/>

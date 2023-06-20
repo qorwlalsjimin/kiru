@@ -21,22 +21,24 @@ import Footer from "../footer/Footer";
 
 export const Detail = ({ cart, setCart }) => {
 
+  const navigate = useNavigate();
+
   /* 변수 선언 */
   const { id } = useParams(); //상품 id
 
   const isShoes = (id >= 48 && id <= 53); //신발 상품인지
+  const [imgIndex, setImgIndex] = useState(0);
 
   const [isHeart, setIsHeart] = useState(false); //즐겨찾기 유무
 
   const [product, setProduct] = useState(null); //상품 정보
 
   const [count, setCount] = useState(1); //장바구니에 담을 상품 수량
-
   const [startDate, setStartDate] = useState(''); //대여 시작일
-
   const [endDate, setEndDate] = useState(''); //대여 마감일
-
   const [selectedColor, setSelectedColor] = useState(''); // 색상
+  const [isClickColor, setIsClickColor] = useState(false); //색상 선택됐는지 아닌지
+  const [isClickSize, setIsClickSize] = useState(false); //사이즈 선택됐는지 아닌지
 
   const colorData = { // 색상표
     "황색": "#F6CF7A",
@@ -56,13 +58,17 @@ export const Detail = ({ cart, setCart }) => {
     "천청": "#A1CCE2",
     "갈색": "#9a5e0a",
     "주황": "#ff9900",
-    "황갈": "f3cf98"
+    "황갈": "#f3cf98"
   };
 
   const [size, setSize] = useState(''); //사이즈
 
+  const [isComplete, setIsComplete] = useState(false); //컬러, 사이즈 다 선택됐는지
+
   //박스 수량 
-  const [selectedOptions, setSelectedOptions] = useState({});
+  const [nowOptions, setNowOptions] = useState({}); //지금 선택되고 있는 옵션
+
+  const [selectedOptions, setSelectedOptions] = useState({}); //지금까지 선택한 옵션들
   const [totalCount, setTotalCount] = useState(1);
   const [showTotalInfo, setShowTotalInfo] = useState(false);
 
@@ -84,13 +90,159 @@ export const Detail = ({ cart, setCart }) => {
     };
 
     fetchItem();
-
-    console.log(isShoes);
   }, []);
+
+  /* 이미지 선택 */
+  const imgHandle = (index) => {
+    setImgIndex(index);
+  }
+
+  /* 상품 수량 조절 */
+  const handleQuantityChange = (size, action) => { //사이즈, plus/minus
+    // console.log("handleQuantityChange");
+    setSelectedOptions((prevSelectedOptions) => { //박스 하나의 정보
+      const updatedOptions = { ...prevSelectedOptions };
+      // console.log("업데이트된 옵션", updatedOptions, prevSelectedOptions);
+      const option = updatedOptions[size];
+      // console.log("옵션: ", option);
+      if (option) {
+        const updatedCount = action === 'plus' ? option.count + 1 : option.count - 1;
+        updatedOptions[size] = {
+          ...option,
+          count: updatedCount >= 1 ? updatedCount : 1, // 1 이하로는 수정 조절 못함
+        };
+        calculateTotalCount(updatedOptions); //총합 계산
+      }
+      return updatedOptions;
+    });
+  };
+
+  /* 총합 금액 계산 */
+  const calculateTotalCount = (options) => {
+    // console.log("calculateTotalCount")
+    // console.log(options);
+    // console.log(selectedOptions);
+    let totalCount = 0;
+    // console.log("금액 계산 나와", options);
+    Object.values(options).forEach((option) => {
+      totalCount += option.count;
+    });
+    // console.log("여기", selectedOptions);
+    setTotalCount(totalCount);
+  };
+
+  /* 색상 선택 */
+  const handleColorClick = (color) => {
+    console.log("백-색상 클릭", !isClickColor);
+    setIsClickColor(!isClickColor);
+
+    setSelectedColor(color);
+    let option;
+    if (!!nowOptions.itemId == false) { //색상 처음 선택
+      option = {
+        itemId: id,
+        size: '',
+        color: color,
+        count: 1
+      }
+      setNowOptions(option);
+    } else { //사이즈 선택하고 넘어옴
+      setNowOptions({ ...nowOptions, color: color });
+    }
+
+    if (!!color && !!size) {setIsComplete(true);}
+  };
+
+  /* 사이즈 선택 */
+  useDidMountEffect(() => {
+    if (size !== undefined) {
+      console.log("백-사이즈 클릭", !isClickSize); setIsClickSize(!isClickSize);
+    }
+    
+    setIsClickSize(!isClickSize);
+    let option;
+    if (!!nowOptions.itemId == false) {  //사이즈 처음 선택
+      option = {
+        itemId: id,
+        size: size,
+        color: '',
+        count: 1
+      }
+      setNowOptions(option);
+      setIsComplete(false);
+    } else { //색상 선택하고 넘어옴
+      setNowOptions({ ...nowOptions, size: size });
+    }
+    
+    if (!!selectedColor && !!size) {setIsComplete(true);}
+  }, [size]);
+
+
+  /* 색상, 사이즈 모두 선택했을때 */
+  let optionKey = 0;
+  useEffect(() => {
+    if (isComplete) {
+      console.log("모두 선택!", { [optionKey]: nowOptions, ...selectedOptions });
+      setSelectedOptions({ [optionKey++]: nowOptions, ...selectedOptions });
+
+    } else {
+      console.log("초기화");
+      handleReset();
+    }
+  }, [isComplete]);
+
+  /* nowOptions 값 변경될때 */
+  useEffect(() => {
+    if (!!nowOptions.size && !!nowOptions.color) {
+      setIsClickColor(!isClickColor);
+      setIsClickSize(!isClickSize);
+    }
+    
+  }, [nowOptions])
+
+  /* 옵션 선택 리셋 */
+  const handleReset = () => {
+    setSize('');
+    setSelectedColor('');
+  };
+
+  /* 선택한 상품 박스 지우기 */
+  const handleBoxClose = (size) => {
+    // console.log("handleBoxClose");
+    setSelectedOptions((selectedOptions) => {
+      const updatedOptions = { ...selectedOptions };
+      // console.log(updatedOptions);
+      delete updatedOptions[size];
+      calculateTotalCount(updatedOptions);
+      return updatedOptions;
+    });
+  };
+
+
+  /* 대여 날짜 선택 */
+  const handleStartDateChange = (e) => {
+    //debugger;
+    setStartDate((e.target.value).replaceAll("-", "."));
+  };
+
+  /* 반납 날짜 선택 */
+  const handleEndDateChange = (e) => {
+    //debugger;
+    setEndDate((e.target.value).replaceAll("-", "."));
+  };
+
+
+  /* product 객체 유효성 검사 */
+  if (!product || !product.color || !Array.isArray(product.color)) {
+    return null; // 또는 에러 메시지를 표시하거나 기본값을 반환할 수 있습니다.
+  }
+
+
+  /* 상품 정보에서 색상 데이터를 가져오기 */
+  const colors = product.color;
 
 
   /* 즐겨찾기에 추가 */
-  const navigate = useNavigate();
   const heartHandle = (itemId) => {
     if (!(!!getCookie('accessToken'))) {
       alert('로그인 후 이용해주세요.');
@@ -133,27 +285,27 @@ export const Detail = ({ cart, setCart }) => {
   const handleCart = () => {
     console.log("백: ", selectedOptions);
     localStorage.setItem("carts", JSON.stringify(selectedOptions));
-    // const appended = []
-    // for (const size of Object.keys(selectedOptions)) {
-    //   appended.push(
-    //     {
-    //       id: product.itemId,
-    //       image: product.imageUrl[0],
-    //       name: product.name,
-    //       quantity: count,
-    //       price: product.price,
-    //       provider: product.provider,
-    //       brand: product.brand,
-    //       size: size,
-    //       quantity: selectedOptions[size].count,
-    //       color: product.color,
-    //       startDate,
-    //       endDate
-    //     }
-    //   )
-    // }
-    // // console.log(appended)
-    // setCart(cart => cart.concat(appended));
+    const appended = []
+    for (const size of Object.keys(selectedOptions)) {
+      appended.push(
+        {
+          id: product.itemId,
+          image: product.imageUrl[0],
+          name: product.name,
+          quantity: count,
+          price: product.price,
+          provider: product.provider,
+          brand: product.brand,
+          size: size,
+          quantity: selectedOptions[size].count,
+          color: product.color,
+          startDate,
+          endDate
+        }
+      )
+    }
+    // console.log(appended)
+    setCart(cart => cart.concat(appended));
 
     alert("장바구니에 추가되었습니다!");
     setTimeout(() => {
@@ -162,120 +314,6 @@ export const Detail = ({ cart, setCart }) => {
   };
 
 
-  /* 상품 수량 조절 */
-  const handleQuantityChange = (size, action) => { //사이즈, plus/minus
-    // console.log("handleQuantityChange");
-    setSelectedOptions((prevSelectedOptions) => { //박스 하나의 정보
-      const updatedOptions = { ...prevSelectedOptions };
-      // console.log("업데이트된 옵션", updatedOptions, prevSelectedOptions);
-      const option = updatedOptions[size];
-      // console.log("옵션: ", option);
-      if (option) {
-        const updatedCount = action === 'plus' ? option.count + 1 : option.count - 1;
-        updatedOptions[size] = {
-          ...option,
-          count: updatedCount >= 1 ? updatedCount : 1, // 1 이하로는 수정 조절 못함
-        };
-        calculateTotalCount(updatedOptions); //총합 계산
-      }
-      return updatedOptions;
-    });
-  };
-
-  /* 총합 금액 계산 */
-  const calculateTotalCount = (options) => {
-    // console.log("calculateTotalCount")
-    // console.log(options);
-    // console.log(selectedOptions);
-    let totalCount = 0;
-    // console.log("금액 계산 나와", options);
-    Object.values(options).forEach((option) => {
-      totalCount += option.count;
-    });
-    // console.log("여기", selectedOptions);
-    setTotalCount(totalCount);
-  };
-
-  /* 색상 선택 */
-  const handleColorClick = (color) => {
-    setSelectedColor(color);
-    let option = {
-      itemId: id,
-      size: '',
-      color: color,
-      count: 1
-    }
-    console.log("백", option);
-  };
-
-
-  /* 사이즈 선택 */
-  useEffect(() => {
-    const selectedSize = size;
-    setTotalCount(0); //Reset totalCount when size is selected
-    setSelectedOptions((selectedOptions) => {
-      // console.log("**setSelectedOptions", selectedOptions);
-      const updatedOptions = { ...selectedOptions }; //이전에 선택했던 옵션
-      const option = updatedOptions[selectedSize]; //해당 사이즈를 가져옴
-
-      // console.log("**옵션", updatedOptions);
-
-      if (!!size == false) return selectedOptions; //사이즈 선택한 상태 아니면 x (렌더링 문제)
-
-      console.log("option: ", option);
-      if (option) {
-        option.count += 1;
-      } else {
-        updatedOptions[selectedSize] = {
-          itemId: 22,
-          size: selectedSize,
-          color: selectedColor,
-          count: 1
-        };
-      }
-
-      return updatedOptions;
-    });
-    calculateTotalCount(selectedOptions);
-    setShowTotalInfo(true);
-    // console.log("여기", selectedOptions);
-  }, [size]);
-
-  /* 선택한 상품 박스 지우기 */
-  const handleBoxClose = (size) => {
-    // console.log("handleBoxClose");
-    setSelectedOptions((selectedOptions) => {
-      const updatedOptions = { ...selectedOptions };
-      // console.log(updatedOptions);
-      delete updatedOptions[size];
-      calculateTotalCount(updatedOptions);
-      return updatedOptions;
-    });
-  };
-
-
-  /* 대여 날짜 선택 */
-  const handleStartDateChange = (e) => {
-    //debugger;
-    setStartDate((e.target.value).replaceAll("-", "."));
-  };
-
-  /* 반납 날짜 선택 */
-  const handleEndDateChange = (e) => {
-    //debugger;
-    setEndDate((e.target.value).replaceAll("-", "."));
-  };
-
-
-  /* product 객체 유효성 검사 */
-  if (!product || !product.color || !Array.isArray(product.color)) {
-    return null; // 또는 에러 메시지를 표시하거나 기본값을 반환할 수 있습니다.
-  }
-
-
-  /* 상품 정보에서 색상 데이터를 가져오기 */
-  const colors = product.color;
-
   return (
     product && (
       <div className="detail_all">
@@ -283,17 +321,18 @@ export const Detail = ({ cart, setCart }) => {
         <main className="main">
           <div className="product_information">
 
+            {/* {console.log("백", nowOptions)} */}
             {/* 대표 이미지 */}
             <section className="product_img_container">
               <div className="product_img">
-                <div className="size"><img src={product.imageUrl[0]} className="img_represent" /></div>
-                <img src="/images/shadow.png" className={isShoes ? "img_shadow_shoes" : "img_shadow" } />
+                <div className="size"><img src={product.imageUrl[imgIndex]} className="img_represent" /></div>
+                <img src="/images/shadow.png" className={isShoes ? "img_shadow_shoes" : "img_shadow"} />
               </div>
 
               <div className="product_img_bottom">
-                <div className="size"><img src={product.imageUrl[0]} /></div>
-                <div className="size"><img src={product.imageUrl[1]} /></div>
-                <div className="size"><img src={product.imageUrl[2]} /></div>
+                <div className="size" onClick={imgHandle.bind(this, '0')}><img src={product.imageUrl[0]} /></div>
+                <div className="size" onClick={imgHandle.bind(this, '1')}><img src={product.imageUrl[1]} /></div>
+                <div className="size" onClick={imgHandle.bind(this, '2')}><img src={product.imageUrl[2]} /></div>
               </div>
             </section>
 
@@ -329,12 +368,12 @@ export const Detail = ({ cart, setCart }) => {
                   {colors.map((color, index) => (
                     <div
                       key={index}
-                      className={`color_box ${selectedColor === color ? 'selected' : ''}`}
+                      className={`color_box ${isClickColor ? 'selected' : ''}`}
                       style={{ backgroundColor: colorData[color] }}
                       onClick={() => handleColorClick(color)}
                     >
-                      <div className={`${selectedColor === color ? "white_circle" : ''}`}>&nbsp;</div>
-                      <p key={index} className="color_name" style={{ visibility: selectedColor === color || index === 0 ? 'visible' : 'hidden' }}>
+                      <div className={`${isClickColor ? "white_circle" : ''}`}>&nbsp;</div>
+                      <p key={index} className="color_name" style={{ visibility: isClickColor || index === 0 ? 'visible' : 'hidden' }}>
                         {color}
                       </p>
                     </div>
@@ -368,6 +407,7 @@ export const Detail = ({ cart, setCart }) => {
                         title: "L"
                       }
                     ]}
+                    size={size}
                     setSize={setSize}
                   />
                 </div>
@@ -388,7 +428,7 @@ export const Detail = ({ cart, setCart }) => {
                 </div>
               </div>
 
-              {!!Object.values(selectedOptions)[0] ? <hr /> : <></>}
+              {!!selectedOptions[0] ? <div className="hr"></div> : <></>}
 
               {/* 선택한 상품 박스 */}
               {Object.keys(selectedOptions).map((size) => {
@@ -478,29 +518,29 @@ export const Detail = ({ cart, setCart }) => {
               <div className="wrapper"><img src={product.imageUrl[1]} alt="product" /></div>
               <div className="wrapper"><img src={product.imageUrl[2]} alt="product" /></div>
             </div>
-            
-              {/* 사이즈 설명 */}
-              <div className="size">
-                <p>
-                  사이즈<br />
-                  Size : S, M, L<br />
-                  총 길이 ( 말기 포함 ) : 123cm, 126cm, 128cm<br />
-                  말기 : 17cm, 20cm, 22cm <br />
-                  말기 폭 : 112cm, 115cm, 117cm<br />
-                  Fabric : Polyester 100%
-                </p>
+
+            {/* 사이즈 설명 */}
+            <div className="size">
+              <p>
+                사이즈<br />
+                Size : Free ( 44 - 66 )<br />
+                총 길이 ( 말기 포함 ) : 123cm<br />
+                말기 : 17cm<br />
+                말기 폭 : 112cm<br />
+                Fabric : Polyester 100%
+              </p>
             </div>
-            
-            
-              {/* 리뷰 */}
-              <Detail2 />
+
+
+            {/* 리뷰 */}
+            <Detail2 />
           </div>
-          
+
         </div>
 
         {/* 푸터 */}
         <div className="footer">
-          <Footer/>
+          <Footer />
         </div>
       </div>
     )

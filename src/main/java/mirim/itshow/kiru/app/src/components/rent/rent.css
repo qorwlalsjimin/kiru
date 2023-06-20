@@ -1,0 +1,324 @@
+/* 전체 */
+.rent_container {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.rent_content {
+    width: 70.6%;
+    /* background-color: olive; */
+}
+
+/* 순서 nav */
+.rent_content .nav {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 117px;
+
+}
+
+.rent_content .nav .item {
+    width: 33.3%;
+    text-align: center;
+    margin: auto 0;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 38px;
+    text-align: center;
+    color: #BDBDBD;
+
+    padding-bottom: 28.5px;
+    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #BDBDBD;
+    border-radius: 2px;
+}
+
+.rent_content .nav .active {
+    border-top: 1px solid #ffffff;
+    border-bottom: 5px solid #6D16DC;
+    color: black;
+}
+
+.rent_content .nav .right {
+    float: right;
+    position: relative;
+    top: 5px;
+}
+
+/* 타이틀 */
+h2.title {
+    font-family: 'Pretendard-Regular';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 38px;
+    color: #000000;
+    margin-top: 90px;
+    margin-bottom: 23px;
+}
+
+/* 테이블 */
+.rent_content .table {
+    width: 100%;
+
+    background: #FFFFFF;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+}
+
+.rent_content .table .row {
+    display: flex;
+    height: 83px;
+}
+
+.rent_content .table .row:not(:last-of-type) {
+    border-bottom: 1px solid #BDBDBD;
+
+}
+
+.rent_content .payment .row {
+    height: 173px;
+}
+
+
+.table .left {
+    width: 15%;
+    padding-top: 28px;
+    background-color: #F4F4F4;
+    font-family: 'Pretendard-Regular';
+    font-family: 'Pretendard-Regular';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    color: #000000;
+    padding-left: 30px;
+}
+
+.table .left span {
+    color: #6D16DC;
+}
+
+.table .right {
+    width: 85%;
+    align-items: center;
+    margin: auto 0 auto 25px;
+}
+
+.table .right input,
+.table .right select {
+    height: 40px;
+    left: 513px;
+    top: 1221px;
+
+    background: #FFFFFF;
+
+    border: 1px solid #BDBDBD;
+    border-radius: 6px;
+}
+
+/* input 길이 */
+.table .right input.name {
+    width: 205px;
+}
+
+.table .right input.phone_h{
+    width: 78px;
+}
+.table .right input.phone_b, input.phone_t {
+    width: 90px;
+}
+
+.table .right input.email{
+    width: 205px;
+}
+.table .right .email_fix{
+    width: 118px;
+}
+
+.table .right .address_code{
+    width: 120px;
+}
+.table .right .address{
+    width: 550px;
+}
+.table .right .address_detail{
+    width: 550px;
+}
+
+.table .right .payment_method{
+    width: 120px;
+}
+
+/* input 끝 */
+
+.table .right .payment_method img{
+    height: 16px;
+}
+
+.table .right .date_line {
+    margin: 0 8px;
+    width: 8px;
+    color: #BDBDBD;
+}
+
+.table .right span {
+    margin: 0 10px;
+    position: relative;
+    top: 3px;
+}
+
+/* 결제 방법 */
+.payment .left {
+    padding-top: 73px;
+}
+
+
+/* 총합 */
+.rent_content .total {
+    margin-bottom: 30px;
+    width: 100%;
+    height: 147px;
+    background: #F4F4F4;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+
+    padding: 30px 43px;
+    text-align: right;
+
+    margin-top: 50px;
+}
+
+.rent_content .total .cart_product_total_price {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: right;
+    color: #757575;
+}
+
+.rent_content .total p.cart_product_sale {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    color: #424242;
+}
+
+.rent_content .total p.cart_product_sale span.star_end {
+    margin-left: 10px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    color: #000000;
+}
+
+.rent_content .total p.cart_product_sale img {
+    position: relative;
+    bottom: 4px;
+    margin: 0 10px;
+}
+
+.rent_content .cart_prouct_payment {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 38px;
+    color: #000000;
+    margin-left: 10px;
+}
+
+
+/* 동의 */
+.agree {
+    width: 100%;
+    height: 152px;
+    left: 282px;
+    top: 2603px;
+
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+
+    padding: 22px 33px 22px 33px;
+    margin: 0;
+
+    display: block;
+}
+
+.agree h3 {
+    width: 100%;
+    text-align: left;
+    padding: 0;
+    margin-bottom: 8px;
+
+    font-family: 'Pretendard-Regular';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 29px;
+    color: #000000;
+}
+
+.agree p {
+    width: 100%;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    margin-top: -20px;
+    font-family: 'Pretendard-Regular';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    color: #757575;
+}
+
+.agree .order_check_box {
+    width: 100%;
+    text-align: left;
+    align-items: center;
+    padding: 0;
+
+    font-family: 'Pretendard-Regular';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    color: #000000;
+}
+
+.order_check_box .radio_btn {
+    position: relative;
+    top: 2px;
+    margin-right: 13px;
+}
+
+
+/* 결제하기 버튼 */
+.order_btn {
+    float: right;
+    margin-top: 20px;
+}
+
+.order_btn button{
+    width: 189px;
+    height: 55px;
+    background: #6D16DC;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    border: none;
+
+    font-family: 'Pretendard-Regular';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 26px;
+color: #FFFFFF;
+}

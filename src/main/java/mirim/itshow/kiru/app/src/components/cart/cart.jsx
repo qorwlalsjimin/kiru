@@ -1,5 +1,6 @@
 import "./cart.css";
 import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { CartList } from "./cartList";
 import { TotalCart } from "./totalCart";
 import CartItem from "./CartItem";
@@ -73,6 +74,12 @@ export const Cart = ({ cart, setCart }) => {
     }
   };
 
+  // 주문 버튼
+  let navigate = useNavigate();
+  function rentHandle() {
+    navigate("/rent_form");
+  }
+
   return (
     <>
       <div className="cart_container">
@@ -84,9 +91,9 @@ export const Cart = ({ cart, setCart }) => {
           </header>
 
           {/* 장바구니 상품 묶음 */}
-          <CartItem country="한복" cart={cart} total={cart} setTotal={setTotal} found={found} />
+          <CartItem country="한복" cart={cart} total={total} setTotal={setTotal} found={found} />
           <div style={{height: "63px"}}>&nbsp;</div>
-          <CartItem country="기모노" cart={cart} total={cart} setTotal={setTotal} found={found} />
+          <CartItem country="기모노" cart={cart} total={total} setTotal={setTotal} found={found} />
           
           {/* 구분선 */}
           <div className="hr"></div>
@@ -98,8 +105,9 @@ export const Cart = ({ cart, setCart }) => {
               <button>선택 상품 즐겨찾기</button>
             </div>
             <div className="right">
+              <Link to="rent_form">주문</Link>
               <button className="select">선택 상품 주문</button>
-              <button className="all">전체 상품 주문</button>
+              <button className="all" onClick={rentHandle}>전체 상품 주문</button>
             </div>
           </div>
         </div>

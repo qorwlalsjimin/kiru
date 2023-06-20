@@ -12,6 +12,7 @@ import { getCookie } from "../../util/cookie";
 import setToken from "../../util/setToken";
 
 export const ProductList = ({ products, setProducts, isBrand, setIsBrand }) => {
+
   const [visibleProducts, setVisibleProducts] = useState([]);
   const [showMore, setShowMore] = useState(false);
 
@@ -23,7 +24,9 @@ export const ProductList = ({ products, setProducts, isBrand, setIsBrand }) => {
 
   // 상품 목록 조회
   let fetchUrl = `/api/item/item_list/${cid}/`;
-  // let [isBrand, setIsBrand] = useState(true);
+  
+  // 악세사리 상품 목록인지
+  let [isAcc, setIsAcc] = useState(cid==140 ? true : false);
 
   // 브랜드 목록
   let [brands, setBrands] = useState({ "": "" });
@@ -90,6 +93,10 @@ export const ProductList = ({ products, setProducts, isBrand, setIsBrand }) => {
     };
 
     fetchData(fetchUrl);
+
+    // 악세서리인지 아닌지 판단
+    setIsAcc(cid == 140 ? true : false);
+    
   }, [cid, cname]);
 
   // 더보기 버튼 클릭
@@ -204,6 +211,7 @@ export const ProductList = ({ products, setProducts, isBrand, setIsBrand }) => {
               // console.log("여기 product: " + Object.values(product));
               return (
                 <Product
+                  isAcc = {isAcc}
                   key={`key-${product.itemId}`}
                   product={product} //여기서 에러남
                 />

@@ -8,7 +8,7 @@ import { ReactComponent as StarSvg } from "../../svgfiles/star.svg"
 import { ReactComponent as StarPurple } from '../../svgfiles/star_purple.svg';
 import { getCookie } from "../../util/cookie";
 
-export const Product = ({ product }) => {
+export const Product = ({ isAcc, product }) => {
 
   const item = product;
   const [isHeart, setIsHeart] = useState((!!getCookie('accessToken')) ? item.heart : false); //즐겨찾기 유무 (이렇게 안 해주면 로그인 안 해도 즐겨찾기가 보인다)
@@ -65,7 +65,7 @@ export const Product = ({ product }) => {
           {/* 이미지 */}
           <div className={styles.product_image}>
             {/* 대표 이미지 */}
-            <img src={item.imageUrl[0]} alt="product" />
+            <img className={isAcc ? styles.is_acc : ""} src={item.imageUrl[0]} alt="product" />
           </div>
 
         </Link>

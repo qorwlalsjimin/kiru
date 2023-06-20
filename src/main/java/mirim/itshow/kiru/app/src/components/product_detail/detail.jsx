@@ -24,6 +24,8 @@ export const Detail = ({ cart, setCart }) => {
   /* 변수 선언 */
   const { id } = useParams(); //상품 id
 
+  const isShoes = (id >= 48 && id <= 53); //신발 상품인지
+
   const [isHeart, setIsHeart] = useState(false); //즐겨찾기 유무
 
   const [product, setProduct] = useState(null); //상품 정보
@@ -35,8 +37,6 @@ export const Detail = ({ cart, setCart }) => {
   const [endDate, setEndDate] = useState(''); //대여 마감일
 
   const [selectedColor, setSelectedColor] = useState(''); // 색상
-
-  const [colorCode, setColorCode] = useState("#000000"); //색상 코드
 
   const colorData = { // 색상표
     "황색": "#F6CF7A",
@@ -68,7 +68,6 @@ export const Detail = ({ cart, setCart }) => {
 
 
   /* 상품 정보 가져오기 */
-  // TODO 즐겨찾기에서 로그아웃이 안 됨 
   useEffect(() => {
     const fetchItem = async () => {
       try {
@@ -85,6 +84,8 @@ export const Detail = ({ cart, setCart }) => {
     };
 
     fetchItem();
+
+    console.log(isShoes);
   }, []);
 
 
@@ -130,28 +131,29 @@ export const Detail = ({ cart, setCart }) => {
 
   /* TODO 장바구니에 상품 추가 */
   const handleCart = () => {
-    const appended = []
-    for (const size of Object.keys(selectedOptions)) {
-
-      appended.push(
-        {
-          id: product.itemId,
-          image: product.imageUrl[0],
-          name: product.name,
-          quantity: count,
-          price: product.price,
-          provider: product.provider,
-          brand: product.brand,
-          size: size,
-          quantity: selectedOptions[size].count,
-          color: product.color,
-          startDate,
-          endDate
-        }
-      )
-    }
-    // console.log(appended)
-    setCart(cart => cart.concat(appended));
+    console.log("백: ", selectedOptions);
+    localStorage.setItem("carts", JSON.stringify(selectedOptions));
+    // const appended = []
+    // for (const size of Object.keys(selectedOptions)) {
+    //   appended.push(
+    //     {
+    //       id: product.itemId,
+    //       image: product.imageUrl[0],
+    //       name: product.name,
+    //       quantity: count,
+    //       price: product.price,
+    //       provider: product.provider,
+    //       brand: product.brand,
+    //       size: size,
+    //       quantity: selectedOptions[size].count,
+    //       color: product.color,
+    //       startDate,
+    //       endDate
+    //     }
+    //   )
+    // }
+    // // console.log(appended)
+    // setCart(cart => cart.concat(appended));
 
     alert("장바구니에 추가되었습니다!");
     setTimeout(() => {
@@ -196,14 +198,19 @@ export const Detail = ({ cart, setCart }) => {
 
   /* 색상 선택 */
   const handleColorClick = (color) => {
-    // console.log("handleColorClick");
     setSelectedColor(color);
+    let option = {
+      itemId: id,
+      size: '',
+      color: color,
+      count: 1
+    }
+    console.log("백", option);
   };
 
 
   /* 사이즈 선택 */
   useEffect(() => {
-    // console.log("**size useEffect", size);
     const selectedSize = size;
     setTotalCount(0); //Reset totalCount when size is selected
     setSelectedOptions((selectedOptions) => {
@@ -215,15 +222,12 @@ export const Detail = ({ cart, setCart }) => {
 
       if (!!size == false) return selectedOptions; //사이즈 선택한 상태 아니면 x (렌더링 문제)
 
-      // console.log("option: ", option);
+      console.log("option: ", option);
       if (option) {
         option.count += 1;
       } else {
-        if (!(!!selectedColor)) {
-          window.alert('색상 먼저 선택해주세요.');
-          return {};
-        }
         updatedOptions[selectedSize] = {
+          itemId: 22,
           size: selectedSize,
           color: selectedColor,
           count: 1
@@ -268,10 +272,6 @@ export const Detail = ({ cart, setCart }) => {
     return null; // 또는 에러 메시지를 표시하거나 기본값을 반환할 수 있습니다.
   }
 
-  /* 색 css */
-  const circleStyles = {
-    backgroundColor: `${colorCode}`
-  };
 
   /* 상품 정보에서 색상 데이터를 가져오기 */
   const colors = product.color;
@@ -287,7 +287,7 @@ export const Detail = ({ cart, setCart }) => {
             <section className="product_img_container">
               <div className="product_img">
                 <div className="size"><img src={product.imageUrl[0]} className="img_represent" /></div>
-                <img src="/images/shadow.png" className="img_shadow" />
+                <img src="/images/shadow.png" className={isShoes ? "img_shadow_shoes" : "img_shadow" } />
               </div>
 
               <div className="product_img_bottom">

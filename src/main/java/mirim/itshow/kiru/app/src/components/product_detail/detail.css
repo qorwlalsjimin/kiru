@@ -48,6 +48,11 @@
   width: 31.1%;
 }
 
+.product_img .img_shadow_shoes {
+  width: 31.1%;
+  margin-top: -150px;
+}
+
 /*  */
 .product_img_bottom {
   margin-top: 55px;

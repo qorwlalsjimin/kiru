@@ -1,21 +1,50 @@
+import $ from "jquery";
+import jQuery from "jquery";
+window.$ = window.jQuery = jQuery;
 
-// import gsap from 'gsap';
+// const carousel = document.querySelector(".carousel");
 
-// const cont = document.querySelector("#panels-container");
-// const panels = gsap.utils.toArray("#panels-container .panel");
+// const leftArrow = document.querySelector(".left-arrow");
+// const rightArrow = document.querySelector(".right-arrow");
 
-// tween = gsap.to(panels, {
-//   x: () => -1 * (cont.scrollWidth - innerWidth),
-//   ease: "none",
-//   scrollTrigger: {
-//     trigger: "#panels-container",
-//     pin: true,
-//     start: "top top",
-//     scrub: 1,
-//     end: () => "+=" + (cont.scrollWidth - innerWidth),
-//     onUpdate: (self) => {
-//      console.log(self.progress)
-//     }
-//   }
+// let currentIndex = 0;
+// let prevIndex;
+// const images = document.querySelectorAll(".carousel-image");
+
+// const totalImages = Object.keys(images).length;
+
+
+// const imageWidth = 520;
+
+// leftArrow.addEventListener("click", () => {
+//   prevIndex = currentIndex;
+//   currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+//   carousel.style.transform = `translateX(-${imageWidth}px)`;
+//   carousel.insertBefore(images[currentIndex], carousel.firstChild);
+
+//   setTimeout(() => {
+//     carousel.style.transform = "";
+//     carousel.classList.add("sliding-transition");
+    
+//   }, 10);
+
+//   setTimeout(() => {
+//     carousel.classList.remove("sliding-transition");
+//   }, 490);
 // });
 
+// rightArrow.addEventListener("click", () => {
+//   carousel.classList.add("sliding-transition");
+
+//   prevIndex = currentIndex;
+//   currentIndex = (currentIndex + 1) % totalImages;
+
+//   carousel.style.transform = `translateX(-${imageWidth}px)`;
+ 
+
+//   setTimeout(() => {
+//     carousel.appendChild(images[prevIndex]);
+//     carousel.classList.remove("sliding-transition");
+//     carousel.style.transform = "";
+//   }, 500);
+// });

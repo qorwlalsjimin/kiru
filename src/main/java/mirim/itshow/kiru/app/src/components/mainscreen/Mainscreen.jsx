@@ -1,16 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import "./mainscreen.css"
+import "./mainscreen.scss"
 import "./footer_black.css"
 import "./marquee.js"
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import CustomEase from "gsap/CustomEase";
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+
 import { Parallax } from "react-parallax";
-import ScrollToPlugin  from 'gsap/ScrollToPlugin';
+
+// import SmoothScroll from "./SmoothScroll";
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import MomentumSlider from 'momentum-slider';
 
 
 gsap.registerPlugin(ScrollToPlugin,CustomEase,ScrollTrigger );
@@ -97,15 +101,108 @@ export const Mainscreen = () => {
 
 
 //page_2
-const settings = {
-  infinite: true,
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 5000,
-  dots: true,
-};
+// const slidersContainerRef = useRef(null);
+// const paginationItemsRef = useRef([]);
 
+// useEffect(() => {
+//   // Initializing the numbers slider
+//   const msNumbers = new MomentumSlider({
+//     el: slidersContainerRef.current,
+//     cssClass: 'ms--numbers',
+//     range: [1, 4],
+//     rangeContent: function (i) {
+//       return '#0' + i;
+//     },
+//     style: {
+//       transform: [{ scale: [0.4, 1] }],
+//       opacity: [0, 1]
+//     },
+//     interactive: false
+//   });
+
+//   // Initializing the titles slider
+//   const titles = [
+//     '개량한복',
+//     '전통한복',
+//     '악세서리',
+//     '신발'
+//   ];
+//   const msTitles = new MomentumSlider({
+//     el: slidersContainerRef.current,
+//     cssClass: 'ms--titles',
+//     range: [0, 3],
+//     rangeContent: function (i) {
+//       return '<h3>' + titles[i] + '</h3>';
+//     },
+//     vertical: true,
+//     reverse: true,
+//     style: {
+//       opacity: [0, 1]
+//     },
+//     interactive: false
+//   });
+
+//   // Initializing the links slider
+//   const msLinks = new MomentumSlider({
+//     el: slidersContainerRef.current,
+//     cssClass: 'ms--links',
+//     range: [0, 3],
+//     rangeContent: function () {
+//       return '<a class="ms-slide__link"> </a>';
+//     },
+//     vertical: true,
+//     interactive: false
+//   });
+
+//   // Get pagination items
+//   const paginationItems = Array.from(paginationItemsRef.current);
+
+//   // Initializing the images slider
+//   const msImages = new MomentumSlider({
+//     // Element to append the slider
+//     el: slidersContainerRef.current,
+//     // CSS class to reference the slider
+//     cssClass: 'ms--images',
+//     // Generate the 4 slides required
+//     range: [0, 3],
+//     rangeContent: function () {
+//       return '<div class="ms-slide__image-container"><div class="ms-slide__image"></div></div>';
+//     },
+//     // Syncronize the other sliders
+//     sync: [msNumbers, msTitles, msLinks],
+//     // Styles to interpolate as we move the slider
+//     style: {
+//       '.ms-slide__image': {
+//         transform: [{ scale: [1.5, 1] }]
+//       }
+//     },
+//     // Update pagination if slider change
+//     change: function (newIndex, oldIndex) {
+//       if (typeof oldIndex !== 'undefined') {
+//         paginationItems[oldIndex].classList.remove('pagination__item--active');
+//       }
+//       paginationItems[newIndex].classList.add('pagination__item--active');
+//     }
+//   });
+
+//   // Select corresponding slider item when a pagination button is clicked
+//   const handlePaginationClick = (e) => {
+//     if (e.target.matches('.pagination__button')) {
+//       const index = paginationItems.indexOf(e.target.parentNode);
+//       msImages.select(index);
+//     }
+//   };
+
+//   paginationItems.forEach((item) => {
+//     item.addEventListener('click', handlePaginationClick);
+//   });
+
+//   return () => {
+//     paginationItems.forEach((item) => {
+//       item.removeEventListener('click', handlePaginationClick);
+//     });
+//   };
+// }, []);
 
 //     let panelsSection = document.querySelector("#panels"),
 //         panelsContainer = document.querySelector("#panels-container"),
@@ -191,25 +288,28 @@ useEffect(() => {
 }, []);
 
 
-let reveal = document.querySelectorAll(".reveal") 
 
-reveal.forEach( (el) => {
-  let headings = el.querySelectorAll(".object, .object .num" )
 
-  let tl = gsap.timeline ()
-  .from(headings, {y:80, stagger:1, opacity:0, duration:1.5, ease:"power3.out"})
-  // .from(btn, {y:80, opacity:0, duration:1, ease:"power3.out"},'-=0.6')
+
+//let reveal = document.querySelectorAll(".object") 
+
+// reveal.forEach( (el) => {
+//   let headings = el.querySelectorAll("h1, .num")
+//   let btn = el.querySelector(".btn")
   
-  ScrollTrigger.create ({
-		  trigger: el,
-			start: "center 100%", 
-      end:"top 50%",
-			markers: true,
-			toggleActions: "play none none reverse ",
-      animation:tl
-      })
-})
-
+//   let tl = gsap.timeline ()
+//   .from(headings, {x:-180, stagger:0.05, opacity:0, duration:1, ease:"power3.out"})
+//   .from(btn, {x:-80, opacity:0, duration:1, ease:"power3.out"},'-=0.6')
+  
+//   ScrollTrigger.create ({
+// 		  trigger: el,
+// 			start: "center 100%", 
+//       end:"top 50%",
+// 			markers: true,
+// 			toggleActions: "play none none reverse ",
+//       animation:tl
+//       })
+// })
 
   
 
@@ -338,8 +438,161 @@ const line1Ref = useRef(null);
     });
   }, []);
 
+  
+  
+// const carousel = document.querySelector(".carousel");
 
+// const leftArrow = document.querySelector(".left-arrow");
+// const rightArrow = document.querySelector(".right-arrow");
+
+// let currentIndex = 0;
+// let prevIndex;
+// const images = document.querySelectorAll(".carousel-image");
+
+// const totalImages = Object.keys(images).length;
+
+
+// const imageWidth = 520;
+
+// leftArrow.addEventListener("click", () => {
+//   prevIndex = currentIndex;
+//   currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+//   carousel.style.transform = `translateX(-${imageWidth}px)`;
+//   carousel.insertBefore(images[currentIndex], carousel.firstChild);
+
+//   setTimeout(() => {
+//     carousel.style.transform = "";
+//     carousel.classList.add("sliding-transition");
+    
+//   }, 10);
+
+//   setTimeout(() => {
+//     carousel.classList.remove("sliding-transition");
+//   }, 490);
+// });
+
+// rightArrow.addEventListener("click", () => {
+//   carousel.classList.add("sliding-transition");
+
+//   prevIndex = currentIndex;
+//   currentIndex = (currentIndex + 1) % totalImages;
+
+//   carousel.style.transform = `translateX(-${imageWidth}px)`;
  
+
+//   setTimeout(() => {
+//     carousel.appendChild(images[prevIndex]);
+//     carousel.classList.remove("sliding-transition");
+//     carousel.style.transform = "";
+//   }, 500);
+// });
+
+
+useEffect(() => {
+  
+
+  const revealElement = document.querySelector(".reveal");
+  const divElement = document.querySelector("._01");
+
+  gsap.set(revealElement, { transformOrigin: "top", y:"200px", x: "-100%", opacity: 0 });
+  gsap.set(divElement, { opacity: 0, y: 50 });
+
+  ScrollTrigger.create({
+    trigger: revealElement,
+    start: "top center",
+    onEnter: () => {
+      gsap.to(revealElement, { x: 0, opacity: 1, duration: 1, ease: "power3.out" });
+      gsap.to(divElement, { opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: 1 });
+    },
+    onLeaveBack: () => {
+      gsap.to(revealElement, { x: "-100%", opacity: 0, duration: 1, ease: "power3.out" });
+      gsap.to(divElement, { opacity: 0, y: 50, duration: 1, ease: "power3.out" });
+    },
+  });
+}, []);
+
+
+
+useEffect(() => {
+
+  const revealElement2 = document.querySelector(".reveal2");
+  const divElement2 = document.querySelector("._02");
+
+  gsap.set(revealElement2, { transformOrigin: "top", y: "850px", opacity: 0 });
+  gsap.set(divElement2, { opacity: 0, y: 50 }); //숫자가 처음에 보이는지 마는지
+
+  ScrollTrigger.create({
+    trigger: revealElement2,
+    start: "top center",
+    onEnter: () => {
+      gsap.to(revealElement2, { x: 0, opacity: 1, duration: 1, ease: "power3.out" });
+      gsap.to(divElement2, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", delay: 1 });
+    },
+    onLeaveBack: () => {
+      gsap.to(revealElement2, { x: "100%", opacity: 0, duration: 1, ease: "power3.out" });
+      gsap.to(divElement2, { opacity: 0, y: 50, duration: 0.5, ease: "power3.out" });
+    },
+  });
+}, []);
+
+
+
+
+
+const revealRef3 = useRef(null);
+const divRef3 = useRef(null);
+
+useEffect(() => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const revealElement = revealRef3.current;
+  const divElement = divRef3.current;
+
+  gsap.set(revealElement, { transformOrigin: "top", y:"1500px", scale: 0, opacity: 0 });
+  gsap.set(divElement, { opacity: 0 });
+
+  ScrollTrigger.create({
+    trigger: revealElement,
+    start: "top center",
+    onEnter: () => {
+      gsap.to(revealElement, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" });
+      gsap.to(divElement, { opacity: 1, duration: 1, ease: "power3.out", delay: 1 });
+    },
+    onLeaveBack: () => {
+      gsap.to(revealElement, { scale: 0, opacity: 0, duration: 1, ease: "power3.out" });
+      gsap.to(divElement, { opacity: 0, duration: 1, ease: "power3.out" });
+    },
+  });
+}, []);
+
+
+
+
+gsap.fromTo(".openevent",1.4, {
+  y: 50,
+  opacity: 0,
+  ease: "power3.out",
+}, {
+  scrollTrigger: {
+    trigger: ".page_4",
+    start: "top center",
+    ease: "power3.out"
+  },
+  y: 0,
+  opacity: 1,
+  ease: "power3.out"
+});
+
+
+
+//  gsap.from('.studioshot h1', 1.4, {
+//   delay: 1,
+// opacity:0,
+//   y: 250,
+//   skewY: 20,
+//   stagger: .8,
+  
+// }
 
 //line move
 
@@ -355,17 +608,15 @@ const line1Ref = useRef(null);
 
   return (
     <div>
-     
+      {/* <SmoothScroll> */}
   
          
        {/* <FullPage  ref={fullPageRef} >
       
         <Slide> */}
           
-        
-
     
-
+         
             <section className="page_1 panner" id='panner'  >
               <img src="/images/Subtract.png" className='people1' alt="" />
             </section>
@@ -375,21 +626,31 @@ const line1Ref = useRef(null);
 
     <Slide> */}
     
-          <section className="page_2 panner " id='panner'> 
-          <h1 className='choice'>Category</h1>
+      <section className="page_2 panner " id='panner'>
+      <button class="scrollToTopBtn">☝️</button>
+
+
+        <h1 className='choice'>Category</h1>
 
 
 
-        {/* <Slider {...settings}>
-          <div className="containerdy">
-            <div className="s"><h4>#4 악세사리</h4><img src="/images/mask3.png" className='carousel-icon' alt="" /></div>
-            <div className="s"><h4>#1 개량한복</h4><img src="/images/mask.png" className='carousel-icon' alt="" /></div>
-            <div className="s"><h4>#2 전통한복</h4> <img src="/images/mask1.png" className='carousel-icon' alt="" /></div>
-            <div className="s"><h4>#3 신발</h4><img src="/images/mask4.png" className='carousel-icon' alt="" /></div>
+        <div className="waalll"></div>
+
+        {/* <article className='caru'>
+          <div className="carousel-container">
+            <div className="carousel">
+              <img src="images/mask.png" alt="Image 1" className='carousel-image' />
+              <img src="images/mask1.png" alt="Image 2" className='carousel-image' />
+              <img src="images/mask3.png" alt="Image 3" className='carousel-image' />
+              <img src="images/mask4.png" alt="Image 4" className='carousel-image' />
+            </div>
+            <button className="arrow-button left-arrow"><img src="images/left-129.png" alt="" /></button>
+            <button className="arrow-button right-arrow"><img src="images/right-128.png" alt="" /></button>
           </div>
-        </Slider> */}
-            
+        </article> */}
 
+
+      
             
     {/* </main> */}
 
@@ -430,7 +691,7 @@ const line1Ref = useRef(null);
             
           
              <article class = "reveal">
-                <div ref={objectRefs.current[0]} className="travel object" data-value={15} data-rotate={-18} >
+                <div ref={objectRefs.current[0]}  className="travel object" data-value={15} data-rotate={-18} >
                 <div className="figure-content" id='f1'>
                     <h1  className="_01 num">#01</h1>
                   <h1 className="_01-title">TRAVEL</h1>
@@ -440,8 +701,8 @@ const line1Ref = useRef(null);
                </article>
                             
 
-               <article class = "reveal">             
-                <div ref={objectRefs.current[1]} className="untact object" data-value={16} data-rotate={15}  >
+               <article class = "reveal2">             
+                <div ref={objectRefs.current[1]} className="untact object" data-value={10} data-rotate={15}  >
                   <div className="figure-content" id='f2'>
                       <h1 className="_02 num">#02</h1>
                       <h1 className="_02-title">UNTACT&nbsp;SURVICE</h1>
@@ -455,10 +716,10 @@ const line1Ref = useRef(null);
                             
            
 
-                <article class = "reveal">
+                <article class = "reveal3" ref={revealRef3}>
                 <div ref={objectRefs.current[2]} className="collaboration object" data-value={12} data-rotate={-15}  >
                   <div className="figure-content" id='f3'>
-                      <h1 className="_03 num">#03</h1>
+                      <h1 className="_03 num" ref={divRef3}>#03</h1>
                       <h1 className="_03-title">COLLABORATION</h1>
                       <h1 className="figure-ps">당신의 취향에 맞는 <br/> 한복과 기모노를 선택해보세요</h1>
                   </div>
@@ -482,7 +743,7 @@ const line1Ref = useRef(null);
             <div className="wall" >
               <div className="openevent">#open event 컨셉 사진의 주인공이 되어 보세요!</div>
 
-              <div className="studioshot" id='quote'>
+              <div className="studioshot" id='quote' >
                 <h1>studio<br/>shot</h1>
             
               </div>
@@ -586,11 +847,9 @@ const line1Ref = useRef(null);
             <h1 className='title Merchandise'>Merchandise</h1>
 
             <div className="eventps">
-
                               <h4>한복과 기모노를 구매하면<br />
                                   와펜 굿즈를 증정해드립니다!</h4>
                           </div>
-
 
             <div className="title-wrap">
                        
@@ -675,21 +934,21 @@ const line1Ref = useRef(null);
               </a>
               <a href=""><img src="images/brand12.png" alt="" />
               </a>
-              <a href=""><img src="images/brand3.png" alt="" />
+              <a href=""><img src="images/brand133.png" alt="" />
               </a>
-              <a href=""><img src="images/brand4.png" alt="" />
+              <a href=""><img src="images/001.png" alt="" />
               </a>
-              <a href=""><img src="images/brand5.png" alt="" />
+              <a href=""><img src="images/brand15.png" alt="" />
               </a>
-              <a href=""><img src="images/brand6.png" alt="" />
+              <a href=""><img src="images/002.png" alt="" />
               </a>
-              <a href=""><img src="images/brand7.png" alt="" />
+              <a href=""><img src="images/brand17.png" alt="" />
               </a>
-              <a href=""><img src="images/brand8.png" alt="" />
+              <a href=""><img src="images/brand18.png" alt="" />
               </a>
-              <a href=""><img src="images/brand9.png" alt="" />
+              <a href=""><img src="images/003.png" alt="" />
               </a>
-              <a href=""><img src="images/brand10.png" alt="" />
+              <a href=""><img src="images/brand20.png" alt="" />
               </a>
 
             </div>
@@ -700,21 +959,21 @@ const line1Ref = useRef(null);
               </a>
               <a href=""><img src="images/brand12.png" alt="" />
               </a>
-              <a href=""><img src="images/brand3.png" alt="" />
+              <a href=""><img src="images/brand133.png" alt="" />
               </a>
-              <a href=""><img src="images/brand4.png" alt="" />
+              <a href=""><img src="images/001.png" alt="" />
               </a>
-              <a href=""><img src="images/brand5.png" alt="" />
+              <a href=""><img src="images/brand15.png" alt="" />
               </a>
-              <a href=""><img src="images/brand6.png" alt="" />
+              <a href=""><img src="images/002.png" alt="" />
               </a>
-              <a href=""><img src="images/brand7.png" alt="" />
+              <a href=""><img src="images/brand17.png" alt="" />
               </a>
-              <a href=""><img src="images/brand8.png" alt="" />
+              <a href=""><img src="images/brand18.png" alt="" />
               </a>
-              <a href=""><img src="images/brand9.png" alt="" />
+              <a href=""><img src="images/003.png" alt="" />
               </a>
-              <a href=""><img src="images/brand10.png" alt="" />
+              <a href=""><img src="images/brand20.png" alt="" />
               </a>
 
             </div>
@@ -890,7 +1149,7 @@ const line1Ref = useRef(null);
       
          
           </FullPage> */}
-          
+          {/* </SmoothScroll> */}
                   </div>
             
      

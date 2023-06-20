@@ -1,0 +1,1307 @@
+* {
+    box-sizing: border-box;
+  }
+
+  @font-face {
+    font-family: 'lostgun Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('lostgun Regular'), url('./lostgun-cufonfonts-webfont/lostgun-Regular.woff') format('woff');
+    }
+
+  
+  
+body, html{ 
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+  }
+
+
+ 
+
+section{
+    height: 100vh;
+    /* width: 100vw; */
+    scroll-snap-stop: always;
+}
+
+.ps{
+  padding: 5%;
+  margin-top: 16%;
+  /* margin-bottom: 50px; */
+  line-height: 25px;
+  /* background-color: #1E1E20; */
+  width: 500px;
+  font-size: 20px;
+}
+
+
+.page_3{
+  height: 200vh;
+  background: linear-gradient( to bottom, #F5DCEA, #F0E9FE, #DECEF3 );
+  position: relative;
+}
+
+.untact, .travel,.collaboration {
+  box-shadow: 3px 25px 25px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.backtext{
+  // top: 0%;
+  margin-top: 11.6%;
+  position: absolute;
+  /* margin-top: 4.81%; */
+  left: 45%;
+}
+
+.backtext h1{
+  color: #DC16D4;
+  // animation: rotateAnimation 3s infinite linear;
+  position: absolute;
+  transform: rotate(15deg); 
+}
+
+.backtext2{
+  // top: 72.7%;
+  position: absolute;
+  margin-top: 13%; 
+}
+
+
+.backtext2 h1{
+  // animation: sway 1s infinite alternate;
+  color: #DC16D4;
+  margin-left: 37%;
+  transform: rotate(-15deg);
+}
+
+
+
+.travel{
+background-color: #fff;
+width: 550px;
+height: 550px;
+border-radius: 50%;
+position: absolute;
+// animation: moveUpDown 2s infinite alternate;
+top: 7%;
+left: 7%;
+transform: rotate(-18deg);
+
+}
+
+
+.untact{
+  background-color: #fff;
+  width: 550px;
+	height: 550px;
+  position: absolute;
+  left: 50%;
+  top: 37%;
+  transform: rotate(15deg);
+ 
+  // animation: rotateAnimation 3s infinite linear;
+}
+
+@keyframes sway {
+  0% {
+    transform: rotate(-15deg) translateX(0);
+  }
+  100% {
+    transform: rotate(-15deg) translateX(26px);
+  }
+}
+
+
+
+
+
+.collaboration{
+  top: 65%;
+  left: 20%;
+  width: 550px;
+  height: 550px;
+  border-radius: 50%;
+  position: absolute;
+  background-color: #fff;
+  transform: rotate(-15deg);
+  // animation: sway 1s infinite alternate;
+}
+
+
+@keyframes rotateAnimation {
+  0% {
+    transform: rotate(15deg);
+  }
+  50% {
+    transform: rotate(7deg);
+  }
+  100% {
+    transform: rotate(15deg);
+  }
+}
+
+
+
+@keyframes moveUpDown {
+  0% {
+    top: 100px;
+  }
+  50% {
+    top: 200px;
+  }
+  100% {
+    top: 100px;
+  }
+}
+
+
+
+.figure-content{
+  /* position: relative; */
+  text-align: center;
+  position: absolute;
+}
+
+#f1{
+  /* margin-right: 20px; */
+  margin-top: 80px;  
+  margin-left: 20%;
+  
+}
+
+#f2{
+  margin-top: 80px;
+  right: -21%;
+}
+
+#f3{
+  /* margin-right: 220px; */
+  margin-top: 60px;
+  right: -22%;
+
+}
+
+
+._01-title, ._02-title, ._03-title{
+  font-size: 7rem;
+  color: #6D16DC;
+  font-family:  'lostgun Regular';
+  margin-top: 30px;
+  /* mix-blend-mode: difference; */
+  /* z-index: 1; */
+ 
+  
+}
+
+._03-1-title{
+  color: #6D16DC;
+  /* z-index: 2; */
+}
+
+.figure-ps{
+  font-size: 1.7rem;
+  margin-top: 7%;
+}
+
+._01, ._02, ._03{
+  font-size: 5rem;
+  margin-top: 20px;
+  font-family:  'lostgun Regular';
+  color: #6D16DC;
+}
+
+
+
+
+.title{
+ font-size: 2rem;
+}
+
+
+.titleh1{
+    color: #fff;
+    padding: 165px;
+    /* background-color: ; */
+    display: grid;
+    place-items: center;
+    /* height: 100vh; */
+}
+
+
+.partner {
+  font-family:  'lostgun Regular';
+  font-size: 4rem;
+ 
+}
+
+.page_7{
+  position: relative;
+}
+
+
+.skimono{
+  color: #ffffff;
+  position: absolute;
+  /* margin-top: 30px; */
+  top: 50%;
+ 
+  left: 37%;
+  font-size: 5rem;
+  /* background-color: #904ED4 */
+}
+
+
+body::-webkit-scrollbar {
+  width: 10px;  /* 스크롤바의 너비 */
+}
+
+body::-webkit-scrollbar-thumb {
+  height: 14%; /* 스크롤바의 길이 */
+  background: #a3a3a5; /* 스크롤바의 색상 */
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-track {
+ 
+}
+
+
+
+.brand{
+    width: 50px;
+    height: 50px;
+    background-color: azure;
+  
+}
+
+.marquee{
+    height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* float: left; */
+}
+
+
+
+
+.choice{
+    padding: 5%;
+    font-size: 9rem;
+    font-family: 'lostgun Regular';
+}
+
+
+
+.titleh1 h1{
+    margin-top: 5%;
+    font-size: 99px;
+}
+
+
+.logo_white{
+    /* background-color: aquamarine; */
+    /* margin-top: 20px; */
+    /* margin-bottom: 10px; */
+}
+
+.page_6, .page_7 {
+    background-color: #1E1E20;
+}
+
+.Merchandise{
+    display: grid;
+    place-items: center;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    /* top: 445%; */
+    font-size: 6rem;
+    margin-top: 20%;
+    font-family:  'lostgun Regular';
+}
+
+.eventps{
+  display: grid;
+  place-items: center;
+  position: absolute;
+  margin-top: 30%;
+  /* top: 465%; */
+  transform: translate(-50%, -50%);
+  left: 50%;
+  font-size: 30px;
+  text-align: center;
+  line-height: 50px;
+  color: #424242;
+}
+
+.open{
+  margin-top: 14%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  /* top: 434%; */
+  font-size: 2rem;
+  font-family:  'lostgun Regular';
+}
+
+
+
+
+.page_1{
+    background-image: url("../../../public/images/background.png");
+    background-size: cover;
+    /* top: -10%; */
+    /* position: relative; */
+}
+
+
+.page_1 img{
+  padding-top: 90px;
+}
+
+
+.slides-container{
+  /* background-color: #a58585; */
+  position: relative;
+  top: -136px;
+  z-index: 1;
+
+}
+
+/* horizental */
+.main-container { 
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background-color: #1E1E20;
+}
+
+
+.horizontal-coordinate {
+    position: fixed;
+    z-index: 100;
+    top: 50px;
+    left: 50px;
+    background-color: #6D16DC;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+
+.box1 {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 1200px;
+  background: blue;
+  transform: translate(0, -50%);
+}
+
+
+
+.page_4{
+  position: relative;
+}
+
+
+
+.studioshot h1{
+  color: #fff;
+  font-size: 14rem;
+  padding: 6%;
+  top: 31%; 
+  position: absolute;
+
+  /* display: flex; */
+  /* margin-top: 50%; */
+ 
+}
+
+/* marquee */
+#box {
+  min-width: 100%;
+  display: flex;
+  /* padding: 1rem; */
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  background: #1E1E20;
+}
+
+
+#box::after {
+  content:'';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  /* background: linear-gradient(to right, black, rgba(0, 0, 0, 0) 100px,rgba(0, 0, 0, 0) calc(100% - 100px), black); */
+}
+
+.box-area {
+  display: flex;
+}
+
+#box:hover .logo-top {
+  animation-play-state: paused;
+}
+
+
+#box:hover .logo-top2 {
+  animation-play-state: paused;
+}
+
+
+.logo-top{
+  display: flex;
+  position: relative;
+  margin: 20px auto;
+/*   z-index: 1; */
+}
+
+.logo-top2{
+  display: flex;
+  position: relative;
+  margin: 20px auto;
+/*   z-index: 1; */
+}
+
+.logo-top {
+  animation: marquee 17s linear infinite;
+}
+
+.logo-top2{
+  animation: marquee2 17s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+
+@keyframes marquee2 {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.logo-top a {
+  display: block;
+  width: 190px;
+  height: 190px;
+  background-color: #FFFFFF;
+  /* border-radius:50%; */
+  overflow: hidden;
+  margin: 0 14px;
+}
+
+.logo-top2 a {
+  display: block;
+  width: 190px;
+  height: 190px;
+  background-color: #FFFFFF;
+  /* border-radius:50%; */
+  overflow: hidden;
+  margin: 0 14px;
+}
+
+.logo-top img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.logo-top2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.wall-item{
+  display: flex;
+  margin-left: 50%;
+
+}
+
+
+.bacgroundcar {
+  background-color: #fff;
+  width: 400px;
+  height: 530px;
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+.wall{
+  /* background-color: #a58585; */
+  height: 100vh;
+  overflow: hidden; 
+}
+
+.line1{
+  position: relative;
+  top: -1550px; 
+  margin-right: 35px;
+
+}
+
+
+.line2{
+  position: relative;
+  top: -200px; 
+}
+
+
+
+/* Fullpage */
+.fullpage-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  transition: transform ease-in-out; /* transition 효과 추가 */
+}
+
+.fullpage-page {
+  position: relative;
+  height: 100vh;
+}
+
+
+
+.bacgroundcar{
+  margin-bottom: 35px;
+}
+
+.border-card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 380px;
+  height: 510px;
+  border: 2px solid rgb(34, 33, 33);
+}
+
+.border-card img{
+  width: 350px;
+  height: 480px;
+}
+
+#pink{
+  border: 2px solid #B19AE3;
+}
+
+#green{
+  border: 2px solid #B2BA88;
+}
+
+
+#blue{
+  border: 2px solid #bbdbf8;
+}
+
+.studioshot h1{
+  font-family: 'lostgun Regular';
+}
+
+.openevent{
+  color: #fff;
+  padding-left: 6%;
+  padding-top: 4%;
+  font-size: 25px;
+  position: absolute;
+ 
+}
+
+
+.people1{
+    margin: auto;
+    display: block;
+
+}
+
+.middletitle h2{
+    display: flex;
+    /* margin-top: 20px; */
+    /* margin-bottom: 10%; */
+    font-size: 36px;
+  
+}
+
+
+
+.kimono{
+    font-size: 5rem;
+    min-height: 100vh;
+}
+
+/* Carousel */
+
+/* 이미지 사이즈 */
+.carousel-icon {
+  /* border-radius: 50%; */
+  margin-top: 20px;
+  height: 570px;
+  width:  690px;
+}
+
+
+/* card css */
+.card {
+
+  box-sizing: border-box;
+ /* background-color: #1E1E20; */
+  /* display: flex; */
+  /* background-color: blue; */
+  /* color: white; */
+  /* border: 2px solid cyan; */
+  /* border-radius: 12px; */
+  /* line-height: 300px; */
+  /* text-align: center; */
+  /* margin-top: 20px; */
+  font-size: 40px;
+  position: absolute;
+  /* margin-bottom: 20px; */
+  /* top: calc(50% - 150px); */
+  /* overflow: hidden; */
+  display: flex;
+  left: calc(37% - 100px);
+  opacity: 1;
+  /* top: 125%; */
+  color: #494949;
+  transition: transform 1s;
+  transition: opacity 1s;
+  
+}
+
+
+
+
+.hidden {
+  opacity: 0;
+  z-index: 5;
+  transform: translateX(0) scale(0.4);
+}
+
+
+
+.hidden {
+  /* 이미지가 숨겨진 스타일 설정 */
+  opacity: 0;
+  transform: translateX(20px) scale(0.9);
+}
+
+
+
+
+.p1 {
+  transform: translateX(max(-18vw, -180px)) translateY(2.5vh) scale(0.6);
+  z-index: 10;
+  
+  /* -webkit-filter: blur(5px); */
+  /* -moz-filter: blur(5px); */
+  /* -o-filter: blur(5px); */
+  /* -ms-filter: blur(5px); */
+  /* filter: blur(5px);  */
+  /* margin-right: 20px; */
+  transition: transform 1s;
+  /* border:1px solid red; */
+}
+
+
+
+.caru{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // background-color: #0B0D14;
+ 
+}
+
+.carousel {
+  display: flex;
+  max-width: 1000px;
+  gap: 20px;
+ position: absolute;
+  top: 150%;
+
+}
+
+.carousel.sliding-transition {
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-image{
+ width: 550vw;
+ z-index: 0;
+ height: 450px;
+}
+
+.arrow-button {
+  // padding: 0;
+  // position: absolute;
+  // top: 50%;
+  // transform: translateY(-50%);
+  // color: #000;
+  cursor: pointer;
+  // background: rgb(255, 255, 255, 0.3);
+  // width: 36px;
+  // font-size: 28px;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  border: none;
+  margin-inline: 50px;
+  background-color: #fff;
+ 
+// margin-bottom: 450px;
+  // border-radius: 50%;
+}
+
+.waalll{
+  width: 30vw;
+  height: 600px;
+  background-color: #fff;
+  // border: #0B0D14 1px solid;
+  position: absolute;
+  left: 150px;
+  z-index: 1;
+  
+}
+
+
+/* images */
+@mixin ms(
+  // Default values
+  $cssClass: 'ms-container',
+  $slider-length: 400px,
+  $slider-center: false,
+  $slide-width: 90px,
+  $slide-height: 90px,
+  $vertical: false,
+  $reverse: false,
+  $debug: false
+) {
+  // Slider container
+  .#{$cssClass} {
+    position: relative;
+    @if $slider-center {
+      margin: 0 auto;
+    }
+    overflow: hidden;
+    @if $debug {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    @if $debug {
+      // Just for testing the current slide position (centered)
+      &:before {
+        content: '';
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.3);
+        border-radius: 100%;
+      }
+    }
+
+    @if $vertical {
+      // Styles for vertical slider
+      &.ms-container--vertical {
+        width: $slide-width;
+        height: $slider-length;
+        max-height: 100%;
+  
+        @if $debug {
+          &:before {
+            left: 0;
+            top: calc(50% - #{$slide-height / 2});
+            width: 100%;
+            height: $slide-height;
+          }
+        }
+  
+        // Centering slider track vertically, to get current slide centered
+        .ms-track {
+          flex-direction: column;
+          top: calc(50% - #{$slide-height / 2});
+        }
+  
+        @if $reverse {
+          // Reverse styles
+          &.ms-container--reverse .ms-track {
+            flex-direction: column-reverse;
+            top: auto;
+            bottom: calc(50% - #{$slide-height / 2});
+          }
+        }
+  
+        // Positioning slides vertically
+        .ms-slide {
+          display: flex;
+        }
+      }
+    } @else {
+      // Styles for horizontal slider
+      &.ms-container--horizontal {
+        width: $slider-length;
+        height: $slide-height;
+        max-width: 100%;
+  
+        @if $debug {
+          &:before {
+            left: calc(50% - #{$slide-width / 2});
+            top: 0;
+            width: $slide-width;
+            height: 100%;
+          }
+        }
+  
+        // Centering slider track horizontally, to get current slide centered
+        .ms-track {
+          left: calc(50% - #{$slide-width / 2});
+        }
+  
+        @if $reverse {
+          // Reverse styles
+          &.ms-container--reverse .ms-track {
+            flex-direction: row-reverse;
+            left: auto;
+            right: calc(50% - #{$slide-width / 2});
+          }
+        }
+  
+        // Positioning slides horizontally
+        .ms-slide {
+          display: inline-flex;
+        }
+      }
+    }
+  
+    // Slider track
+    .ms-track {
+      display: flex;
+      position: absolute;
+      white-space: nowrap;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+  
+    // Slides
+    .ms-slide {
+      align-items: center;
+      justify-content: center;
+      width: $slide-width;
+      height: $slide-height;
+      user-select: none;
+  
+      @if $debug {
+        // A testing backgrounds for slides
+        &:nth-child(2n) {
+          background-color: rgba(0, 0, 0, 0.1);
+        }
+        &:nth-child(2n + 1) {
+          background-color: rgba(0, 0, 0, 0.2);
+        }
+      }
+    }
+  }
+}
+
+
+// Images
+
+@mixin ms(
+  // Default values
+  $cssClass: 'ms-container',
+  $slider-length: 400px,
+  $slider-center: false,
+  $slide-width: 90px,
+  $slide-height: 90px,
+  $vertical: false,
+  $reverse: false,
+  $debug: false
+) {
+  // Slider container
+  .#{$cssClass} {
+    position: relative;
+    @if $slider-center {
+      margin: 0 auto;
+    }
+    overflow: hidden;
+    @if $debug {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    @if $debug {
+      // Just for testing the current slide position (centered)
+      &:before {
+        content: '';
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.3);
+        border-radius: 100%;
+      }
+    }
+
+    @if $vertical {
+      // Styles for vertical slider
+      &.ms-container--vertical {
+        width: $slide-width;
+        height: $slider-length;
+        max-height: 100%;
+  
+        @if $debug {
+          &:before {
+            left: 0;
+            top: calc(50% - #{$slide-height / 2});
+            width: 100%;
+            height: $slide-height;
+          }
+        }
+  
+        // Centering slider track vertically, to get current slide centered
+        .ms-track {
+          flex-direction: column;
+          top: calc(50% - #{$slide-height / 2});
+        }
+  
+        @if $reverse {
+          // Reverse styles
+          &.ms-container--reverse .ms-track {
+            flex-direction: column-reverse;
+            top: auto;
+            bottom: calc(50% - #{$slide-height / 2});
+          }
+        }
+  
+        // Positioning slides vertically
+        .ms-slide {
+          display: flex;
+        }
+      }
+    } @else {
+      // Styles for horizontal slider
+      &.ms-container--horizontal {
+        width: $slider-length;
+        height: $slide-height;
+        max-width: 100%;
+  
+        @if $debug {
+          &:before {
+            left: calc(50% - #{$slide-width / 2});
+            top: 0;
+            width: $slide-width;
+            height: 100%;
+          }
+        }
+  
+        // Centering slider track horizontally, to get current slide centered
+        .ms-track {
+          left: calc(50% - #{$slide-width / 2});
+        }
+  
+        @if $reverse {
+          // Reverse styles
+          &.ms-container--reverse .ms-track {
+            flex-direction: row-reverse;
+            left: auto;
+            right: calc(50% - #{$slide-width / 2});
+          }
+        }
+  
+        // Positioning slides horizontally
+        .ms-slide {
+          display: inline-flex;
+        }
+      }
+    }
+  
+    // Slider track
+    .ms-track {
+      display: flex;
+      position: absolute;
+      white-space: nowrap;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+  
+    // Slides
+    .ms-slide {
+      align-items: center;
+      justify-content: center;
+      width: $slide-width;
+      height: $slide-height;
+      user-select: none;
+  
+      @if $debug {
+        // A testing backgrounds for slides
+        &:nth-child(2n) {
+          background-color: rgba(0, 0, 0, 0.1);
+        }
+        &:nth-child(2n + 1) {
+          background-color: rgba(0, 0, 0, 0.2);
+        }
+      }
+    }
+  }
+}
+
+
+// Images
+
+$ms-images-slide-width: 700px;
+$ms-images-slide-height: 400px;
+
+// SCSS mixin to generate the final CSS code for the slider
+@include ms(
+  $cssClass: 'ms--images', // CSS class to match the slider container
+  $slider-length: 100%,    // The slider container will have full width
+  $slider-center: false,   // Don't need to center it, as it is full width
+  $slide-width: $ms-images-slide-width,   // Fixed width for each slide
+  $slide-height: $ms-images-slide-height, // Fixed height for each slide
+  $vertical: false, // The slider should be horizontal
+  $reverse: false,  // Normal order
+  $debug: false     // No debbug backgrounds in production
+);
+
+// Custom styles for images slider
+.ms--images {
+  left: calc(50% - #{$ms-images-slide-width / 2 - 70px});
+
+  &.ms-container--horizontal .ms-track {
+    left: -70px;
+  }
+
+  // Slides images
+  .ms-slide {
+    &:nth-child(1) .ms-slide__image {
+      background-image: url('https://www.designdb.com/usr/upload/editor/email/202204302005075b79b36e-a827-4df6-ac08-818a2e996a70.jpg');
+      
+    }
+    &:nth-child(2) .ms-slide__image {
+      background-image: url('https://contents.sixshop.com/uploadedFiles/115421/default/image_1583370013361.jpg');
+    }
+    &:nth-child(3) .ms-slide__image {
+      background-image: url('https://cdn.jsdelivr.net/gh/lmgonzalves/momentum-slider@3b3037f7f1bab402fe3c75cd20ab18e04e1cbe0b/portfolio-carousel/img/joanna-nix-389128-unsplash.jpg');
+    }
+    &:nth-child(4) .ms-slide__image {
+      background-image: url('https://cdn.jsdelivr.net/gh/lmgonzalves/momentum-slider@3b3037f7f1bab402fe3c75cd20ab18e04e1cbe0b/portfolio-carousel/img/jurica-koletic-321003-unsplash.jpg');
+    }
+  }
+
+  .ms-slide__image-container {
+    width: 80%;
+    height: 80%;
+    background-color: rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+  }
+
+  .ms-slide__image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+  }
+}
+
+
+// Numbers
+
+$ms-numbers-slide-width: 240px;
+$ms-numbers-slide-height: 240px;
+
+@include ms(
+  $cssClass: 'ms--numbers',
+  $slider-length: $ms-numbers-slide-width,
+  $slider-center: false,
+  $slide-width: $ms-numbers-slide-width,
+  $slide-height: $ms-numbers-slide-height,
+  $vertical: false,
+  $reverse: false,
+  $debug: false
+);
+
+.ms--numbers {
+  position: absolute;
+  left: calc(50% - #{$ms-images-slide-width / 2 + 30px});
+  top: calc(50% - #{$ms-images-slide-height / 2 + $ms-numbers-slide-height / 2 - 20px});
+  z-index: -1;
+  pointer-events: none;
+
+  .ms-slide {
+    font-size: 9em;
+    font-weight: 900;
+    color: rgba(66, 63, 63, 0.2);
+  }
+}
+
+
+// Titles
+
+$ms-titles-slide-width: 400px;
+$ms-titles-slide-height: 170px;
+
+@include ms(
+  $cssClass: 'ms--titles',
+  $slider-length: $ms-titles-slide-height,
+  $slider-center: false,
+  $slide-width: $ms-titles-slide-width,
+  $slide-height: $ms-titles-slide-height,
+  $vertical: true,
+  $reverse: true,
+  $debug: false
+);
+
+.ms--titles {
+  position: absolute;
+  left: calc(50% - #{$ms-images-slide-width / 2 + 70px});
+  top: calc(50% - #{$ms-titles-slide-height / 2});
+  z-index: 1;
+  pointer-events: none;
+
+  .ms-track {
+    white-space: normal;
+  }
+
+  .ms-slide {
+    font-size: 3.3em;
+    font-weight: 600;
+
+    h3 {
+      margin: 0;
+      font-size: 5rem;
+      // text-shadow: 1px 1px 2px black;
+    }
+  }
+}
+
+
+// Links
+
+$ms-links-slide-width: 120px;
+$ms-links-slide-height: 60px;
+
+@include ms(
+  $cssClass: 'ms--links',
+  $slider-length: $ms-links-slide-height,
+  $slider-center: false,
+  $slide-width: $ms-links-slide-width,
+  $slide-height: $ms-links-slide-height,
+  $vertical: true,
+  $reverse: false,
+  $debug: false
+);
+
+.ms--links {
+  position: absolute;
+  left: calc(50% - #{$ms-images-slide-width / 2 + 70px});
+  top: calc(50% + #{$ms-titles-slide-height / 2 + 20px});
+  z-index: 1;
+
+  .ms-track {
+    white-space: normal;
+  }
+
+  .ms-slide__link {
+    font-weight: 600;
+    padding: 5px 0 8px;
+    border-bottom: 2px solid white;
+    cursor: pointer;
+  }
+}
+
+
+// Pagination
+
+.pagination {
+  display: flex;
+  position: absolute;
+  left: calc(50% - #{$ms-images-slide-width / 2 + 70px});
+  top: calc(100%);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  z-index: 1;
+
+  &__button {
+    display: inline-block;
+    position: relative;
+    width: 36px;
+    height: 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: calc(50% - 1px);
+      width: 100%;
+      box-shadow: 0 1px 0 #0B0D14;
+    }
+    
+    &:before {
+      height: 2px;
+      background-color: #acabab;
+    }
+    
+    &:after {
+      height: 3px;
+      background-color: #6D16DC;
+      opacity: 0;
+      transition: 0.5s opacity;
+    }
+  }
+}
+
+.pagination__item--active .pagination__button:after {
+  opacity: 1;
+}
+
+.pagination__button{
+ color: #fff;
+ background-color: #fff;
+ border: none;
+}
+
+
+.sliders-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+
+.arrowbtn img{
+  margin-left: 100px;
+}
+
+.arrowbtn{
+  position: relative;
+  right: -70%;
+}

@@ -220,10 +220,10 @@ gsap.fromTo(".openevent",1.4, {
 //slide
 
 const images = [
-  "/images/slide1.png",
-  "/images/slide2.png",
-  "/images/slide3.png",
-  "/images/slide4.png"
+  { src: "/images/slide1.png", description: "전통 한복에 비해 편하고\n활동하기 쉬운 기능적이면서도\n한복의 전통성을 느낄 수 있는 한복입니다.", description2: "개량한복" },
+  { src: "/images/slide2.png", description: "한복은 우아한 곡선과 단아함, 기품과 화려함이\n조화롭게 어우러져 있는 고려시대부터\n전해 내려오는 대한민국의 고유한 의복입니다.", description2: "전통한복" },
+  { src: "/images/slide3.png", description: "한국 전통 악세사리는 오랫동안 한국의\n문화와 역사를 반영하는 아름다운 소품으로\n사랑받아온 물건들입니다.", description2: "악세사리" },
+  { src: "/images/slide4.png", description: "간결하고 우아하며 전통적인 분위기를 담고 있습니다.\n자연친화적인 재료를 사용하여서 발을\n편안하게 감싸줍니다.", description2: "신발" }
 ];
 
 const [currentSlide, setCurrentSlide] = useState(0);
@@ -241,50 +241,127 @@ const handleNextClick = () => {
 
 
 
+
 //scroll
 
 
 
   return (
     <div>
-      {/* <SmoothScroll> */}
-  
-         
-       {/* <FullPage  ref={fullPageRef} >
-      
-        <Slide> */}
-          
-    
-         
+   
             <section className="page_1 panner" id='panner'  >
-              {/* <img src="/images/Subtract.png" className='people1' alt="" /> */}
+           
+            <div id="marqeeu" className='japankore'>
+              <div id="box_non">
+          <div class="box-area">
+            <div class="logo-b">
+            <a href=""><img  src="images/w3.png" alt="" />
+              </a>
+              <a href=""><img  src="images/image321.png" alt="" />
+              </a>
+              <a href=""><img id='wafont' src="images/korea.png" alt="" />
+              </a>
+              
+              <a href=""><img src="images/w4.png" alt="" />
+              </a>
+              <a href=""><img id='wafont' src="images/korea.png" alt="" />
+              </a>
+              <a href=""><img src="images/image324.png" alt="" />
+              </a>
+              
+              <a href=""><img  src="images/w3.png" alt="" />  </a>
+              
+              <a href=""><img src="images/w2.png" alt="" />
+              </a>
+            </div>
 
 
+            <div class="logo-b">
+            <a href=""><img  src="images/w3.png" alt="" />
+              </a>
+              <a href=""><img  src="images/image321.png" alt="" />
+              </a>
+              <a href=""><img id='wafont' src="images/korea.png" alt="" />
+              </a>
+              <a href=""><img src="images/w4.png" alt="" />
+              </a>
+              <a href=""><img id='wafont' src="images/korea.png" alt="" />
+              </a>
+              <a href=""><img src="images/image324.png" alt="" />
+              </a>
+              
+              <a href=""><img  src="images/w3.png" alt="" />  </a>
+              
+              <a href=""><img src="images/w2.png" alt="" />
+              </a>
+            </div>
           
-              {/* <img src="/images/Frame2.png" className='wa frame2' data-value={-3} alt="" />
-              <img src="/images/Frame3.png"className='wa frame3' data-value={6} alt="" />
-              <img src="/images/Frame4.png" className='wa frame4'data-value={4} alt="" />
-              <img src="/images/Frame5.png" className='wa frame5'data-value={-6} alt="" />
-              <img src="/images/Frame6.png"className='wa frame6' data-value={8} alt="" />
-              <img src="/images/Frame7.png" className='wa frame7'data-value={-4} alt="" />
-              <img src="/images/Frame8.png"className='wa frame8' data-value={5} alt="" />
-              <img src="/images/Frame9.png"className='wa frame9' data-value={-9} alt="" />
-              <img src="/images/Frame10.png"className='wa frame10' data-value={-5} alt="" />
- 
- */}
+          </div>
+        </div>
+
+        <div id="box_non">
+          <div class="box-area">
+            <div class="logo-b2">
+
+              <a href=""><img  id='wafont' src="images/ja.png" alt="" />
+              </a>
+              <a href=""><img src="images/wa4.png" alt="" />
+              </a>
+
+             
+              <a href=""><img src="images/wa3.png" alt="" />
+              </a>
+             
+              <a href=""><img src="images/image309.png" alt="" />
+              </a>
+              <a href=""><img src="images/wa2.png" alt="" />
+              </a>
+              <a href=""><img src="images/wa3.png" alt="" />
+              </a>
+              <a href=""><img  id='wafont' src="images/ja.png" alt="" />
+              </a>
+              <a href=""><img src="images/image322.png" alt="" />
+              </a>
+
+              
+
+            </div>
 
 
+            <div class="logo-b2">
+            <a href=""><img  id='wafont' src="images/ja.png" alt="" />
+              </a>
+              <a href=""><img src="images/wa4.png" alt="" />
+              </a>
 
+             
+              <a href=""><img src="images/wa3.png" alt="" />
+              </a>
+             
+              <a href=""><img src="images/image309.png" alt="" />
+              </a>
+              <a href=""><img src="images/wa2.png" alt="" />
+              </a>
+              <a href=""><img src="images/wa3.png" alt="" />
+              </a>
+              <a href=""><img  id='wafont' src="images/ja.png" alt="" />
+              </a>
+              <a href=""><img src="images/image322.png" alt="" />
+              </a>
+
+            </div>
+          
+          </div>
+        </div>
+
+        </div>
 
 
 
 
             </section>
             
-        {/* </Slide>
-
-
-    <Slide> */}
+     
     
       <section className="page_2 panner " id='panner'>
       <button class="scrollToTopBtn">☝️</button>
@@ -298,22 +375,51 @@ const handleNextClick = () => {
           selectedItem={currentSlide}
           showThumbs={false}
           showStatus={false}
-          showIndicators={false}
-          showArrows={false} 
+          showArrows={false} // 화살표 제거
+          showIndicators={false} // 점(닷) 제거
           infiniteLoop
           autoPlay
           interval={3000}
+          onChange={(index) => setCurrentSlide(index)}
         >
-
-
           {images.map((image, index) => (
             <div key={index}>
-              <img src={image} alt={`Slide ${index + 1}`} />
+              <img src={image.src} alt={`Slide ${index + 1}`} />
             </div>
           ))}
         </Carousel>
       </div>
 
+      <div className="carousel-ps">
+  {images.map((image, index) => (
+    <div
+      key={index}
+      className={`fade-in ${currentSlide === index ? "active" : ""}`}
+      style={{ display: currentSlide === index ? "block" : "none", fontWeight:"bold" }}
+    >
+      <div className='categorytitle'>
+        {image.description2.split('\n').map((line, i) => (
+          <React.Fragment key={i}>
+            {line}
+            <br />
+          </React.Fragment>
+        ))}
+      </div>
+
+      <p className='categoryps'>
+        {image.description.split('\n').map((line, i) => (
+          <React.Fragment key={i}>
+            {line}
+            <br />
+          </React.Fragment>
+        ))}
+      </p>
+      
+    </div>
+  ))}
+</div>
+
+      {/* 버튼 코드 */}
       <div className="carousel-controls">
         <img
           src="/images/Vector155.svg"
@@ -328,6 +434,9 @@ const handleNextClick = () => {
           onClick={handleNextClick}
         />
       </div>
+
+
+     
 </div>
 
 
@@ -369,7 +478,7 @@ const handleNextClick = () => {
                             
 
                <article class = "reveal2">             
-                <div ref={objectRefs.current[1]} className="untact object" data-value={10} data-rotate={15}  >
+                <div ref={objectRefs.current[1]} className="untact object" data-value={20} data-rotate={15}  >
                   <div className="figure-content" id='f2'>
                       <h1 className="_02 num">#02</h1>
                       <h1 className="_02-title">UNTACT&nbsp;SURVICE</h1>

@@ -1,7 +1,12 @@
+import { useNavigate } from 'react-router-dom';
 import { CartList } from "./cartList";
+import EmptyNotice from './EmptyNotice';
 import { TotalCart } from "./totalCart";
 
-export default function CartItem({country, cart, total, setTotal, found}) {
+export default function CartItem({ country, cart, total, setTotal, found }) {
+  const navigate = useNavigate();
+  console.log(country+" "+cart+" "+total);
+
     return (
         <div className="country_content">
         {/* 한복 or 기모노 */}
@@ -30,31 +35,30 @@ export default function CartItem({country, cart, total, setTotal, found}) {
 
           {/* 하나의 행 */}
           {/* 장바구니에 담은 상품들 */}
-          {cart.length !== 0 ? (
-            cart.map((cart, idx) => {
+          {/* {cart.length !== 0 ? ( */}
+          {cart !== null ? (
+            Object.values(cart).map((cart, idx) => {
               return (
                 <CartList
-                  key={`key-${cart.id}`}
+                  key={`key-${cart.idx}`}
                   cart={cart}
+                  setTotal={setTotal}
+                  total={total}
                 />
               );
             })
-          ) : (<></>)}
-
-          {/* <div className="not">
-          <h2>장바구니에 담긴 상품이 없습니다.</h2>
-          <p>원하는 상품을 장바구니에 담아보세요!</p>
-        </div> */}
-
+          ) : (<EmptyNotice />)}
         </div>
 
         {/* 쇼핑 계속하기 */}
-        <div className="cart_continue_btn_wrap">
-          <button className="continue_btn">&#60; 쇼핑 계속하기</button>
-        </div>
+        {cart !== null && (<div className="cart_continue_btn_wrap">
+          <button className="continue_btn" onClick={()=>{navigate(-1)}}>&#60; 쇼핑 계속하기</button>
+        </div>)}
+        
 
         {/* 총합 */}
-        {cart.length !== 0 ? (
+        {/* {cart.length !== 0 ? ( */}
+        {cart !== null ? (
           <TotalCart
             cart={cart}
             total={total}

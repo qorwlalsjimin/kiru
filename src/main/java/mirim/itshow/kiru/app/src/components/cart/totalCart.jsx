@@ -5,6 +5,7 @@ import Util from '../../util/productUtil'
 // import { ReactComonent as DateLine } from '../../svgfiles/date_line.svg';
 
 export const TotalCart = ({ total, setTotal, cart, found, startDate, endDate }) => {
+  console.log("총합: ",total);
   const [totalQuantity, setTotalQuantity] = useState(0); // 누적된 총 수량 값
   setTotal(total);
 

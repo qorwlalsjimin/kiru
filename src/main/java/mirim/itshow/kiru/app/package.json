@@ -41,6 +41,7 @@
     "resolve-url-loader": "^5.0.0",
     "sass": "^1.63.4",
     "sass-loader": "^13.3.2",
+    "scss": "^0.2.4",
     "semantic-ui-css": "^2.5.0",
     "semantic-ui-react": "^2.1.4",
     "slick-carousel": "^1.8.1",

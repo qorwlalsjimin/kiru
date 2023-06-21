@@ -1,0 +1,13 @@
+.empty_notice_container{
+    font-family: 'Pretendard-Regular';
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 50px ;
+}
+
+.empty_notice h2{
+    margin-top: 0px;
+    margin-bottom: 8px;
+    font-family: 'Pretendard-Regular';
+}

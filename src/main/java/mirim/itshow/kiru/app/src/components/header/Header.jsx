@@ -21,10 +21,18 @@ import { Mainscreen } from "../mainscreen/Mainscreen";
 import { ProductList } from "../product_list/ProductList";
 import { getCookie, removeCookie } from "../../util/cookie";
 import SearchResult from "../search_result_list/SearchResult";
+import axios from "axios";
 
 
 const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) => {
   const ref = useRef();
+
+  // 카테고리 목록
+  let [categorys, setCategorys] = useState(axios.get(`/api/item/category/100}`, {
+    headers: {
+        'Authorization': `Bearer ${getCookie("accessToken")}`
+    }
+}).data);
 
   let [isBrand, setIsBrand] = useState(true);
 
@@ -34,6 +42,7 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
   /* 최근 검색 목록 */
   let [recentKeywords, setRecentKeywords] = useState(["전통한복", "원피스", "거들썬", "수궁화", "기모노"]);
 
+  
   /* 모달창 유무 */
   const [show, setShow] = useState(0);
 
@@ -114,6 +123,7 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
       navigate("/Login_form");
     }
   }
+
 
   return (
     <>

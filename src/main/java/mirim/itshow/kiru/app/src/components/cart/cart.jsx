@@ -6,6 +6,11 @@ import { TotalCart } from "./totalCart";
 import CartItem from "./CartItem";
 import Footer from "../footer/Footer";
 export const Cart = ({ cart, setCart }) => {
+
+  // 로컬스토리지에 있는 장바구니 가져오기
+  let cartHanbok = JSON.parse(localStorage.getItem('carts_hanbok'));
+  let cartKimono = JSON.parse(localStorage.getItem('carts_kimono'));
+
   // 총 가격 상태와 체크된 상품 목록을 관리하는 상태
   const [total, setTotal] = useState(0);
   const [checkLists, setCheckLists] = useState([]);
@@ -91,9 +96,9 @@ export const Cart = ({ cart, setCart }) => {
           </header>
 
           {/* 장바구니 상품 묶음 */}
-          <CartItem country="한복" cart={cart} total={total} setTotal={setTotal} found={found} />
+          <CartItem cart={cartHanbok} total={total} setTotal={setTotal} found={found} />
           <div style={{height: "63px"}}>&nbsp;</div>
-          <CartItem country="기모노" cart={cart} total={total} setTotal={setTotal} found={found} />
+          <CartItem country="기모노" cart={cartKimono} total={total} setTotal={setTotal} found={found} />
           
           {/* 구분선 */}
           <div className="hr"></div>
@@ -105,7 +110,6 @@ export const Cart = ({ cart, setCart }) => {
               <button>선택 상품 즐겨찾기</button>
             </div>
             <div className="right">
-              <Link to="rent_form">주문</Link>
               <button className="select">선택 상품 주문</button>
               <button className="all" onClick={rentHandle}>전체 상품 주문</button>
             </div>

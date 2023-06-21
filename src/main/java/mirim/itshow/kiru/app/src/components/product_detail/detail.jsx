@@ -151,15 +151,15 @@ export const Detail = ({ cart, setCart }) => {
           count: 1
         }
         setNowOptions(option);
-  
-      // 4. 사이즈  먼저 선택했으면 객체에 값 업데이트
+
+        // 4. 사이즈  먼저 선택했으면 객체에 값 업데이트
       } else { //사이즈 선택하고 넘어옴
         setNowOptions({ ...nowOptions, color: color });
       }
     } catch (err) {
       console.log("itemId가 없습니다.");
     }
-    
+
 
     // 5. 컬러랑 사이즈 둘 다 있으면 둘 다 선택했다고 체크
     if (!!color && !!size) { setIsComplete(true); }
@@ -173,7 +173,7 @@ export const Detail = ({ cart, setCart }) => {
     if (size !== undefined) {
       setIsClickSize(true);
     }
-    
+
     // 2. 사이즈를 처음 선택했으면 객체를 만들고
     console.log("★새로운 옵션")
     let option;
@@ -186,18 +186,18 @@ export const Detail = ({ cart, setCart }) => {
           count: 1
         }
         setNowOptions(option); //현재 옵션 세팅
-  
-      // 3. 색상 먼저 선택했으면 객체에 값 업데이트
+
+        // 3. 색상 먼저 선택했으면 객체에 값 업데이트
       } else { //색상 선택하고 넘어옴
         setNowOptions({ ...nowOptions, size: size });
       }
     } catch (err) {
       console.log("itemId가 없습니다.");
     }
-    
-    
+
+
     // 4. 색상과 사이즈 모두 있으면 모두 체크했다고 체크
-    if (!!selectedColor && !!size) {setIsComplete(true);}
+    if (!!selectedColor && !!size) { setIsComplete(true); }
     else { setIsComplete(false) };
   }, [size]);
 
@@ -224,12 +224,7 @@ export const Detail = ({ cart, setCart }) => {
 
   /* nowOptions 값 변경될때 - 모두 없어졌을때 */
   useEffect(() => {
-    // if (!!nowOptions.size && !!nowOptions.color) {
-    //   setIsClickColor(!isClickColor);
-    //   setIsClickSize(!isClickSize);
-    // }
     if (Object.keys(nowOptions).length === 0) console.log("현재 옵션 없음")
-    
   }, [nowOptions])
 
   /* 옵션 선택 리셋 */
@@ -314,42 +309,41 @@ export const Detail = ({ cart, setCart }) => {
     }
   }
 
-  /* TODO 장바구니에 상품 추가 */
+  /* 장바구니에 상품 추가 */
   const handleCart = () => {
     console.log("장바구니 추가", selectedOptions);
 
-    // TODO 여기서 상품 하나 안에 다른데이터를 넣어야함
-    // let forCartOptions = { ...selectedOptions, image: product.imageUrl[0], name: product.name, brand: product.brand };
-    // console.log(forCartOptions);
-    // let carts = JSON.parse(localStorage.getItem("carts"));
-    // if (!Array.isArray(carts)) {
-    //   carts = [];
-    // }
-    // carts.push(selectedOptions);
-    // localStorage.setItem("carts", JSON.stringify(carts));
+    //로컬스토리지 생성 및 값 삽입
+    if (product.country === 'hanbok') {
+      // 로컬스토리지의 장바구니 가져오기
+      const carts_hanbok = JSON.parse(localStorage.getItem("carts_hanbok")) || []; //한복
+      console.log("원래 있던거", carts_hanbok);
 
+      // 장바구니에 담을 값 준비 (추가로 필요한 정보 추가)
+      let index = 0;
+      let updateOptions = Object.values(selectedOptions).map((option) => {
+        return { name: product.name, image: product.imageUrl[0], ...option, brand: product.brand, price: product.price}
+      })
+      carts_hanbok.push(...updateOptions);
 
-    // const appended = []
-    // for (const size of Object.keys(selectedOptions)) {
-    //   appended.push(
-    //     {
-    //       id: product.itemId, 
-    //       image: product.imageUrl[0],
-    //       name: product.name,
-    //       quantity: count,
-    //       price: product.price,
-    //       provider: product.provider,
-    //       brand: product.brand,
-    //       size: size,
-    //       quantity: selectedOptions[size].count,
-    //       color: product.color,
-    //       startDate,
-    //       endDate
-    //     }
-    //   )
-    // }
-    // // console.log(appended)
-    // setCart(cart => cart.concat(appended));
+      // 로컬스토리지에 보내기
+      localStorage.setItem("carts_hanbok", JSON.stringify(carts_hanbok));
+
+    } else if (product.country === 'kimono') {
+      // 로컬스토리지의 장바구니 가져오기
+      const carts_kimono = JSON.parse(localStorage.getItem("carts_kimono")) || []; //기모노
+      console.log("원래 있던거", carts_kimono);
+
+      // 장바구니에 담을 값 준비 (추가로 필요한 정보 추가)
+      let index = 0;
+      let updateOptions = Object.values(selectedOptions).map((option) => {
+        return { name: product.name, image: product.imageUrl[0], ...option, brand: product.brand, price: product.price}
+      })
+      carts_kimono.push(...updateOptions);
+
+      // 로컬스토리지에 보내기
+      localStorage.setItem("carts_hanbok", JSON.stringify(carts_kimono));
+    }
 
     alert("장바구니에 추가되었습니다!");
     setTimeout(() => {
@@ -364,7 +358,7 @@ export const Detail = ({ cart, setCart }) => {
         {/* 상품 정보 */}
         <main className="main">
           <div className="product_information">
-            
+
             {/* 대표 이미지 */}
             <section className="product_img_container">
               <div className="product_img">

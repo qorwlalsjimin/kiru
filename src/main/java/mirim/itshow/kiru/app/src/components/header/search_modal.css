@@ -1,5 +1,6 @@
 /* 모달창 */
 .modal {
+    z-index: 10;
     position: absolute;
     font-family: sans-serif;
     height: 280px;

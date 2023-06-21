@@ -10,6 +10,7 @@ import Join_form from "./components/member/JoinForm";
 import { Mainscreen } from "./components/mainscreen/Mainscreen"
 import Heart from "./pages/Heart";
 import Rent from "./components/rent/Rent";
+import MainKimono from "./components/mainscreen/MainKimono";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -65,6 +66,7 @@ function App() {
      
    
       <Route path='/Mainscreen' element={<Mainscreen/>}/>
+      <Route path='/main_kimono' element={<MainKimono/>}/>
       </Routes>
     </BrowserRouter>
   );

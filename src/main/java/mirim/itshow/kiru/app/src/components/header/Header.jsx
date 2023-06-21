@@ -28,11 +28,11 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
   const ref = useRef();
 
   // 카테고리 목록
-  let [categorys, setCategorys] = useState(axios.get(`/api/item/category/100}`, {
-    headers: {
-        'Authorization': `Bearer ${getCookie("accessToken")}`
-    }
-}).data);
+//   let [categorys, setCategorys] = useState(axios.get(`/api/item/category/100}`, {
+//     headers: {
+//         'Authorization': `Bearer ${getCookie("accessToken")}`
+//     }
+// }).data);
 
   let [isBrand, setIsBrand] = useState(true);
 

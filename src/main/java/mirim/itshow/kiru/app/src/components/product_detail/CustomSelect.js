@@ -53,7 +53,7 @@ class CustomSelect extends Component {
   selectItem(title, id, stateKey) {
     // console.log("selectItem");
     
-    console.log("size: 타이틀추가")
+    // console.log("size: 타이틀추가")
     this.props.setSize(title);
     this.ddHeaderSelected = false;
     this.ddHeaderExOff = false;

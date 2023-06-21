@@ -134,13 +134,13 @@ export const Detail = ({ cart, setCart }) => {
   /* 색상 선택 */
   const handleColorClick = (color) => {
     // 1. 색 선택했다고 체크
-    console.log("백-색상 클릭", true);
     setIsClickColor(true);
 
     // 2. useState color에 값 넣기 
     setSelectedColor(color);
 
     // 3. 색상을 처음 선택했으면 객체를 만들고
+    console.log("★새로운 옵션")
     let option;
     try {
       if (!!nowOptions.itemId == false) { //색상 처음 선택
@@ -162,7 +162,8 @@ export const Detail = ({ cart, setCart }) => {
     
 
     // 5. 컬러랑 사이즈 둘 다 있으면 둘 다 선택했다고 체크
-    if (!!color && !!size) {setIsComplete(true);}
+    if (!!color && !!size) { setIsComplete(true); }
+    else { setIsComplete(false) };
   };
 
 
@@ -170,13 +171,12 @@ export const Detail = ({ cart, setCart }) => {
   useEffect(() => {
     // 1. size 값 있을때만 사이즈 클릭했다고 체크
     if (size !== undefined) {
-      console.log("백-사이즈 클릭", true);
       setIsClickSize(true);
     }
     
     // 2. 사이즈를 처음 선택했으면 객체를 만들고
+    console.log("★새로운 옵션")
     let option;
-    // console.log("졸리다", 'itemId' in Object.values(nowOptions))
     try {
       if (!!nowOptions.itemId == false) {  //사이즈 처음 선택
         option = {
@@ -198,21 +198,25 @@ export const Detail = ({ cart, setCart }) => {
     
     // 4. 색상과 사이즈 모두 있으면 모두 체크했다고 체크
     if (!!selectedColor && !!size) {setIsComplete(true);}
+    else { setIsComplete(false) };
   }, [size]);
 
 
   /* 색상, 사이즈 모두 선택했을때 */
-  let optionKey = 0;
+  let [optionKey, setOptionKey] = useState(0);
   useEffect(() => {
+    //두번째 옵션은 여기를 아예 안 들어옴
     if (isComplete) {
       //1. 원래 있던 옵션들에 지금 쓰던 옵션 추가
-      console.log("모두 선택!", { [optionKey]: nowOptions, ...selectedOptions });
-      setSelectedOptions({ [optionKey++]: nowOptions, ...selectedOptions });
+      setSelectedOptions((prevOptions) => ({
+        ...prevOptions,
+        [optionKey]: nowOptions,
+      }));
+      setOptionKey(optionKey + 1);
       handleReset();
 
       //2. 모두 선택 안 됐을때 color, size, nowOptions null로 초기화
     } else {
-      console.log("초기화");
       handleReset();
     }
   }, [isComplete]);
@@ -224,19 +228,15 @@ export const Detail = ({ cart, setCart }) => {
     //   setIsClickColor(!isClickColor);
     //   setIsClickSize(!isClickSize);
     // }
-    if(Object.keys(nowOptions).length===0) console.log("현재 옵션")
-    console.log("now",nowOptions);
-    console.log("selected",selectedOptions);
+    if (Object.keys(nowOptions).length === 0) console.log("현재 옵션 없음")
     
   }, [nowOptions])
 
   /* 옵션 선택 리셋 */
   const handleReset = () => {
     setNowOptions({});
-    console.log("size: null로")
     setSize(null);
     setSelectedColor(null);
-    console.log("xxxxxxxxxxxxsize랑 selectedColor 삭제xxxxxxxxxx");
   };
 
   /* 선택한 상품 박스 지우기 */
@@ -319,14 +319,14 @@ export const Detail = ({ cart, setCart }) => {
     console.log("장바구니 추가", selectedOptions);
 
     // TODO 여기서 상품 하나 안에 다른데이터를 넣어야함
-    let forCartOptions = { ...selectedOptions, image: product.imageUrl[0], name: product.name, brand: product.brand };
-    console.log(forCartOptions);
-    let carts = JSON.parse(localStorage.getItem("carts"));
-    if (!Array.isArray(carts)) {
-      carts = [];
-    }
-    carts.push(selectedOptions);
-    localStorage.setItem("carts", JSON.stringify(carts));
+    // let forCartOptions = { ...selectedOptions, image: product.imageUrl[0], name: product.name, brand: product.brand };
+    // console.log(forCartOptions);
+    // let carts = JSON.parse(localStorage.getItem("carts"));
+    // if (!Array.isArray(carts)) {
+    //   carts = [];
+    // }
+    // carts.push(selectedOptions);
+    // localStorage.setItem("carts", JSON.stringify(carts));
 
 
     // const appended = []
@@ -364,8 +364,7 @@ export const Detail = ({ cart, setCart }) => {
         {/* 상품 정보 */}
         <main className="main">
           <div className="product_information">
-
-            {/* {console.log("백", nowOptions)} */}
+            
             {/* 대표 이미지 */}
             <section className="product_img_container">
               <div className="product_img">
@@ -381,7 +380,6 @@ export const Detail = ({ cart, setCart }) => {
             </section>
 
             {/* 상품 정보 */}
-            {/* {console.log(product)} */}
             <section className="product_info_container">
               <div className="product_info">
 
@@ -477,8 +475,7 @@ export const Detail = ({ cart, setCart }) => {
               {/* 선택한 상품 박스 */}
               {Object.keys(selectedOptions).map((selectedOption, index) => {
                 const option = selectedOptions[selectedOption]; //박스 하나
-                console.log("박스 하나", option);
-                console.log("size color:", size, selectedColor);
+                // return (true) ? (
                 return ('count' in option) ? (
                   // 사이즈 별로
                   <div key={index}>

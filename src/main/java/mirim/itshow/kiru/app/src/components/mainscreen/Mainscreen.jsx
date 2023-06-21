@@ -221,7 +221,7 @@ gsap.fromTo(".openevent",1.4, {
 
 const images = [
   { src: "/images/slide1.png", description: "전통 한복에 비해 편하고\n활동하기 쉬운 기능적이면서도\n한복의 전통성을 느낄 수 있는 한복입니다.", description2: "개량한복" },
-  { src: "/images/slide2.png", description: "한복은 우아한 곡선과 단아함, 기품과 화려함이\n조화롭게 어우러져 있는 고려시대부터\n전해 내려오는 대한민국의 고유한 의복입니다.", description2: "전통한복" },
+  { src: "https://i.ibb.co/N6rX4t5/sidle2.png", description: "한복은 우아한 곡선과 단아함, 기품과 화려함이\n조화롭게 어우러져 있는 고려시대부터\n전해 내려오는 대한민국의 고유한 의복입니다.", description2: "전통한복" },
   { src: "/images/slide3.png", description: "한국 전통 악세사리는 오랫동안 한국의\n문화와 역사를 반영하는 아름다운 소품으로\n사랑받아온 물건들입니다.", description2: "악세사리" },
   { src: "/images/slide4.png", description: "간결하고 우아하며 전통적인 분위기를 담고 있습니다.\n자연친화적인 재료를 사용하여서 발을\n편안하게 감싸줍니다.", description2: "신발" }
 ];
@@ -237,16 +237,38 @@ const handleNextClick = () => {
 };
 
 
+//to top 
+const [showButton, setShowButton] = useState(false);
 
+const scrollToTop = () => {
+    window.scroll({
+        top: 0,
+        behavior: 'smooth'
+    })
 
+}
+useEffect(() => {
+    const handleShowButton = () => {
+        if (window.scrollY > 500) {
+            setShowButton(true)
+        } else {
+            setShowButton(false)
+        }
+    }
 
+    console.log(window.scrollY)
+    window.addEventListener("scroll", handleShowButton)
+    return () => {
+        window.removeEventListener("scroll", handleShowButton)
+    }
+}, [])
 
 
 //scroll
 
 
 
-  return (
+  return showButton &&(
     <div>
    
             <section className="page_1 panner" id='panner'  >
@@ -322,9 +344,6 @@ const handleNextClick = () => {
               </a>
               <a href=""><img src="images/image322.png" alt="" />
               </a>
-
-              
-
             </div>
 
 
@@ -364,7 +383,11 @@ const handleNextClick = () => {
      
     
       <section className="page_2 panner " id='panner'>
-      <button class="scrollToTopBtn">☝️</button>
+
+        {/* to top scroll */}
+        <div className="scroll__container">
+          <button id="top" onClick={scrollToTop} type="button" > Top</button>
+        </div>
 
 
       <div className="carousell">
@@ -876,7 +899,7 @@ const handleNextClick = () => {
               </div>
 
               
-          <Link to="/main_kimono"> 
+          {/* <Link to="/main_kimono">  */}
         
           <h1 className=' skimono' >기모노 보러가기</h1>
           <div className="image-container">
@@ -885,7 +908,7 @@ const handleNextClick = () => {
           <img src="/images/Frame4.png" className='wa3'data-value={4} alt="" />
             </div>
           
-          </Link>
+          {/* </Link> */}
          
       
       

@@ -295,11 +295,18 @@ transform: rotate(-18deg);
   position: relative;
 }
 
+.skimono:hover{
+  transform: scale(1.1);
+}
+
 
 .skimono{
   color: #ffffff;
+  transition: transform 1.5s ease;
+  // background-color: #6D16DC;
   // position: absolute;
   /* margin-top: 30px; */
+  cursor: pointer;
   top: 50%;
   position: relative;
   left: 37%;
@@ -307,24 +314,37 @@ transform: rotate(-18deg);
   /* background-color: #904ED4 */
 }
 
-.wa1:hover,
-.wa2:hover,
-.wa3:hover {
+.skimono:hover + .wa1{
   opacity: 1;
-  transform: translateX(0);
   transition-delay: 0.2s;
 }
 
-.wa1,
-.wa2,
-.wa3 {
+.skimono .wa1:hover,
+.skimono .wa2:hover,
+.skimono .wa3:hover {
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+
+.wa1{
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) translateX(-100%);
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.3s, transform 0.3s;
 }
+
+
+.wa2{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  // transform: translate(-50%, -50%) translateX(-100%);
+  opacity: 1;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
 
 .wa1 {
   transition-delay: 0s;
@@ -452,6 +472,7 @@ body::-webkit-scrollbar-track {
     // background-size: cover;
     position: relative;
    background-color: #6D16DC;
+   overflow-x: hidden;
     /* top: -10%; */
     /* position: relative; */
 }
@@ -461,6 +482,28 @@ body::-webkit-scrollbar-track {
 .img img{
   position: absolute;
 }
+
+.scroll__container{
+  position: fixed;
+  right: 5%;
+  bottom: 5%;
+  z-index: 1;
+}
+#top{
+  font-weight: bold;
+  font-size: 15px;
+  padding :15px 10px;
+  background-color: #000;
+  color:#fff;
+  border: 1px solid rgb(210, 204, 193);
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+}
+#top:hover{
+  color :rgb(142, 26, 26);
+}
+
 
 //벚꽃2
 .frame2{
@@ -702,6 +745,17 @@ body::-webkit-scrollbar-track {
  
 }
 
+
+// #box_non{
+//   min-width: 100%;
+//   display: flex;
+//   /* padding: 1rem; */
+//   position: relative;
+ 
+//   box-sizing: border-box;
+//   // background: #1E1E20;
+// }
+
 /* marquee */
 #box {
   min-width: 100%;
@@ -712,7 +766,6 @@ body::-webkit-scrollbar-track {
   box-sizing: border-box;
   background: #1E1E20;
 }
-
 
 
 #box::after {

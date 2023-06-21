@@ -240,35 +240,30 @@ const handleNextClick = () => {
 //to top 
 const [showButton, setShowButton] = useState(false);
 
-const scrollToTop = () => {
-    window.scroll({
-        top: 0,
-        behavior: 'smooth'
-    })
-
-}
 useEffect(() => {
-    const handleShowButton = () => {
-        if (window.scrollY > 500) {
-            setShowButton(true)
-        } else {
-            setShowButton(false)
-        }
+  window.addEventListener("scroll", () => {
+    if (window.pageYOffset > 300) {
+      setShowButton(true);
+    } else {
+      setShowButton(false);
     }
+  });
+}, []);
 
-    console.log(window.scrollY)
-    window.addEventListener("scroll", handleShowButton)
-    return () => {
-        window.removeEventListener("scroll", handleShowButton)
-    }
-}, [])
+// This function will scroll the window to the top 
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth' // for smoothly scrolling
+  });
+};
 
 
 //scroll
 
 
 
-  return showButton &&(
+  return (
     <div>
    
             <section className="page_1 panner" id='panner'  >
@@ -277,44 +272,44 @@ useEffect(() => {
               <div id="box_non">
           <div class="box-area">
             <div class="logo-b">
-            <a href=""><img  src="images/w3.png" alt="" />
+            <a ><img  src="images/w3.png" alt="" />
               </a>
-              <a href=""><img  src="images/image321.png" alt="" />
+              <a ><img  src="images/image321.png" alt="" />
               </a>
-              <a href=""><img id='wafont' src="images/korea.png" alt="" />
-              </a>
-              
-              <a href=""><img src="images/w4.png" alt="" />
-              </a>
-              <a href=""><img id='wafont' src="images/korea.png" alt="" />
-              </a>
-              <a href=""><img src="images/image324.png" alt="" />
+              <a ><img id='wafont' src="images/korea.png" alt="" />
               </a>
               
-              <a href=""><img  src="images/w3.png" alt="" />  </a>
+              <a ><img src="images/w4.png" alt="" />
+              </a>
+              <a ><img id='wafont' src="images/korea.png" alt="" />
+              </a>
+              <a ><img src="images/image324.png" alt="" />
+              </a>
               
-              <a href=""><img src="images/w2.png" alt="" />
+              <a ><img  src="images/w3.png" alt="" />  </a>
+              
+              <a ><img src="images/w2.png" alt="" />
               </a>
             </div>
 
 
             <div class="logo-b">
-            <a href=""><img  src="images/w3.png" alt="" />
+            <a ><img  src="images/w3.png" alt="" />
               </a>
-              <a href=""><img  src="images/image321.png" alt="" />
+              <a ><img  src="images/image321.png" alt="" />
               </a>
-              <a href=""><img id='wafont' src="images/korea.png" alt="" />
+              <a ><img id='wafont' src="images/korea.png" alt="" />
               </a>
-              <a href=""><img src="images/w4.png" alt="" />
+              <a ><img src="images/w4.png" alt="" />
               </a>
-              <a href=""><img id='wafont' src="images/korea.png" alt="" />
+              <a ><img id='wafont' src="images/korea.png" alt="" />
               </a>
-              <a href=""><img src="images/image324.png" alt="" />
+              <a ><img src="images/image324.png" alt="" />
               </a>
               
-              <a href=""><img  src="images/w3.png" alt="" />  </a>
+              <a ><img  src="images/w3.png" alt="" />  </a>
               
-              <a href=""><img src="images/w2.png" alt="" />
+              <a ><img src="images/w2.png" alt="" />
               </a>
             </div>
           
@@ -325,47 +320,47 @@ useEffect(() => {
           <div class="box-area">
             <div class="logo-b2">
 
-              <a href=""><img  id='wafont' src="images/ja.png" alt="" />
+              <a ><img  id='wafont' src="images/ja.png" alt="" />
               </a>
-              <a href=""><img src="images/wa4.png" alt="" />
+              <a ><img src="images/wa4.png" alt="" />
               </a>
 
              
-              <a href=""><img src="images/wa3.png" alt="" />
+              <a ><img src="images/wa3.png" alt="" />
               </a>
              
-              <a href=""><img src="images/image309.png" alt="" />
+              <a ><img src="images/image309.png" alt="" />
               </a>
-              <a href=""><img src="images/wa2.png" alt="" />
+              <a ><img src="images/wa2.png" alt="" />
               </a>
-              <a href=""><img src="images/wa3.png" alt="" />
+              <a ><img src="images/wa3.png" alt="" />
               </a>
-              <a href=""><img  id='wafont' src="images/ja.png" alt="" />
+              <a ><img  id='wafont' src="images/ja.png" alt="" />
               </a>
-              <a href=""><img src="images/image322.png" alt="" />
+              <a ><img src="images/image322.png" alt="" />
               </a>
             </div>
 
 
             <div class="logo-b2">
-            <a href=""><img  id='wafont' src="images/ja.png" alt="" />
+            <a ><img  id='wafont' src="images/ja.png" alt="" />
               </a>
-              <a href=""><img src="images/wa4.png" alt="" />
+              <a ><img src="images/wa4.png" alt="" />
               </a>
 
              
-              <a href=""><img src="images/wa3.png" alt="" />
+              <a ><img src="images/wa3.png" alt="" />
               </a>
              
-              <a href=""><img src="images/image309.png" alt="" />
+              <a ><img src="images/image309.png" alt="" />
               </a>
-              <a href=""><img src="images/wa2.png" alt="" />
+              <a ><img src="images/wa2.png" alt="" />
               </a>
-              <a href=""><img src="images/wa3.png" alt="" />
+              <a ><img src="images/wa3.png" alt="" />
               </a>
-              <a href=""><img  id='wafont' src="images/ja.png" alt="" />
+              <a ><img  id='wafont' src="images/ja.png" alt="" />
               </a>
-              <a href=""><img src="images/image322.png" alt="" />
+              <a ><img src="images/image322.png" alt="" />
               </a>
 
             </div>
@@ -386,8 +381,13 @@ useEffect(() => {
 
         {/* to top scroll */}
         <div className="scroll__container">
-          <button id="top" onClick={scrollToTop} type="button" > Top</button>
+          {showButton && (
+            <button id="top" onClick={scrollToTop} className="back-to-top">
+          Top
+            </button>
+          )}
         </div>
+
 
 
       <div className="carousell">

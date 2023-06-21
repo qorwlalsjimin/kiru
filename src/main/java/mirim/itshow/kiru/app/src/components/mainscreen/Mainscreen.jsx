@@ -4,233 +4,32 @@ import "./mainscreen.scss"
 import "./footer_black.css"
 import "./marquee.js"
 import { gsap } from 'gsap';
+import $ from "jquery";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import CustomEase from "gsap/CustomEase";
+import { CustomEase } from 'gsap/CustomEase';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import { Draggable } from "gsap/Draggable";
+import { Carousel } from "react-responsive-carousel";
 
-import { Parallax } from "react-parallax";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+// import { CCarousel, CCarouselItem, CImage } from '@coreui/bootstrap-react'
+// import Carousel from 'react-bootstrap/Carousel';
 
 // import SmoothScroll from "./SmoothScroll";
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+// import Slider from 'react-slick';
+// import 'slick-carousel/slick/slick.css';
+// import 'slick-carousel/slick/slick-theme.css';
 import MomentumSlider from 'momentum-slider';
 
 
-gsap.registerPlugin(ScrollToPlugin,CustomEase,ScrollTrigger );
-
-
-
+gsap.registerPlugin(ScrollToPlugin,CustomEase,ScrollTrigger,Draggable );
 
 export const Mainscreen = () => {
 
 
 
 
-  //fullpage
-  // gsap.registerPlugin(ScrollTrigger);
-  // gsap.registerPlugin(ScrollToPlugin);
-  
-  // let sections = gsap.utils.toArray("#panner");
-  
-  // function goToSection(i) {
-  //   gsap.to(window, {
-  //     scrollTo: { y: i * window.innerHeight, autoKill: false, ease: "Power3.easeInOut" },
-  //     duration: 0.85
-  //   });
-  // }
-  
-  
-  // sections.forEach((eachPanel, i) => {
-    
-  
-  //   ScrollTrigger.create({
-  //     trigger: eachPanel,
-  //     onEnter: () => goToSection(i)
-  //   });
-  
-  //   ScrollTrigger.create({
-  //     trigger: eachPanel,
-  //     start: "bottom bottom",
-  //     onEnterBack: () => goToSection(i)
-  //   });
-  // });
-
-
-  //scrollsmooth
- 
-
-
-
-//slide
-// const slidesRef = useRef(null);
-// const xOffsetRef = useRef(0);
-// const isMouseInRef = useRef(false);
-
-// useEffect(() => {
-//   const slides = slidesRef.current;
-
-//   const translate = () => {
-//     let offsetIncrementor = isMouseInRef.current ? 0.05 : 0.2;
-//     let xOffset = xOffsetRef.current;
-//     if (xOffset >= 258 * 7) xOffset = 0;
-//     else xOffset = xOffset + offsetIncrementor;
-//     xOffsetRef.current = xOffset;
-//     slides.style.transform = `translateX(-${xOffset}px)`;
-//   };
-
-//   const intervalId = setInterval(translate, 0);
-
-//   const handleMouseOver = () => {
-//     isMouseInRef.current = true;
-//   };
-
-//   const handleMouseOut = () => {
-//     isMouseInRef.current = false;
-//   };
-
-//   slides.addEventListener('mouseover', handleMouseOver);
-//   slides.addEventListener('mouseout', handleMouseOut);
-
-//   return () => {
-//     clearInterval(intervalId);
-//     slides.removeEventListener('mouseover', handleMouseOver);
-//     slides.removeEventListener('mouseout', handleMouseOut);
-//   };
-// }, []);
-
-
 //page_2
-// const slidersContainerRef = useRef(null);
-// const paginationItemsRef = useRef([]);
-
-// useEffect(() => {
-//   // Initializing the numbers slider
-//   const msNumbers = new MomentumSlider({
-//     el: slidersContainerRef.current,
-//     cssClass: 'ms--numbers',
-//     range: [1, 4],
-//     rangeContent: function (i) {
-//       return '#0' + i;
-//     },
-//     style: {
-//       transform: [{ scale: [0.4, 1] }],
-//       opacity: [0, 1]
-//     },
-//     interactive: false
-//   });
-
-//   // Initializing the titles slider
-//   const titles = [
-//     '개량한복',
-//     '전통한복',
-//     '악세서리',
-//     '신발'
-//   ];
-//   const msTitles = new MomentumSlider({
-//     el: slidersContainerRef.current,
-//     cssClass: 'ms--titles',
-//     range: [0, 3],
-//     rangeContent: function (i) {
-//       return '<h3>' + titles[i] + '</h3>';
-//     },
-//     vertical: true,
-//     reverse: true,
-//     style: {
-//       opacity: [0, 1]
-//     },
-//     interactive: false
-//   });
-
-//   // Initializing the links slider
-//   const msLinks = new MomentumSlider({
-//     el: slidersContainerRef.current,
-//     cssClass: 'ms--links',
-//     range: [0, 3],
-//     rangeContent: function () {
-//       return '<a class="ms-slide__link"> </a>';
-//     },
-//     vertical: true,
-//     interactive: false
-//   });
-
-//   // Get pagination items
-//   const paginationItems = Array.from(paginationItemsRef.current);
-
-//   // Initializing the images slider
-//   const msImages = new MomentumSlider({
-//     // Element to append the slider
-//     el: slidersContainerRef.current,
-//     // CSS class to reference the slider
-//     cssClass: 'ms--images',
-//     // Generate the 4 slides required
-//     range: [0, 3],
-//     rangeContent: function () {
-//       return '<div class="ms-slide__image-container"><div class="ms-slide__image"></div></div>';
-//     },
-//     // Syncronize the other sliders
-//     sync: [msNumbers, msTitles, msLinks],
-//     // Styles to interpolate as we move the slider
-//     style: {
-//       '.ms-slide__image': {
-//         transform: [{ scale: [1.5, 1] }]
-//       }
-//     },
-//     // Update pagination if slider change
-//     change: function (newIndex, oldIndex) {
-//       if (typeof oldIndex !== 'undefined') {
-//         paginationItems[oldIndex].classList.remove('pagination__item--active');
-//       }
-//       paginationItems[newIndex].classList.add('pagination__item--active');
-//     }
-//   });
-
-//   // Select corresponding slider item when a pagination button is clicked
-//   const handlePaginationClick = (e) => {
-//     if (e.target.matches('.pagination__button')) {
-//       const index = paginationItems.indexOf(e.target.parentNode);
-//       msImages.select(index);
-//     }
-//   };
-
-//   paginationItems.forEach((item) => {
-//     item.addEventListener('click', handlePaginationClick);
-//   });
-
-//   return () => {
-//     paginationItems.forEach((item) => {
-//       item.removeEventListener('click', handlePaginationClick);
-//     });
-//   };
-// }, []);
-
-//     let panelsSection = document.querySelector("#panels"),
-//         panelsContainer = document.querySelector("#panels-container"),
-//         tween;
-//     document.querySelectorAll(".anchor").forEach((anchor) => {
-//         anchor.addEventListener("click", function (e) {
-//             console.log("click");
-//             e.preventDefault();
-//             let targetElem = document.querySelector(e.target.getAttribute("href")),
-//                 y = targetElem;
-//             if (targetElem && panelsContainer.isSameNode(targetElem.parentElement)) {
-//                 let totalScroll = tween.scrollTrigger.end - tween.scrollTrigger.start,
-//                     totalMovement = cont.scrollWidth - window.innerWidth;
-//                 y = Math.round(
-//                     tween.scrollTrigger.start +
-//                     (targetElem.offsetLeft / totalMovement) * totalScroll
-//                 );
-//             }
-//             gsap.to(window, {
-//                 scrollTo: {
-//                     y: y,
-//                     autoKill: false
-//                 },
-//                 duration: 1
-//             });
-//         });
-//     });
-
 
 
 
@@ -238,22 +37,6 @@ export const Mainscreen = () => {
 
 const cont = document.querySelector("#panels-container");
 const panels = gsap.utils.toArray("#panels-container .panel");
-
-/*
-tween = gsap.to(panels, {
-  x: () => -1 * (cont.scrollWidth - window.innerWidth),
-  ease: "none",
-  scrollTrigger: {
-    trigger: "#panels-container",
-    pin: true,
-    start: "top top",
-    scrub: 1,
-    end: () => "+=" + (cont.scrollWidth - window.innerWidth),
-    onUpdate: (self) => {
-     console.log(self.progress)
-    }
-  }
-});*/
 
 
 
@@ -291,107 +74,8 @@ useEffect(() => {
 
 
 
-//let reveal = document.querySelectorAll(".object") 
 
-// reveal.forEach( (el) => {
-//   let headings = el.querySelectorAll("h1, .num")
-//   let btn = el.querySelector(".btn")
-  
-//   let tl = gsap.timeline ()
-//   .from(headings, {x:-180, stagger:0.05, opacity:0, duration:1, ease:"power3.out"})
-//   .from(btn, {x:-80, opacity:0, duration:1, ease:"power3.out"},'-=0.6')
-  
-//   ScrollTrigger.create ({
-// 		  trigger: el,
-// 			start: "center 100%", 
-//       end:"top 50%",
-// 			markers: true,
-// 			toggleActions: "play none none reverse ",
-//       animation:tl
-//       })
-// })
 
-  
-
-//   const containerRef = useRef(null);
-//   const sectionsRef = useRef([]);
-
-//   useEffect(() => {
-//     const handleScroll = () => {
-//       const fullpage = containerRef.current;
-//       const sections = sectionsRef.current;
-
-//       const currentSection = Math.floor(fullpage.scrollTop / window.innerHeight);
-//       sections.forEach((section, index) => {
-//         if (index === currentSection) {
-//           section.classList.add('active');
-//         } else {
-//           section.classList.remove('active');
-//         }
-//       });
-//     };
-
-//     const fullpage = containerRef.current;
-
-//     if (fullpage) {
-//       fullpage.addEventListener('scroll', handleScroll);
-//       handleScroll();
-//     }
-
-//     return () => {
-//       if (fullpage) {
-//         fullpage.removeEventListener('scroll', handleScroll);
-//       }
-//     };
-//   }, []);
-
-  // page_4
- 
-//   useEffect(() => {
-//     gsap.registerPlugin(ScrollTrigger);
-
-//     const line1 = document.querySelector('.line1');
-//     const line2 = document.querySelector('.line2');
-
-//     gsap.set(line1, { y: '100%' });
-//     gsap.set(line2, { y: '-100%' });
-
-//     gsap.registerPlugin(ScrollTrigger);
-//     gsap.to(line1, {
-//       y: '0%',
-//       duration: 3,
-//       delay: 4,
-//       scrollTrigger: {
-//         trigger: '.page_4',
-//         start: 'top center',
-//         end: 'center center',
-//         scrub: 2 ,// Adjust the scrub value to slow down the animation (0.5 = slower)
-//         onUpdate: (self) => {
-//             if (self.direction === 1) {
-//               gsap.set(line1, { y: '0%' });
-//             }
-//           }
-
-//       }
-//     });
-
-//     gsap.to(line2, {
-//       y: '0%',
-//       duration: 3,
-//       delay: 4,
-//       scrollTrigger: {
-//         trigger: '.page_4',
-//         start: 'top center',
-//         end: 'center center',
-//         scrub: 2 ,// Adjust the scrub value to slow down the animation (0.5 = slower)
-//         onUpdate: (self) => {
-//             if (self.direction === 1) {
-//               gsap.set(line2, { y: '0%' });
-//             }
-//           }
-//       }
-//     });
-//   }, []);
 
 const line1Ref = useRef(null);
   const line2Ref = useRef(null);
@@ -440,52 +124,6 @@ const line1Ref = useRef(null);
 
   
   
-// const carousel = document.querySelector(".carousel");
-
-// const leftArrow = document.querySelector(".left-arrow");
-// const rightArrow = document.querySelector(".right-arrow");
-
-// let currentIndex = 0;
-// let prevIndex;
-// const images = document.querySelectorAll(".carousel-image");
-
-// const totalImages = Object.keys(images).length;
-
-
-// const imageWidth = 520;
-
-// leftArrow.addEventListener("click", () => {
-//   prevIndex = currentIndex;
-//   currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-//   carousel.style.transform = `translateX(-${imageWidth}px)`;
-//   carousel.insertBefore(images[currentIndex], carousel.firstChild);
-
-//   setTimeout(() => {
-//     carousel.style.transform = "";
-//     carousel.classList.add("sliding-transition");
-    
-//   }, 10);
-
-//   setTimeout(() => {
-//     carousel.classList.remove("sliding-transition");
-//   }, 490);
-// });
-
-// rightArrow.addEventListener("click", () => {
-//   carousel.classList.add("sliding-transition");
-
-//   prevIndex = currentIndex;
-//   currentIndex = (currentIndex + 1) % totalImages;
-
-//   carousel.style.transform = `translateX(-${imageWidth}px)`;
- 
-
-//   setTimeout(() => {
-//     carousel.appendChild(images[prevIndex]);
-//     carousel.classList.remove("sliding-transition");
-//     carousel.style.transform = "";
-//   }, 500);
-// });
 
 
 useEffect(() => {
@@ -518,7 +156,7 @@ useEffect(() => {
   const revealElement2 = document.querySelector(".reveal2");
   const divElement2 = document.querySelector("._02");
 
-  gsap.set(revealElement2, { transformOrigin: "top", y: "850px", opacity: 0 });
+  gsap.set(revealElement2, { transformOrigin: "top", y: "810px", opacity: 0 });
   gsap.set(divElement2, { opacity: 0, y: 50 }); //숫자가 처음에 보이는지 마는지
 
   ScrollTrigger.create({
@@ -536,34 +174,29 @@ useEffect(() => {
 }, []);
 
 
-
-
-
-const revealRef3 = useRef(null);
-const divRef3 = useRef(null);
-
 useEffect(() => {
-  gsap.registerPlugin(ScrollTrigger);
 
-  const revealElement = revealRef3.current;
-  const divElement = divRef3.current;
+  const revealElement3 = document.querySelector(".reveal3");
+  const divElement3 = document.querySelector("._03");
 
-  gsap.set(revealElement, { transformOrigin: "top", y:"1500px", scale: 0, opacity: 0 });
-  gsap.set(divElement, { opacity: 0 });
+  gsap.set(revealElement3, { transformOrigin: "top", y:"1300px", x: "50px", opacity: 0 });
+  gsap.set(divElement3, { opacity: 0, y: 50 });
 
   ScrollTrigger.create({
-    trigger: revealElement,
+    trigger: revealElement3,
     start: "top center",
     onEnter: () => {
-      gsap.to(revealElement, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" });
-      gsap.to(divElement, { opacity: 1, duration: 1, ease: "power3.out", delay: 1 });
+      gsap.to(revealElement3, { x: 0, opacity: 1, duration: 1, ease: "power3.out" });
+      gsap.to(divElement3, { opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: 1 });
     },
     onLeaveBack: () => {
-      gsap.to(revealElement, { scale: 0, opacity: 0, duration: 1, ease: "power3.out" });
-      gsap.to(divElement, { opacity: 0, duration: 1, ease: "power3.out" });
+      gsap.to(revealElement3, { x: "-100%", opacity: 0, duration: 1, ease: "power3.out" });
+      gsap.to(divElement3, { opacity: 0, y: 50, duration: 1, ease: "power3.out" });
     },
   });
 }, []);
+
+
 
 
 
@@ -584,20 +217,26 @@ gsap.fromTo(".openevent",1.4, {
 });
 
 
+//slide
 
-//  gsap.from('.studioshot h1', 1.4, {
-//   delay: 1,
-// opacity:0,
-//   y: 250,
-//   skewY: 20,
-//   stagger: .8,
-  
-// }
+const images = [
+  "/images/slide1.png",
+  "/images/slide2.png",
+  "/images/slide3.png",
+  "/images/slide4.png"
+];
 
-//line move
+const [currentSlide, setCurrentSlide] = useState(0);
+
+const handlePrevClick = () => {
+  setCurrentSlide((prevSlide) => (prevSlide - 1 + images.length) % images.length);
+};
+
+const handleNextClick = () => {
+  setCurrentSlide((prevSlide) => (prevSlide + 1) % images.length);
+};
 
 
-//page_5
 
 
 
@@ -618,7 +257,28 @@ gsap.fromTo(".openevent",1.4, {
     
          
             <section className="page_1 panner" id='panner'  >
-              <img src="/images/Subtract.png" className='people1' alt="" />
+              {/* <img src="/images/Subtract.png" className='people1' alt="" /> */}
+
+
+          
+              {/* <img src="/images/Frame2.png" className='wa frame2' data-value={-3} alt="" />
+              <img src="/images/Frame3.png"className='wa frame3' data-value={6} alt="" />
+              <img src="/images/Frame4.png" className='wa frame4'data-value={4} alt="" />
+              <img src="/images/Frame5.png" className='wa frame5'data-value={-6} alt="" />
+              <img src="/images/Frame6.png"className='wa frame6' data-value={8} alt="" />
+              <img src="/images/Frame7.png" className='wa frame7'data-value={-4} alt="" />
+              <img src="/images/Frame8.png"className='wa frame8' data-value={5} alt="" />
+              <img src="/images/Frame9.png"className='wa frame9' data-value={-9} alt="" />
+              <img src="/images/Frame10.png"className='wa frame10' data-value={-5} alt="" />
+ 
+ */}
+
+
+
+
+
+
+
             </section>
             
         {/* </Slide>
@@ -630,52 +290,59 @@ gsap.fromTo(".openevent",1.4, {
       <button class="scrollToTopBtn">☝️</button>
 
 
+      <div className="carousell">
         <h1 className='choice'>Category</h1>
 
+        <div className="carousel-container">
+        <Carousel
+          selectedItem={currentSlide}
+          showThumbs={false}
+          showStatus={false}
+          showIndicators={false}
+          showArrows={false} 
+          infiniteLoop
+          autoPlay
+          interval={3000}
+        >
 
 
-        <div className="waalll"></div>
-
-        {/* <article className='caru'>
-          <div className="carousel-container">
-            <div className="carousel">
-              <img src="images/mask.png" alt="Image 1" className='carousel-image' />
-              <img src="images/mask1.png" alt="Image 2" className='carousel-image' />
-              <img src="images/mask3.png" alt="Image 3" className='carousel-image' />
-              <img src="images/mask4.png" alt="Image 4" className='carousel-image' />
+          {images.map((image, index) => (
+            <div key={index}>
+              <img src={image} alt={`Slide ${index + 1}`} />
             </div>
-            <button className="arrow-button left-arrow"><img src="images/left-129.png" alt="" /></button>
-            <button className="arrow-button right-arrow"><img src="images/right-128.png" alt="" /></button>
-          </div>
-        </article> */}
+          ))}
+        </Carousel>
+      </div>
+
+      <div className="carousel-controls">
+        <img
+          src="/images/Vector155.svg"
+          className="left"
+          alt="Previous"
+          onClick={handlePrevClick}
+        />
+        <img
+          src="/images/Vector156.svg"
+          className="right"
+          alt="Next"
+          onClick={handleNextClick}
+        />
+      </div>
+</div>
+
+
 
 
       
-            
-    {/* </main> */}
+
+        <div className="bobar">
+        <img className='Vector' src="images/Vector.png" alt="" />
+          <img className='Line' src="images/Line.png" alt="" />
+         
+        </div>
 
 
 
-
-
-                      {/* </div> */}
-                  {/* </div> */}
-        
-            <div className="tie">
-                <div className="ps">
-              <h2>전통한복</h2><br />
-              <h4 style={{ color: "#424242" }}>전통 한복에 비해 편하고<br />
-                활동하기 쉬운 기능적이면서도<br />
-                한복의 전통성을 느낄 수 있는 한복입니다.</h4>
-            </div>
-           
-            </div>
-
-
-
-        <div className="Linearbar"></div>
-
-            
 
 
 
@@ -716,10 +383,10 @@ gsap.fromTo(".openevent",1.4, {
                             
            
 
-                <article class = "reveal3" ref={revealRef3}>
+                <article class = "reveal3" >
                 <div ref={objectRefs.current[2]} className="collaboration object" data-value={12} data-rotate={-15}  >
                   <div className="figure-content" id='f3'>
-                      <h1 className="_03 num" ref={divRef3}>#03</h1>
+                      <h1 className="_03 num" >#03</h1>
                       <h1 className="_03-title">COLLABORATION</h1>
                       <h1 className="figure-ps">당신의 취향에 맞는 <br/> 한복과 기모노를 선택해보세요</h1>
                   </div>
@@ -840,22 +507,34 @@ gsap.fromTo(".openevent",1.4, {
 
 
           <Slide> */}
-          <section className='page_5 panner '>
+      <section className='page_5 panner '>
 
-            <h4 className='open'>#open event</h4>
-            
-            <h1 className='title Merchandise'>Merchandise</h1>
 
-            <div className="eventps">
-                              <h4>한복과 기모노를 구매하면<br />
-                                  와펜 굿즈를 증정해드립니다!</h4>
-                          </div>
 
-            <div className="title-wrap">
-                       
-            </div>
 
-          </section>
+        <h4 className='open'>#open event</h4>
+
+        <h1 className='title Merchandise'>Merchandise</h1>
+
+        <div className="eventps">
+          한복과 기모노를 구매하면<br />
+          와펜 굿즈를 증정해드립니다!
+        </div>
+
+
+       <div className="img">
+        <img src="/images/Frame2.png" className='wa frame2' data-value={-3} alt="" />
+        <img src="/images/Frame3.png" className='wa frame3' data-value={6} alt="" />
+        <img src="/images/Frame4.png" className='wa frame4' data-value={4} alt="" />
+        {/* <img src="/images/Frame5.png" className='wa frame5' data-value={-6} alt="" /> */}
+        {/* <img src="/images/Frame6.png" className='wa frame6' data-value={8} alt="" /> */}
+        {/* <img src="/images/Frame7.png" className='wa frame7' data-value={-4} alt="" /> */}
+        <img src="/images/Frame8.png" className='wa frame8' data-value={5} alt="" />
+        {/* <img src="/images/Frame9.png" className='wa frame9' data-value={-9} alt="" /> */}
+        {/* <img src="/images/Frame10.png" className='wa frame10' data-value={-5} alt="" /> */}
+        </div>
+
+      </section>
           {/* </Slide>
 
           <Slide> */}
@@ -1052,9 +731,54 @@ gsap.fromTo(".openevent",1.4, {
           <section className='page_7 panner '>
 
          <div className="showkimono">
-          <Link to="/main_kimono"> <h1 className=' skimono' >기모노 보러가기</h1></Link>
+
+
+        
+
+             
+              {/* <img src="/images/Frame3.png"className='wa2' data-value={6} alt="" />
+              <img src="/images/Frame4.png" className='wa3'data-value={4} alt="" />
+              <img src="/images/Frame5.png" className='wa4'data-value={-6} alt="" />
+              <img src="/images/Frame6.png"className='wa5' data-value={8} alt="" />
+              <img src="/images/Frame7.png" className='wa6'data-value={-4} alt="" />
+              <img src="/images/Frame8.png"className='wa7' data-value={5} alt="" />
+              <img src="/images/Frame9.png"className='wa8' data-value={-9} alt="" />
+              <img src="/images/Frame10.png"className='wa9 ' data-value={-5} alt="" />
+              <img src="/images/Frame2.png" className='wa1' data-value={-3} alt="" /> */}
+              
+
+              <img src="/images/Frame5.png" className='wa4'data-value={-6} alt="" /> 
+              <img src="/images/Frame6.png"className='wa5' data-value={8} alt="" />
+              <img src="/images/Frame7.png" className='wa6'data-value={-4} alt="" />
+              {/* <img src="/images/Frame8.png"className='wa7' data-value={5} alt="" />
+              <img src="/images/Frame9.png"className='wa8' data-value={-9} alt="" />
+              <img src="/images/Frame10.png"className='wa9 ' data-value={-5} alt="" />
+              <img src="/images/Frame2.png" className='wa1' data-value={-3} alt="" />
+              <img src="/images/Frame3.png"className='wa2' data-value={6} alt="" />
+              <img src="/images/Frame4.png" className='wa3'data-value={4} alt="" />
+              <img src="/images/Frame5.png" className='wa4'data-value={-6} alt="" />
+              <img src="/images/Frame6.png"className='wa5' data-value={8} alt="" /> */}
+              {/* <img src="/images/Frame7.png" className='wa6'data-value={-4} alt="" /> */}
+              {/* <img src="/images/Frame8.png"className='wa7' data-value={5} alt="" />
+              <img src="/images/Frame9.png"className='wa8' data-value={-9} alt="" />
+              <img src="/images/Frame10.png"className='wa9 ' data-value={-5} alt="" /> */}
+
+
+              </div>
+
+              
+          <Link to="/main_kimono"> 
+        
+          <h1 className=' skimono' >기모노 보러가기</h1>
+          <div className="image-container">
+          <img src="/images/Frame2.png" className='wa1' data-value={-3} alt="" />
+          <img src="/images/Frame3.png"className='wa2' data-value={6} alt="" />
+          <img src="/images/Frame4.png" className='wa3'data-value={4} alt="" />
+            </div>
+          
+          </Link>
          
-          </div>
+      
       
           </section>
           {/* </Slide>
@@ -1089,7 +813,6 @@ gsap.fromTo(".openevent",1.4, {
                     </div>
 
                   </div>
-
 
 
 

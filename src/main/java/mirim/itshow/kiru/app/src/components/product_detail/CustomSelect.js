@@ -21,8 +21,8 @@ class CustomSelect extends Component {
 
   componentDidUpdate() {
     // console.log("componentdidUpdate", this.ddHeaderExOff);
-    this.props.setSize(this.state.headerTitle);
-    // console.log("사이즈 변경-커스텀", this.state.headerTitle);
+    // this.props.setSize(this.state.headerTitle);
+    // console.log("size: 타이틀추가")
     
     const { listOpen } = this.state;
     setTimeout(() => {
@@ -53,12 +53,17 @@ class CustomSelect extends Component {
   selectItem(title, id, stateKey) {
     // console.log("selectItem");
     
+    console.log("size: 타이틀추가")
+    this.props.setSize(title);
+    this.ddHeaderSelected = false;
+    this.ddHeaderExOff = false;
+    
     /* set radius when options appear */
     if (!this.state.listOpen) this.ddHeaderRadius = true;
     else this.ddHeaderRadius = false;
 
     /* set box height when options appear */
-    this.ddHeaderSelected = true;
+    // this.ddHeaderSelected = true;
     this.setState(
       {
         headerTitle: title,
@@ -66,6 +71,7 @@ class CustomSelect extends Component {
       },
       this.props.resetThenSet(id, stateKey)
     );
+    
   }
 
   toggleList() {
@@ -97,7 +103,7 @@ class CustomSelect extends Component {
         >
           <div>
             {/* {console.log("사이즈가 보이느냐", !!this.props.size)} */}
-            {(headerTitle) ? (
+            {(this.props.size) ? (
               <ContentSize headerTitle={headerTitle} listOpen={listOpen} />
             ) : (
               <Content listOpen={listOpen} ddHeaderExOff={this.ddHeaderExOff} />

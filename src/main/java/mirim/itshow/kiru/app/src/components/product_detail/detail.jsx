@@ -38,7 +38,7 @@ export const Detail = ({ cart, setCart }) => {
   const [endDate, setEndDate] = useState(''); //대여 마감일
   const [selectedColor, setSelectedColor] = useState(''); // 색상
   const [isClickColor, setIsClickColor] = useState(false); //색상 선택됐는지 아닌지
-  const [isClickSize, setIsClickSize] = useState(false); //사이즈 선택됐는지 아닌지
+  const [isClickSize, setIsClickSize] = useState(true); //사이즈 선택됐는지 아닌지
 
   const colorData = { // 색상표
     "황색": "#F6CF7A",
@@ -133,47 +133,70 @@ export const Detail = ({ cart, setCart }) => {
 
   /* 색상 선택 */
   const handleColorClick = (color) => {
-    console.log("백-색상 클릭", !isClickColor);
-    setIsClickColor(!isClickColor);
+    // 1. 색 선택했다고 체크
+    console.log("백-색상 클릭", true);
+    setIsClickColor(true);
 
+    // 2. useState color에 값 넣기 
     setSelectedColor(color);
-    let option;
-    if (!!nowOptions.itemId == false) { //색상 처음 선택
-      option = {
-        itemId: id,
-        size: '',
-        color: color,
-        count: 1
-      }
-      setNowOptions(option);
-    } else { //사이즈 선택하고 넘어옴
-      setNowOptions({ ...nowOptions, color: color });
-    }
 
+    // 3. 색상을 처음 선택했으면 객체를 만들고
+    let option;
+    try {
+      if (!!nowOptions.itemId == false) { //색상 처음 선택
+        option = {
+          itemId: id,
+          size: '',
+          color: color,
+          count: 1
+        }
+        setNowOptions(option);
+  
+      // 4. 사이즈  먼저 선택했으면 객체에 값 업데이트
+      } else { //사이즈 선택하고 넘어옴
+        setNowOptions({ ...nowOptions, color: color });
+      }
+    } catch (err) {
+      console.log("itemId가 없습니다.");
+    }
+    
+
+    // 5. 컬러랑 사이즈 둘 다 있으면 둘 다 선택했다고 체크
     if (!!color && !!size) {setIsComplete(true);}
   };
 
+
   /* 사이즈 선택 */
-  useDidMountEffect(() => {
+  useEffect(() => {
+    // 1. size 값 있을때만 사이즈 클릭했다고 체크
     if (size !== undefined) {
-      console.log("백-사이즈 클릭", !isClickSize); setIsClickSize(!isClickSize);
+      console.log("백-사이즈 클릭", true);
+      setIsClickSize(true);
     }
     
-    setIsClickSize(!isClickSize);
+    // 2. 사이즈를 처음 선택했으면 객체를 만들고
     let option;
-    if (!!nowOptions.itemId == false) {  //사이즈 처음 선택
-      option = {
-        itemId: id,
-        size: size,
-        color: '',
-        count: 1
+    // console.log("졸리다", 'itemId' in Object.values(nowOptions))
+    try {
+      if (!!nowOptions.itemId == false) {  //사이즈 처음 선택
+        option = {
+          itemId: id,
+          size: size,
+          color: '',
+          count: 1
+        }
+        setNowOptions(option); //현재 옵션 세팅
+  
+      // 3. 색상 먼저 선택했으면 객체에 값 업데이트
+      } else { //색상 선택하고 넘어옴
+        setNowOptions({ ...nowOptions, size: size });
       }
-      setNowOptions(option);
-      setIsComplete(false);
-    } else { //색상 선택하고 넘어옴
-      setNowOptions({ ...nowOptions, size: size });
+    } catch (err) {
+      console.log("itemId가 없습니다.");
     }
     
+    
+    // 4. 색상과 사이즈 모두 있으면 모두 체크했다고 체크
     if (!!selectedColor && !!size) {setIsComplete(true);}
   }, [size]);
 
@@ -182,28 +205,38 @@ export const Detail = ({ cart, setCart }) => {
   let optionKey = 0;
   useEffect(() => {
     if (isComplete) {
+      //1. 원래 있던 옵션들에 지금 쓰던 옵션 추가
       console.log("모두 선택!", { [optionKey]: nowOptions, ...selectedOptions });
       setSelectedOptions({ [optionKey++]: nowOptions, ...selectedOptions });
+      handleReset();
 
+      //2. 모두 선택 안 됐을때 color, size, nowOptions null로 초기화
     } else {
       console.log("초기화");
       handleReset();
     }
   }, [isComplete]);
 
-  /* nowOptions 값 변경될때 */
+
+  /* nowOptions 값 변경될때 - 모두 없어졌을때 */
   useEffect(() => {
-    if (!!nowOptions.size && !!nowOptions.color) {
-      setIsClickColor(!isClickColor);
-      setIsClickSize(!isClickSize);
-    }
+    // if (!!nowOptions.size && !!nowOptions.color) {
+    //   setIsClickColor(!isClickColor);
+    //   setIsClickSize(!isClickSize);
+    // }
+    if(Object.keys(nowOptions).length===0) console.log("현재 옵션")
+    console.log("now",nowOptions);
+    console.log("selected",selectedOptions);
     
   }, [nowOptions])
 
   /* 옵션 선택 리셋 */
   const handleReset = () => {
-    setSize('');
-    setSelectedColor('');
+    setNowOptions({});
+    console.log("size: null로")
+    setSize(null);
+    setSelectedColor(null);
+    console.log("xxxxxxxxxxxxsize랑 selectedColor 삭제xxxxxxxxxx");
   };
 
   /* 선택한 상품 박스 지우기 */
@@ -283,29 +316,40 @@ export const Detail = ({ cart, setCart }) => {
 
   /* TODO 장바구니에 상품 추가 */
   const handleCart = () => {
-    console.log("백: ", selectedOptions);
-    localStorage.setItem("carts", JSON.stringify(selectedOptions));
-    const appended = []
-    for (const size of Object.keys(selectedOptions)) {
-      appended.push(
-        {
-          id: product.itemId,
-          image: product.imageUrl[0],
-          name: product.name,
-          quantity: count,
-          price: product.price,
-          provider: product.provider,
-          brand: product.brand,
-          size: size,
-          quantity: selectedOptions[size].count,
-          color: product.color,
-          startDate,
-          endDate
-        }
-      )
+    console.log("장바구니 추가", selectedOptions);
+
+    // TODO 여기서 상품 하나 안에 다른데이터를 넣어야함
+    let forCartOptions = { ...selectedOptions, image: product.imageUrl[0], name: product.name, brand: product.brand };
+    console.log(forCartOptions);
+    let carts = JSON.parse(localStorage.getItem("carts"));
+    if (!Array.isArray(carts)) {
+      carts = [];
     }
-    // console.log(appended)
-    setCart(cart => cart.concat(appended));
+    carts.push(selectedOptions);
+    localStorage.setItem("carts", JSON.stringify(carts));
+
+
+    // const appended = []
+    // for (const size of Object.keys(selectedOptions)) {
+    //   appended.push(
+    //     {
+    //       id: product.itemId, 
+    //       image: product.imageUrl[0],
+    //       name: product.name,
+    //       quantity: count,
+    //       price: product.price,
+    //       provider: product.provider,
+    //       brand: product.brand,
+    //       size: size,
+    //       quantity: selectedOptions[size].count,
+    //       color: product.color,
+    //       startDate,
+    //       endDate
+    //     }
+    //   )
+    // }
+    // // console.log(appended)
+    // setCart(cart => cart.concat(appended));
 
     alert("장바구니에 추가되었습니다!");
     setTimeout(() => {
@@ -368,12 +412,12 @@ export const Detail = ({ cart, setCart }) => {
                   {colors.map((color, index) => (
                     <div
                       key={index}
-                      className={`color_box ${isClickColor ? 'selected' : ''}`}
+                      className={`color_box ${selectedColor === color ? 'selected' : ''}`}
                       style={{ backgroundColor: colorData[color] }}
                       onClick={() => handleColorClick(color)}
                     >
-                      <div className={`${isClickColor ? "white_circle" : ''}`}>&nbsp;</div>
-                      <p key={index} className="color_name" style={{ visibility: isClickColor || index === 0 ? 'visible' : 'hidden' }}>
+                      <div className={`${(selectedColor === color) ? "white_circle" : ''}`}>&nbsp;</div>
+                      <p key={index} className="color_name" style={{ visibility: selectedColor === color || index === 0 ? 'visible' : 'hidden' }}>
                         {color}
                       </p>
                     </div>
@@ -431,20 +475,22 @@ export const Detail = ({ cart, setCart }) => {
               {!!selectedOptions[0] ? <div className="hr"></div> : <></>}
 
               {/* 선택한 상품 박스 */}
-              {Object.keys(selectedOptions).map((size) => {
-                const option = selectedOptions[size];
-                return option.count !== 0 ? (
+              {Object.keys(selectedOptions).map((selectedOption, index) => {
+                const option = selectedOptions[selectedOption]; //박스 하나
+                console.log("박스 하나", option);
+                console.log("size color:", size, selectedColor);
+                return ('count' in option) ? (
                   // 사이즈 별로
-                  <div key={size}>
+                  <div key={index}>
                     <div className="allBox">
                       <div className="left">
                         {/* 색상 */}
                         <div className="select_color_size">
-                          <div className="circle" style={{ backgroundColor: `${colorData[selectedColor]}` }}>&nbsp;</div>
+                          <div className="circle" style={{ backgroundColor: `${colorData[option.color]}` }}>&nbsp;</div>
                           <span>
-                            {selectedColor && (
+                            {option && (
                               <>
-                                {selectedColor}
+                                {option.color}
                               </>
                             )} {`/ ${option.size}`}
                           </span>
@@ -453,11 +499,11 @@ export const Detail = ({ cart, setCart }) => {
 
                         {/* 수량 조절 */}
                         <div className="countbtn">
-                          <button className="m" onClick={() => handleQuantityChange(size, "minus")}>-</button>
+                          <button className="m" onClick={() => handleQuantityChange(selectedOption, "minus")}>-</button>
                           <div className="countBox">
                             <span>{option.count}</span>
                           </div>
-                          <button className="p" onClick={() => handleQuantityChange(size, "plus")}>+</button>
+                          <button className="p" onClick={() => handleQuantityChange(selectedOption, "plus")}>+</button>
                         </div>
                       </div>
 
@@ -465,7 +511,7 @@ export const Detail = ({ cart, setCart }) => {
                       <div className="right">
                         <div className="pricesmall">
                           {Util.convertPrice(product.price * option.count)}원
-                          <i className="ri-close-line" onClick={() => handleBoxClose(size)}></i>
+                          <i className="ri-close-line" onClick={() => handleBoxClose(selectedOption)}></i>
                         </div>
 
                       </div>

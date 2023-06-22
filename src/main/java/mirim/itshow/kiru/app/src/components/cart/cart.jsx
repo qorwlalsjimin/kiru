@@ -111,7 +111,8 @@ export const Cart = ({ cart, setCart }) => {
             </div>
             <div className="right">
               <button className="select">선택 상품 주문</button>
-              <button className="all" onClick={rentHandle}>전체 상품 주문</button>
+              <button className="all">전체 상품 주문</button>
+              {/* <button className="all" onClick={rentHandle}>전체 상품 주문</button> */}
             </div>
           </div>
         </div>

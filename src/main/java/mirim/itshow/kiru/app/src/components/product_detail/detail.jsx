@@ -326,6 +326,11 @@ export const Detail = ({ cart, setCart }) => {
 
   /* 장바구니에 상품 추가 */
   const handleCart = () => {
+    
+    if (Object.keys(selectedOptions).length === 0) {
+      alert('옵션을 선택해주세요.');
+      return;
+    } 
     console.log("장바구니 추가", selectedOptions);
 
     //로컬스토리지 생성 및 값 삽입
@@ -366,6 +371,14 @@ export const Detail = ({ cart, setCart }) => {
     }, 500);
   };
 
+  function buyBtnHandle(){
+    if (Object.keys(selectedOptions).length !== 0) {
+      setSelectedOptions({});
+      window.alert('대여신청 완료');
+    }
+    else
+      window.alert('옵션을 선택해주세요.');
+  }
 
   return (
     product && (
@@ -550,7 +563,7 @@ export const Detail = ({ cart, setCart }) => {
 
               <div className="detailbtn">
                 <div className="btn">
-                  <button className="btn_buy" onClick={() => { window.alert('대여신청 완료')}}>대여신청하기</button>
+                  <button className="btn_buy" onClick={buyBtnHandle}>대여신청하기</button>
                   <button className="btn_cart" onClick={() => { handleCart(); }}>장바구니</button>
                 </div>
               </div>

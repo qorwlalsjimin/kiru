@@ -165,7 +165,8 @@ export const ProductList = ({ products, setProducts, isBrand, setIsBrand }) => {
 
   return (
     <>
-      <div>
+        <div className="product_list_all">
+      <div className="product_list_container">
         <div className='Banner'>
           <h2 className="category_title">
             {cid === '120' && '개량한복'}
@@ -230,6 +231,8 @@ export const ProductList = ({ products, setProducts, isBrand, setIsBrand }) => {
         )}
       </div>
 
+      </div>
+      
       <Footer />
     </>
   );

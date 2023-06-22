@@ -352,15 +352,20 @@
 
 .dateBox input {
   width: 112px;
-  height: 27px;
+  height: 23px;
   border-radius: 8px;
   background-color: #F5F5F5;
   padding-inline: 15px;
+  padding-top: 18px;
+  padding-bottom: 18px;
 
   font-family: Pretendard-Regular;
   font-size: 12px;
-  margin-top: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   border: none;
+
+  
 
 }
 
@@ -381,6 +386,11 @@
   margin-left: 8px;
   margin-right: 8px;
 }
+.datedate input{
+  text-align: center;
+  align-items: center;
+}
+
 
 /* 버튼 */
 .detail_all .detailbtn {
@@ -612,6 +622,7 @@
   bottom: 4px;
   padding: 0 8px;
 }
+
 
 
 

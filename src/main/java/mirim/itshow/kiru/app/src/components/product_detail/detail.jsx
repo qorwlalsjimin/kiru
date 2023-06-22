@@ -69,7 +69,7 @@ export const Detail = ({ cart, setCart }) => {
   const [nowOptions, setNowOptions] = useState({}); //지금 선택되고 있는 옵션
 
   const [selectedOptions, setSelectedOptions] = useState({}); //지금까지 선택한 옵션들
-  const [totalCount, setTotalCount] = useState(1);
+  const [totalCount, setTotalCount] = useState(0);
   const [showTotalInfo, setShowTotalInfo] = useState(false);
 
 
@@ -175,7 +175,7 @@ export const Detail = ({ cart, setCart }) => {
     }
 
     // 2. 사이즈를 처음 선택했으면 객체를 만들고
-    console.log("★새로운 옵션")
+    // console.log("★새로운 옵션")
     let option;
     try {
       if (!!nowOptions.itemId == false) {  //사이즈 처음 선택
@@ -226,6 +226,7 @@ export const Detail = ({ cart, setCart }) => {
         }));
         setOptionKey(optionKey + 1);
         handleReset();
+        setTotalCount(totalCount+1)
       } else {
         console.log(isAlert);
       }
@@ -239,7 +240,7 @@ export const Detail = ({ cart, setCart }) => {
 
   /* nowOptions 값 변경될때 - 모두 없어졌을때 */
   useEffect(() => {
-    if (Object.keys(nowOptions).length === 0) console.log("현재 옵션 없음")
+    // if (Object.keys(nowOptions).length === 0) console.log("현재 옵션 없음")
   }, [nowOptions])
 
   /* 옵션 선택 리셋 */
@@ -265,13 +266,15 @@ export const Detail = ({ cart, setCart }) => {
   /* 대여 날짜 선택 */
   const handleStartDateChange = (e) => {
     //debugger;
-    setStartDate((e.target.value).replaceAll("-", "."));
+    setStartDate(e.target.value);
+    
+    console.log(e.target.value)
   };
 
   /* 반납 날짜 선택 */
   const handleEndDateChange = (e) => {
     //debugger;
-    setEndDate((e.target.value).replaceAll("-", "."));
+    setEndDate(e.target.value);
   };
 
 
@@ -331,13 +334,13 @@ export const Detail = ({ cart, setCart }) => {
       alert('옵션을 선택해주세요.');
       return;
     } 
-    console.log("장바구니 추가", selectedOptions);
+    // console.log("장바구니 추가", selectedOptions);
 
     //로컬스토리지 생성 및 값 삽입
     if (product.country === 'hanbok') {
       // 로컬스토리지의 장바구니 가져오기
       const carts_hanbok = JSON.parse(localStorage.getItem("carts_hanbok")) || []; //한복
-      console.log("원래 있던거", carts_hanbok);
+      // console.log("원래 있던거", carts_hanbok);
 
       // 장바구니에 담을 값 준비 (추가로 필요한 정보 추가)
       let index = 0;
@@ -352,7 +355,7 @@ export const Detail = ({ cart, setCart }) => {
     } else if (product.country === 'kimono') {
       // 로컬스토리지의 장바구니 가져오기
       const carts_kimono = JSON.parse(localStorage.getItem("carts_kimono")) || []; //기모노
-      console.log("원래 있던거", carts_kimono);
+      // console.log("원래 있던거", carts_kimono);
 
       // 장바구니에 담을 값 준비 (추가로 필요한 정보 추가)
       let index = 0;
@@ -478,7 +481,7 @@ export const Detail = ({ cart, setCart }) => {
                 </div>
 
                 {/* 날짜 */}
-                {/* <div className="date">
+                <div className="date">
                   <div className="dateBox">
                     <div className="renttitle">
                       대여 기간
@@ -490,10 +493,9 @@ export const Detail = ({ cart, setCart }) => {
                       <input type="date" id="end" name="end" value={endDate} min="2023-06-01" max="2023-07-31" onChange={handleEndDateChange} />
                     </div>
                   </div>
-                </div> */}
+                </div>
               </div>
 
-              {console.log(selectedOptions)}
               {!!Object.keys(selectedOptions).length ? <div className="hr"></div> : <></>}
 
               {/* 선택한 상품 박스 */}
@@ -542,19 +544,20 @@ export const Detail = ({ cart, setCart }) => {
                 ) : null;
               })}
 
-              {totalCount > 0 && showTotalInfo && (
+              {totalCount > 0 && (
                 <div className="sum">
                   {/* 총 수량 */}
                   <span className="total_count">총 수량 {totalCount}개</span>
 
                   {/* 정보 */}
                   <div className="total_info">
+                    
                     <div className="datedata">
-                      {!!endDate && startDate} {!!endDate && <div className="line"><DateLine /></div>} {endDate}
+                      {!!endDate.replaceAll('-','.') && startDate.replaceAll('-','.')} {!!endDate && <div className="line"><DateLine /></div>} {endDate}
                     </div>
                     <span className="total_price">
-                      {/* 총 대여료 <span className="bold">{Util.convertPrice(product.price * totalCount)}원</span> */}
-                      총 대여료 <span className="bold">39,000원</span>
+                      총 대여료 <span className="bold">{Util.convertPrice(product.price * totalCount)}원</span>
+                      {/* 총 대여료 <span className="bold">39,000원</span> */}
                     </span>
                   </div>
                 </div>

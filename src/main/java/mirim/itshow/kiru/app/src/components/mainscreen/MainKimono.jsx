@@ -1,4 +1,5 @@
 import React from 'react'
+import { getCookie } from '../../util/cookie'
 
 export default function MainKimono() {
   return (

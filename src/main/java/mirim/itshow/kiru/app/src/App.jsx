@@ -11,6 +11,7 @@ import { Mainscreen } from "./components/mainscreen/Mainscreen"
 import Heart from "./pages/Heart";
 import Rent from "./components/rent/Rent";
 import MainKimono from "./components/mainscreen/MainKimono";
+import { setCookie } from "./util/cookie";
 
 function App() {
   const [products, setProducts] = useState([]);

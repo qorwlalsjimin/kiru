@@ -450,7 +450,7 @@ export const Detail = ({ cart, setCart }) => {
                 </div>
 
                 {/* 날짜 */}
-                {/* <div className="date">
+`                {/* <div className="date">
                   <div className="dateBox">
                     <div className="renttitle">
                       대여 기간
@@ -462,10 +462,10 @@ export const Detail = ({ cart, setCart }) => {
                       <input type="date" id="end" name="end" value={endDate} min="2023-06-01" max="2023-07-31" onChange={handleEndDateChange} />
                     </div>
                   </div>
-                </div> */}
+                </div>` */}
               </div>
 
-              {!!selectedOptions[0] ? <div className="hr"></div> : <></>}
+              {/* {!!selectedOptions[0] ? <div className="hr"></div> : <></>} */}
 
               {/* 선택한 상품 박스 */}
               {Object.keys(selectedOptions).map((selectedOption, index) => {
@@ -495,7 +495,7 @@ export const Detail = ({ cart, setCart }) => {
                           <div className="countBox">
                             <span>{option.count}</span>
                           </div>
-                          <button className="p" onClick={() => handleQuantityChange(selectedOption, "plus")}>+</button>
+                          <button className="m" onClick={() => handleQuantityChange(selectedOption, "plus")}>+</button>
                         </div>
                       </div>
 

@@ -91,12 +91,12 @@ export const Cart = ({ cart, setCart }) => {
         <div className="cart_content">
 
           {/* 장바구니 타이틀 */}
-          <header className="header">
+          <div className="header">
             <h2>장바구니</h2>
-          </header>
+          </div>
 
           {/* 장바구니 상품 묶음 */}
-          <CartItem cart={cartHanbok} total={total} setTotal={setTotal} found={found} />
+          <CartItem country="한복" cart={cartHanbok} total={total} setTotal={setTotal} found={found} />
           <div style={{height: "63px"}}>&nbsp;</div>
           <CartItem country="기모노" cart={cartKimono} total={total} setTotal={setTotal} found={found} />
           

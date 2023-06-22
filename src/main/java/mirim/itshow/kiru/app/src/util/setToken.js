@@ -8,7 +8,8 @@ const setToken = async (state) => {
     
     // 만료시간이 지났을 경우, RefreshToken을 이용하여 AccessToken 재발급
     var expiredTime = getCookie('expiredTime')
-    var diffTime = new Date().getTime() - expiredTime;
+    var diffTime = new Date().getTime() - 0;
+    // var diffTime = new Date().getTime() - expiredTime;
     if (diffTime < 10000){
         axios.defaults.headers.common['Authorization'] = getCookie('refreshToken')
         let postToken = {

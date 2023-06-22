@@ -11,13 +11,18 @@
 
 
 /* 장바구니 타이틀 */
-.header {
+.p {
       z-index: 0;
       background-color: transparent;
       display: flex;
       justify-content: center;
       margin: 0 auto;
       margin-top: 117px;
+}
+
+.header{
+      
+      margin-top: 100px;
 }
 
 .header h2 {

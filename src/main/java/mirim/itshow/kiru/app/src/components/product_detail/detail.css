@@ -507,6 +507,15 @@
   border-radius: 2px 0px 0px 2px;
 }
 
+.p {
+  width: 27px;
+  height: 27px;
+  font-size: 14px;
+  background-color: #F5F5F5;
+  border: 0.5px solid #BDBDBD;
+  border-radius: 2px 0px 0px 2px;
+}
+
 .countbtn .countBox {
   height: 27px;
   border: none;

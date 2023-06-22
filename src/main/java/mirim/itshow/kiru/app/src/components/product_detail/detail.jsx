@@ -186,6 +186,8 @@ export const Detail = ({ cart, setCart }) => {
           count: 1
         }
         setNowOptions(option); //현재 옵션 세팅
+        if (!!size && !(!!selectedColor)) //사이즈 선택, 컬러는 없을때
+          window.alert('색상도 선택해주세요')
 
         // 3. 색상 먼저 선택했으면 객체에 값 업데이트
       } else { //색상 선택하고 넘어옴
@@ -208,12 +210,25 @@ export const Detail = ({ cart, setCart }) => {
     //두번째 옵션은 여기를 아예 안 들어옴
     if (isComplete) {
       //1. 원래 있던 옵션들에 지금 쓰던 옵션 추가
-      setSelectedOptions((prevOptions) => ({
-        ...prevOptions,
-        [optionKey]: nowOptions,
-      }));
-      setOptionKey(optionKey + 1);
-      handleReset();
+      let isAlert = false;
+      Object.values(selectedOptions).map((option) => {
+        if (option.color === nowOptions.color && option.size === nowOptions.size) {
+          alert('이미 선택한 옵션입니다.')
+          console.log("안 됨", option.color, option.size, nowOptions.color, nowOptions.size);
+          handleReset();
+          isAlert = true;
+        } 
+      })
+      if (!isAlert) { 
+        setSelectedOptions((prevOptions) => ({
+          ...prevOptions,
+          [optionKey]: nowOptions,
+        }));
+        setOptionKey(optionKey + 1);
+        handleReset();
+      } else {
+        console.log(isAlert);
+      }
 
       //2. 모두 선택 안 됐을때 color, size, nowOptions null로 초기화
     } else {
@@ -450,7 +465,7 @@ export const Detail = ({ cart, setCart }) => {
                 </div>
 
                 {/* 날짜 */}
-`                {/* <div className="date">
+                {/* <div className="date">
                   <div className="dateBox">
                     <div className="renttitle">
                       대여 기간
@@ -462,10 +477,11 @@ export const Detail = ({ cart, setCart }) => {
                       <input type="date" id="end" name="end" value={endDate} min="2023-06-01" max="2023-07-31" onChange={handleEndDateChange} />
                     </div>
                   </div>
-                </div>` */}
+                </div> */}
               </div>
 
-              {/* {!!selectedOptions[0] ? <div className="hr"></div> : <></>} */}
+              {console.log(selectedOptions)}
+              {!!Object.keys(selectedOptions).length ? <div className="hr"></div> : <></>}
 
               {/* 선택한 상품 박스 */}
               {Object.keys(selectedOptions).map((selectedOption, index) => {

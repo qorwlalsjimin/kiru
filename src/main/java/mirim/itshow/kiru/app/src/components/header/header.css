@@ -7,6 +7,7 @@ header.header_purple{
     height: 207px;
     background: linear-gradient(to bottom, #36098B, #6B15DB);
     background-size: 100% 101%;
+    transition: all 0.5s;
 }
 
 header .nav {
@@ -16,6 +17,7 @@ header .nav {
 }
 
 header {
+    transition: all 0.5s;
     position: sticky;
     top: 0;
     background-color: #fff;

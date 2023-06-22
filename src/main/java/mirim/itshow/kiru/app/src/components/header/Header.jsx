@@ -186,14 +186,14 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
     const handleScroll = () => {
       // 현재 스크롤 위치를 확인하여 맨 위 페이지 여부를 업데이트합니다.
       const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-      console.log(location.pathname.includes('Main') && (scrollTop === 0 || scrollTop <= 1080, location))
+      // console.log(location.pathname.includes('Main') && (scrollTop === 0 || scrollTop <= 1080))
       if (location.pathname.includes('Main') && (scrollTop === 0 || scrollTop <= 1080))// 어디까지 보라색일지 여기서!!
         setIsTopPage(true);
       else
         setIsTopPage(false);
 
       if (scrollTop === 1080) setIsTopPage(false);
-      console.log(scrollTop);
+      // console.log(scrollTop);
     };
 
     // 스크롤 이벤트를 등록합니다.
@@ -208,7 +208,7 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
 
   /* 페이지 바뀔때. Main인 경우, 아닌 경우 */
   useEffect(() => {
-    console.log("쩝 ㅡㅡ", location)
+    // console.log("쩝 ㅡㅡ", location)
     if (!location.pathname.includes('Main'))
       setIsTopPage(false);
     
@@ -230,7 +230,7 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
           <div className="logo" onClick={logoHandle}>
             <Link to="/Mainscreen">
               
-              <img src={`/images/${isTopPage?"logo_white":"logo"}.png`} alt="" />
+              <img src={`/images/${isTopPage?"kiru_white.svg":"logo.png"}`} alt="" />
             </Link>
           </div>
 

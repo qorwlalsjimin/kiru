@@ -1,5 +1,6 @@
 import React from 'react'
 import "./review.css"
+import { ReactComponent as ReviewStar } from "../../svgfiles/review_star.svg";
 import Footer from "../footer/Footer"
 
 const Review = () => {
@@ -20,35 +21,47 @@ const Review = () => {
 
           {/* 별점 아이콘 */}
           <div className="icon">
-            <i className="ri-star-fill"></i> -
+            <ReviewStar className="review_star" />
+            <div className="line">&nbsp;</div>
           </div>
 
           {/* 리뷰 */}
           <div className="re">
-            <div className="rediv">
-              <p>아주 좋아요</p> <div className="rebar"></div>0
-            </div>
-            <div className="rediv">
-              <p>맘에 들어요</p><div className="rebar"></div>0
-            </div>
-            <div className="rediv">
-              <p>보통이에요</p><div className="rebar"></div>0
-            </div>
-            <div className="rediv">
-              <p>그냥 그래요</p><div className="rebar"></div>0
-            </div>
-            <div className="rediv">
-              <p>별로예요</p><div className="rebar"></div>0
-            </div>
+            <table>
+              <tr>
+                <th>아주 좋아요</th>
+                <th><div className="rebar">&nbsp;</div></th>
+                <th><span>0</span></th>
+              </tr>
+              <tr>
+                <th>맘에 들어요</th>
+                <th><div className="rebar">&nbsp;</div></th>
+                <th><span>0</span></th>
+              </tr>
+              <tr>
+                <th>보통이에요</th>
+                <th><div className="rebar">&nbsp;</div></th>
+                <th><span>0</span></th>
+              </tr>
+              <tr>
+                <th>그냥 그래요</th>
+                <th><div className="rebar">&nbsp;</div></th>
+                <th><span>0</span></th>
+              </tr>
+              <tr>
+                <th>별로예요</th>
+                <th><div className="rebar">&nbsp;</div></th>
+                <th><span>0</span></th>
+              </tr>
+            </table>
           </div>
         </div>
 
         {/* 박스 밖 */}
         <div className="sort">
           <div className="sort_deep">
-
-            <h1>별점순</h1>
             <h1>최신순</h1>
+            <h1 className='active'>별점순</h1>
           </div>
         </div>
 
@@ -78,7 +91,10 @@ const Review = () => {
             <option value="+01">+01</option>
           </select>
         </div>
-        <button className='r_w'>리뷰 쓰기</button>
+
+        <div className="button_wrapper">
+          <button className='r_w'>리뷰 쓰기</button>
+        </div>
       </div>
 
     </>

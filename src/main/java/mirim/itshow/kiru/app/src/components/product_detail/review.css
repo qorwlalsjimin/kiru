@@ -26,17 +26,49 @@
     box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
     display: flex;
+    align-items: center;
 }
 
 .boxs .icon{
     width: 33.3%;
-    background-color: olive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid #bdbdbd;
+    height: 250px;
+}
+
+.icon .review_star{
+    margin-right: 10px;
+}
+
+.icon .line{
+    width: 26px;
+    height: 5px;
+    background-color: black;
+    position: relative;
+    top: 3px;
 }
 
 .boxs .re{
     width: 66.7%;
-    background-color: tomato;
+    margin-left: 114px;
+    margin-right: 98px;
 }
+
+.boxs .rediv{
+    display: flex;
+}
+
+.boxs .rebar{
+    background-color: #EEEEEE;
+    width: 528px;
+    height: 18px;
+    margin-left: 40px;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
 
 .box i {
     color: #9553C8;
@@ -45,46 +77,87 @@
 
 /* 정렬 */
 .sort{
-    display: flex;
-    justify-content: space-between;
-    background-color: #9553C8;
+    text-align: left;
+    width: 100%;
+    margin-left: 42px;
+    margin-top: 40px;
+}
+
+.sort_deep{
+    float: left;
 }
 
 .sort h1 {
+    padding-right: 30px;
     text-align: left;
     float: right;
-    background-color: white;
     font-family: 'Pretendard-Regular';
     font-style: normal;
 font-weight: 500;
 font-size: 18px;
 line-height: 29px;
 margin: 0;
+color: #757575;
+}
+
+.sort h1.active{
+    color: black;
 }
 
 
 /* 별점, 키 , 몸무게 */
 .box2 {
+    font-size: 18px;
     width: 100%;
     height: 85px;
-    margin-top: 70px;
+    margin-top: 20px;
     border: 2px solid rgb(219, 219, 219);
     border-radius: 10px;
-
+    background-color: white;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.25);
 }
 
 .box2 select {
+    background-image: url("/public/images/review_arrow.svg");
+    background-repeat: no-repeat;
+    background-position: right center;
+    appearance: none; /* 기본 스타일링 제거 */
+    -webkit-appearance: none; /* 크로스 브라우저 지원 */
+    -moz-appearance: none; /* 크로스 브라우저 지원 */
+    box-sizing: border-box;
+
+    padding-top: 12px;
+
     margin-left: 20px;
     margin-top: 20px;
+    width: 89px;
+    height: 41px;
+    text-align: center;
+    align-items: center;
+    font-family: Pretendard-Regular;
+    border: none;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
 }
 
+
+/* 리뷰쓰기 이벤트 */
+.button_wrapper {
+    width: 100%;
+}
 .r_w {
+    font-family: Pretendard-Regular;
+    float: right;
+
+    width:100%;
+    float: right;
+
     position: relative;
     right: 0;
 
     width: 10%;
     height: 50px;
-    background: #9553C8;
+    background: #6D16DC;
     color: #fff;
     border: none;
     border-radius: 6px;

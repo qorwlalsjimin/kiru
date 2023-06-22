@@ -369,9 +369,9 @@ export const Detail = ({ cart, setCart }) => {
 
   return (
     product && (
-      <div className="detail_all">
+      <div className="detail_all"> {/* 가장 큰 태그 */}
         {/* 상품 정보 */}
-        <main className="main">
+        <main className="main"> {/* 내용 전체가 들어갈 태그 */}
           <div className="product_information">
 
             {/* 대표 이미지 */}
@@ -588,7 +588,7 @@ export const Detail = ({ cart, setCart }) => {
 
 
             {/* 리뷰 */}
-            {/* <Detail2 /> */}
+            <Detail2 />
           </div>
 
         </div>

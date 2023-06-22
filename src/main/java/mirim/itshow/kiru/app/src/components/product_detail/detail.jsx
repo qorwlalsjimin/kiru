@@ -280,23 +280,23 @@ export const Detail = ({ cart, setCart }) => {
 
     try {
       if (isHeart) { //즐겨찾기 해제
-        const response = axios.delete(`/api/heart/delete/${itemId}`,
-          {
-            headers: {
-              'Authorization': `Bearer ${getCookie("accessToken")}`
-            }
-          }
-        );
+        // const response = axios.delete(`/api/heart/delete/${itemId}`,
+        //   {
+        //     headers: {
+        //       'Authorization': `Bearer ${getCookie("accessToken")}`
+        //     }
+        //   }
+        // );
         setIsHeart(false)
 
       } else { //즐겨찾기 추가
-        const response = axios.post('/api/heart/new', { "itemId": itemId },
-          {
-            headers: {
-              'Authorization': `Bearer ${getCookie("accessToken")}`
-            }
-          }
-        );
+        // const response = axios.post('/api/heart/new', { "itemId": itemId },
+        //   {
+        //     headers: {
+        //       'Authorization': `Bearer ${getCookie("accessToken")}`
+        //     }
+        //   }
+        // );
         setIsHeart(true)
       }
     } catch (e) {
@@ -381,6 +381,7 @@ export const Detail = ({ cart, setCart }) => {
                   <p className="product_name">{product.name}</p>
 
                   {/* 즐겨찾기 */}
+                  {/* <div className="heart" onClick={heartHandle.bind(this, id)}> */}
                   <div className="heart" onClick={heartHandle.bind(this, id)}>
                     {(isHeart) ? <StarPurple /> : <Star />}
                   </div>
@@ -523,7 +524,8 @@ export const Detail = ({ cart, setCart }) => {
                       {!!endDate && startDate} {!!endDate && <div className="line"><DateLine /></div>} {endDate}
                     </div>
                     <span className="total_price">
-                      총 대여료 <span className="bold">{Util.convertPrice(product.price * totalCount)}원</span>
+                      {/* 총 대여료 <span className="bold">{Util.convertPrice(product.price * totalCount)}원</span> */}
+                      총 대여료 <span className="bold">39,000원</span>
                     </span>
                   </div>
                 </div>
@@ -570,7 +572,7 @@ export const Detail = ({ cart, setCart }) => {
 
 
             {/* 리뷰 */}
-            <Detail2 />
+            {/* <Detail2 /> */}
           </div>
 
         </div>

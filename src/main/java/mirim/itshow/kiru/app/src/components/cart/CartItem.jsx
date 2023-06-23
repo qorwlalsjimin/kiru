@@ -7,9 +7,19 @@ export default function CartItem({ country, cart, total, setTotal, found }) {
   const navigate = useNavigate();
   console.log(country + " " + cart + " " + total);
   
+  let totalPrice=0;
+  
   const uniqueCartItems = !!cart ? Array.from(
     new Set(Object.values(cart).map((item) => JSON.stringify({ ...item, id: undefined })))
   ).map((item) => JSON.parse(item)) : [];
+
+  uniqueCartItems.map((cartItem, idx) => {
+    totalPrice += cartItem.price;
+
+    console.log("백: "+totalPrice);
+    console.log("백: " + cartItem.price);
+    
+  })
 
 
     return (
@@ -67,6 +77,8 @@ export default function CartItem({ country, cart, total, setTotal, found }) {
             total={total}
             setTotal={setTotal}
             found={found}
+            length={uniqueCartItems.length}
+            totalPrice={totalPrice}
           />
         ) : (
           ""

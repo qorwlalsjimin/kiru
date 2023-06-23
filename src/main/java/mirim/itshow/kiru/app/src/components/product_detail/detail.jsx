@@ -267,16 +267,28 @@ export const Detail = ({ cart, setCart }) => {
 
   /* 대여 날짜 선택 */
   const handleStartDateChange = (e) => {
-    //debugger;
-    setStartDate(e.target.value);
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
 
-    console.log(e.target.value)
+    const todayFormattedDate = `${year}-${month}-${day}`;
+    
+    if (e.target.value < todayFormattedDate) window.alert('올바른 날짜를 선택해주세요.')
+    else setStartDate(e.target.value);
+
+    console.log(e.target.value, todayFormattedDate)
   };
 
   /* 반납 날짜 선택 */
   const handleEndDateChange = (e) => {
     //debugger;
-    setEndDate(e.target.value);
+    if (e.target.value < startDate) {
+      window.alert('올바른 날짜를 선택해주세요.')
+    }
+    else {
+      setEndDate(e.target.value);
+    }
   };
 
 
@@ -300,23 +312,23 @@ export const Detail = ({ cart, setCart }) => {
 
     try {
       if (isHeart) { //즐겨찾기 해제
-        // const response = axios.delete(`/api/heart/delete/${itemId}`,
-        //   {
-        //     headers: {
-        //       'Authorization': `Bearer ${getCookie("accessToken")}`
-        //     }
-        //   }
-        // );
+        const response = axios.delete(`/api/heart/delete/${itemId}`,
+          {
+            headers: {
+              'Authorization': `Bearer ${getCookie("accessToken")}`
+            }
+          }
+        );
         setIsHeart(false)
 
       } else { //즐겨찾기 추가
-        // const response = axios.post('/api/heart/new', { "itemId": itemId },
-        //   {
-        //     headers: {
-        //       'Authorization': `Bearer ${getCookie("accessToken")}`
-        //     }
-        //   }
-        // );
+        const response = axios.post('/api/heart/new', { "itemId": itemId },
+          {
+            headers: {
+              'Authorization': `Bearer ${getCookie("accessToken")}`
+            }
+          }
+        );
         setIsHeart(true)
       }
     } catch (e) {
@@ -378,6 +390,12 @@ export const Detail = ({ cart, setCart }) => {
   };
 
   function buyBtnHandle() {
+    if (!(!!getCookie('accessToken'))) {
+      alert('로그인 후 이용해주세요.');
+      navigate('/login_form');
+      return;
+    }
+
     if (Object.keys(selectedOptions).length !== 0) {
       setSelectedOptions({});
       window.alert('대여신청 완료');

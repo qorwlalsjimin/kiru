@@ -19,7 +19,7 @@ export default function Rent() {
 
     const [payMethod, setPayMethod] = useState('신용카드');
 
-    const [isAgree, setIsAgree] = useState(false);
+    const [isAgree, setIsAgree] = useState(true);
 
     function countryHandle(country) {
         switch (country) {
@@ -68,9 +68,7 @@ export default function Rent() {
     function rentHandle() {
         window.alert('대여 완료되었습니다.');
         window.scrollTo({ top: 0 });
-        setTimeout(() => {
-            navigate('/Mainscreen')
-          }, 3000);
+        navigate('/Mainscreen');
     }
 
 
@@ -218,7 +216,7 @@ export default function Rent() {
                     </div>
 
                     {/* 결제하기 버튼 */}
-                    <div className="order_btn" onClick={rentHandle()}>
+                    <div className="order_btn" onClick={rentHandle}>
                         <button>대여하기</button>
                     </div>
                 </div>

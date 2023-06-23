@@ -398,13 +398,14 @@ export const Detail = ({ cart, setCart }) => {
       return;
     }
 
-    if (Object.keys(selectedOptions).length !== 0) {
+    if (Object.keys(selectedOptions).length !== 0 && !!startDate && !!endDate) {
       setSelectedOptions({});
       setTotalCount(0);
       navigate('/rent_form');
     }
     else
-      window.alert('옵션을 선택해주세요.');
+      if(!(!!startDate) || !(!!endDate)) window.alert('날짜를 선택해주세요.');
+      else window.alert('옵션을 선택해주세요.');
   }
 
   return (

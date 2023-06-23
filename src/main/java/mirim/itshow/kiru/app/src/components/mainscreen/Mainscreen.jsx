@@ -262,7 +262,7 @@ const scrollToTop = () => {
 //scroll
 
   function goProductHandle() {
-    
+
     window.scrollTo({ top: 0 });
   }
 
@@ -546,10 +546,11 @@ const scrollToTop = () => {
             <div className="wall" >
               <div className="openevent">#open event 컨셉 사진의 주인공이 되어 보세요!</div>
 
-              <div className="studioshot" id='quote' >
-                <h1>studio<br/>shot</h1>
+
+
+                <h1 className='studioshot' > studio<br/>shot</h1>
             
-              </div>
+
               
               <div className="wall-item">
                 
@@ -662,12 +663,7 @@ const scrollToTop = () => {
         <img src="/images/Frame2.png" className='wa frame2' data-value={-3} alt="" />
         <img src="/images/Frame3.png" className='wa frame3' data-value={6} alt="" />
         <img src="/images/Frame4.png" className='wa frame4' data-value={4} alt="" />
-        {/* <img src="/images/Frame5.png" className='wa frame5' data-value={-6} alt="" /> */}
-        {/* <img src="/images/Frame6.png" className='wa frame6' data-value={8} alt="" /> */}
-        {/* <img src="/images/Frame7.png" className='wa frame7' data-value={-4} alt="" /> */}
         <img src="/images/Frame8.png" className='wa frame8' data-value={5} alt="" />
-        {/* <img src="/images/Frame9.png" className='wa frame9' data-value={-9} alt="" /> */}
-        {/* <img src="/images/Frame10.png" className='wa frame10' data-value={-5} alt="" /> */}
         </div>
 
       </section>
@@ -872,45 +868,43 @@ const scrollToTop = () => {
         
 
              
-              {/* <img src="/images/Frame3.png"className='wa2' data-value={6} alt="" />
-              <img src="/images/Frame4.png" className='wa3'data-value={4} alt="" />
-              <img src="/images/Frame5.png" className='wa4'data-value={-6} alt="" />
-              <img src="/images/Frame6.png"className='wa5' data-value={8} alt="" />
-              <img src="/images/Frame7.png" className='wa6'data-value={-4} alt="" />
-              <img src="/images/Frame8.png"className='wa7' data-value={5} alt="" />
-              <img src="/images/Frame9.png"className='wa8' data-value={-9} alt="" />
-              <img src="/images/Frame10.png"className='wa9 ' data-value={-5} alt="" />
-              <img src="/images/Frame2.png" className='wa1' data-value={-3} alt="" /> */}
-              
 
-              <img src="/images/Frame5.png" className='wa4'data-value={-6} alt="" /> 
+
+
+              <img src="/images/Frame5.png" className='wa4'data-value={-6} alt="" />
               <img src="/images/Frame6.png"className='wa5' data-value={8} alt="" />
               <img src="/images/Frame7.png" className='wa6'data-value={-4} alt="" />
-              {/* <img src="/images/Frame8.png"className='wa7' data-value={5} alt="" />
-              <img src="/images/Frame9.png"className='wa8' data-value={-9} alt="" />
-              <img src="/images/Frame10.png"className='wa9 ' data-value={-5} alt="" />
-              <img src="/images/Frame2.png" className='wa1' data-value={-3} alt="" />
-              <img src="/images/Frame3.png"className='wa2' data-value={6} alt="" />
-              <img src="/images/Frame4.png" className='wa3'data-value={4} alt="" />
-              <img src="/images/Frame5.png" className='wa4'data-value={-6} alt="" />
-              <img src="/images/Frame6.png"className='wa5' data-value={8} alt="" /> */}
-              {/* <img src="/images/Frame7.png" className='wa6'data-value={-4} alt="" /> */}
-              {/* <img src="/images/Frame8.png"className='wa7' data-value={5} alt="" />
-              <img src="/images/Frame9.png"className='wa8' data-value={-9} alt="" />
-              <img src="/images/Frame10.png"className='wa9 ' data-value={-5} alt="" /> */}
+
 
 
               </div>
 
               
-          <Link to="/category/120/all"> 
+          <Link to="/category/120/all">
         
-          <h1 className=' skimono' onClick={goProductHandle}>한복 보러가기</h1>
+          <h1 className=' skimono' onClick={()=>{window.scrollTo({ top: 0 });}} >한복 보러가기</h1>
+
           <div className="image-container">
           <img src="/images/Frame2.png" className='wa1' data-value={-3} alt="" />
           <img src="/images/Frame3.png"className='wa2' data-value={6} alt="" />
           <img src="/images/Frame4.png" className='wa3'data-value={4} alt="" />
-            </div>
+          <img src="/images/Frame8.png"className='wa7' data-value={5} alt="" />
+          <img src="/images/Frame9.png"className='wa8' data-value={-9} alt="" />
+          <img src="/images/Frame10.png"className='wa9 ' data-value={-5} alt="" />
+          <img src="/images/Frame10.png"className='wa10 ' data-value={-5} alt="" />
+          <img src="/images/Frame2.png" className='wa11' data-value={-3} alt="" />
+          <img src="/images/Frame3.png"className='wa12' data-value={6} alt="" />
+          <img src="/images/Frame4.png" className='wa13'data-value={4} alt="" />
+          <img src="/images/Frame5.png" className='wa14'data-value={-6} alt="" />
+          <img src="/images/Frame6.png"className='wa15' data-value={8} alt="" />
+
+              <img src="/images/Frame7.png" className='wa16'data-value={-4} alt="" />
+              <img src="/images/Frame8.png"className='wa17' data-value={5} alt="" />
+              <img src="/images/Frame9.png"className='wa18' data-value={-9} alt="" />
+              <img src="/images/Frame10.png"className='wa19 ' data-value={-5} alt="" />
+
+
+          </div>
           
           </Link>
          

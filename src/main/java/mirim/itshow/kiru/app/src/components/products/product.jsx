@@ -30,23 +30,23 @@ export const Product = ({ isAcc, product }) => {
 
     try {
       if (isHeart) { //즐겨찾기 해제
-        // const response = axios.delete(`/api/heart/delete/${itemId}`,
-        //   {
-        //     headers: {
-        //       'Authorization': `Bearer ${getCookie("accessToken")}`
-        //     }
-        //   }
-        // ); 
+        const response = axios.delete(`/api/heart/delete/${itemId}`,
+          {
+            headers: {
+              'Authorization': `Bearer ${getCookie("accessToken")}`
+            }
+          }
+        ); 
         setIsHeart(false)
 
       } else { //즐겨찾기 추가
-        // const response = axios.post('/api/heart/new', { "itemId": itemId },
-        //   {
-        //     headers: {
-        //       'Authorization': `Bearer ${getCookie("accessToken")}`
-        //     }
-        //   }
-        // );    
+        const response = axios.post('/api/heart/new', { "itemId": itemId },
+          {
+            headers: {
+              'Authorization': `Bearer ${getCookie("accessToken")}`
+            }
+          }
+        );    
         setIsHeart(true)
       }
     } catch (e) {

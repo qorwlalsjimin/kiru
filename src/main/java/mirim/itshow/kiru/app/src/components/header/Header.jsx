@@ -169,7 +169,7 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
     }
   }
 
-  /* 로그아웃 */
+  /* 즐겨찾기 페이지 */
   function starHandler(accessToken) {
     console.log(accessToken);
     let isLogin = !!accessToken;
@@ -196,7 +196,7 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
         setIsTopPage(false);
 
       if (scrollTop === 1080) setIsTopPage(false);
-      // console.log(scrollTop);
+      console.log(scrollTop);
     };
 
     // 스크롤 이벤트를 등록합니다.
@@ -211,9 +211,11 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
 
   /* 페이지 바뀔때. Main인 경우, 아닌 경우 */
   useEffect(() => {
-    // console.log("쩝 ㅡㅡ", location)
+    console.log("쩝 ㅡㅡ", location)
     if (!location.pathname.includes('Main'))
       setIsTopPage(false);
+    else
+      setIsTopPage(true);
     // console.log("false로 바꿈")
     
   }, [location])

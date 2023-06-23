@@ -5,7 +5,12 @@ import { TotalCart } from "./totalCart";
 
 export default function CartItem({ country, cart, total, setTotal, found }) {
   const navigate = useNavigate();
-  console.log(country+" "+cart+" "+total);
+  console.log(country + " " + cart + " " + total);
+  
+  const uniqueCartItems = !!cart ? Array.from(
+    new Set(Object.values(cart).map((item) => JSON.stringify({ ...item, id: undefined })))
+  ).map((item) => JSON.parse(item)) : [];
+
 
     return (
         <div className="country_content">
@@ -37,16 +42,14 @@ export default function CartItem({ country, cart, total, setTotal, found }) {
           {/* 장바구니에 담은 상품들 */}
           {/* {cart.length !== 0 ? ( */}
           {cart !== null ? (
-            Object.values(cart).map((cart, idx) => {
-              return (
-                <CartList
-                  key={`key-${cart.idx}`}
-                  cart={cart}
-                  setTotal={setTotal}
-                  total={total}
-                />
-              );
-            })
+            uniqueCartItems.map((cartItem, idx) => (
+              <CartList
+                key={`key-${cartItem.idx}`}
+                cart={cartItem}
+                setTotal={setTotal}
+                total={total}
+              />
+            ))
           ) : (<EmptyNotice />)}
         </div>
 

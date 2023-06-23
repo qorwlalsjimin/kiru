@@ -148,7 +148,8 @@ export const Detail = ({ cart, setCart }) => {
           itemId: id,
           size: '',
           color: color,
-          count: 1
+          count: 1,
+          price: product.price
         }
         setNowOptions(option);
 
@@ -183,7 +184,8 @@ export const Detail = ({ cart, setCart }) => {
           itemId: id,
           size: size,
           color: '',
-          count: 1
+          count: 1,
+          price: product.price
         }
         setNowOptions(option); //현재 옵션 세팅
         if (!!size && !(!!selectedColor)) //사이즈 선택, 컬러는 없을때
@@ -217,16 +219,16 @@ export const Detail = ({ cart, setCart }) => {
           console.log("안 됨", option.color, option.size, nowOptions.color, nowOptions.size);
           handleReset();
           isAlert = true;
-        } 
+        }
       })
-      if (!isAlert) { 
+      if (!isAlert) {
         setSelectedOptions((prevOptions) => ({
           ...prevOptions,
           [optionKey]: nowOptions,
         }));
         setOptionKey(optionKey + 1);
         handleReset();
-        setTotalCount(totalCount+1)
+        setTotalCount(totalCount + 1);
       } else {
         console.log(isAlert);
       }
@@ -267,7 +269,7 @@ export const Detail = ({ cart, setCart }) => {
   const handleStartDateChange = (e) => {
     //debugger;
     setStartDate(e.target.value);
-    
+
     console.log(e.target.value)
   };
 
@@ -329,23 +331,24 @@ export const Detail = ({ cart, setCart }) => {
 
   /* 장바구니에 상품 추가 */
   const handleCart = () => {
-    
+
     if (Object.keys(selectedOptions).length === 0) {
       alert('옵션을 선택해주세요.');
       return;
-    } 
+    }
     // console.log("장바구니 추가", selectedOptions);
 
     //로컬스토리지 생성 및 값 삽입
     if (product.country === 'hanbok') {
       // 로컬스토리지의 장바구니 가져오기
       const carts_hanbok = JSON.parse(localStorage.getItem("carts_hanbok")) || []; //한복
-      // console.log("원래 있던거", carts_hanbok);
 
       // 장바구니에 담을 값 준비 (추가로 필요한 정보 추가)
       let index = 0;
-      let updateOptions = Object.values(selectedOptions).map((option) => {
-        return { name: product.name, image: product.imageUrl[0], ...option, brand: product.brand, price: product.price}
+
+      // 중복 체크
+      let updateOptions = Object.values(selectedOptions).map((detailOption) => {
+        return { name: product.name, image: product.imageUrl[0], ...detailOption, brand: product.brand, price: product.price }
       })
       carts_hanbok.push(...updateOptions);
 
@@ -360,7 +363,7 @@ export const Detail = ({ cart, setCart }) => {
       // 장바구니에 담을 값 준비 (추가로 필요한 정보 추가)
       let index = 0;
       let updateOptions = Object.values(selectedOptions).map((option) => {
-        return { name: product.name, image: product.imageUrl[0], ...option, brand: product.brand, price: product.price}
+        return { name: product.name, image: product.imageUrl[0], ...option, brand: product.brand, price: product.price }
       })
       carts_kimono.push(...updateOptions);
 
@@ -374,7 +377,7 @@ export const Detail = ({ cart, setCart }) => {
     }, 500);
   };
 
-  function buyBtnHandle(){
+  function buyBtnHandle() {
     if (Object.keys(selectedOptions).length !== 0) {
       setSelectedOptions({});
       window.alert('대여신청 완료');
@@ -548,12 +551,11 @@ export const Detail = ({ cart, setCart }) => {
                 <div className="sum">
                   {/* 총 수량 */}
                   <span className="total_count">총 수량 {totalCount}개</span>
-
                   {/* 정보 */}
                   <div className="total_info">
-                    
+
                     <div className="datedata">
-                      {!!endDate.replaceAll('-','.') && startDate.replaceAll('-','.')} {!!endDate && <div className="line"><DateLine /></div>} {endDate}
+                      {!!endDate.replaceAll('-', '.') && startDate.replaceAll('-', '.')} {!!endDate && <div className="line"><DateLine /></div>} {endDate}
                     </div>
                     <span className="total_price">
                       총 대여료 <span className="bold">{Util.convertPrice(product.price * totalCount)}원</span>

@@ -1,13 +1,97 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ReactComponent as Next } from "../../svgfiles/next_icon.svg";
 import { ReactComponent as DateLine } from "../../svgfiles/date_line.svg";
 import { ReactComponent as Unchecked } from "../../svgfiles/unchecked.svg";
+import { ReactComponent as Checked } from "../../svgfiles/checked.svg";
 import { CartList } from "../cart/cartList";
 import { TotalCart } from "../cart/totalCart";
 import Footer from "../footer/Footer";
 import "./rent.css";
+import axios from "axios";
+import { getCookie } from "../../util/cookie";
 
 export default function Rent() {
+
+    const [memberInfo, setMemberInfo] = useState({});
+
+    const [country, setCountry] = useState('한국');
+
+    const [payMethod, setPayMethod] = useState('신용카드');
+
+    const [isAgree, setIsAgree] = useState(false);
+
+    function countryHandle(country) {
+        switch (country) {
+            case '한국':
+                setCountry('한국');
+                break;
+            case '일본':
+                setCountry('일본');
+                break;
+        }
+    }
+
+    function payMethodHandle(method) {
+        switch (method) {
+            case '신용카드':
+                setPayMethod('신용카드');
+                break;
+            case '계좌이체':
+                setPayMethod('계좌이체');
+                break;
+            case '무통장 입금':
+                setPayMethod('무통장 입금');
+                break;
+            case '휴대폰':
+                setPayMethod('휴대폰');
+                break;
+            case '네이버':
+                setPayMethod('네이버');
+                break;
+            case '카카오':
+                setPayMethod('카카오');
+                break;
+            case '토스':
+                setPayMethod('토스');
+                break;
+        }
+    }
+
+
+
+    function agreeHandle() {
+        setIsAgree(!isAgree);    
+    }
+
+    const navigate = useNavigate();
+    function rentHandle() {
+        window.alert('대여 완료되었습니다.');
+        window.scrollTo({ top: 0 });
+        setTimeout(() => {
+            navigate('/Mainscreen')
+          }, 3000);
+    }
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const response = await axios.get(`/api/member/me`, {
+              headers: {
+                'Authorization': `Bearer ${getCookie("accessToken")}` // header에 토큰 추가
+              }
+            });
+      
+              setMemberInfo(response.data);
+              console.log(response.data)
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          }
+        };
+      
+        fetchData();
+      }, []);
 
     return (
         <>
@@ -29,25 +113,25 @@ export default function Rent() {
                         <div className="row name">
                             <div className="left">이름<span>*</span></div>
                             <div className="right">
-                                <input type="text" name="name" />
+                                <input type="text" name="name" value={memberInfo.name} />
                             </div>
                         </div>
                         <div className="row phone">
                             <div className="left">휴대전화<span>*</span></div>
                             <div className="right">
-                                <input type="text" name="phone_h" />
+                                <input type="text" name="phone_h" value={memberInfo.phone ? memberInfo.phone.substring(0,3) : ""} />
                                 <img className="date_line" src="images/date_line.svg" alt="" />
-                                <input type="text" name="phone_b" />
+                                <input type="text" name="phone_b" value={memberInfo.phone ? memberInfo.phone.substring(3,7) : ""} />
                                 <img className="date_line" src="images/date_line.svg" alt="" />
-                                <input type="text" name="phone_t" />
+                                <input type="text" name="phone_t" value={memberInfo.phone ? memberInfo.phone.substring(7,11) : ""} />
                             </div>
                         </div>
                         <div className="row email">
                             <div className="left">이메일</div>
                             <div className="right">
-                                <input type="text" name="email" />
+                                <input type="text" name="email" value={memberInfo.memberEmail ? memberInfo.memberEmail.split('@')[0] : ""} />
                                 <span>@</span>
-                                <select name="email_fix">
+                                <select name="email_fix" value={memberInfo.memberEmail}>
                                     <option value="naver.com">naver.com</option>
                                     <option value="gmail.com">gmail.com</option>
                                 </select>
@@ -61,33 +145,31 @@ export default function Rent() {
                         <div className="row address">
                             <div className="left">주소<span>*</span></div>
                             <div className="right">
-                                <input type="text" name="address_code" />
-                                <input type="text" name="address" />
-                                <input type="text" name="address_detail" />
+                                <input type="text" name="address" value={memberInfo.address ? memberInfo.address : ""} />
                             </div>
                         </div>
                         <div className="row phone">
                             <div className="left">받는 분<span>*</span></div>
                             <div className="right">
-                                <input type="text" name="given_user" />
+                                <input type="text" name="given_user"  value={memberInfo.name ? memberInfo.name : ""}  />
                             </div>
                         </div>
                         <div className="row email">
                             <div className="left">휴대전화<span>*</span></div>
                             <div className="right">
-                                <input type="text" name="phone_h" />
+                                <input type="text" name="phone_h"  value={memberInfo.phone ? memberInfo.phone.substring(0,3) : ""} />
                                 <img className="date_line" src="images/date_line.svg" alt="" />
-                                <input type="text" name="phone_b" />
+                                <input type="text" name="phone_b"  value={memberInfo.phone ? memberInfo.phone.substring(3,7) : ""} />
                                 <img className="date_line" src="images/date_line.svg" alt="" />
-                                <input type="text" name="phone_t" />
+                                <input type="text" name="phone_t"  value={memberInfo.phone ? memberInfo.phone.substring(7,11) : ""} />
                             </div>
                         </div>
                         <div className="row email">
                             <div className="left">이메일</div>
                             <div className="right">
-                                <input type="text" name="email" />
+                                <input type="text" name="email"  value={memberInfo.memberEmail ? memberInfo.memberEmail.split('@')[0] : ""}/>
                                 <span>@</span>
-                                <select name="email_fix">
+                                <select name="email_fix"   value={memberInfo.memberEmail ? memberInfo.memberEmail.split('@')[1] : ""}>
                                     <option value="naver.com">naver.com</option>
                                     <option value="gmail.com">gmail.com</option>
                                 </select>
@@ -101,22 +183,22 @@ export default function Rent() {
                         <div className="row email">
                             <div className="left">결제 수단<span>*</span></div>
                             <div className="right">
-                                <div className="country">
-                                    <Unchecked />한국 <br />
-                                    <Unchecked />일본 <br />
+                                <div className="country" >
+                                    <span onClick={countryHandle.bind(this, '한국')}>{country=='한국' ? <Checked style={{marginRight: "6px "}} /> : <Unchecked style={{marginRight: "6px "}} />}한국 <br /></span>
+                                    <span onClick={countryHandle.bind(this, '일본')}>{country=='한국' ? <Unchecked style={{marginRight: "6px "}} /> : <Checked style={{marginRight: "6px "}} />}일본 <br /></span>
                                 </div>
 
                                 <div className="payment_select">
-                                    <div>
-                                        <div className="payment_method">신용카드</div>
-                                        <div className="payment_method">계좌이체</div>
-                                        <div className="payment_method">무통장 입금</div>
-                                        <div className="payment_method">휴대폰</div>
+                                    <div className="top">
+                                        <div  className={`payment_method ${payMethod === '신용카드' ? "active" : ""}`}>신용카드</div>
+                                        <div  className={`payment_method ${payMethod === '계좌이체' ? "active" : ""}`}>계좌이체</div>
+                                        <div  className={`payment_method ${payMethod === '무통장 입금' ? "active" : ""}`}>무통장 입금</div>
+                                        <div  className={`payment_method ${payMethod === '휴대폰' ? "active" : ""}`}>휴대폰</div>
                                     </div>
-                                    <div>
-                                        <div className="payment_method"><img src="https://ibb.co/SvRFG4z" alt="" /></div>
-                                        <div className="payment_method"><img src="https://ibb.co/r65nDJN" alt="" /></div>
-                                        <div className="payment_method"><img src="https://ibb.co/FD2ZcvK" alt="" /></div>
+                                    <div className="bottom">
+                                        <div  className={`payment_method ${payMethod === '네이버' ? "active" : ""}`}><img src="https://i.postimg.cc/sxXg4hKY/naverpay.png" alt="" /></div>
+                                        <div  className={`payment_method ${payMethod === '카카오' ? "active" : ""}`}><img src="https://i.postimg.cc/hGWhRhPn/kakaopay.png" alt="" /></div>
+                                        <div  className={`payment_method ${payMethod === '토스' ? "active" : ""}`}><img src="https://i.postimg.cc/KjHvq8sd/tosspay.png" alt="" /></div>
                                     </div>
                                 </div>
                             </div>
@@ -124,40 +206,20 @@ export default function Rent() {
                     </div>
 
                     {/* 총합 */}
-                    <div className="total">
-                        <div className="totalfont">
-                            <div className="totalcount">
-                                <p className="cart_product_total_price">총 수량 2개</p>
-                            </div>
-
-                            {/* 대여기간 */}
-                            {/* startDate와 endDate를 출력 */}
-                            <p className="cart_product_sale">
-                                대여기간 <span className="star_end">2023.04.11 <img src="images/date_line.svg" /> 2023.04.12</span>
-                                {/* 대여기간 <span className="star_end">{startDate}-{endDate}</span> */}
-                            </p>
-
-                            <div className="payment">
-                                {/* 총 대여료 */}
-                                {/* total을 변환된 가격으로 출력 */}
-                                <p>총 대여료 <span className="cart_prouct_payment"> 12355</span>원</p>
-                            </div>
-                        </div>
-                    </div>
 
                     {/* 동의 */}
                     <div className="agree">
                         <h3>주문 확인 및 동의</h3><br />
                         <p>주문하실 상품, 가격, 배송정보, 할인정보 등을 확인하였으며, 구매에 동의하시겠습니까?</p><br />
 
-                        <div className="order_check_box">
-                            <Unchecked className="radio_btn" />동의합니다.
+                        <div className="order_check_box" onClick={agreeHandle}>
+                            {isAgree?<Checked className="radio_btn" />:<Unchecked className="radio_btn" />}동의합니다.
                         </div>
                     </div>
 
                     {/* 결제하기 버튼 */}
-                    <div className="order_btn">
-                        <button>결제하기</button>
+                    <div className="order_btn" onClick={rentHandle()}>
+                        <button>대여하기</button>
                     </div>
                 </div>
             </div>

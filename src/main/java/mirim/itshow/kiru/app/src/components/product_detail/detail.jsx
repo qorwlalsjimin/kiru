@@ -189,7 +189,9 @@ export const Detail = ({ cart, setCart }) => {
         }
         setNowOptions(option); //현재 옵션 세팅
         if (!!size && !(!!selectedColor)) //사이즈 선택, 컬러는 없을때
-          window.alert('색상도 선택해주세요')
+        {
+          
+          }
 
         // 3. 색상 먼저 선택했으면 객체에 값 업데이트
       } else { //색상 선택하고 넘어옴
@@ -360,7 +362,7 @@ export const Detail = ({ cart, setCart }) => {
 
       // 중복 체크
       let updateOptions = Object.values(selectedOptions).map((detailOption) => {
-        return { name: product.name, image: product.imageUrl[0], ...detailOption, brand: product.brand, price: product.price }
+        return { name: product.name, image: product.imageUrl[0], ...detailOption, brand: product.brand, price: product.price, startDate: startDate, endDate: endDate }
       })
       carts_hanbok.push(...updateOptions);
 
@@ -398,7 +400,8 @@ export const Detail = ({ cart, setCart }) => {
 
     if (Object.keys(selectedOptions).length !== 0) {
       setSelectedOptions({});
-      window.alert('대여신청 완료');
+      setTotalCount(0);
+      navigate('/rent_form');
     }
     else
       window.alert('옵션을 선택해주세요.');
@@ -573,7 +576,7 @@ export const Detail = ({ cart, setCart }) => {
                   <div className="total_info">
 
                     <div className="datedata">
-                      {!!endDate.replaceAll('-', '.') && startDate.replaceAll('-', '.')} {!!endDate && <div className="line"><DateLine /></div>} {endDate}
+                      {!!endDate.replaceAll('-', '.') && startDate.replaceAll('-', '.')} {!!endDate && <div className="line"><DateLine /></div>} {endDate.replaceAll('-', '.')}
                     </div>
                     <span className="total_price">
                       총 대여료 <span className="bold">{Util.convertPrice(product.price * totalCount)}원</span>
@@ -586,7 +589,7 @@ export const Detail = ({ cart, setCart }) => {
 
               <div className="detailbtn">
                 <div className="btn">
-                  <button className="btn_buy">대여신청하기</button>
+                  <button className="btn_buy" onClick={buyBtnHandle}>대여신청하기</button>
                   <button className="btn_cart" onClick={() => { handleCart(); }}>장바구니</button>
                 </div>
               </div>

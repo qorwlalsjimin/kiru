@@ -29,7 +29,7 @@ public class JoinRequestDto {
                 .authority(Authority.ROLE_USER)
                 .name(name)
                 .address(address)
-                .phone(passwordEncoder.encode(phone)) //암호화
+                .phone(phone) //암호화
                 .build();
     }
 

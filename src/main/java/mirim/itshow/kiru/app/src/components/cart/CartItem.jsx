@@ -79,6 +79,7 @@ export default function CartItem({ country, cart, total, setTotal, found }) {
             found={found}
             length={uniqueCartItems.length}
             totalPrice={totalPrice}
+            
           />
         ) : (
           ""

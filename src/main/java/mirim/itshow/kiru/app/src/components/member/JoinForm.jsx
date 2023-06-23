@@ -197,7 +197,7 @@ const JoinForm = (props) => {
 
                   <h3 className="font">주소</h3>
                   <div className="ads">
-                    <input id="address" className="address1" name="address" type="text" placeholder="우편번호" defaultValue={group.address} onChange={handleChange} />
+                    <input id="address" className="address1" name="address" type="text" placeholder="주소" defaultValue={group.address} />
                     <button type="button" className="ads_button" onClick={onClickButton} >주소찾기</button>
                     {isOpen && (<Modal
                       open={isOpen}
@@ -209,9 +209,9 @@ const JoinForm = (props) => {
                   </div>
 
                   <div className="pass">
-                    <input id="address" className="address2" name="address" type="text" placeholder="주소" defaultValue={group.address} onChange={handleChange} />  {/**value={setInputAddressValue} */}
-                    <br />
-                    <input id="address" className="address3" name="address2" placeholder="상세주소" type="text" defaultValue={group.address2} onChange={handleChange} />
+                    <input id="address2" className="address2" name="address2" type="text" placeholder="상세주소" onChange={handleChange} />
+                    {/* <br />
+                    <input id="address" className="address3" name="address2" placeholder="상세주소" type="text" defaultValue={group.address2} onChange={handleChange} /> */}
                   </div>
                   <br />
                 </div>

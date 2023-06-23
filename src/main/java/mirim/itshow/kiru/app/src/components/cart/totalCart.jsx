@@ -47,7 +47,7 @@ export const TotalCart = ({ total, setTotal, cart, found, startDate, endDate, le
           {/* 대여기간 */}
           {/* startDate와 endDate를 출력 */}
           <p className="cart_product_sale">
-            대여기간 <span className="star_end">2023.07.22 <img src="images/date_line.svg"/> 2023.07.26</span>
+            대여기간 <span className="star_end">{cart[0].startDate} <img src="images/date_line.svg"/> {cart[0].endDate}</span>
             {/* 대여기간 <span className="star_end">{startDate}-{endDate}</span> */}
           </p>
 

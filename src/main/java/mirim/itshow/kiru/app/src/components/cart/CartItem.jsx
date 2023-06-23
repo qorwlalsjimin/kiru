@@ -16,8 +16,8 @@ export default function CartItem({ country, cart, total, setTotal, found }) {
   uniqueCartItems.map((cartItem, idx) => {
     totalPrice += cartItem.price;
 
-    console.log("백: "+totalPrice);
-    console.log("백: " + cartItem.price);
+    // console.log("백: "+totalPrice);
+    // console.log("백: " + cartItem.price);
     
   })
 

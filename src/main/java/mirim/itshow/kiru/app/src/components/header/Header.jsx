@@ -62,7 +62,7 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
 
   /* 나라 바뀌었을때 */
   useEffect(() => {
-    console.log("나라 바뀜", country);
+    // console.log("나라 바뀜", country);
     const fetchData = async () => {
       try {
         // api 데이터 받아오기
@@ -73,7 +73,7 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
         });
   
         // 데이터 저장
-        console.log("카테고리:", response.data);
+        // console.log("카테고리:", response.data);
         setCategorys(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -137,7 +137,7 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
     
     if (!!keyword) {
       setRecentKeywords(keywords => [...keywords, keyword]);
-      console.log("헤더에서 키워드", keyword);
+      // console.log("헤더에서 키워드", keyword);
       setKeyword(keyword);
       navigate(`/result/${keyword}`);
     }
@@ -214,7 +214,7 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
     // console.log("쩝 ㅡㅡ", location)
     if (!location.pathname.includes('Main'))
       setIsTopPage(false);
-    console.log("false로 바꿈")
+    // console.log("false로 바꿈")
     
   }, [location])
   

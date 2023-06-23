@@ -261,6 +261,10 @@ const scrollToTop = () => {
 
 //scroll
 
+  function goProductHandle() {
+    
+    window.scrollTo({ top: 0 });
+  }
 
 
   return (
@@ -899,16 +903,16 @@ const scrollToTop = () => {
               </div>
 
               
-          {/* <Link to="/main_kimono">  */}
+          <Link to="/category/120/all"> 
         
-          <h1 className=' skimono' >기모노 보러가기</h1>
+          <h1 className=' skimono' onClick={goProductHandle}>한복 보러가기</h1>
           <div className="image-container">
           <img src="/images/Frame2.png" className='wa1' data-value={-3} alt="" />
           <img src="/images/Frame3.png"className='wa2' data-value={6} alt="" />
           <img src="/images/Frame4.png" className='wa3'data-value={4} alt="" />
             </div>
           
-          {/* </Link> */}
+          </Link>
          
       
       

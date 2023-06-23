@@ -85,6 +85,13 @@ export const Cart = ({ cart, setCart }) => {
     navigate("/rent_form");
   }
 
+  function orderHandle() {
+    window.alert('주문이 완료되었습니다.');
+    window.scrollTo({ top: 0 });
+    navigate("/category/120/all");
+    localStorage.setItem('carts_hanbok', null);
+  }
+
   return (
     <>
       <div className="cart_container">
@@ -110,8 +117,8 @@ export const Cart = ({ cart, setCart }) => {
               <button>선택 상품 즐겨찾기</button>
             </div>
             <div className="right">
-              <button className="select">선택 상품 주문</button>
-              <button className="all">전체 상품 주문</button>
+              <button className="select" onClick={orderHandle}>선택 상품 주문</button>
+              <button className="all" onClick={orderHandle}>전체 상품 주문</button>
               {/* <button className="all" onClick={rentHandle}>전체 상품 주문</button> */}
             </div>
           </div>

@@ -19,7 +19,6 @@ body, html{
 
   }
 
-
 section{
     height: 100vh;
     /* width: 100vw; */
@@ -320,8 +319,40 @@ transform: rotate(-18deg);
 }
 
 
-
 .wa1{
+  position: absolute;
+  top: 26%;
+  right:-9%;
+  width: 23vw;
+  // transform: translate(-50%, -50%) translateX(-100%);
+  opacity: 1;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+
+.wa2{
+  position: absolute;
+  top: 66%;
+  left: -8%;
+  width: 23vw;
+  transform: rotate(40deg);
+  opacity: 1;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+
+.wa3{
+  position: absolute;
+  top: 73%;
+  left: 68%;
+  width: 23vw;
+  // transform: translate(-50%, -50%) translateX(-100%);
+  opacity: 1;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+
+.wa4{
   position: absolute;
   top: 50%;
   left: 50%;
@@ -330,21 +361,154 @@ transform: rotate(-18deg);
   transition: opacity 0.3s, transform 0.3s;
 }
 
-
-.wa2{
+.wa5{
   position: absolute;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%) translateX(-100%);
+  opacity: 1;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.wa6{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateX(-100%);
+  opacity: 1;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.wa7{
+  position: absolute;
+  top: 62%;
+  right: -8%;
+  transform: rotate(20deg);
+  width: 23vw;
+  opacity: 1;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+
+.wa8{
+  position: absolute;
+  top: 83%;
+  left: 56%;
+  width: 26vw;
+
+  transform: rotate(-20deg);
+  opacity: 1;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.wa9{
+  position: absolute;
+  top: 87%;
+  left: 47%;
+  width: 23vw;
   // transform: translate(-50%, -50%) translateX(-100%);
   opacity: 1;
   transition: opacity 0.3s, transform 0.3s;
 }
 
-.wa3{
+.wa10{
   position: absolute;
-  top: 29%;
+  top: -16%;
+  width: 35vw;
+  left: 14%;
+  transform: rotate(3deg);
+  opacity: 1;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.wa11{
+  position: absolute;
+  top: 78%;
+  width: 23vw;
+  left: 30%;
+  transform: rotate(-30deg);
+  opacity: 1;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+
+.wa12{
+  position: absolute;
+  top: -19%;
+  left: 39%;
+  width: 23vw;
+  transform: rotate(-186deg);
+  opacity: 1;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+
+
+.wa13{
+  position: absolute;
+  top: 75%;
+  left: 5%;
+  width: 23vw;
+  transform: rotate(50deg);
+  opacity: 1;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+
+.wa14{
+  position: absolute;
+  top: 100%;
   left: 50%;
+  width: 21vw;
+  transform: translate(-50%, -50%) translateX(-100%);
+  opacity: 1;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+
+.wa15{
+  position: absolute;
+  top: 15%;
+  left: -14%;
+  width: 30vw;
   // transform: translate(-50%, -50%) translateX(-100%);
+  opacity: 1;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.wa16{
+  position: absolute;
+  top: -15%;
+  right: -6%;
+  width: 30vw;
+  // transform: translate(-50%, -50%) translateX(-100%);
+  opacity: 1;
+  // transition: opacity 0.3s, transform 0.3s;
+}.wa17{
+  position: absolute;
+  top: -10%;
+  left: -8%;
+  width: 30vw;
+  transform:rotate(-10deg);
+  opacity: 1;
+  transition: opacity 0.3s, transform 0.3s;
+
+}.wa18{
+  position: absolute;
+  top: -5%;
+  left: 61%;
+  width: 30vw;
+  transform: rotate(-30deg);
+  opacity: 1;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.wa19{
+  position: absolute;
+  top: 6%;
+  left: -16%;
+  width: 30vw;
+  transform: rotate(-30deg);
   opacity: 1;
   transition: opacity 0.3s, transform 0.3s;
 }
@@ -404,6 +568,7 @@ body::-webkit-scrollbar-track {
   align-items: center;
   /* float: left; */
 }
+
 
 
 
@@ -828,12 +993,15 @@ body::-webkit-scrollbar-track {
 
 
 
-.studioshot h1{
+
+
+.studioshot{
   color: #fff;
   font-size: 14rem;
   padding: 12%;
   top: 31%; 
   position: absolute;
+  font-family: 'lostgun Regular';
 
   /* display: flex; */
   /* margin-top: 50%; */
@@ -1101,9 +1269,6 @@ body::-webkit-scrollbar-track {
   border: 2px solid #bbdbf8;
 }
 
-.studioshot h1{
-  font-family: 'lostgun Regular';
-}
 
 .openevent{
   color: #fff;

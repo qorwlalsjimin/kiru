@@ -186,11 +186,12 @@ const Header = ({ handleNavClick, setShowMainscreen, setProducts, products }) =>
     const handleScroll = () => {
       // 현재 스크롤 위치를 확인하여 맨 위 페이지 여부를 업데이트합니다.
       const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        console.log(scrollTop)
       // console.log(location.pathname.includes('Main') && (scrollTop === 0 || scrollTop <= 1080))
       // console.log(window.location.href.includes('Main')); 
       // console.log(window.location.href); 
       // console.log("여기서 바뀜")
-      if (window.location.href.includes('Main') && (scrollTop === 0 || scrollTop <= 1080))// 어디까지 보라색일지 여기서!!
+      if (window.location.href.includes('Main') && (scrollTop === 0 || scrollTop <= 1343))// 어디까지 보라색일지 여기서!!
         setIsTopPage(true);
       else
         setIsTopPage(false);
